@@ -1,0 +1,111 @@
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Proyecto</title>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">Proyecto</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/evento">Evento
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Inicio Sesion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/registro">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/producto">Producto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">Bienvenidos a nuestra página</h1>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+    </header>
+    <hr>
+
+    <!--Title-->
+    <div class = "text-center">
+    <h3>Eventos</h3>
+    </div>
+    <hr>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor = "let evento of eventos">
+        <div class="card h-100">
+          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <div class="card-body">
+            <p>{{evento.id}}.{{evento.nombre}}</p>
+            <p>{{evento.lugar}}</p>
+            <p>{{evento.fecha_inicio}}--{{evento.fecha_fin}}</p>
+          </div>
+          <div class="card-footer">
+            <a (click) = "editEvento(evento)" class="btn btn-primary">Editar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+    <hr>
+    <div class = "text-center">
+      <h3>Proyectos</h3>
+      </div>
+      <hr>
+    <div class="row text-center">
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor = "let producto of productos">
+        <div class="card h-100">
+          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <div class="card-body">
+            <p>{{producto.id}}.{{producto.nombre}}</p>
+            <p>{{producto.precio_unitario}}</p>
+          </div>
+          <div class="card-footer">
+            <a [routerLink] = "['/producto/edit', producto.id, producto.nombre, producto.descripcion, producto.precio_unitario, producto.fk_ale, producto.fk_lager]" class="btn btn-info btn-block">
+                EDITAR 
+               </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

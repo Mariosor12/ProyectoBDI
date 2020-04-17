@@ -1,0 +1,45 @@
+<div class="row">
+    <h3>Agregar/Editar Producto</h3>
+    <hr>
+    <div class="col-md-4 offset-md-2">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name = "nombre" [(ngModel)] = "producto.nombre" placeholder="Nombre" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "lugar" [(ngModel)] = "producto.descripcion" placeholder="Descripcion" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "entradas_disponibles" [(ngModel)] = "producto.precio_unitario" placeholder="Precio Unitario" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "entradas_vendidas" [(ngModel)] = "producto.fk_ale" placeholder="Tipo Productos" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "fecha_inicio" [(ngModel)] = "producto.fk_lager" placeholder="Tipo Productos" class="form-control" autofocus>
+                    </div>
+                    <button (click)= "edit ? updatedProducto() : SaveNuevoProducto()" class="btn btn-success btn-block">
+                        SAVE
+                    </button>
+                    <input #canti class="form-control form-control-md" type="text" placeholder="Cantidad" style="margin-bottom: 5px">                     
+                    <button class="btn btn-block btn-primary" (click)="addCart(canti.value, pedido, pedido.nombre); canti.value = ''" data-dismiss="modal">Agregar al carrito</button> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class = "col-md-4">
+    <div class="card card-body text-center">
+        <h5>{{producto.id}}. {{producto.nombre}}</h5>
+        <p>{{producto.descripcion}}</p>
+         <p>  {{producto.precio_unitario}} </p> 
+         <p>  {{producto.fk_ale}} </p> 
+          <p> {{producto.fk_lager}} </p>
+    </div>
+</div>
+

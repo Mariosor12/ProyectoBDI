@@ -1,0 +1,40 @@
+<div class="col-md-5" *ngFor = "let evento of eventos">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{evento.nombre}}
+            <button class = "btn btn-danger" (click) = "DeleteEvento(evento.id)">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        <div class="card-body">
+            <h5>Lugar</h5>
+            <br>
+            <h4>{{evento.lugar}}</h4>
+        <hr>
+            <h5>Entradas Disponibles</h5>
+            <br>
+            <h4>{{evento.entradas_disponibles}}</h4>  
+        <hr>
+             <h5>Entradas Vendidas</h5>
+             <br>
+             <h4>{{evento.entradas_vendidas}}</h4> 
+        <hr>
+             <h5>Fecha Inicial</h5>
+             <br>
+             <h4>{{evento.fecha_inicio}}</h4> 
+        <hr>
+             <h5>Fecha Fin</h5>
+             <br>
+             <h4>{{evento.fecha_fin}}</h4>
+               <a (click) = "editEvento(evento)" class="btn btn-info btn-block">
+                EDITAR EVENTO
+               </a>
+        </div>
+    </div>
+</div>
+<hr>
+        <a routerLink="/evento/add" class="btn btn-info btn-block">
+            AGREGAR EVENTO
+           </a>
+           <br>
+<br>
