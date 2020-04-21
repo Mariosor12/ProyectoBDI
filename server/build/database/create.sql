@@ -27,7 +27,7 @@ CREATE TABLE public.ale
     tipo varchar NOT NULL,
     fk_historia_cerveza numeric,
     CONSTRAINT pk_clave_ale PRIMARY KEY (clave),
-    CONSTRAINT fk_fk_historia_cerveza_ale FOREIGN KEY (fk_historia_cerveza) REFERENCES historia_cerveza(clave)
+    CONSTRAINT fk_fk_historia_cerveza_ale FOREIGN KEY (fk_historia_cerveza) REFERENCES historia_cerveza(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_lager
@@ -44,7 +44,7 @@ CREATE TABLE public.lager
      tipo varchar NOT NULL,
      fk_historia_cerveza numeric,
      CONSTRAINT pk_clave_lager PRIMARY KEY (clave),
-    CONSTRAINT fk_fk_historia_cerveza_ale FOREIGN KEY (fk_historia_cerveza) REFERENCES historia_cerveza(clave)
+    CONSTRAINT fk_fk_historia_cerveza_ale FOREIGN KEY (fk_historia_cerveza) REFERENCES historia_cerveza(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_ingrediente
@@ -80,8 +80,8 @@ CREATE TABLE public.cerveza_artesanal
      fk_ale numeric,
      fk_lager numeric,
      CONSTRAINT pk_clave_cerveza PRIMARY KEY (clave),
-     CONSTRAINT fk_ale_cerveza FOREIGN KEY (fk_ale) REFERENCES ale(clave),
-     CONSTRAINT fk_lager_cerveza FOREIGN KEY (fk_lager) REFERENCES lager(clave)
+     CONSTRAINT fk_ale_cerveza FOREIGN KEY (fk_ale) REFERENCES ale(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_lager_cerveza FOREIGN KEY (fk_lager) REFERENCES lager(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_receta
@@ -98,7 +98,7 @@ CREATE TABLE public.receta
      descripcion varchar(50) NOT NULL,
      fk_cerveza numeric NOT NULL,
      CONSTRAINT pk_clave_receta PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cerveza FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave)
+     CONSTRAINT fk_fk_cerveza FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_receta_ingrediente
@@ -116,8 +116,8 @@ CREATE TABLE public.receta_ingre
      fk_receta numeric NOT NULL,
      cant_ingrediente numeric NOT NULL,
      CONSTRAINT pk_receta_ingrediente PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_ingrediente FOREIGN KEY (fk_ingrediente) REFERENCES ingrediente(id),
-     CONSTRAINT fk_fk_receta FOREIGN KEY (fk_receta) REFERENCES receta (clave)
+     CONSTRAINT fk_fk_ingrediente FOREIGN KEY (fk_ingrediente) REFERENCES ingrediente(id) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_receta FOREIGN KEY (fk_receta) REFERENCES receta (clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_caracteristica
@@ -152,8 +152,8 @@ CREATE TABLE public.cerveza_caracteristica
      fk_cerveza numeric NOT NULL,
      fk_caracteristica numeric NOT NULL,
      CONSTRAINT pk_id_cerveza_caracteristica PRIMARY KEY (id),
-     CONSTRAINT fk_fk_cerveza_cerveza_caracteristica FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave),
-     CONSTRAINT fk_fk_caracteristica_cerveza_caracteristica FOREIGN KEY (fk_caracteristica) REFERENCES caracteristica(clave)
+     CONSTRAINT fk_fk_cerveza_cerveza_caracteristica FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_caracteristica_cerveza_caracteristica FOREIGN KEY (fk_caracteristica) REFERENCES caracteristica(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_departamento
@@ -186,7 +186,7 @@ CREATE TABLE public.direccion
      nombre varchar NOT NULL,
      fk_direccion numeric,
      CONSTRAINT pk_clave_direccion PRIMARY KEY (clave),
-     CONSTRAINT  fk_fk_direccion FOREIGN KEY (fk_direccion) REFERENCES direccion(clave),
+     CONSTRAINT  fk_fk_direccion FOREIGN KEY (fk_direccion) REFERENCES direccion(clave) ON DELETE CASCADE,
      CONSTRAINT chk_tipo_direccion CHECK (tipo in ('Estado','Ciudad','Municipio','Parroquia', 'Avenida', 'Edificio', 'Piso', 'Oficina', 'Apartamento') )
 );
 
@@ -202,9 +202,7 @@ CREATE TABLE public.privilegio
 (
      clave numeric NOT NULL DEFAULT nextval('secuencia_privilegio'::regclass),
      tipo varchar NOT NULL,
-     tabla varchar NOT NULL,
-     CONSTRAINT pk_clave_privilegio PRIMARY KEY (clave),
-     CONSTRAINT chk_tipo_privilegio CHECK (tipo in ('Crear','Consultar','Modificar','Eliminar'))
+     CONSTRAINT pk_clave_privilegio PRIMARY KEY (clave)
 );
 
 CREATE SEQUENCE public.secuencia_rol
@@ -236,8 +234,8 @@ CREATE TABLE public.rol_privilegio
      fk_rol numeric NOT NULL,
      fk_privilegio numeric NOT NULL,
      CONSTRAINT pk_clave_rol_privilegio PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_rol_rol_privilegio FOREIGN KEY (fk_rol) REFERENCES rol(clave),
-     CONSTRAINT fk_fk_privilegio_rol_privilegio FOREIGN KEY (fk_privilegio) REFERENCES privilegio(clave)
+     CONSTRAINT fk_fk_rol_rol_privilegio FOREIGN KEY (fk_rol) REFERENCES rol(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_privilegio_rol_privilegio FOREIGN KEY (fk_privilegio) REFERENCES privilegio(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_usuario
@@ -277,8 +275,8 @@ CREATE TABLE public.personal
      fk_usuario numeric NOT NULL,
      fk_direccion numeric NOT NULL,
      CONSTRAINT pk_clave_personal PRIMARY KEY (clave),
-     CONSTRAINT fk_personal_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
-     CONSTRAINT fk_fk_direccion_personal FOREIGN KEY (fk_direccion) REFERENCES direccion(clave),
+     CONSTRAINT fk_personal_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_direccion_personal FOREIGN KEY (fk_direccion) REFERENCES direccion(clave) ON DELETE CASCADE,
      CONSTRAINT chk_genero_personal CHECK (genero in ('Hombre','Mujer','Otro'))
 );
 
@@ -298,7 +296,7 @@ CREATE TABLE public.motivos_laborales
      fecha_fin date,
      fk_personal numeric NOT NULL,
      CONSTRAINT pk_situaciones_especiales PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_personal_situaciones_especiales FOREIGN KEY (fk_personal) REFERENCES personal(clave),
+     CONSTRAINT fk_fk_personal_situaciones_especiales FOREIGN KEY (fk_personal) REFERENCES personal(clave) ON DELETE CASCADE,
      CONSTRAINT chk_tipo_situaciones_especiales CHECK (tipo in('Vacaciones','Motivos de salud','Problemas familiares'))
 );
 
@@ -349,8 +347,8 @@ CREATE TABLE public.personal_beneficio
      fk_beneficio numeric NOT NULL,
      fk_personal numeric NOT NULL,
      CONSTRAINT pk_clave_personal_beneficio PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_personal_personal_beneficio FOREIGN KEY (fk_personal) REFERENCES personal(clave),
-     CONSTRAINT fk_fk_beneficio_personal_beneficio FOREIGN KEY (fk_beneficio) REFERENCES beneficio(clave)
+     CONSTRAINT fk_fk_personal_personal_beneficio FOREIGN KEY (fk_personal) REFERENCES personal(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_beneficio_personal_beneficio FOREIGN KEY (fk_beneficio) REFERENCES beneficio(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_personal_horario
@@ -369,8 +367,8 @@ CREATE TABLE public.personal_horario
      fk_personal numeric NOT NULL,
      fk_horario numeric NOT NULL,
      CONSTRAINT pk_clave_personal_horario PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_personal_personal_horario FOREIGN KEY (fk_personal) REFERENCES personal(clave),
-     CONSTRAINT fk_fk_horario_personal_horario FOREIGN KEY (fk_horario) REFERENCES horario(clave),
+     CONSTRAINT fk_fk_personal_personal_horario FOREIGN KEY (fk_personal) REFERENCES personal(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_horario_personal_horario FOREIGN KEY (fk_horario) REFERENCES horario(clave) ON DELETE CASCADE,
      CONSTRAINT chk_tipo_horario_personal CHECK (tipo in('Horario asignado','Inasistente'))
 );
 
@@ -391,7 +389,7 @@ CREATE TABLE public.proveedor
      fecha_afiliacion date NOT NULL,
      fk_direccion numeric NOT NULL,
      CONSTRAINT pk_rif_proveedor PRIMARY KEY (rif),
-     CONSTRAINT fk_fk_direccion_proveedor FOREIGN KEY (fk_direccion) REFERENCES direccion(clave)
+     CONSTRAINT fk_fk_direccion_proveedor FOREIGN KEY (fk_direccion) REFERENCES direccion(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_cerveza_proveedor
@@ -408,8 +406,8 @@ CREATE TABLE public.cerveza_proveedor
      fk_cerveza_artesanal numeric NOT NULL,
      fk_proveedor numeric NOT NULL,
      CONSTRAINT pk_clave_cerveza_proveedor PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cerveza_cerveza_proveedor FOREIGN KEY (fk_cerveza_artesanal) REFERENCES cerveza_artesanal(clave),
-     CONSTRAINT fk_fk_proveedor_cerveza_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif)
+     CONSTRAINT fk_fk_cerveza_cerveza_proveedor FOREIGN KEY (fk_cerveza_artesanal) REFERENCES cerveza_artesanal(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_proveedor_cerveza_proveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_evento
@@ -430,7 +428,7 @@ CREATE TABLE public.evento
      cant_entrada_disponible numeric NOT NULL,
      fk_direccion numeric NOT NULL,
      CONSTRAINT pk_clave_evento PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_direccion_evento FOREIGN KEY (fk_direccion) REFERENCES direccion(clave)
+     CONSTRAINT fk_fk_direccion_evento FOREIGN KEY (fk_direccion) REFERENCES direccion(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_evento_proveedor
@@ -447,8 +445,8 @@ CREATE TABLE public.evento_proveedor
      fk_evento numeric NOT NULL,
      fk_proveedor numeric NOT NULL,
      CONSTRAINT pk_clave_evento_proveedor PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_evento_evento_proveedor FOREIGN KEY (fk_evento) REFERENCES evento(clave),
-     CONSTRAINT fk_fk_proveedor_eventoproveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif)
+     CONSTRAINT fk_fk_evento_evento_proveedor FOREIGN KEY (fk_evento) REFERENCES evento(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_proveedor_eventoproveedor FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_pasillo
@@ -482,7 +480,7 @@ CREATE TABLE public.tienda
      fk_fisica_direccion numeric NOT NULL,
      virtual_pagina_web varchar,
      CONSTRAINT pk_tienda PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_fisica_direccion_tienda FOREIGN KEY (fk_fisica_direccion) REFERENCES direccion(clave)
+     CONSTRAINT fk_fk_fisica_direccion_tienda FOREIGN KEY (fk_fisica_direccion) REFERENCES direccion(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_zona
@@ -502,9 +500,9 @@ CREATE TABLE public.zona
      fk_rol numeric NOT NULL,
      fk_pasillo numeric NOT NULL,
      CONSTRAINT pk_zona PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_tienda_zona FOREIGN KEY (fk_tienda) REFERENCES tienda(clave),
-     CONSTRAINT fk_fk_rol_zona FOREIGN KEY (fk_rol) REFERENCES rol(clave),
-     CONSTRAINT fk_fk_pasillo_zona FOREIGN KEY (fk_pasillo) REFERENCES pasillo(clave)
+     CONSTRAINT fk_fk_tienda_zona FOREIGN KEY (fk_tienda) REFERENCES tienda(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_rol_zona FOREIGN KEY (fk_rol) REFERENCES rol(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_pasillo_zona FOREIGN KEY (fk_pasillo) REFERENCES pasillo(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_factura
@@ -540,8 +538,8 @@ CREATE TABLE public.detalle_venta     --A su vez, un historico inventario no ten
      fk_cerveza_proveedor numeric,
      fk_historico_inventario numeric,
      CONSTRAINT pk_codigo_detalle_venta PRIMARY KEY (codigo),
-     CONSTRAINT fk_fk_venta_detalle_venta FOREIGN KEY (fk_venta) REFERENCES venta(nro_factura),
-     CONSTRAINT fk_fk_cerveza_proveedor_detalle_venta FOREIGN KEY (fk_cerveza_proveedor) REFERENCES cerveza_proveedor(clave)
+     CONSTRAINT fk_fk_venta_detalle_venta FOREIGN KEY (fk_venta) REFERENCES venta(nro_factura) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_cerveza_proveedor_detalle_venta FOREIGN KEY (fk_cerveza_proveedor) REFERENCES cerveza_proveedor(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_status
@@ -573,8 +571,8 @@ CREATE TABLE public.status_venta
      fk_status numeric NOT NULL,
      fk_venta numeric NOT NULL,
      CONSTRAINT pk_status_venta PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_status_status_venta FOREIGN KEY (fk_status) REFERENCES status(clave),
-     CONSTRAINT fk_fk_venta_status_venta FOREIGN KEY (fk_venta) REFERENCES venta(nro_factura)
+     CONSTRAINT fk_fk_status_status_venta FOREIGN KEY (fk_status) REFERENCES status(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_venta_status_venta FOREIGN KEY (fk_venta) REFERENCES venta(nro_factura) ON DELETE CASCADE
 );
 
 CREATE TABLE public.cliente
@@ -595,9 +593,9 @@ CREATE TABLE public.cliente
      fk_usuario numeric NOT NULL,
      CONSTRAINT pk_cliente PRIMARY KEY (rif),
      CONSTRAINT chk_tipo_cliente CHECK (tipo in ('Natural','Juridico')),
-     CONSTRAINT fk_fk_direccion_fisica_cliente FOREIGN KEY (fk_direccion_fisica) REFERENCES direccion(clave),
-     CONSTRAINT fk_juridico_fk_direccion_fiscal_cliente FOREIGN KEY (juridico_fk_direccion_fiscal) REFERENCES direccion(clave),
-     CONSTRAINT fk_cliente_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
+     CONSTRAINT fk_fk_direccion_fisica_cliente FOREIGN KEY (fk_direccion_fisica) REFERENCES direccion(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_juridico_fk_direccion_fiscal_cliente FOREIGN KEY (juridico_fk_direccion_fiscal) REFERENCES direccion(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_cliente_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id) ON DELETE CASCADE,
      CONSTRAINT chk_natural_genero_cliente CHECK (natural_genero in ('Hombre','Mujer','Otro'))
 );
 
@@ -617,8 +615,8 @@ CREATE TABLE public.comentario_cerveza
      fk_cliente varchar NOT NULL,
      fk_cerveza numeric NOT NULL,
      CONSTRAINT pk_comentario_cerveza PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cliente_comentario_cerveza FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
-     CONSTRAINT fk_fk_cerveza_comentario_cerveza FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave),
+     CONSTRAINT fk_fk_cliente_comentario_cerveza FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_cerveza_comentario_cerveza FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave) ON DELETE CASCADE,
      CONSTRAINT chk_calificacion_comentario_cerveza CHECK (calificacion BETWEEN 0 AND 5)
 );
 
@@ -636,7 +634,7 @@ CREATE TABLE public.correo_electronico
      direccion varchar NOT NULL,
      fk_cliente varchar NOT NULL,
      CONSTRAINT pk_clave_correo_electronico PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cliente_correo_electronico FOREIGN KEY (fk_cliente) REFERENCES cliente(rif)
+     CONSTRAINT fk_fk_cliente_correo_electronico FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE
 );
 
 CREATE TABLE public.compra
@@ -648,9 +646,9 @@ CREATE TABLE public.compra
      fk_tienda_virtual numeric,
      fk_cliente varchar NOT NULL,
      CONSTRAINT pk_nro_factura_compra_status PRIMARY KEY (nro_factura),
-     CONSTRAINT fk_fk_tienda_fisica_compra FOREIGN KEY (fk_tienda_fisica) REFERENCES tienda(clave),
-     CONSTRAINT fk_fk_tienda_virtual_compra FOREIGN KEY (fk_tienda_virtual) REFERENCES tienda(clave),
-     CONSTRAINT fk_fk_cliente_compra FOREIGN KEY (fk_cliente) REFERENCES cliente(rif)
+     CONSTRAINT fk_fk_tienda_fisica_compra FOREIGN KEY (fk_tienda_fisica) REFERENCES tienda(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_tienda_virtual_compra FOREIGN KEY (fk_tienda_virtual) REFERENCES tienda(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_cliente_compra FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_detalle_compra
@@ -671,10 +669,10 @@ CREATE TABLE public.detalle_compra
      fk_ale numeric,
      fk_lager numeric,
      CONSTRAINT pk_clave_detalle_compra PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_compra_detalle_compra FOREIGN KEY (fk_compra) REFERENCES compra(nro_factura),
-     CONSTRAINT fk_fk_cerveza_detalle_compra FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave),
-     CONSTRAINT fk_fk_ale_detalle_compra FOREIGN KEY (fk_ale) REFERENCES ale(clave),
-     CONSTRAINT fk_fk_lager_detalle_compra FOREIGN KEY (fk_lager) REFERENCES lager(clave)
+     CONSTRAINT fk_fk_compra_detalle_compra FOREIGN KEY (fk_compra) REFERENCES compra(nro_factura) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_cerveza_detalle_compra FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_ale_detalle_compra FOREIGN KEY (fk_ale) REFERENCES ale(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_lager_detalle_compra FOREIGN KEY (fk_lager) REFERENCES lager(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_inventario
@@ -693,7 +691,7 @@ CREATE TABLE public.inventario
      fk_zona numeric,
      CONSTRAINT pk_clave_inventario PRIMARY KEY (clave),
      CONSTRAINT fk_fk_evento_inventario FOREIGN KEY (fk_evento) REFERENCES evento(clave) on delete cascade,
-     CONSTRAINT fk_fk_zona_inventario   FOREIGN KEY (fk_zona) REFERENCES zona(clave)
+     CONSTRAINT fk_fk_zona_inventario   FOREIGN KEY (fk_zona) REFERENCES zona(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_historico_inventario_cerveza
@@ -716,9 +714,9 @@ CREATE TABLE public.historico_inventario_cerveza
      fk_inventario numeric,
      CONSTRAINT pk_clave_historico_inventario_cerveza PRIMARY KEY (clave),
      CONSTRAINT fk_fk_cerveza FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave),
-     CONSTRAINT fk_fk_detalle_compra_historico_inventario FOREIGN KEY (fk_detalle_compra) REFERENCES detalle_compra(clave),
-     CONSTRAINT fk_fk_detalle_venta_historico_inventario FOREIGN KEY (fk_detalle_venta) REFERENCES detalle_venta(codigo),
-     CONSTRAINT fk_fk_inventario_historico_inventario FOREIGN KEY (fk_inventario) REFERENCES inventario(clave)
+     CONSTRAINT fk_fk_detalle_compra_historico_inventario FOREIGN KEY (fk_detalle_compra) REFERENCES detalle_compra(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_detalle_venta_historico_inventario FOREIGN KEY (fk_detalle_venta) REFERENCES detalle_venta(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_inventario_historico_inventario FOREIGN KEY (fk_inventario) REFERENCES inventario(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_historico_puntos_cliente
@@ -738,9 +736,9 @@ CREATE TABLE public.historico_puntos_cliente
      fk_cliente varchar NOT NULL,
      fk_historico_puntos numeric,
      CONSTRAINT pk_clave_historico_puntos_cliente PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cliente_historico_puntos_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_historico_puntos_cliente FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT chk_tipo_historico_puntos_cliente CHECK (tipo in('+','-','0')),
-     CONSTRAINT fk_fk_historico_puntos_historico_puntos_cliente FOREIGN KEY (fk_historico_puntos) REFERENCES historico_puntos_cliente(clave)
+     CONSTRAINT fk_fk_historico_puntos_historico_puntos_cliente FOREIGN KEY (fk_historico_puntos) REFERENCES historico_puntos_cliente(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_persona_contacto
@@ -758,7 +756,7 @@ CREATE TABLE public.persona_contacto
      numero varchar NOT NULL,
      fk_cliente varchar NOT NULL,
      CONSTRAINT pk_clave_persona_contacto PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cliente_persona_contacto FOREIGN KEY (fk_cliente) REFERENCES cliente(rif)
+     CONSTRAINT fk_fk_cliente_persona_contacto FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_telefono
@@ -777,9 +775,9 @@ CREATE TABLE public.telefono
      fk_proveedor numeric,
      fk_personal numeric,
      CONSTRAINT pk_clave_telefono PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cliente_telefono FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
-     CONSTRAINT fk_fk_proveedor_cliente FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif),
-     CONSTRAINT fk_fk_personal_telefono FOREIGN KEY (fk_personal) REFERENCES personal(clave)
+     CONSTRAINT fk_fk_cliente_telefono FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_proveedor_cliente FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_personal_telefono FOREIGN KEY (fk_personal) REFERENCES personal(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_tipo_pago_credito
@@ -800,7 +798,7 @@ CREATE TABLE public.tipo_pago_credito
      nombre_impreso varchar NOT NULL,
      cedula numeric NOT NULL,
      fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT pk_codigo_tipo_pago_credito PRIMARY KEY (codigo),
      CONSTRAINT chk_tipo_tipo_pago_credito CHECK (tipo in('Visa','Mastercard'))
 );
@@ -823,7 +821,7 @@ CREATE TABLE public.tipo_pago_debito
      nombre_impreso varchar NOT NULL,
      cedula numeric NOT NULL,
      fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT pk_codigo_tipo_pago_debito PRIMARY KEY (codigo),
      CONSTRAINT chk_tipo_tipo_pago_debito CHECK (tipo in('Maestro'))
 );
@@ -843,7 +841,7 @@ CREATE TABLE public.tipo_pago_efectivo     --Revisar FK de TODOS tipo_pago
      denominacion numeric NOT NULL,
      cantidad numeric NOT NULL,
      fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT pk_codigo_tipo_pago_efectivo PRIMARY KEY (codigo)
 );
 
@@ -862,7 +860,7 @@ CREATE TABLE public.tipo_pago_cheque
      numero_cuenta numeric NOT NULL,
      numero_cheque numeric NOT NULL,
      fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT pk_codigo_tipo_pago_cheque PRIMARY KEY (codigo)
 );
 
@@ -901,9 +899,9 @@ CREATE TABLE public.tipo_pago_divisa
      monto numeric NOT NULL,
      fk_historico_tasa numeric NOT NULL,
      fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT pk_codigo_tipo_pago_divisa PRIMARY KEY(codigo),
-     CONSTRAINT fk_fk_historico_tasa_tipo_pago_divisa FOREIGN KEY (fk_historico_tasa) REFERENCES historico_tasa(clave)
+     CONSTRAINT fk_fk_historico_tasa_tipo_pago_divisa FOREIGN KEY (fk_historico_tasa) REFERENCES historico_tasa(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_historico_valor_puntos
@@ -940,9 +938,9 @@ CREATE TABLE public.tipo_pago_puntos
      cantidad numeric,
      fk_historico_valor_puntos numeric NOT NULL,
      fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif),
+     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
      CONSTRAINT pk_codigo_tipo_pago_puntos PRIMARY KEY (codigo),
-     CONSTRAINT fk_fk_historico_valor_puntos_tipo_pago_puntos FOREIGN KEY (fk_historico_valor_puntos) REFERENCES historico_valor_puntos(clave)
+     CONSTRAINT fk_fk_historico_valor_puntos_tipo_pago_puntos FOREIGN KEY (fk_historico_valor_puntos) REFERENCES historico_valor_puntos(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_cuota_afiliacion
@@ -983,13 +981,13 @@ CREATE TABLE public.pago
      fk_tipo_pago_divisa numeric,
      fk_cuota_afiliacion numeric,
      CONSTRAINT pk_codigo_pago PRIMARY KEY (codigo),
-     CONSTRAINT fk_fk_tipo_pago_credito_pago FOREIGN KEY (fk_tipo_pago_credito) REFERENCES tipo_pago_credito(codigo),
-     CONSTRAINT fk_fk_tipo_pago_debito_pago FOREIGN KEY (fk_tipo_pago_debito) REFERENCES tipo_pago_debito(codigo),
-     CONSTRAINT fk_fk_tipo_pago_cheque_pago FOREIGN KEY (fk_tipo_pago_cheque) REFERENCES tipo_pago_cheque(codigo),
-     CONSTRAINT fk_fk_tipo_pago_efectivo_pago FOREIGN KEY (fk_tipo_pago_efectivo) REFERENCES tipo_pago_efectivo(codigo),
-     CONSTRAINT fk_fk_tipo_pago_puntos_pago FOREIGN KEY (fk_tipo_pago_puntos) REFERENCES tipo_pago_puntos(codigo),
-     CONSTRAINT fk_fk_tipo_pago_divisa_pago FOREIGN KEY (fk_tipo_pago_divisa) REFERENCES tipo_pago_divisa(codigo),
-     CONSTRAINT fk_fk_cuota_afiliacion_pago FOREIGN KEY (fk_cuota_afiliacion) REFERENCES cuota_afiliacion(clave)
+     CONSTRAINT fk_fk_tipo_pago_credito_pago FOREIGN KEY (fk_tipo_pago_credito) REFERENCES tipo_pago_credito(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_tipo_pago_debito_pago FOREIGN KEY (fk_tipo_pago_debito) REFERENCES tipo_pago_debito(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_tipo_pago_cheque_pago FOREIGN KEY (fk_tipo_pago_cheque) REFERENCES tipo_pago_cheque(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_tipo_pago_efectivo_pago FOREIGN KEY (fk_tipo_pago_efectivo) REFERENCES tipo_pago_efectivo(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_tipo_pago_puntos_pago FOREIGN KEY (fk_tipo_pago_puntos) REFERENCES tipo_pago_puntos(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_tipo_pago_divisa_pago FOREIGN KEY (fk_tipo_pago_divisa) REFERENCES tipo_pago_divisa(codigo) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_cuota_afiliacion_pago FOREIGN KEY (fk_cuota_afiliacion) REFERENCES cuota_afiliacion(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_status_compra
@@ -1008,9 +1006,9 @@ CREATE TABLE public.status_compra
      fk_compra numeric NOT NULL,
      fk_departamento numeric NOT NULL,
      CONSTRAINT pk_clave_status_compra PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_status_status_compra FOREIGN KEY (fk_status) REFERENCES status(clave),
-     CONSTRAINT fk_fk_compra_status_compra FOREIGN KEY (fk_compra) REFERENCES compra(nro_factura),
-     CONSTRAINT fk_fk_departamento_status_compra FOREIGN KEY (fk_departamento) REFERENCES departamento(clave)
+     CONSTRAINT fk_fk_status_status_compra FOREIGN KEY (fk_status) REFERENCES status(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_compra_status_compra FOREIGN KEY (fk_compra) REFERENCES compra(nro_factura) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_departamento_status_compra FOREIGN KEY (fk_departamento) REFERENCES departamento(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_descuento
@@ -1029,6 +1027,6 @@ CREATE TABLE public.descuento   --Cambie fecha, a fecha_inicio, deberiamos coloc
      fk_rol numeric NOT NULL,
      fk_cerveza numeric NOT NULL,
      CONSTRAINT pk_clave_descuento PRIMARY KEY (clave),
-     CONSTRAINT fk_fk_cerveza_descuento FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave),
-     CONSTRAINT fk_fk_rol_descuento FOREIGN KEY (fk_rol) REFERENCES rol(clave)
+     CONSTRAINT fk_fk_cerveza_descuento FOREIGN KEY (fk_cerveza) REFERENCES cerveza_artesanal(clave) ON DELETE CASCADE,
+     CONSTRAINT fk_fk_rol_descuento FOREIGN KEY (fk_rol) REFERENCES rol(clave) ON DELETE CASCADE
 );

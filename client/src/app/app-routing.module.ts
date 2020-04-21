@@ -10,6 +10,9 @@ import { ProductoComponent } from './producto/producto.component';
 import { FormProductoComponent } from './form-producto/form-producto.component';
 import { CarritoComponent} from './carrito/carrito.component';
 import { PagoComponent } from './pago/pago.component';
+import { RolComponent } from './rol/rol.component';
+import { RolDataTableComponent } from './rol-data-table/rol-data-table.component';
+import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
 
 const routes: Routes = [
 {
@@ -60,6 +63,22 @@ const routes: Routes = [
 {
   path: 'pago',
   component: PagoComponent
+},
+{
+  path: 'rol/add',
+  component: RolComponent
+},
+{
+  path: 'rol/edit/:id',
+  component: RolComponent
+},
+{
+  path: 'roles/list',
+  component: RolDataTableComponent
+},
+{
+  path: 'privilegios/list',
+  component: PrivilegioDataTableComponent
 }
 
 ];
