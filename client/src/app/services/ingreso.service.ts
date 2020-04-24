@@ -25,7 +25,7 @@ export class IngresoService {
   }
 
   updateUsuario(id: string | number, updatedUsuario: Usuario){
-    return this.http.put(this.API_URL+'/evento/'+id, updatedUsuario);
+    return this.http.put(this.API_URL+'/usuario/'+id, updatedUsuario);
   }
 
   saveUsuario(usuario: Usuario){

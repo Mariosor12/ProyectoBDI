@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from '../models/evento';
 import { EventoService} from '../services/evento.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { PrivilegioService } from '../services/privilegio.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class FormEventoComponent implements OnInit {
 
   
 
-  constructor(private eventoService: EventoService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private eventoService: EventoService, private router: Router, private activatedRoute: ActivatedRoute, private privilegios: PrivilegioService) { }
 
   evento: Evento = {
     id: 0,
@@ -28,6 +29,7 @@ export class FormEventoComponent implements OnInit {
   edit: boolean = false;
 
   ngOnInit(): void {
+    this.privilegios.evaluar(this.privilegios.idRolActual);
     const params = this.activatedRoute.snapshot.params;
     if (params.id){
            this.evento ={
@@ -45,6 +47,10 @@ export class FormEventoComponent implements OnInit {
 
   SaveNuevoEvento() {
     delete this.evento.id;
+    if(this.privilegios.insertar == false){
+      alert("Error. No tiene permisos para acceder a este modulo");
+    }
+    else{
     this.eventoService.saveEvento(this.evento).subscribe(
         res => {
           console.log(res);
@@ -52,12 +58,17 @@ export class FormEventoComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
   }
 
   public editarEvento(evento : Evento): void{
     this.router.navigate(['/evento', {evento: evento, edit: true}])
   }
   updatedEvento(){
+    if(this.privilegios.modificar == false){
+      alert("Error. No tiene permisos para acceder a este modulo");
+    }
+    else{
     this.eventoService.updateEvento(this.evento.id, this.evento)
     .subscribe(
       res => {
@@ -66,6 +77,7 @@ export class FormEventoComponent implements OnInit {
       },
       err => console.log(err)
     )
+    }
   }
 
 }

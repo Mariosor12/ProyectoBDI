@@ -13,6 +13,7 @@ import { PagoComponent } from './pago/pago.component';
 import { RolComponent } from './rol/rol.component';
 import { RolDataTableComponent } from './rol-data-table/rol-data-table.component';
 import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
+import { EmpleadoDataTableComponent} from './usuario-data-table/empleado-data-table.component';
 
 const routes: Routes = [
 {
@@ -79,7 +80,19 @@ const routes: Routes = [
 {
   path: 'privilegios/list',
   component: PrivilegioDataTableComponent
-}
+},
+{
+  path: 'usuario/list',
+  component: EmpleadoDataTableComponent
+},
+{
+  path: 'usuarios/add',
+  component: RegistroComponent
+},
+{
+  path: 'usuarios/edit/:id/:nombre/:rol',
+  component: RegistroComponent
+},
 
 ];
 

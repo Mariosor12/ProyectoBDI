@@ -2,7 +2,7 @@ const usuarioCtrl = {};
 const pool  = require('../database/database');
 
 usuarioCtrl.getUsuarios = async (req, res) => {
-    await pool.query("SELECT id, nombre, contrasena FROM usuario;")
+    await pool.query("SELECT id, nombre, contrasena, fk_rol as rol FROM usuario;")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ usuarioCtrl.getUsuarios = async (req, res) => {
 
 usuarioCtrl.getoneUsuario = async (req, res) => {
     const id = req.params.id;
-    await pool.query("select id, nombre, contrasena from usuario where id = "+id+";")
+    await pool.query("select id, nombre, contrasena, fk_rol as rol from usuario where id = "+id+";")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ usuarioCtrl.getoneUsuario = async (req, res) => {
 
 usuarioCtrl.createUsuario = async (req, res) => {
     const usuario = req.body;
-    await pool.query("INSERT INTO usuario (nombre, contrasena) VALUES ('"+usuario.nombre+"', '"+usuario.contrasena+"');")
+    await pool.query("INSERT INTO usuario (nombre, contrasena, fk_rol) VALUES ('"+usuario.nombre+"', '"+usuario.contrasena+"', "+usuario.rol+");")
         .then(response => {
             res.json('Insertado');
         })
@@ -45,7 +45,7 @@ usuarioCtrl.createUsuario = async (req, res) => {
 usuarioCtrl.editUsuario = async (req, res) => {
     const id = req.params.id;
     const usuario = req.body;
-    await pool.query("UPDATE usuario SET nombre = '"+usuario.nombre+"',  contrasena = '"+usuario.contrasena+"' WHERE id = "+id+";")
+    await pool.query("UPDATE usuario SET nombre = '"+usuario.nombre+"',  contrasena = '"+usuario.contrasena+"', fk_rol = "+usuario.rol+" WHERE id = "+id+";")
         .then(response => {
             res.json('Actualizado');
         })

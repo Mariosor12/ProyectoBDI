@@ -10,6 +10,7 @@ const routesPedido = require('./routes/pedidoRoutes');
 const routesRol = require('./routes/rolRoutes');
 const routesPrivilegio = require('./routes/privilegioRoutes');
 const routesRolPri = require('./routes/rolpriRoutes');
+const routesEmpleado = require('./routes/empleadoRoutes');
 
 const cors = require('cors');
 //----------initializations-----------------
@@ -33,6 +34,7 @@ app.use('/api/carrito', routesPedido);
 app.use('/api/rol', routesRol);
 app.use('/api/privilegio', routesPrivilegio);
 app.use('/api/rolpri', routesRolPri);
+app.use('/api/empleado', routesEmpleado);
 //----------------starting the server----------------------
 app.listen(app.get('port'), () => {
     console.log('Server on port:', app.get('port'));

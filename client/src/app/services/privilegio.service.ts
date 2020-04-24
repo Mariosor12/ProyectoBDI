@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RolService } from './rol.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Injectable({
@@ -19,13 +20,18 @@ export class PrivilegioService {
   generar_reporte:boolean = false;
 
   privilegios:any = [{
-    id:0,
+    clave:0,
     tipo:''
+  }]
+
+  roles:any = [{
+    id:0,
+    nombre:''
   }]
 
   i:number = 0;
 
-  constructor(private rol: RolService) { }
+  constructor(private rol: RolService, private activatedRoute:ActivatedRoute) { }
 
   asignarPrivilegios(rol:number){
     switch(rol){
@@ -85,6 +91,7 @@ export class PrivilegioService {
   evaluar(rol:number){
     this.rol.getrolPri(rol).subscribe(
       res => {
+        console.log(this.privilegios.id)
         this.privilegios = res;
         console.log("Privilegios: ",this.privilegios);
         this.setFalse();

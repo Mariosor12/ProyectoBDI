@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./fontawesome-free-5.13.0-web/css/all.css"     
             ],
             "scripts": []
           },

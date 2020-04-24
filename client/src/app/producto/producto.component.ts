@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PrivilegioService} from '../services/privilegio.service';
 
 import { ProductoService } from '../services/producto.service';
 import { Producto } from '../models/producto';
@@ -14,7 +15,7 @@ export class ProductoComponent implements OnInit {
 
   productos: any = [];
 
-  constructor(private productoService: ProductoService, private router: Router ) { }
+  constructor(private productoService: ProductoService, private router: Router, private privilegios: PrivilegioService ) { }
 
   ngOnInit(): void {
     this.getProductos();
@@ -35,6 +36,10 @@ export class ProductoComponent implements OnInit {
   }
   
     DeleteProducto(id: string){
+      if(this.privilegios.eliminar == false){
+        alert("Error. No tiene permisos para acceder a este modulo");
+      }
+      else{
       this.productoService.deleteProducto(id).subscribe(
         res => {
         console.log(res);
@@ -43,4 +48,5 @@ export class ProductoComponent implements OnInit {
         err => console.log(err)
       )
     }
+  }
 }

@@ -2,7 +2,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
 <div class="testbox">
-  <h1>Registro</h1>
+  <h1>{{caso}} Registro</h1>
 
   <form action="/">
   <hr>
@@ -10,6 +10,17 @@
   <input type="text" name="name" [(ngModel)] = "usuario.nombre" id="name" placeholder="Nombre Usuario" required/>
   <label id="icon" for="name"><i class="icon-shield"></i></label>
   <input type="password" name="name" [(ngModel)] = "usuario.contrasena" id="name" placeholder="Contraseña" required/>
-   <button (click)= "savedUsuario()" class="button">Registrar</button>
+  <div class="col-sm-12 col-md-6 col-bg-4">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Seleccionar rol del usuario</label>
+      <select class="form-control col-md-5" name="rol" [(ngModel)]="usuario.rol" id="tipoMineral" [disabled]="false">                          
+        <option>Seleccionar opción</option>
+        <option *ngFor="let rol of roles">
+          <div>{{rol.clave}}-{{rol.nombre}}</div>
+        </option>                          
+      </select>
+    </div>
+</div>
+   <button (click)= "edit ? updatedUsuario() : agregarUsuario()" class="button">{{caso}}</button>
   </form>
 </div>

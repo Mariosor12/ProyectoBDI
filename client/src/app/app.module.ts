@@ -23,7 +23,10 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { PagoComponent } from './pago/pago.component';
 import { RolComponent } from './rol/rol.component';
 import { RolDataTableComponent } from './rol-data-table/rol-data-table.component';
-import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component'
+import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EmpleadoComponent } from './empleado/empleado.component';
+import { EmpleadoDataTableComponent } from './usuario-data-table/empleado-data-table.component'
 
 @NgModule({
   declarations: [
@@ -41,14 +44,17 @@ import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio
     PagoComponent,
     RolComponent,
     RolDataTableComponent,
-    PrivilegioDataTableComponent
+    PrivilegioDataTableComponent,
+    EmpleadoComponent,
+    EmpleadoDataTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    FontAwesomeModule
   ],
   providers: [
     EventoService

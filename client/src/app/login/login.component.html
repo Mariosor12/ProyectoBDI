@@ -10,6 +10,18 @@
   <input type="text" name="Usuario" [(ngModel)] = "usuario.nombre" id="name" placeholder="Nombre de usuario" required/>
  <label id="icon" for="Contraseña"><i class="icon-shield"></i></label>
   <input type="password" name="Contraseña" [(ngModel)] = "usuario.contrasena" id="name" placeholder="Contraseña" required/>
+  <div *ngIf="error == true">          
+    <div style="color:red; margin-top: 2px" >Usuario y/o contraseña incorrecta, por favor intente de nuevo</div>           
+  </div>
    <button (click)= "getsUsuario()" class="button">Entrar</button>
   </form>
+</div>
+
+<div class="container justify-content-center">
+  <div *ngIf="loading == true" class="div">
+    <h3>Cargando Información</h3>
+    <div class="spinner-border text-danger" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>   
+  </div>
 </div>

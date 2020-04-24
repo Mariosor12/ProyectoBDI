@@ -251,8 +251,10 @@ CREATE TABLE public.usuario
      id numeric NOT NULL DEFAULT nextval('secuencia_usuario'::regclass),
      nombre varchar NOT NULL,
      contrasena varchar NOT NULL,
-     fk_rol numeric ,
-     CONSTRAINT pk_id_usuario PRIMARY KEY (id)
+     fk_rol numeric NOT NULL ,
+     CONSTRAINT pk_id_usuario PRIMARY KEY (id),
+     CONSTRAINT fk_fk_rol FOREIGN KEY (fk_rol)
+     REFERENCES Rol (clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_personal

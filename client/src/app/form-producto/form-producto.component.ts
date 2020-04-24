@@ -3,6 +3,7 @@ import { Producto } from '../models/producto';
 import { ProductoService} from '../services/producto.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { CarritoService } from '../services/carrito.service';
+import { PrivilegioService } from '../services/privilegio.service';
 
 @Component({
   selector: 'app-form-producto',
@@ -11,7 +12,7 @@ import { CarritoService } from '../services/carrito.service';
 })
 export class FormProductoComponent implements OnInit {
 
-  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService) { }
+  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private privilegios: PrivilegioService) { }
 
   producto: Producto = {
     id: 0,
@@ -26,6 +27,7 @@ export class FormProductoComponent implements OnInit {
   pedido: any;
 
   ngOnInit(): void {
+    this.privilegios.evaluar(this.privilegios.idRolActual);
     const params = this.activatedRoute.snapshot.params;
     if (params.id){
            this.producto ={
@@ -42,6 +44,10 @@ export class FormProductoComponent implements OnInit {
 
   SaveNuevoProducto() {
     delete this.producto.id;
+    if(this.privilegios.insertar == false){
+      alert("Error. No tiene permisos para acceder a este modulo");
+    }
+    else {
     this.productoService.saveProducto(this.producto).subscribe(
         res => {
           console.log(res);
@@ -49,12 +55,17 @@ export class FormProductoComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
   }
 
   public editarProducto(producto : Producto): void{
     this.router.navigate(['/producto', {producto: producto, edit: true}])
   }
   updatedProducto(){
+    if(this.privilegios.modificar == false){
+      alert("Error. No tiene permisos para acceder a este modulo");
+    }
+    else{
     this.productoService.updateProducto(this.producto.id, this.producto)
     .subscribe(
       res => {
@@ -63,6 +74,7 @@ export class FormProductoComponent implements OnInit {
       },
       err => console.log(err)
     )
+    }
   }
 
   addCart(cantidad:number, pedido:any, nombre: any){   
