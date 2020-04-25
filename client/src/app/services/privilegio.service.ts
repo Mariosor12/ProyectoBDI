@@ -20,7 +20,7 @@ export class PrivilegioService {
   generar_reporte:boolean = false;
 
   privilegios:any = [{
-    clave:0,
+    id:0,
     tipo:''
   }]
 
@@ -91,7 +91,7 @@ export class PrivilegioService {
   evaluar(rol:number){
     this.rol.getrolPri(rol).subscribe(
       res => {
-        console.log(this.privilegios.id)
+        //console.log(this.privilegios.id)
         this.privilegios = res;
         console.log("Privilegios: ",this.privilegios);
         this.setFalse();
@@ -106,25 +106,25 @@ export class PrivilegioService {
       if(this.privilegios[this.i].nombre == 'Consultar'){
         this.consultar = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Insertar'){
+      else if(this.privilegios[this.i].tipo == 'Insertar'){
         this.insertar = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Modificar'){
+      else if(this.privilegios[this.i].tipo == 'Modificar'){
         this.modificar = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Eliminar'){
+      else if(this.privilegios[this.i].tipo == 'Eliminar'){
         this.eliminar = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Comprar'){
+      else if(this.privilegios[this.i].tipo == 'Comprar'){
         this.comprar = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Vender'){
+      else if(this.privilegios[this.i].tipo == 'Vender'){
         this.vender = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Crear Proyectos'){
+      else if(this.privilegios[this.i].tipo == 'Crear Proyectos'){
         this.crear_proyecto = true;
       }
-      else if(this.privilegios[this.i].nombre == 'Generar Reportes'){
+      else if(this.privilegios[this.i].tipo == 'Generar Reportes'){
         this.generar_reporte = true;
       }
     }

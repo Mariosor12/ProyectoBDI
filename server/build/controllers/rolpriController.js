@@ -17,7 +17,7 @@ rolpriCtrl.getRolesPri = async (req,res) => {
 
 rolpriCtrl.getRolPri = async (req,res) => {
     const id = req.params.id;
-    await pool.query("select clave, fk_rol as Rol, fk_privilegio as Privilegio from rol_privilegio where clave = "+id)
+    await pool.query("select clave as id, fk_rol as Rol, fk_privilegio as Privilegio from rol_privilegio where clave = "+id)
         .then(response=>{
             if(response.rowCount)
                 res.json(response.rows);

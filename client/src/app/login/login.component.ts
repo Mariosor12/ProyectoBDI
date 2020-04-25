@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   usuario: Usuario = {
     id: 0,
     nombre: '',
-    contrasena: ''
+    contrasena: '',
+    rol: 0
   };
 
   respuesta: any = [{
@@ -48,12 +49,12 @@ export class LoginComponent implements OnInit {
     this.usuarioService.getoneUsuario(this.usuario.nombre, this.usuario.contrasena).subscribe(
       res => {
         this.respuesta = res;
+        console.log(this.respuesta[0].rol)
         if (this.respuesta.nombre  == 'Usuario y/o contraseña incorrecto'){
           this.error = true;
           this.loading = false;       
           this.usuario.nombre = '';
           this.usuario.contrasena = '';
-          console.log('Error en Nombre de Usuario y/o contraseña');
           window.alert("Error en Nombre de Usuario y/o contraseña");
         }
         else {
