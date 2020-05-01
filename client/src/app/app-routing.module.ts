@@ -14,6 +14,13 @@ import { RolComponent } from './rol/rol.component';
 import { RolDataTableComponent } from './rol-data-table/rol-data-table.component';
 import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
 import { EmpleadoDataTableComponent} from './usuario-data-table/empleado-data-table.component';
+import { FacturasComponent} from './facturas/facturas.component';
+import { FacturaPendienteComponent} from './factura-pendiente/factura-pendiente.component';
+import { FacturaProcesadaComponent} from './factura-procesada/factura-procesada.component';
+import { FacturaCompraComponent} from './factura-compra/factura-compra.component';
+import { AliadosDataTableComponent } from './aliados-data-table/aliados-data-table.component';
+import { ProductoCompraComponent} from './producto-compra/producto-compra.component';
+
 
 const routes: Routes = [
 {
@@ -93,6 +100,30 @@ const routes: Routes = [
   path: 'usuarios/edit/:id/:nombre/:rol',
   component: RegistroComponent
 },
+{
+  path:'facturas',
+  component: FacturasComponent
+},
+{
+  path: 'facturas/pendiente',
+  component: FacturaPendienteComponent
+},
+{
+  path: 'facturas/procesada',
+  component: FacturaProcesadaComponent
+},
+{
+  path: 'factura/compra',
+  component: FacturaCompraComponent
+},
+{
+  path: 'aliados/list',
+  component:AliadosDataTableComponent
+},
+{
+  path: 'producto/compra',
+  component: ProductoCompraComponent
+}
 
 ];
 

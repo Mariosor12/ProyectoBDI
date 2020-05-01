@@ -11,9 +11,9 @@ export class CarritoService {
   monto:number = 0;  // Monto del carrito
 
   //------------------------------- PARA LA COMPRA -----------------------------------------------------------
-  // aliadoActual:string = '';
-  // idAliadoActual:number = 0;
-  // indiceCompra:number = 0;  
+   aliadoActual:string = '';
+   idAliadoActual:number = 0;
+   indiceCompra:number = 0;  
 
    pedido:any = [{
     id: 0 ,
@@ -73,6 +73,10 @@ export class CarritoService {
     return this.http.post(this.API_URL+'/carrito/', pedido);
   }
 
+  getPedidosOC(id:number){
+    return this.http.get(this.API_URL+'/pedido/ordencompra/'+id);
+  }
+
   resetPedido(){
     this.pedido = [{
       id: 0 ,
@@ -116,5 +120,25 @@ export class CarritoService {
     this.resetProductos();
     this.resetPagos();
   }
+
+      
+ addZero(i) {
+  if (i < 10) {
+      i = '0' + i;
+  }
+  return i;
+}
+
+ hoyFecha(){
+  var hoy = new Date();
+      var dd = hoy.getDate();
+      var mm = hoy.getMonth()+1;
+      var yyyy = hoy.getFullYear();
+      
+      dd = this.addZero(dd);
+      mm = this.addZero(mm);
+
+      return dd+'/'+mm+'/'+yyyy;
+}
 }
 

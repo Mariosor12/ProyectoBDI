@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import { CommonService } from '../services/common.service';
 import { IngresoService } from '../services/ingreso.service';
+import { CarritoService } from './../services/carrito.service';
 import { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
 import { Usuario } from '../models/usuario';
@@ -33,7 +34,7 @@ export class EmpleadoDataTableComponent implements OnInit {
 
   index:number = 0;
 
-  constructor(private common:CommonService, private router:Router, private usuario: IngresoService, private activatedRoute: ActivatedRoute) { }
+  constructor(private common:CommonService, private router:Router, private usuario: IngresoService, private activatedRoute: ActivatedRoute, private cart: CarritoService) { }
 
   ngOnInit(): void {
     this.common.title = "Usuarios";
@@ -62,6 +63,11 @@ export class EmpleadoDataTableComponent implements OnInit {
     )
   }
 
+  gotoProductos(cliente:any){
+    this.cart.idCliente = cliente.id;
+    this.router.navigate(['/productos']);
+  }
+  
   gotoAgregarUsuario(){
     this.router.navigate(['/usuarios/add']);
   }

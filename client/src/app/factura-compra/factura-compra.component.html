@@ -1,0 +1,50 @@
+<br>
+
+<div class="container">
+    
+    <h1>Carrito</h1>
+
+    <hr><br>
+
+    <p>A continuación se presenta una vista previa de facturación.</p>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row justify-content-center text-center" style="background-color:darkgray">
+                <p>SENIAT<br>RIF N°. J-30926957-7<br>TechFirst & Associated<br>Av. Fco Lazo Marti Edif. Mayoral plaza<br>Telf: 0212-4074407</p>
+            </div>
+        </div>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>nombre</th>
+                    <th>Cantidad</th>                    <th></th>
+                    <th>Costo</th>
+                    <th>total a pagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pedido of pedidos">
+                    <td>{{pedido.nombre}}</td>                  <th></th>
+                    <td>{{pedido.cantidad}}</td>
+                    <td>${{pedido.precio}}</td>
+                    <td>${{pedido.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+                                      
+
+    </div>
+
+    <br>
+    
+        <button (click)="gotoProducts()" class="btn btn-primary">Volver a Productos</button>
+        <button (click)="gotoPay()" class="btn btn-primary" style="margin-left: 5px">Pagar</button>
+
+
+    
+
+</div>
+
+<br>

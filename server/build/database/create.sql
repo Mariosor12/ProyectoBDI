@@ -570,11 +570,12 @@ CREATE SEQUENCE public.secuencia_status_venta
 CREATE TABLE public.status_venta
 (
      clave numeric NOT NULL DEFAULT nextval('secuencia_status_venta'::regclass),
-     fk_status numeric NOT NULL,
-     fk_venta numeric NOT NULL,
+     fecha date NOT NULL,
+     fk_status numeric NOT NULL DEFAULT 1 CHECK (fk_status IN (1,2,3,4,5,6,7)),
+     fk_proveedor numeric NOT NULL,
      CONSTRAINT pk_status_venta PRIMARY KEY (clave),
      CONSTRAINT fk_fk_status_status_venta FOREIGN KEY (fk_status) REFERENCES status(clave) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_venta_status_venta FOREIGN KEY (fk_venta) REFERENCES venta(nro_factura) ON DELETE CASCADE
+     CONSTRAINT fk_fk_proveedor_status_venta FOREIGN KEY (fk_proveedor) REFERENCES proveedor(rif) ON DELETE CASCADE
 );
 
 CREATE TABLE public.cliente
@@ -782,90 +783,6 @@ CREATE TABLE public.telefono
      CONSTRAINT fk_fk_personal_telefono FOREIGN KEY (fk_personal) REFERENCES personal(clave) ON DELETE CASCADE
 );
 
-CREATE SEQUENCE public.secuencia_tipo_pago_credito
-     start with 1
-     increment 1
-     minvalue 1
-     maxvalue 50000
-     cycle
-;
-
-CREATE TABLE public.tipo_pago_credito
-(
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_tipo_pago_credito'::regclass),
-     banco varchar(25),
-     numero numeric NOT NULL,
-     tipo varchar(10) NOT NULL,
-     cvc numeric NOT NULL,
-     nombre_impreso varchar NOT NULL,
-     cedula numeric NOT NULL,
-     fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
-     CONSTRAINT pk_codigo_tipo_pago_credito PRIMARY KEY (codigo),
-     CONSTRAINT chk_tipo_tipo_pago_credito CHECK (tipo in('Visa','Mastercard'))
-);
-
-CREATE SEQUENCE public.secuencia_tipo_pago_debito
-     start with 1
-     increment 1
-     minvalue 1
-     maxvalue 50000
-     cycle
-;
-
-CREATE TABLE public.tipo_pago_debito
-(
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_tipo_pago_debito'::regclass),
-     banco varchar(25),
-     numero numeric NOT NULL,
-     tipo varchar(10) NOT NULL,
-     cvc numeric NOT NULL,
-     nombre_impreso varchar NOT NULL,
-     cedula numeric NOT NULL,
-     fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
-     CONSTRAINT pk_codigo_tipo_pago_debito PRIMARY KEY (codigo),
-     CONSTRAINT chk_tipo_tipo_pago_debito CHECK (tipo in('Maestro'))
-);
-
-CREATE SEQUENCE public.secuencia_tipo_pago_efectivo
-     start with 1
-     increment 1
-     minvalue 1
-     maxvalue 50000
-     cycle
-;
-
-CREATE TABLE public.tipo_pago_efectivo     --Revisar FK de TODOS tipo_pago
-(
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_tipo_pago_efectivo'::regclass),
-     banco varchar(15),
-     denominacion numeric NOT NULL,
-     cantidad numeric NOT NULL,
-     fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
-     CONSTRAINT pk_codigo_tipo_pago_efectivo PRIMARY KEY (codigo)
-);
-
-CREATE SEQUENCE public.secuencia_tipo_pago_cheque
-     start with 1
-     increment 1
-     minvalue 1
-     maxvalue 50000
-     cycle
-;
-
-CREATE TABLE public.tipo_pago_cheque
-(
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_tipo_pago_cheque'::regclass),
-     banco varchar(15),
-     numero_cuenta numeric NOT NULL,
-     numero_cheque numeric NOT NULL,
-     fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
-     CONSTRAINT pk_codigo_tipo_pago_cheque PRIMARY KEY (codigo)
-);
-
 CREATE SEQUENCE public.secuencia_historico_tasa
      start with 1
      increment 1
@@ -885,26 +802,7 @@ CREATE TABLE public.historico_tasa
      CONSTRAINT pk_clave_historico_tasa PRIMARY KEY (clave)
 );
 
-CREATE SEQUENCE public.secuencia_tipo_pago_divisa
-     start with 1
-     increment 1
-     minvalue 1
-     maxvalue 50000
-     cycle
-;
 
-CREATE TABLE public.tipo_pago_divisa
-(
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_tipo_pago_divisa'::regclass),
-     banco varchar(15),
-     tipo varchar(10) NOT NULL,
-     monto numeric NOT NULL,
-     fk_historico_tasa numeric NOT NULL,
-     fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
-     CONSTRAINT pk_codigo_tipo_pago_divisa PRIMARY KEY(codigo),
-     CONSTRAINT fk_fk_historico_tasa_tipo_pago_divisa FOREIGN KEY (fk_historico_tasa) REFERENCES historico_tasa(clave) ON DELETE CASCADE
-);
 
 CREATE SEQUENCE public.secuencia_historico_valor_puntos
      start with 1
@@ -923,26 +821,6 @@ CREATE TABLE public.historico_valor_puntos
      fecha_fin date,
      CONSTRAINT pk_clave_historico_valor PRIMARY KEY (clave),
      CONSTRAINT chk_tipo_historico_valor_puntos CHECK (tipo in ('Compra','Venta'))
-);
-
-CREATE SEQUENCE public.secuencia_tipo_pago_puntos
-     start with 1
-     increment 1
-     minvalue 1
-     maxvalue 50000
-     cycle
-;
-
-CREATE TABLE public.tipo_pago_puntos
-(
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_tipo_pago_puntos'::regclass),
-     banco varchar(15),
-     cantidad numeric,
-     fk_historico_valor_puntos numeric NOT NULL,
-     fk_cliente varchar,
-     CONSTRAINT fk_fk_cliente_tipo_pago_credito FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE,
-     CONSTRAINT pk_codigo_tipo_pago_puntos PRIMARY KEY (codigo),
-     CONSTRAINT fk_fk_historico_valor_puntos_tipo_pago_puntos FOREIGN KEY (fk_historico_valor_puntos) REFERENCES historico_valor_puntos(clave) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_cuota_afiliacion
@@ -972,24 +850,36 @@ CREATE SEQUENCE public.secuencia_pago
 
 CREATE TABLE public.pago
 (
-     codigo numeric NOT NULL DEFAULT nextval('secuencia_pago'::regclass),
-     monto numeric NOT NULL,
-     fk_compra numeric,
-     fk_tipo_pago_credito numeric,
-     fk_tipo_pago_debito numeric,
-     fk_tipo_pago_cheque numeric,
-     fk_tipo_pago_efectivo numeric,
-     fk_tipo_pago_puntos numeric,
-     fk_tipo_pago_divisa numeric,
-     fk_cuota_afiliacion numeric,
-     CONSTRAINT pk_codigo_pago PRIMARY KEY (codigo),
-     CONSTRAINT fk_fk_tipo_pago_credito_pago FOREIGN KEY (fk_tipo_pago_credito) REFERENCES tipo_pago_credito(codigo) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_tipo_pago_debito_pago FOREIGN KEY (fk_tipo_pago_debito) REFERENCES tipo_pago_debito(codigo) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_tipo_pago_cheque_pago FOREIGN KEY (fk_tipo_pago_cheque) REFERENCES tipo_pago_cheque(codigo) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_tipo_pago_efectivo_pago FOREIGN KEY (fk_tipo_pago_efectivo) REFERENCES tipo_pago_efectivo(codigo) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_tipo_pago_puntos_pago FOREIGN KEY (fk_tipo_pago_puntos) REFERENCES tipo_pago_puntos(codigo) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_tipo_pago_divisa_pago FOREIGN KEY (fk_tipo_pago_divisa) REFERENCES tipo_pago_divisa(codigo) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_cuota_afiliacion_pago FOREIGN KEY (fk_cuota_afiliacion) REFERENCES cuota_afiliacion(clave) ON DELETE CASCADE
+    id          SERIAL,
+    monto       NUMERIC(10,2) NOT NULL,
+    fecha       DATE NOT NULL,
+    fk_tipo_pago    INTEGER NOT NULL,
+    fk_status_compra    INTEGER NOT NULL,
+    CONSTRAINT pk_pago PRIMARY KEY (id),
+    CONSTRAINT fk_fk_tipo_pago FOREIGN KEY (fk_tipo_pago)
+    REFERENCES tipo_pago (numero),
+    CONSTRAINT fk_fk_status_compra FOREIGN KEY (fk_status_compra)
+    REFERENCES status_compra (clave)
+);
+
+CREATE SEQUENCE public.secuencia_tipo_pago
+     start with 1
+     increment 1
+     minvalue 1
+     maxvalue 50000
+     cycle
+;
+
+CREATE TABLE tipo_pago(
+    numero               SERIAL,
+    banco                VARCHAR(30) NOT NULL,
+    tipo                 VARCHAR(20) NOT NULL CHECK (tipo = 'Transferencia' OR tipo = 'Tar_credito' OR tipo = 'Cheque' OR tipo = 'Tar_debito'),
+    fecha                DATE,
+    tipo_tar_cre         VARCHAR(30),
+    fecha_vencimiento    DATE,
+    numero_cuenta        VARCHAR(30),
+    tipo_tar_deb         VARCHAR(30),
+    CONSTRAINT pk_tipo_pago PRIMARY KEY (numero)
 );
 
 CREATE SEQUENCE public.secuencia_status_compra
@@ -1004,13 +894,12 @@ CREATE TABLE public.status_compra
 (
      clave numeric NOT NULL DEFAULT nextval('secuencia_status_compra'::regclass),
      fecha_cambio date NOT NULL,
-     fk_status numeric NOT NULL,
-     fk_compra numeric NOT NULL,
-     fk_departamento numeric NOT NULL,
+     total numeric NOT NULL,
+     fk_status numeric NOT NULL DEFAULT 1 CHECK (fk_status IN (1,2,3,4,5,6,7)),
+     fk_cliente varchar NOT NULL,
      CONSTRAINT pk_clave_status_compra PRIMARY KEY (clave),
      CONSTRAINT fk_fk_status_status_compra FOREIGN KEY (fk_status) REFERENCES status(clave) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_compra_status_compra FOREIGN KEY (fk_compra) REFERENCES compra(nro_factura) ON DELETE CASCADE,
-     CONSTRAINT fk_fk_departamento_status_compra FOREIGN KEY (fk_departamento) REFERENCES departamento(clave) ON DELETE CASCADE
+     CONSTRAINT fk_fk_cliente_status_compra FOREIGN KEY (fk_cliente) REFERENCES cliente(rif) ON DELETE CASCADE
 );
 
 CREATE SEQUENCE public.secuencia_descuento

@@ -24,8 +24,8 @@
                     <button (click)= "edit ? updatedProducto() : SaveNuevoProducto()" class="btn btn-success btn-block">
                         SAVE
                     </button>
-                    <input #canti class="form-control form-control-md" type="text" placeholder="Cantidad" style="margin-bottom: 5px">                     
-                    <button class="btn btn-block btn-primary" (click)="addCart(canti.value, pedido, pedido.nombre); canti.value = ''" data-dismiss="modal">Agregar al carrito</button> 
+                    <input #canti class="form-control form-control-md" type="text" placeholder="Cantidad" style="margin-bottom: 5px">                   
+                    <button routerLink = "/carrito" class="btn btn-block btn-primary" (click)="addCart(canti.value, pedido, producto); canti.value = ''" data-dismiss="modal">Agregar al carrito</button> 
                 </form>
             </div>
         </div>

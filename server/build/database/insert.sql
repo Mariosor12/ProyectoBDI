@@ -2211,22 +2211,13 @@ INSERT INTO public.departamento(clave, nombre) VALUES
 (10,'Almacen');
 
 INSERT INTO public.status(clave, nombre) VALUES
-(1,'Presupuesto'),
-(2,'Reservado'),
-(3,'Ordenado'),
-(4,'Cancelado'),
-(5,'Pagado'),
-(6,'Esperando aprobacion'),
-(7,'En revision'),
-(8,'Entregado');
-
-INSERT INTO public.tipo_pago_credito(banco,numero,tipo,cvc,nombre_impreso,cedula, fk_cliente) VALUES
-('Banco de Venezuela',3587356401233755,'Visa',965,'Juan Perez',25684789, 'V10992683'),
-('Banco Provincial',3561990379895060,'Visa',351,'Andreina Rodriguez',5887452, 'J13128895');
-
-INSERT INTO public.tipo_pago_debito(banco,numero,tipo,cvc,nombre_impreso,cedula, fk_cliente) VALUES
-('Banco de Venezuela',7845356401233755,'Maestro',965,'Juan Perez',25684789, 'J192174719'),
-('Banco Provincial',2345990379895060,'Maestro',351,'Andreina Rodriguez',5887452, 'J165520856');
+(1,'Reservado'),
+(2,'Ordenado'),
+(3,'Cancelado'),
+(4,'Pagado'),
+(5,'Esperando aprobacion'),
+(6,'En revision'),
+(7,'Entregado');
 
 INSERT INTO public.motivos_laborales(tipo,fecha_inicio,fecha_fin,fk_personal) VALUES
 ('Vacaciones','02/12/2019','12/12/2020',1),
@@ -3154,7 +3145,7 @@ INSERT INTO public.personal_horario(fk_personal,fk_horario,tipo, fecha_falta) VA
 (20,13, 'Inasistente','15/12/2019'),
 (6,23, 'Inasistente','18/12/2019');
 
-INSERT INTO public.proveedor (clave, razon_social,denominacion_comercial,pagina_web,fecha_afiliacion,fk_direccion) VALUES
+INSERT INTO public.proveedor (rif, razon_social,denominacion_comercial,pagina_web,fecha_afiliacion,fk_direccion) VALUES
 (1,'Cervecería Regional C.A.','Cervecería Regional','http://www.cerveceriaregional.com/','14/05/1929',1992),
 (2, 'Cervecería Polar C.A.','Cervecería Polar','http://www.cerveceriapolar.com/','21/03/1941',1953),
 (3,'Cervecería Tovar C.A..','Cervecería Tovar','http://www.cerveceriatovar.com/','21/09/1945',1980),
@@ -3166,7 +3157,7 @@ INSERT INTO public.proveedor (clave, razon_social,denominacion_comercial,pagina_
 (9,'Cervecería  Brünett C.A.','Cerveza Brünett','http://www.cerveceriabrunett.com/','20/07/2015',1955),
 (10, 'Cervecería Pisse des Gottes C.A.','Pisse des Gottes','http://www.cerveceriapissedesgottes.com/','21/02/2010',1949),
 (11,'Alimentos y Bebidas Artesanales Cervezarte','Norte del Sur','http://www.cervecerianorteysur.com/','03/11/2011',1915),
-(12'Cervecería Pilger Artesanal C.A.','Pilger Artesanal','http://www.cerveceríapilgerartesanal.com/','18/06/2013',1888),
+(12,'Cervecería Pilger Artesanal C.A.','Pilger Artesanal','http://www.cerveceríapilgerartesanal.com/','18/06/2013',1888),
 (13,'Cerveceria Destilo CA','Cerveceria Destilo','http://www.cerveceriadestilo.com/','10/10/2009',1870),
 (14,'Alimentos Barricas C.A.','Barricas','http://www.barricas.com/','24/09/2012',1866),
 (15,'Micro Cervecería Social Club','Social Club','http://www.socialclub.com/','02/10/2013',1863),
@@ -3174,7 +3165,7 @@ INSERT INTO public.proveedor (clave, razon_social,denominacion_comercial,pagina_
 (17,'Mito Brewhouse C.A.','Mito Brewhouse','http://www.mitobrewhouse.com/','30/01/2011',1836),
 (18,'Kozaka C.A.','Kozaka','http://www.kozaka.com/','12/08/1998',1832),
 (20,'Brahma C.A.','Brahma','http://www.brahma.com/','13/03/1988',1826),
-(21'AmBev Company','AmBev','http://www.ambev.com/','05/04/1955',1818);
+(21,'AmBev Company','AmBev','http://www.ambev.com/','05/04/1955',1818);
 
 INSERT INTO public.historico_tasa (numero_cambio,fecha_inicio,fecha_fin ) VALUES
 (3000, '01/7/2019', '01/08/2019'),
@@ -3284,17 +3275,17 @@ INSERT INTO public.compra(nro_factura, total, fecha_compra, fk_tienda_fisica,fk_
 (24024, 10, '13/02/2019',1, null, 'J202227259'),
 (24025, 78, '21/09/2019',1, null, 'V8506618');
 
-INSERT INTO public.status_compra(clave, fecha_cambio, fk_status, fk_compra,fk_departamento) VALUES
-(1, '01/11/2019', 2, 23433, 1),
-(2, '20/11/2019', 4, 23467, 2),
-(3, '01/12/2019', 3, 24033, 3),
-(4, '15/12/2019', 5, 23488, 5),
-(5, '20/12/2019', 8, 24022, 4),
-(6, '01/01/2020', 7, 24009, 7),
-(7, '15/01/2020', 1, 24025, 5),
-(8, '11/10/2019', 6, 24015, 6),
-(9, '23/08/2019', 5, 24020, 8),
-(10, '15/07/2019', 2, 24024, 6);
+INSERT INTO public.status_compra(fecha_cambio, total, fk_status,fk_cliente) VALUES
+('01/11/2019', 100, 2, 'V10992683'),
+('20/11/2019', 200 ,4, 'J13128895'),
+('01/12/2019', 400 ,3, 'V162531356'),
+('15/12/2019', 500 ,5, 'J192174719'),
+('20/12/2019', 600 ,4, 'V175327365'),
+('01/01/2020', 700, 7, 'J165520856'),
+('15/01/2020', 800, 1, 'V207332128'),
+('11/10/2019', 900 ,6, 'V189323462'),
+('23/08/2019', 1000 ,5, 'J67120915'),
+('15/07/2019', 1100 ,2, 'J209321018');
 
 INSERT INTO public.venta(nro_factura, total, fecha) VALUES
 (2222, 46, '01/11/2019'),
@@ -3306,15 +3297,16 @@ INSERT INTO public.venta(nro_factura, total, fecha) VALUES
 (2228, 200, '16/04/2019'),
 (2229, 270, '07/02/2019');
 
-INSERT INTO public.status_venta(clave, fk_status, fk_venta) VALUES
-(1,4,2222),
-(2,5,2223),
-(3,8,2225),
-(4,1,2226),
-(5,2,2224),
-(6,3,2228),
-(7,7,2227),
-(8,6,2229);
+INSERT INTO public.status_venta(fecha, fk_status, fk_proveedor) VALUES
+(1,'01/01/2018', 4,1),
+(2,'01/01/2019',5,2),
+(3,'01/01/2020',4,3),
+(4,'01/01/2021',3,4),
+(5,'01/01/2022',2,5),
+(6,'01/01/2017',3,6),
+(7,'01/01/2016',7,7),
+(8,'01/01/2023',6,8),
+(9,'01/01/2015', 1, 9);
 
 INSERT INTO public.detalle_compra(clave, cantidad, precio_unitario, fk_compra, fk_cerveza, fk_ale, fk_lager) VALUES
 (1, 4, 22, 23433, 2,2,null),
@@ -3388,18 +3380,6 @@ INSERT INTO public.cerveza_proveedor(clave, fk_cerveza_artesanal, fk_proveedor) 
 (5,12,6),
 (6,17,3);
 
-INSERT INTO public.tipo_pago_puntos(codigo, banco, cantidad, fk_historico_valor_puntos, fk_cliente) VALUES
-(1, null, 5, 1, 'J13128895'),
-(2, null,10, 2, 'J110574806'),
-(3, null,3,  3, 'J203820964'),
-(4, null,3, 10, 'V75565592');
-
-INSERT INTO public.tipo_pago_efectivo(codigo, banco, denominacion, cantidad, fk_cliente) VALUES
-(1, null, 5, 1, 'J13128895'),
-(2, null,10, 2, 'J110574806'),
-(3, null,3,  3, 'J203820964'),
-(4, null,3, 10, 'V75565592');
-
 INSERT INTO public.historico_valor_puntos(clave, numero_cambio, tipo, fecha_inicio, fecha_fin) VALUES
 (1,2000,'Compra', '01/02/2019', '02/03/2019'),
 (2, 4400,'Venta', '03/04/2019', '04/05/2019'),
@@ -3411,6 +3391,66 @@ INSERT INTO public.historico_valor_puntos(clave, numero_cambio, tipo, fecha_inic
 (8, 6500,'Venta', '07/07/2019', '06/08/2019'),
 (9, 7500,'Compra', '09/09/2019', '08/10/2019'),
 (10, 10000, 'Venta', '13/01/2020', null);
+
+INSERT INTO pago (monto, fecha, fk_tipo_pago, fk_status_compra) VALUES
+	(1334000, '01/01/1920', 1, 1),
+	(1334000, '01/01/1921', 2, 2),
+	(1334000, '01/01/1922', 3, 3),
+	(1334000, '01/01/1923', 4, 4),
+	(1334000, '01/01/1924', 5, 5),
+	(1334000, '01/01/1925', 6, 6),
+	(1334000, '01/01/1926', 7, 7),
+	(1334000, '01/01/1927', 8, 8),
+	(1334000, '01/01/1928', 9, 9),
+	(1334000, '01/01/1929', 10, 1),
+	(1334000, '01/01/1930', 11, 2),
+	(1334000, '01/01/1931', 12, 3),
+	(1334000, '01/01/1932', 13, 4),
+	(1334000, '01/01/1933', 14, 5),
+	(1334000, '01/01/1934', 15, 6),
+	(1334000, '01/01/1935', 16, 7),
+	(1334000, '01/01/1936', 17, 8),
+	(1334000, '01/01/1937', 18, 1),
+	(1334000, '01/01/1938', 19, 2),
+	(1334000, '01/01/1939', 20, 3),
+	(1334000, '01/01/1940', 21, 4),
+	(1334000, '01/01/1941', 22, 5),
+	(1334000, '01/01/1942', 23, 6),
+	(1334000, '01/01/1943', 24, 7),
+	(1334000, '01/01/1944', 25, 8),
+	(1334000, '01/01/1945', 26, 1),
+	(1334000, '01/01/1946', 27, 2),
+	(1334000, '01/01/1947', 28, 3);
+
+    INSERT INTO tipo_pago (banco, tipo, fecha, tipo_tar_cre, fecha_vencimiento, numero_cuenta, tipo_tar_deb) VALUES
+	('Mercantil', 'Transferencia', '13/03/2018', null, null, null, null),
+	('Mercantil', 'Cheque', null, null, null,'501878200083398513', null),
+	('Mercantil', 'Tar_credito', null, 'Visa','12/12/2019', null, null),
+	('Mercantil', 'Tar_debito', null, null, null, null, 'Maestro'),
+	('Provincial', 'Transferencia', '13/03/2018', null, null, null, null),
+	('Provincial', 'Cheque', null, null, null,'501878200083399513', null),
+	('Provincial', 'Tar_credito', null, 'Master Card', '12/12/2020', null, null),
+	('Provincial', 'Tar_debito', null, null, null, null, 'Maestro'),
+	('Banesco', 'Transferencia', '13/03/2018', null, null, null, null),
+	('Banesco', 'Cheque', null, null, null,'501878200083398513', null),
+	('Banesco', 'Tar_credito', null, 'Visa','12/12/2021', null, null),
+	('Banesco', 'Tar_debito', null, null, null, null, 'Maestro'),
+	('Bancaribe', 'Transferencia', '13/03/2018', null, null, null, null),
+	('Bancaribe', 'Cheque', null, null, null,'501878200138598513', null),
+	('Bancaribe', 'Tar_credito', null, 'American Express', '12/12/2022',null, null),
+	('Bancaribe', 'Tar_debito', null, null, null, null, 'Maestro'),
+	('BNC', 'Transferencia', '13/03/2018', null, null, null, null),
+	('BNC', 'Cheque', null, null, null,'501878547823398513', null),
+	('BNC', 'Tar_credito', null, 'Master Card','11/11/2019', null, null),
+	('BNC', 'Tar_debito', null, null, null, null, 'Maestro'),
+	('Fondo Común', 'Transferencia', '13/03/2018', null, null, null, null),
+	('Fondo Común', 'Cheque', null, null, null,'501878200987108513', null),
+	('Fondo Común', 'Tar_credito', null, 'Visa','11/11/2020', null, null),
+	('Fondo Común', 'Tar_debito', null, null, null, null, 'Maestro'),
+	('Bicentenario', 'Transferencia', '13/03/2018', null, null, null, null),
+	('Bicentenario', 'Cheque', null, null, null,'501878897518513', null),
+	('Bicentenario', 'Tar_credito', null, 'American Express', '11/11/2021', null, null),
+	('Bicentenario', 'Tar_debito', null, null, null, null, 'Maestro');
 
 INSERT INTO public.historico_puntos_cliente(clave, cantidad, fecha_cambio,tipo, fk_cliente, fk_historico_puntos) VALUES
 (1, 200, '02/03/2019', '+', 'V162531356', 2),

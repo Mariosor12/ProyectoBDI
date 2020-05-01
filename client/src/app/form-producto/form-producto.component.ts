@@ -77,24 +77,27 @@ export class FormProductoComponent implements OnInit {
     }
   }
 
-  addCart(cantidad:number, pedido:any, nombre: any){   
-    console.log("Le estoy pasando el nombre: ", nombre);      
-    this.carritoServicio.monto = this.carritoServicio.monto + (cantidad * pedido.precio);   
+  addCart(cantidad:number, pedido: any, producto: any){   
+    console.log("Le estoy pasando el nombre: ", this.producto.nombre, this.producto.id)    
+    this.carritoServicio.monto = this.carritoServicio.monto + (cantidad * producto.precio_unitario);   
 
     if (this.carritoServicio.indiceVenta == 0){
-      this.carritoServicio.pedido[0].id = this.pedido.id;      
-      this.carritoServicio.pedido[0].nombre = this.pedido.nombre;
-      this.carritoServicio.pedido[0].precio = cantidad * pedido.precio;
-      this.carritoServicio.pedido[0].fecha = this.pedido.fecha;
-      this.carritoServicio.pedido[0].cantidad = this.pedido.cantidad;
-      console.log(this.carritoServicio.pedido);
+      this.carritoServicio.pedido[0].id = this.producto.id;      
+      this.carritoServicio.pedido[0].nombre = this.producto.nombre;
+      this.carritoServicio.pedido[0].total = cantidad * this.producto.precio_unitario;
+      this.carritoServicio.pedido[0].precio =  this.producto.precio_unitario;
+      this.carritoServicio.pedido[0].monto =  this.carritoServicio.monto;
+      this.carritoServicio.pedido[0].fecha = this.carritoServicio.hoyFecha();
+      this.carritoServicio.pedido[0].cantidad = cantidad;
+      console.log(this.carritoServicio.pedido[0]);
       this.carritoServicio.indiceVenta = this.carritoServicio.indiceVenta + 1;
     }
     else {
       this.carritoServicio.pedido.push({
         id: this.pedido.id,
         nombre: this.pedido.nombre,
-        precio: cantidad * pedido.precio,
+        precio: this.producto.precio_unitario,
+        monto:  this.carritoServicio.monto,
         fecha: this.pedido.fecha,
         cantidad: this.pedido.cantidad
       })
@@ -102,6 +105,18 @@ export class FormProductoComponent implements OnInit {
       console.log(this.carritoServicio.pedido);
     }
 
+  }
+
+  agregarProducto(producto:any){
+    if (this.carritoServicio.indiceCompra == 0){
+      this.carritoServicio.pedido[0].producto = producto.nombre;
+      this.carritoServicio.pedido[0].nombre = producto.nombre;
+      this.carritoServicio.pedido[0].fecha = producto.fecha;
+      this.carritoServicio.pedido[0].cantidad = producto.cantidad;
+      console.log(this.carritoServicio.pedido[0]);
+    }
+
+    
   }
 
 }

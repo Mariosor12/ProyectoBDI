@@ -11,8 +11,9 @@ import { Pedido } from '../models/pedido';
 })
 export class CarritoComponent implements OnInit {
 
+  indiceCompra:number = 0;
 
-  pedidos:any = [];  
+  pedidos:any = [{}];  
   monto:number = 0;
   
   constructor(private router:Router, private carritoService: CarritoService) { 
@@ -24,8 +25,8 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getPedido();
-    //this.pedidos = this.carritoService.pedido;
+   
+    this.pedidos = this.carritoService.pedido;
 
   }
 

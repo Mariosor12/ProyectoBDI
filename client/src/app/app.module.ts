@@ -26,7 +26,14 @@ import { RolDataTableComponent } from './rol-data-table/rol-data-table.component
 import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmpleadoComponent } from './empleado/empleado.component';
-import { EmpleadoDataTableComponent } from './usuario-data-table/empleado-data-table.component'
+import { EmpleadoDataTableComponent } from './usuario-data-table/empleado-data-table.component';
+import { FacturasComponent } from './facturas/facturas.component';
+import { FacturaProcesadaComponent } from './factura-procesada/factura-procesada.component';
+import { FacturaPendienteComponent } from './factura-pendiente/factura-pendiente.component';
+import { FacturaCompraComponent } from './factura-compra/factura-compra.component'
+import { CommonService } from './services/common.service';
+import { AliadosDataTableComponent } from './aliados-data-table/aliados-data-table.component';
+import { ProductoCompraComponent } from './producto-compra/producto-compra.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,13 @@ import { EmpleadoDataTableComponent } from './usuario-data-table/empleado-data-t
     RolDataTableComponent,
     PrivilegioDataTableComponent,
     EmpleadoComponent,
-    EmpleadoDataTableComponent
+    EmpleadoDataTableComponent,
+    FacturasComponent,
+    FacturaProcesadaComponent,
+    FacturaPendienteComponent,
+    FacturaCompraComponent,
+    AliadosDataTableComponent,
+    ProductoCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +70,8 @@ import { EmpleadoDataTableComponent } from './usuario-data-table/empleado-data-t
     FontAwesomeModule
   ],
   providers: [
-    EventoService
+    EventoService,
+    CommonService
   ],
   bootstrap: [AppComponent]
 })

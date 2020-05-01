@@ -4,5 +4,6 @@ export interface Pedido {
     fecha?: string ,
     cantidad?: number,
     precio?: number ,
-    total?: number
+    total?: number,
+    alipro?: string
 }

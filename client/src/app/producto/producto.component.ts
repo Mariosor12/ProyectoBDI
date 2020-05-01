@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PrivilegioService} from '../services/privilegio.service';
-
+import {CarritoService} from '../services/carrito.service';
 import { ProductoService } from '../services/producto.service';
 import { Producto } from '../models/producto';
 @Component({
@@ -15,7 +15,7 @@ export class ProductoComponent implements OnInit {
 
   productos: any = [];
 
-  constructor(private productoService: ProductoService, private router: Router, private privilegios: PrivilegioService ) { }
+  constructor(private productoService: ProductoService, private router: Router, private privilegios: PrivilegioService, private cart: CarritoService ) { }
 
   ngOnInit(): void {
     this.getProductos();
@@ -48,5 +48,13 @@ export class ProductoComponent implements OnInit {
         err => console.log(err)
       )
     }
+  }
+
+  agregarProducto(producto:any){
+    if (this.cart.indiceCompra == 0){
+      this.cart.pedido[0].producto = producto.nombre;
+      console.log(this.cart.pedido[0]);
+    }
+    
   }
 }
