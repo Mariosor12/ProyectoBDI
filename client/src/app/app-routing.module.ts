@@ -20,6 +20,7 @@ import { FacturaProcesadaComponent} from './factura-procesada/factura-procesada.
 import { FacturaCompraComponent} from './factura-compra/factura-compra.component';
 import { AliadosDataTableComponent } from './aliados-data-table/aliados-data-table.component';
 import { ProductoCompraComponent} from './producto-compra/producto-compra.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 const routes: Routes = [
@@ -123,6 +124,10 @@ const routes: Routes = [
 {
   path: 'producto/compra',
   component: ProductoCompraComponent
+},
+{
+path: 'reportes',
+component: ReportesComponent
 }
 
 ];

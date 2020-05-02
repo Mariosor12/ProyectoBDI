@@ -16,6 +16,7 @@ const routesOrdenCompra = require('./routes/ordencompraRoutes');
 const routesPago = require('./routes/pagoRoutes');
 const routesAliado = require('./routes/aliadoRoutes');
 const routesAliPro = require('./routes/AliProRoutes');
+const routesReport = require('./routes/reporteRoutes');
 
 
 const cors = require('cors');
@@ -46,6 +47,7 @@ app.use('/api/ordencompra', routesOrdenCompra);
 app.use('/api/pago', routesPago);
 app.use('/api/aliado', routesAliado)
 app.use('/api/alipro',routesAliPro);
+app.use('/api/reporte',routesReport);
 //----------------starting the server----------------------
 app.listen(app.get('port'), () => {
     console.log('Server on port:', app.get('port'));

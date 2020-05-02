@@ -34,6 +34,7 @@ import { FacturaCompraComponent } from './factura-compra/factura-compra.componen
 import { CommonService } from './services/common.service';
 import { AliadosDataTableComponent } from './aliados-data-table/aliados-data-table.component';
 import { ProductoCompraComponent } from './producto-compra/producto-compra.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ProductoCompraComponent } from './producto-compra/producto-compra.compo
     FacturaPendienteComponent,
     FacturaCompraComponent,
     AliadosDataTableComponent,
-    ProductoCompraComponent
+    ProductoCompraComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,

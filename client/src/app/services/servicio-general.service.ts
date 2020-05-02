@@ -70,4 +70,7 @@ export class ServicioGeneralService {
     return this.http.get(this.API_URL+'/alipro/'+aliado);
   }
 
+  getEmpleados(){
+    return this.http.get(this.API_URL+'/empleado');
+  }
 }

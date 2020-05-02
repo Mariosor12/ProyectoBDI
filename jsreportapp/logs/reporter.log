@@ -1,0 +1,354 @@
+2020-05-01T19:41:21.780Z - info: Initializing jsreport@2.7.2 in development mode using configuration file: jsreport.config.json
+2020-05-01T19:41:21.782Z - info: Searching for available extensions in C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\
+2020-05-01T19:41:21.799Z - info: Extensions location cache not found, crawling directories
+2020-05-01T19:41:22.343Z - info: Found 35 extensions
+2020-05-01T19:41:22.518Z - debug: Writing extension locations cache to C:\Users\pancho\AppData\Local\Temp\jsreport\core\locations.json
+2020-05-01T19:41:22.519Z - debug: Discovered 35 extensions
+2020-05-01T19:41:22.580Z - info: Setting dedicated-process (process based) strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2020-05-01T19:41:22.587Z - debug: Extension authentication@2.4.2 is disabled, skipping
+2020-05-01T19:41:22.587Z - info: Using extension cli@2.2.2
+2020-05-01T19:41:22.591Z - info: Using extension debug@2.1.3
+2020-05-01T19:41:22.593Z - info: Using extension express@2.6.0
+2020-05-01T19:41:22.710Z - info: Using extension freeze@2.0.0
+2020-05-01T19:41:22.712Z - info: Using extension handlebars@2.1.0
+2020-05-01T19:41:22.714Z - info: Using extension import-export@1.5.1
+2020-05-01T19:41:22.759Z - info: Using extension jsrender@2.1.1
+2020-05-01T19:41:22.761Z - info: Using extension tags@2.3.0
+2020-05-01T19:41:22.764Z - info: Using extension templates@2.3.2
+2020-05-01T19:41:22.768Z - info: Using extension authorization@2.2.6
+2020-05-01T19:41:22.771Z - debug: Extension authorization@2.2.6 was disabled
+2020-05-01T19:41:22.772Z - info: Using extension base@2.0.2
+2020-05-01T19:41:22.774Z - info: Using extension browser-client@2.2.2
+2020-05-01T19:41:22.776Z - info: Using extension child-templates@1.3.1
+2020-05-01T19:41:22.781Z - info: Using extension chrome-pdf@1.7.1
+2020-05-01T19:41:22.853Z - debug: Chrome strategy is dedicated-process
+2020-05-01T19:41:22.854Z - info: Using extension data@2.2.0
+2020-05-01T19:41:22.857Z - info: Using extension docx@2.5.0
+2020-05-01T19:41:22.862Z - info: Using extension fs-store@2.7.2
+2020-05-01T19:41:22.965Z - info: Using extension licensing@2.2.1
+2020-05-01T19:41:22.973Z - info: Using extension pdf-utils@1.6.1
+2020-05-01T19:41:23.097Z - info: Using extension pptx@0.5.0
+2020-05-01T19:41:23.101Z - info: Using extension reports@2.2.1
+2020-05-01T19:41:23.105Z - info: Using extension static-pdf@0.3.1
+2020-05-01T19:41:23.108Z - info: Using extension studio@2.7.0
+2020-05-01T19:41:23.209Z - debug: studio request logs are enabled (flush interval: 2000)
+2020-05-01T19:41:23.212Z - info: Using extension text@2.0.0
+2020-05-01T19:41:23.213Z - info: Using extension version-control@1.3.2
+2020-05-01T19:41:23.298Z - info: Using extension assets@1.5.2
+2020-05-01T19:41:23.312Z - info: Using extension html-to-xlsx@2.6.0
+2020-05-01T19:41:23.606Z - info: html-to-xlsx detected chrome as available html engine
+2020-05-01T19:41:23.607Z - info: Using extension scheduling@2.2.0
+2020-05-01T19:41:23.632Z - info: Using extension scripts@2.3.0
+2020-05-01T19:41:23.636Z - info: Using extension studio-theme-dark@0.3.0
+2020-05-01T19:41:23.637Z - info: Using extension xlsx@2.3.0
+2020-05-01T19:41:23.762Z - info: Using extension public-templates@2.1.0
+2020-05-01T19:41:23.763Z - debug: Extension public-templates@2.1.0 was disabled
+2020-05-01T19:41:23.763Z - info: Using extension resources@2.0.3
+2020-05-01T19:41:23.764Z - info: Using extension sample-template@2.5.1
+2020-05-01T19:41:23.767Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2020-05-01T19:41:23.767Z - info: Using fs provider for template store.
+2020-05-01T19:41:23.770Z - info: fs store is persisting using fs
+2020-05-01T19:41:23.772Z - info: fs store sync is disabled
+2020-05-01T19:41:23.773Z - info: fs store underlying changes synchronization with studio is disabled
+2020-05-01T19:41:23.810Z - info: fs store is loading data
+2020-05-01T19:41:23.823Z - info: fs store is initialized successfully
+2020-05-01T19:41:23.834Z - debug: studio default theme is: light
+2020-05-01T19:41:23.865Z - info: Creating default express app.
+2020-05-01T19:41:23.887Z - info: jsreport server successfully started on http port: 5488
+2020-05-01T19:41:23.889Z - info: Verifying license key free
+2020-05-01T19:41:23.890Z - info: Using free license
+2020-05-01T19:41:23.895Z - debug: Inserting samples
+2020-05-01T19:41:23.904Z - debug: Creating folder "samples" for sample entities
+2020-05-01T19:41:23.939Z - debug: Inserting sample entity Orders (entitySet: folders)
+2020-05-01T19:41:23.965Z - debug: Inserting sample entity Sales (entitySet: folders)
+2020-05-01T19:41:23.989Z - debug: Inserting sample entity Invoice (entitySet: folders)
+2020-05-01T19:41:24.019Z - debug: Inserting sample entity shared (entitySet: folders)
+2020-05-01T19:41:24.043Z - debug: Inserting sample entity sales-data (entitySet: data)
+2020-05-01T19:41:24.076Z - debug: Inserting sample entity invoice-data (entitySet: data)
+2020-05-01T19:41:24.103Z - debug: Inserting sample entity sales-main (entitySet: templates)
+2020-05-01T19:41:24.143Z - debug: Inserting sample entity orders-main (entitySet: templates)
+2020-05-01T19:41:24.175Z - debug: Inserting sample entity orders-header (entitySet: templates)
+2020-05-01T19:41:24.205Z - debug: Inserting sample entity invoice-main (entitySet: templates)
+2020-05-01T19:41:24.236Z - debug: Inserting sample entity orders-styles.css (entitySet: assets)
+2020-05-01T19:41:24.264Z - debug: Inserting sample entity sales-styles.css (entitySet: assets)
+2020-05-01T19:41:24.294Z - debug: Inserting sample entity invoice-styles.css (entitySet: assets)
+2020-05-01T19:41:24.322Z - debug: Inserting sample entity global helpers.js (entitySet: assets)
+2020-05-01T19:41:24.350Z - debug: Inserting sample entity invoice-logo.png (entitySet: assets)
+2020-05-01T19:41:24.380Z - debug: Inserting sample entity orders-script (entitySet: scripts)
+2020-05-01T19:41:24.411Z - info: reporter initialized
+2020-05-01T19:44:34.213Z - debug: OData query on templates
+2020-05-01T19:44:34.216Z - debug: OData query on folders
+2020-05-01T19:44:34.221Z - debug: OData query on tags
+2020-05-01T19:44:34.224Z - debug: OData query on data
+2020-05-01T19:44:34.226Z - debug: OData query on scripts
+2020-05-01T19:44:34.228Z - debug: OData query on assets
+2020-05-01T19:44:34.233Z - debug: OData query on xlsxTemplates
+2020-05-01T19:44:34.238Z - debug: OData query on schedules
+2020-05-01T19:44:34.251Z - debug: OData query on settings
+2020-05-01T19:44:34.427Z - debug: OData query on templates
+2020-05-01T19:44:34.441Z - debug: OData query on settings
+2020-05-01T22:37:04.919Z - info: Initializing jsreport@2.7.2 in development mode using configuration file: jsreport.config.json
+2020-05-01T22:37:04.920Z - info: Searching for available extensions in C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\
+2020-05-01T22:37:04.939Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\
+2020-05-01T22:37:04.949Z - info: Found 35 extensions
+2020-05-01T22:37:05.159Z - debug: Writing extension locations cache to C:\Users\pancho\AppData\Local\Temp\jsreport\core\locations.json
+2020-05-01T22:37:05.161Z - debug: Discovered 35 extensions
+2020-05-01T22:37:05.225Z - info: Setting dedicated-process (process based) strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2020-05-01T22:37:05.234Z - debug: Extension authentication@2.4.2 is disabled, skipping
+2020-05-01T22:37:05.235Z - info: Using extension cli@2.2.2
+2020-05-01T22:37:05.240Z - info: Using extension debug@2.1.3
+2020-05-01T22:37:05.242Z - info: Using extension express@2.6.0
+2020-05-01T22:37:05.423Z - info: Using extension freeze@2.0.0
+2020-05-01T22:37:05.426Z - info: Using extension handlebars@2.1.0
+2020-05-01T22:37:05.429Z - info: Using extension import-export@1.5.1
+2020-05-01T22:37:05.485Z - info: Using extension jsrender@2.1.1
+2020-05-01T22:37:05.486Z - info: Using extension tags@2.3.0
+2020-05-01T22:37:05.489Z - info: Using extension templates@2.3.2
+2020-05-01T22:37:05.494Z - info: Using extension authorization@2.2.6
+2020-05-01T22:37:05.499Z - debug: Extension authorization@2.2.6 was disabled
+2020-05-01T22:37:05.499Z - info: Using extension base@2.0.2
+2020-05-01T22:37:05.502Z - info: Using extension browser-client@2.2.2
+2020-05-01T22:37:05.505Z - info: Using extension child-templates@1.3.1
+2020-05-01T22:37:05.511Z - info: Using extension chrome-pdf@1.7.1
+2020-05-01T22:37:05.610Z - debug: Chrome strategy is dedicated-process
+2020-05-01T22:37:05.610Z - info: Using extension data@2.2.0
+2020-05-01T22:37:05.612Z - info: Using extension docx@2.5.0
+2020-05-01T22:37:05.617Z - info: Using extension fs-store@2.7.2
+2020-05-01T22:37:05.767Z - info: Using extension licensing@2.2.1
+2020-05-01T22:37:05.772Z - info: Using extension pdf-utils@1.6.1
+2020-05-01T22:37:05.993Z - info: Using extension pptx@0.5.0
+2020-05-01T22:37:06.000Z - info: Using extension reports@2.2.1
+2020-05-01T22:37:06.004Z - info: Using extension static-pdf@0.3.1
+2020-05-01T22:37:06.009Z - info: Using extension studio@2.7.0
+2020-05-01T22:37:06.078Z - debug: studio request logs are enabled (flush interval: 2000)
+2020-05-01T22:37:06.080Z - info: Using extension text@2.0.0
+2020-05-01T22:37:06.082Z - info: Using extension version-control@1.3.2
+2020-05-01T22:37:06.189Z - info: Using extension assets@1.5.2
+2020-05-01T22:37:06.206Z - info: Using extension html-to-xlsx@2.6.0
+2020-05-01T22:37:06.593Z - info: html-to-xlsx detected chrome as available html engine
+2020-05-01T22:37:06.593Z - info: Using extension scheduling@2.2.0
+2020-05-01T22:37:06.629Z - info: Using extension scripts@2.3.0
+2020-05-01T22:37:06.633Z - info: Using extension studio-theme-dark@0.3.0
+2020-05-01T22:37:06.636Z - info: Using extension xlsx@2.3.0
+2020-05-01T22:37:06.833Z - info: Using extension public-templates@2.1.0
+2020-05-01T22:37:06.835Z - debug: Extension public-templates@2.1.0 was disabled
+2020-05-01T22:37:06.835Z - info: Using extension resources@2.0.3
+2020-05-01T22:37:06.838Z - info: Using extension sample-template@2.5.1
+2020-05-01T22:37:06.841Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2020-05-01T22:37:06.841Z - info: Using fs provider for template store.
+2020-05-01T22:37:06.845Z - info: fs store is persisting using fs
+2020-05-01T22:37:06.846Z - info: fs store sync is disabled
+2020-05-01T22:37:06.848Z - info: fs store underlying changes synchronization with studio is disabled
+2020-05-01T22:37:06.885Z - info: fs store is loading data
+2020-05-01T22:37:06.933Z - info: fs store is initialized successfully
+2020-05-01T22:37:06.945Z - debug: studio default theme is: light
+2020-05-01T22:37:06.953Z - info: Creating default express app.
+2020-05-01T22:37:06.988Z - info: jsreport server successfully started on http port: 5488
+2020-05-01T22:37:06.990Z - info: Verifying license key free
+2020-05-01T22:37:06.990Z - info: Using free license
+2020-05-01T22:37:06.996Z - info: reporter initialized
+2020-05-01T22:38:04.626Z - debug: OData query on templates
+2020-05-01T22:38:04.630Z - debug: OData query on folders
+2020-05-01T22:38:04.637Z - debug: OData query on tags
+2020-05-01T22:38:04.639Z - debug: OData query on data
+2020-05-01T22:38:04.640Z - debug: OData query on assets
+2020-05-01T22:38:04.644Z - debug: OData query on scripts
+2020-05-01T22:38:04.648Z - debug: OData query on xlsxTemplates
+2020-05-01T22:38:04.654Z - debug: OData query on schedules
+2020-05-01T22:38:04.670Z - debug: OData query on settings
+2020-05-01T22:38:04.826Z - debug: OData query on templates
+2020-05-01T22:38:04.844Z - debug: OData query on settings
+2020-05-01T22:39:47.015Z - debug: OData insert into folders
+2020-05-01T22:44:11.243Z - debug: OData insert into folders
+2020-05-01T22:48:18.802Z - debug: OData insert into folders
+2020-05-01T22:49:15.464Z - debug: OData insert into folders
+2020-05-01T22:51:12.125Z - debug: OData insert into templates
+2020-05-01T22:51:14.383Z - debug: OData insert into templates
+2020-05-01T22:53:40.399Z - debug: OData remove from templates
+2020-05-01T22:54:25.273Z - debug: OData remove from templates
+2020-05-01T22:54:25.319Z - debug: OData query on templates
+2020-05-01T22:54:25.360Z - debug: OData query on settings
+2020-05-01T22:54:42.352Z - debug: OData remove from folders
+2020-05-01T22:54:47.289Z - debug: OData remove from folders
+2020-05-01T23:30:41.543Z - debug: OData insert into templates
+2020-05-01T23:55:49.658Z - info: Starting rendering request 1 (user: null)
+2020-05-01T23:55:49.665Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-01T23:55:49.667Z - debug: Inline data specified.
+2020-05-01T23:55:49.669Z - debug: Resources not defined for this template.
+2020-05-01T23:55:49.679Z - debug: Base url not specified, skipping its injection.
+2020-05-01T23:55:49.698Z - error: Rendering request 1 finished with error in 42 ms
+2020-05-01T23:55:49.701Z - error: Error when processing render request 1 Asset invoice-styles.css not found Error: Asset invoice-styles.css not found
+    at readAsset (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-assets\lib\assets.js:227:15)
+2020-05-01T23:55:49.705Z - error: Error during processing request at http://localhost:5488/api/report
+2020-05-01T23:58:22.874Z - debug: OData insert into data
+2020-05-01T23:59:42.500Z - debug: OData remove from data
+2020-05-02T00:02:00.435Z - debug: OData insert into assets
+2020-05-02T00:02:00.492Z - debug: OData query on assets
+2020-05-02T00:02:07.458Z - debug: OData update on assets
+2020-05-02T00:02:07.493Z - debug: OData query on assets
+2020-05-02T00:03:39.373Z - info: Starting rendering request 2 (user: null)
+2020-05-02T00:03:39.374Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:03:39.375Z - debug: Inline data specified.
+2020-05-02T00:03:39.375Z - debug: Resources not defined for this template.
+2020-05-02T00:03:39.376Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:03:39.381Z - error: Rendering request 2 finished with error in 7 ms
+2020-05-02T00:03:39.381Z - error: Error when processing render request 2 Asset invoice-logo.png not found Error: Asset invoice-logo.png not found
+    at readAsset (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-assets\lib\assets.js:227:15)
+2020-05-02T00:03:39.382Z - error: Error during processing request at http://localhost:5488/api/report
+2020-05-02T00:04:05.643Z - debug: OData update on templates
+2020-05-02T00:04:05.677Z - debug: OData query on templates
+2020-05-02T00:04:23.739Z - info: Starting rendering request 3 (user: null)
+2020-05-02T00:04:23.742Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:04:23.743Z - debug: Inline data specified.
+2020-05-02T00:04:23.744Z - debug: Resources not defined for this template.
+2020-05-02T00:04:23.744Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:04:23.747Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:04:23.749Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:04:24.007Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:04:24.010Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:04:24.890Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:04:25.308Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:04:25.661Z - debug: Skipping storing report.
+2020-05-02T00:04:25.662Z - info: Rendering request 3 finished in 1923 ms
+2020-05-02T00:06:25.833Z - debug: OData update on templates
+2020-05-02T00:06:25.859Z - debug: OData query on templates
+2020-05-02T00:10:21.883Z - debug: OData update on templates
+2020-05-02T00:10:21.913Z - debug: OData query on templates
+2020-05-02T00:10:29.397Z - info: Starting rendering request 4 (user: null)
+2020-05-02T00:10:29.398Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:10:29.399Z - debug: Inline data specified.
+2020-05-02T00:10:29.399Z - debug: Resources not defined for this template.
+2020-05-02T00:10:29.400Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:10:29.402Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:10:29.403Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:10:29.576Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:10:29.578Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:10:29.812Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:10:29.959Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:10:30.451Z - debug: Skipping storing report.
+2020-05-02T00:10:30.452Z - info: Rendering request 4 finished in 1055 ms
+2020-05-02T00:11:28.729Z - debug: OData update on templates
+2020-05-02T00:11:28.770Z - debug: OData query on templates
+2020-05-02T00:11:35.128Z - info: Starting rendering request 5 (user: null)
+2020-05-02T00:11:35.128Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:11:35.129Z - debug: Inline data specified.
+2020-05-02T00:11:35.130Z - debug: Resources not defined for this template.
+2020-05-02T00:11:35.130Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:11:35.132Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:11:35.132Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:11:35.325Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:11:35.326Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:11:35.414Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:11:35.551Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:11:35.976Z - debug: Skipping storing report.
+2020-05-02T00:11:35.978Z - info: Rendering request 5 finished in 851 ms
+2020-05-02T00:19:40.128Z - debug: OData query on templates
+2020-05-02T00:19:40.154Z - debug: OData query on settings
+2020-05-02T00:20:38.826Z - debug: OData insert into folders
+2020-05-02T00:21:30.154Z - debug: OData insert into folders
+2020-05-02T00:21:37.943Z - debug: OData query on templates
+2020-05-02T00:21:41.436Z - info: Starting rendering request 6 (user: null)
+2020-05-02T00:21:41.437Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:21:41.439Z - debug: Data item not defined for this template.
+2020-05-02T00:21:41.440Z - debug: Resources not defined for this template.
+2020-05-02T00:21:41.440Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:21:41.443Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:21:41.444Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:21:41.625Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:21:41.626Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:21:41.729Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:21:41.866Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:21:42.070Z - debug: Skipping storing report.
+2020-05-02T00:21:42.071Z - info: Rendering request 6 finished in 634 ms
+2020-05-02T00:23:19.259Z - debug: OData insert into assets
+2020-05-02T00:23:19.354Z - debug: OData query on assets
+2020-05-02T00:23:21.864Z - debug: OData query on assets
+2020-05-02T00:23:28.861Z - debug: OData update on assets
+2020-05-02T00:23:28.889Z - debug: OData query on assets
+2020-05-02T00:24:58.613Z - debug: OData insert into templates
+2020-05-02T00:25:09.070Z - debug: OData update on templates
+2020-05-02T00:25:09.096Z - debug: OData query on templates
+2020-05-02T00:27:35.945Z - debug: OData update on templates
+2020-05-02T00:27:35.972Z - debug: OData query on templates
+2020-05-02T00:30:57.828Z - info: Starting rendering request 7 (user: null)
+2020-05-02T00:30:57.829Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:30:57.830Z - debug: Inline data specified.
+2020-05-02T00:30:57.831Z - debug: Resources not defined for this template.
+2020-05-02T00:30:57.832Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:30:57.834Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:30:57.835Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:30:58.014Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:30:58.017Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:30:58.299Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:30:58.524Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:30:58.849Z - debug: Skipping storing report.
+2020-05-02T00:30:58.850Z - info: Rendering request 7 finished in 1021 ms
+2020-05-02T00:31:47.799Z - debug: OData update on templates
+2020-05-02T00:31:47.833Z - debug: OData query on templates
+2020-05-02T00:31:56.505Z - info: Starting rendering request 8 (user: null)
+2020-05-02T00:31:56.506Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:31:56.506Z - debug: Inline data specified.
+2020-05-02T00:31:56.507Z - debug: Resources not defined for this template.
+2020-05-02T00:31:56.508Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:31:56.512Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:31:56.512Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:31:56.684Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:31:56.685Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:31:56.771Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:31:56.911Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:31:57.277Z - debug: Skipping storing report.
+2020-05-02T00:31:57.277Z - info: Rendering request 8 finished in 773 ms
+2020-05-02T00:33:28.221Z - debug: OData update on templates
+2020-05-02T00:33:28.253Z - debug: OData query on templates
+2020-05-02T00:34:28.726Z - info: Starting rendering request 9 (user: null)
+2020-05-02T00:34:28.727Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:34:28.727Z - debug: Inline data specified.
+2020-05-02T00:34:28.728Z - debug: Resources not defined for this template.
+2020-05-02T00:34:28.728Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:34:28.729Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:34:28.729Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:34:28.905Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:34:28.906Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:34:29.013Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:34:29.147Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:34:29.456Z - debug: Skipping storing report.
+2020-05-02T00:34:29.457Z - info: Rendering request 9 finished in 730 ms
+2020-05-02T00:39:39.894Z - info: Starting rendering request 10 (user: null)
+2020-05-02T00:39:39.897Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:39:39.898Z - debug: Inline data specified.
+2020-05-02T00:39:39.899Z - debug: Resources not defined for this template.
+2020-05-02T00:39:39.900Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:39:39.906Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:39:39.907Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:39:40.266Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:39:40.268Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:39:41.286Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:39:41.751Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:39:42.222Z - debug: Skipping storing report.
+2020-05-02T00:39:42.222Z - info: Rendering request 10 finished in 2329 ms
+2020-05-02T00:40:10.512Z - info: Starting rendering request 11 (user: null)
+2020-05-02T00:40:10.513Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:40:10.514Z - debug: Inline data specified.
+2020-05-02T00:40:10.514Z - debug: Resources not defined for this template.
+2020-05-02T00:40:10.514Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:40:10.516Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:40:10.516Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:40:10.691Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:40:10.692Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:40:10.803Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:40:10.940Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:40:11.217Z - debug: Skipping storing report.
+2020-05-02T00:40:11.217Z - info: Rendering request 11 finished in 705 ms
+2020-05-02T00:40:27.904Z - info: Starting rendering request 12 (user: null)
+2020-05-02T00:40:27.905Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-05-02T00:40:27.906Z - debug: Inline data specified.
+2020-05-02T00:40:27.906Z - debug: Resources not defined for this template.
+2020-05-02T00:40:27.907Z - debug: Base url not specified, skipping its injection.
+2020-05-02T00:40:27.908Z - debug: Replaced assets ["invoice-styles.css"]
+2020-05-02T00:40:27.908Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-05-02T00:40:28.086Z - debug: Compiled template not found in the cache, compiling
+2020-05-02T00:40:28.087Z - debug: Executing recipe chrome-pdf
+2020-05-02T00:40:28.199Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-05-02T00:40:28.299Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-05-02T00:40:28.508Z - debug: Skipping storing report.
+2020-05-02T00:40:28.514Z - info: Rendering request 12 finished in 610 ms

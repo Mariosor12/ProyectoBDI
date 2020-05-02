@@ -1,0 +1,8 @@
+2020-05-01T23:55:49.698Z - error: Rendering request 1 finished with error in 42 ms
+2020-05-01T23:55:49.701Z - error: Error when processing render request 1 Asset invoice-styles.css not found Error: Asset invoice-styles.css not found
+    at readAsset (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-assets\lib\assets.js:227:15)
+2020-05-01T23:55:49.705Z - error: Error during processing request at http://localhost:5488/api/report
+2020-05-02T00:03:39.381Z - error: Rendering request 2 finished with error in 7 ms
+2020-05-02T00:03:39.381Z - error: Error when processing render request 2 Asset invoice-logo.png not found Error: Asset invoice-logo.png not found
+    at readAsset (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-assets\lib\assets.js:227:15)
+2020-05-02T00:03:39.382Z - error: Error during processing request at http://localhost:5488/api/report
