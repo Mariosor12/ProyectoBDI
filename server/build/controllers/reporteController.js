@@ -23,7 +23,7 @@ function redata (rep, tem, res){
 }
 
 reportCtrl.getReporte1 = async (req, res) => {
-    await pool.query("select nro_factura AS factura, fecha_compra AS fecha,natural_nombre AS nombre, juridico_denominacion_comercial AS comercio, cantidad, precio_unitario AS precio, SUM(cantidad * precio_unitario) AS total from detalle_compra, compra, cliente where fk_compra = nro_factura and fk_cliente = rif group by (nro_factura, fecha_compra, cantidad, precio_unitario, natural_nombre, juridico_denominacion_comercial);")
+    await pool.query("select nro_factura AS factura, fecha_compra AS fecha,natural_nombre AS nombre, juridico_denominacion_comercial AS comercio, cantidad, precio_unitario AS precio, SUM(cantidad * precio_unitario) AS total from detalle_compra, compra, cliente where fk_compra = nro_factura and fk_cliente = rif group by (nro_factura, fecha_compra, cantidad, precio_unitario, natural_nombre, juridico_denominacion_comercial) order by cantidad desc limit 10 offset 0;")
         .then(response => {
             console.log('Generando Reporte 1');
             redata(response.rows,'H1xNbKX9FL',res);

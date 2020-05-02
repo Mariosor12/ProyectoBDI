@@ -14,7 +14,9 @@ export class PagoComponent implements OnInit {
 
   pedidos:any = [{}];
 
-  tipoPago:string = '';
+
+  pago: boolean = true;
+  tipoPago:string  = '';
   cubierto:number = 0;
   montoPagar:number = 0;
   tarjetaCredito:string = '';
@@ -305,7 +307,7 @@ export class PagoComponent implements OnInit {
           this.indicePago = this.indicePago + 1;
           this.guardarTipoPago();
           // this.indiceMineral = 0;
-          // this.guardarFact();
+          //this.guardarFact();
           this.cart.monto = 0;
         },
         err => console.log(err)
@@ -322,10 +324,16 @@ export class PagoComponent implements OnInit {
   pay(){
     this.sg.saveOrdenventa({fecha:this.common.FechaHoy(), cliente:this.cart.idCliente, total:this.cart.monto}).subscribe(
       res => {
+        if(this.pago){
         this.idOrdenVenta = res; // id de la Orden de Compra creada (posicion 0 del arreglo)       
         this.indicePago = 0;
         this.guardarTipoPago();
-        this.guardarPago();      
+        this.guardarPago();
+        alert("Se realizó el pago exitosamente");
+        } else
+        {
+          alert("Error. No se realizó el pago exitosamente");
+        }      
      
       },
       err => console.log(err)
