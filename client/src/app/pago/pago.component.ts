@@ -14,7 +14,7 @@ export class PagoComponent implements OnInit {
 
   pedidos:any = [{}];
 
-
+number: number = 1;
   pago: boolean = true;
   tipoPago:string  = '';
   cubierto:number = 0;
@@ -44,6 +44,8 @@ export class PagoComponent implements OnInit {
   constructor(private cart:CarritoService, private common:CommonService, private sg:ServicioGeneralService) {
     this.common.vista = 'Pagos';
     this.monto = this.cart.monto;
+    this.montoPagar = this.cart.monto;
+    
    }
 
   ngOnInit(): void {
@@ -300,8 +302,8 @@ export class PagoComponent implements OnInit {
   guardarPago(){
     this.guardarTipoPago();
     if (this.indicePago < this.cart.pagos.length){
-      console.log("guardara: ",this.cart.pagos[this.indicePago].monto, this.cart.pagos[this.indicePago].fecha, this.idOrdenVenta[0].id, this.idTipoPago[0].id);
-      this.sg.savePago({monto:this.cart.pagos[this.indicePago].monto, fecha:this.cart.pagos[this.indicePago].fecha, venta:this.idOrdenVenta[0].id, tipo:this.idTipoPago[0].id}).subscribe(
+      console.log("guardara: ",this.cart.pagos[this.indicePago].monto, this.cart.pagos[this.indicePago].fecha, this.cart.idOrdenVenta +1, this.idTipoPago[0].id);
+      this.sg.savePago({monto:this.cart.pagos[this.indicePago].monto, fecha:this.cart.pagos[this.indicePago].fecha, venta:this.cart.idOrdenVenta + 1, tipo:this.idTipoPago[0].id}).subscribe(
         res => {
           console.log("Guardo el pago! :D");
           this.indicePago = this.indicePago + 1;
@@ -325,7 +327,9 @@ export class PagoComponent implements OnInit {
     this.sg.saveOrdenventa({fecha:this.common.FechaHoy(), cliente:this.cart.idCliente, total:this.cart.monto}).subscribe(
       res => {
         if(this.pago){
-        this.idOrdenVenta = res; // id de la Orden de Compra creada (posicion 0 del arreglo)       
+        this.idOrdenVenta + 1;
+        this.idOrdenVenta = res // id de la Orden de Compra creada (posicion 0 del arreglo)  
+        console.log(res);   
         this.indicePago = 0;
         this.guardarTipoPago();
         this.guardarPago();

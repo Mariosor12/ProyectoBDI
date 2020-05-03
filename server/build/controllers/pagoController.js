@@ -3,7 +3,22 @@ const client = require('../database/database');
 
 pagoCtrl.getPagosOC = async (req,res) => {
     const id = req.params.id;
-    await client.query("SELECT monto, fecha, fk_status_compra AS Venta, fk_tipo_pago AS tipo FROM Pago WHERE fk_tipo_pago = "+id)
+    await client.query("SELECT id, monto, fecha, fk_status_compra AS venta, fk_tipo_pago AS tipo FROM Pago WHERE fk_tipo_pago = "+id)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+pagoCtrl.getIdOrdenVenta = async (req,res) => {
+    const id = req.params.id;
+    await client.query("SELECT fk_status_compra AS venta FROM Pago WHERE fk_tipo_pago = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
