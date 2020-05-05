@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Empleado } from './../models/empleado';
 
 import { Observable } from 'rxjs';
 
@@ -73,4 +74,45 @@ export class ServicioGeneralService {
   getEmpleados(){
     return this.http.get(this.API_URL+'/empleado');
   }
+
+  getClientes(){
+    return this.http.get(this.API_URL+'/cliente');
+  }
+
+  deleteCliente(id:number) {
+    return this.http.delete(this.API_URL+'/cliente/'+id);
+  }
+  
+  getCliente(id:number){
+    return this.http.get(this.API_URL+'/cliente/'+id);
+  }
+
+  getDireccion(id:number){
+    return this.http.get(this.API_URL+'/lugar/direccion/'+id);
+  }
+
+  getEstados(){
+    return this.http.get(this.API_URL+'/lugar/estado');
+  }
+
+  getMunicipios(id:number){
+    return this.http.get(this.API_URL+'/lugar/municipio/'+id);
+  }
+
+  getParroquias(id:number){
+    return this.http.get(this.API_URL+'/lugar/parroquia/'+id);
+  }
+
+  saveEmpleado(empleado: Empleado){
+    return this.http.post(this.API_URL+'/empleado', empleado);
+  }
+
+  saveCliente(cliente:any){
+    return this.http.post(this.API_URL+'/cliente', cliente);
+  }
+
+  updateCliente(cliente: any){
+    return this.http.put(this.API_URL+'/cliente/'+cliente.id, cliente);
+  }
+
 }

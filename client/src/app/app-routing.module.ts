@@ -21,6 +21,9 @@ import { FacturaCompraComponent} from './factura-compra/factura-compra.component
 import { AliadosDataTableComponent } from './aliados-data-table/aliados-data-table.component';
 import { ProductoCompraComponent} from './producto-compra/producto-compra.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { CrudComponent } from './crud/crud.component';
+import { ClienteDataTableComponent} from './cliente-data-table/cliente-data-table.component';
+import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.component';
 
 
 const routes: Routes = [
@@ -128,6 +131,22 @@ const routes: Routes = [
 {
 path: 'reportes',
 component: ReportesComponent
+},
+{
+  path: 'clientes/list',
+  component: ClienteDataTableComponent
+},
+{
+  path: 'cliente/add',
+  component: ClienteRegistroComponent
+},
+{
+  path: 'clientes/edit/:id',
+  component: ClienteRegistroComponent
+},
+{
+  path: 'crud',
+  component: CrudComponent
 }
 
 ];

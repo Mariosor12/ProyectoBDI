@@ -35,6 +35,10 @@ import { CommonService } from './services/common.service';
 import { AliadosDataTableComponent } from './aliados-data-table/aliados-data-table.component';
 import { ProductoCompraComponent } from './producto-compra/producto-compra.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { CrudComponent } from './crud/crud.component';
+import { ClienteDataTableComponent } from './cliente-data-table/cliente-data-table.component';
+import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.component';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { ReportesComponent } from './reportes/reportes.component';
     FacturaCompraComponent,
     AliadosDataTableComponent,
     ProductoCompraComponent,
-    ReportesComponent
+    ReportesComponent,
+    CrudComponent,
+    ClienteDataTableComponent,
+    ClienteRegistroComponent,
   ],
   imports: [
     BrowserModule,
