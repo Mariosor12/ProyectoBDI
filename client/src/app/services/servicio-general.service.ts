@@ -189,7 +189,13 @@ export class ServicioGeneralService {
     return this.http.get(this.API_URL+'/contrato/'+id);
   }
 
+  getContratoc(){
+    return this.http.get(this.API_URL+'/contrato/c/');
+  }
+
   saveContrato(contrato: any){
+    //console.log("Antes de HTTP, mandaria (Posición 0): ", contrato[0]);
+    //console.log("Tipo de dato: ", typeof contrato[0], " y tiene longitud: ", contrato[0].length);
     return this.http.post(this.API_URL+'/contrato/', contrato);
   }
 

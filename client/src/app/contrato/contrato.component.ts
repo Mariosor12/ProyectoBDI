@@ -32,7 +32,6 @@ export class ContratoComponent implements OnInit {
     fechai: '',
     fechaf: '',
     descripcion: '',
-    exclusividad: '',
     proveedor: 0,
     productor: 0
   }];
@@ -42,7 +41,6 @@ export class ContratoComponent implements OnInit {
     fechai: '',
     fechaf: '',
     descripcion: '',
-    exclusividad: '',
     proveedor: 0,
     productor: 0
   }];
@@ -79,6 +77,7 @@ export class ContratoComponent implements OnInit {
       pageLength: 10
   }
   this.getContratos();
+  this.getContrato();
 }
 
 ngOnDestroy(): void {    
@@ -105,6 +104,17 @@ getContratos(){
   )
 }
 
+getContrato(){
+  this.sg.getContratoc().subscribe(
+    res => {
+      this.contratos = res;
+      this.dtTrigger.next();
+      this.loading = false;
+    },
+    err => console.log(err)
+  )
+}
+
 gotoInicio(){
   this.router.navigate(['/inicio']);
 }
@@ -113,7 +123,7 @@ gotoContrato(){
   this.router.navigate(['/contrato/add']);
 }
 
-gotoMinerales(aliado:any){
+gotoMinerales(contrato:any){
     
   /*if(this.cart.indiceCompra == 0){
     this.cart.pedido[0].aliado = aliado.nombre;
@@ -128,10 +138,7 @@ gotoMinerales(aliado:any){
     })
   }*/
 
-
-  this.cart.aliadoActual = aliado.comercial;
-  this.cart.idAliadoActual = aliado.id;
-  this.router.navigate(['/producto/compra']);
+  this.router.navigate(['/contrato/add']);
 }
 
 }

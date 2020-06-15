@@ -138,6 +138,10 @@ component: ReportesComponent
 {
   path: 'contrato/add',
   component: FormContratoComponent
+},
+{
+  path: 'contrato/edit/:id/:fechai/:descripcion/:proveedor/:productor',
+  component: FormContratoComponent
 }
 
 ];

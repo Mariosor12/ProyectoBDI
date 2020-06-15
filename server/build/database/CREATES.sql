@@ -191,7 +191,6 @@ CREATE TABLE Contrato(
 	fecha_inicio date NOT NULL,
     fecha_fin date,
     descripcion varchar,
-    exclusividad boolean,
     fk_proveedor INTEGER NOT NULL,
     fk_productor INTEGER NOT NULL,
     CONSTRAINT PK_Contrato PRIMARY KEY (clave),
@@ -238,6 +237,7 @@ CREATE TABLE Recomendador_Perfume(
 CREATE TABLE Catalogo(
 	clave		SERIAL,
 	cantidad integer NOT NULL,
+    exclusividad boolean,
     fk_contrato INTEGER NOT NULL,
     fk_perfume INTEGER NOT NULL,
     fk_recomendador_perfume	INTEGER NOT NULL,
