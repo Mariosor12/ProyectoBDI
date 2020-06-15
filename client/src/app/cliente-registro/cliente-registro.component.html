@@ -20,25 +20,24 @@
         </div> 
         
         <div class="col-sm-12 col-md-6 col-bg-4">
-            <label>Cedula del Cliente:</label>
-            <input class="form-control form-control-md" type="text" name="nombre" [(ngModel)]="cliente[0].ci" placeholder="Cedula">
-            <br>
-        </div>
-
-        
-        <div class="col-sm-12 col-md-6 col-bg-4">
             <label>Telefono del Cliente:</label>
             <input class="form-control form-control-md" type="text" name="nombre" [(ngModel)]="cliente[0].telefono" placeholder="Telefono">
             <br>
         </div>
-
-        <div class="col-sm-12 col-md-6 col-bg-4">
-            <label>Genero del Cliente:</label>
-            <input class="form-control form-control-md" type="text" name="nombre" [(ngModel)]="cliente[0].genero" placeholder="Genero">
-            <br>
-        </div>
       </div>
 
+      <h3>Proveedor del Cliente</h3>
+      <div class="row">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Seleccione Proveedor</label>
+          <select class="form-control" name="estado" [(ngModel)]="estado[0].nombre" id="exampleFormControlSelect1">
+            <option>Escoger Opción</option>
+            <option *ngFor="let aliado of aliados" style="color:black">
+              <div>{{aliado.id}}-{{aliado.razon}}</div>
+            </option>
+          </select>
+        </div>
+      </div>
       <!------------------------------------------DIRECCION---------------------------->
 
       <h3>Dirección del Cliente</h3>

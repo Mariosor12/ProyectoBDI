@@ -10,9 +10,6 @@ import { ProductoComponent } from './producto/producto.component';
 import { FormProductoComponent } from './form-producto/form-producto.component';
 import { CarritoComponent} from './carrito/carrito.component';
 import { PagoComponent } from './pago/pago.component';
-import { RolComponent } from './rol/rol.component';
-import { RolDataTableComponent } from './rol-data-table/rol-data-table.component';
-import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
 import { EmpleadoDataTableComponent} from './usuario-data-table/empleado-data-table.component';
 import { FacturasComponent} from './facturas/facturas.component';
 import { FacturaPendienteComponent} from './factura-pendiente/factura-pendiente.component';
@@ -24,6 +21,8 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { CrudComponent } from './crud/crud.component';
 import { ClienteDataTableComponent} from './cliente-data-table/cliente-data-table.component';
 import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.component';
+import { ContratoComponent} from './contrato/contrato.component';
+import { FormContratoComponent} from './form-contrato/form-contrato.component';
 
 
 const routes: Routes = [
@@ -45,7 +44,7 @@ const routes: Routes = [
   component: FormEventoComponent
 },
 {
-  path: 'evento/edit/:id/:fecha_inicio/:fecha_fin/:nombre/:entradas_disponibles/:entradas_vendidas/:lugar',
+  path: 'evento/edit/:id/:razon/:pagina/:tel/:activo/:membresia/:lugar',
   component: FormEventoComponent
 },
 {
@@ -65,7 +64,7 @@ const routes: Routes = [
   component: FormProductoComponent
 },
 {
-  path: 'producto/edit/:id/:nombre/:descripcion/:precio_unitario/:fk_ale/:fk_lager',
+  path: 'producto/edit/:id/:nombre/:descripcion/:fecha/:genero/:nombref/:nombretp/:nombrepe',
   component: FormProductoComponent
 },
 {
@@ -77,22 +76,6 @@ const routes: Routes = [
   component: PagoComponent
 },
 {
-  path: 'rol/add',
-  component: RolComponent
-},
-{
-  path: 'rol/edit/:id',
-  component: RolComponent
-},
-{
-  path: 'roles/list',
-  component: RolDataTableComponent
-},
-{
-  path: 'privilegios/list',
-  component: PrivilegioDataTableComponent
-},
-{
   path: 'usuario/list',
   component: EmpleadoDataTableComponent
 },
@@ -101,7 +84,7 @@ const routes: Routes = [
   component: RegistroComponent
 },
 {
-  path: 'usuarios/edit/:id/:nombre/:rol',
+  path: 'usuarios/edit/:id/:nombre',
   component: RegistroComponent
 },
 {
@@ -147,6 +130,14 @@ component: ReportesComponent
 {
   path: 'crud',
   component: CrudComponent
+},
+{
+  path: 'contratos',
+  component: ContratoComponent
+},
+{
+  path: 'contrato/add',
+  component: FormContratoComponent
 }
 
 ];

@@ -17,11 +17,14 @@ export class CarritoService {
 
    pedido:any = [{
     id: 0 ,
-    nombre: '' ,
     fecha: '' ,
     cantidad: 0,
     precio: 0 ,
-    total: 0 
+    total: 0 ,
+    compra: 0,
+    venta: 0,
+    envio: 0,
+    proveedor: 0
   }]
   // ------------------------------------------------------------------------------------------------- ||
 
@@ -33,12 +36,14 @@ export class CarritoService {
   indicePagos:number = 0;
 
   productos:any = [{
-    id: 0 ,
-    nombre: '' ,
-    descripcion: '' ,
-    precio_unitario: 0,
-    fk_ale: 0 ,
-    fk_lager: 0 
+    id: 0,
+    nombre: '',
+    descripcion: '',
+    fecha: 0,
+    genero: 0,
+    fk_fijador: 0,
+    fk_tipo_producto: 0,
+    fk_perfumista: 0
   }]
 
   pagos:any = [{
@@ -90,12 +95,14 @@ export class CarritoService {
 
   resetProductos(){
     this.productos = [{
-      id: 0 ,
-      nombre: '' ,
-      descripcion: '' ,
-      precio_unitario: 0,
-      fk_ale: 0 ,
-      fk_lager: 0 
+      id: 0,
+      nombre: '',
+      descripcion: '',
+      fecha: 0,
+      genero: 0,
+      fk_fijador: 0,
+      fk_tipo_producto: 0,
+      fk_perfumista: 0
     }]
   }
 

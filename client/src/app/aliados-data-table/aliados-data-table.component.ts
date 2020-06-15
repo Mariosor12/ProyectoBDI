@@ -29,9 +29,20 @@ export class AliadosDataTableComponent implements OnInit {
   aliados:any = [{
     id: 0,
     razon: '',
-    comercial: '',
     pagina: '',
-    fecha: '',
+    tel: '',
+    activo: '',
+    membresia: '',
+    lugar: ''
+  }];
+
+  aliadosp:any = [{
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    activo: '',
+    membresia: '',
     lugar: ''
   }];
  
@@ -51,6 +62,7 @@ export class AliadosDataTableComponent implements OnInit {
     };
 
     this.getAliados();
+    this.getAliados1();
 
   }
 
@@ -68,7 +80,17 @@ export class AliadosDataTableComponent implements OnInit {
   }
 
   getAliados(){
-    this.sg.getAliados().subscribe(
+    this.sg.getAliadosPro().subscribe(
+      res => {
+        this.aliadosp = res;
+        this.dtTrigger.next();
+        this.loading = false;
+      },
+      err => console.log(err)
+    )
+  }
+  getAliados1(){
+    this.sg.getAliProveedores().subscribe(
       res => {
         this.aliados = res;
         this.dtTrigger.next();

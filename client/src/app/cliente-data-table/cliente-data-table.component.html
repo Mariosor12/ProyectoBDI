@@ -21,9 +21,9 @@
           <tr>        
             <th>Nombre</th>
             <th>Apellido</th> 
-            <th> Cedula Identidad</th>
-            <th>Telefono</th> 
-            <th>Genero</th>  
+            <th>Telefono</th>
+            <th>Direccion</th> 
+            <th>Nombre a la empresa asociada</th>  
             <th *ngIf="vista == ''">Edit / Delete</th>                   
             <th *ngIf="vista == 'Venta'">Select</th>          
           </tr>
@@ -32,9 +32,9 @@
           <tr *ngFor="let cliente of clientes">
             <td>{{cliente.nombre}}</td>
             <td>{{cliente.apellido}}</td>      
-            <td>{{cliente.ci}}</td>
-            <td>{{cliente.telefono}}</td>                  
-            <td>{{cliente.genero}}</td>            
+            <td>{{cliente.telefono}}</td>
+            <td>{{cliente.nombred}}</td>                  
+            <td>{{cliente.nombrep}}</td>            
             <td *ngIf="vista == ''"><a [routerLink]="['/clientes/edit', cliente.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteCliente(cliente)"><i class="far fa-trash-alt"></i></button></td>
             <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
             <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->

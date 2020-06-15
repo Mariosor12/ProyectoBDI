@@ -27,12 +27,13 @@ export class ClienteDataTableComponent implements OnInit {
 
   clientes:any = [{
     id: 0,
-    lugar: '',
-    ci: '',
     nombre: '',
     apellido: '',
-    genero: '',
-    telefono: 0
+    telefono: '',
+    fk_direccion: 0,
+    fk_proveedor: 0,
+    nombred: '',
+    nombrep: ''
   }]
 
    dtTrigger:Subject<any> = new Subject();

@@ -3,7 +3,7 @@ import { Producto } from '../models/producto';
 import { ProductoService} from '../services/producto.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { CarritoService } from '../services/carrito.service';
-import { PrivilegioService } from '../services/privilegio.service';
+import {ServicioGeneralService} from '../services/servicio-general.service';
 
 @Component({
   selector: 'app-form-producto',
@@ -12,42 +12,59 @@ import { PrivilegioService } from '../services/privilegio.service';
 })
 export class FormProductoComponent implements OnInit {
 
-  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private privilegios: PrivilegioService) { }
+  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { }
 
-  producto: Producto = {
+  loading:boolean = true;
+  kgPresentacion:any;
+  idMinPre:any;
+
+  producto:any = {
     id: 0,
     nombre: '',
     descripcion: '',
-    precio_unitario: 0,
-    fk_ale: 0,
-    fk_lager: 0
+    fecha: 0,
+     genero: 0,
+     nombref: 0,
+    nombretp: 0,
+    nombrepe: 0
+
   };
   edit: boolean = false;
 
   pedido: any;
+  presentacion:any;
+
+  presentaciones:any = [{
+    id: 0,
+    cantidad: 0,
+    costo:0 
+  }];
+
+  perpre:any = [{
+    perfume: 0,
+    presentacion: 0,
+    costo: 0 
+  }];
 
   ngOnInit(): void {
-    this.privilegios.evaluar(this.privilegios.idRolActual);
     const params = this.activatedRoute.snapshot.params;
     if (params.id){
            this.producto ={
              id: params.id,
              nombre: params.nombre,
              descripcion: params.descripcion,
-             precio_unitario: params.precio_unitario,
-             fk_ale: params.fk_ale,
-             fk_lager: params.fk_lager
+            genero: params.genero,
+            nombref: params.nombref,
+            nombretp: params.nombretp,
+            nombrepe: params.nombrepe
            };
            this.edit = true;      
     }
+    this.getPresentaciones();
   }
 
   SaveNuevoProducto() {
     delete this.producto.id;
-    if(this.privilegios.insertar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else {
     this.productoService.saveProducto(this.producto).subscribe(
         res => {
           console.log(res);
@@ -55,17 +72,46 @@ export class FormProductoComponent implements OnInit {
         },
         err => console.error(err)
       )
-    }
   }
+
+  getPresentaciones(){
+    this.sg.getPresentaciones().subscribe(
+      res => {
+        this.presentaciones = res;     
+        this.buscarPre(this.producto);
+        this.presentaciones.costo = this.presentacion.costo 
+      },
+      err => console.log(err)
+    )
+  }
+
+  buscarPre(producto:any){
+    console.log("El id que se pasa es: ",producto.id);
+    console.log("El nombre que se pasa es: ",producto.nombre);
+    console.log("todo completo: ",producto);
+    this.producto = producto;
+    this.sg.getPresentacionesById(producto.id).subscribe(
+      res => {
+        console.log(this.presentaciones);
+        this.presentaciones = res;
+        console.log(this.presentaciones);
+        if (this.presentaciones == "Sin resultados"){
+          this.presentaciones = [{
+            id: 0,
+            cantidad: 0,
+            costo: 0
+          }];
+        }
+      },
+      err => console.log(err)
+    )
+  }
+  
 
   public editarProducto(producto : Producto): void{
     this.router.navigate(['/producto', {producto: producto, edit: true}])
   }
   updatedProducto(){
-    if(this.privilegios.modificar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else{
     this.productoService.updateProducto(this.producto.id, this.producto)
     .subscribe(
       res => {
@@ -74,18 +120,21 @@ export class FormProductoComponent implements OnInit {
       },
       err => console.log(err)
     )
-    }
+    
   }
 
-  addCart(cantidad:number, pedido: any, producto: any){   
-    console.log("Le estoy pasando el nombre: ", this.producto.nombre, this.producto.id)    
-    this.carritoServicio.monto = this.carritoServicio.monto + (cantidad * producto.precio_unitario);   
+  addCart(cantidad:number, pedido: any, producto: any, valor: string, presentacion: any){   
+    console.log("Le estoy pasando el nombre: ", this.producto.nombre, this.presentacion) 
+    this.presentacion = valor.split(' '); 
+    this.carritoServicio.monto = this.carritoServicio.monto + (cantidad * this.presentacion[2]);  
+    this.idMinPre = this.presentacion[0].split('-'); 
+  
 
     if (this.carritoServicio.indiceVenta == 0){
       this.carritoServicio.pedido[0].id = this.producto.id;      
       this.carritoServicio.pedido[0].nombre = this.producto.nombre;
-      this.carritoServicio.pedido[0].total = cantidad * this.producto.precio_unitario;
-      this.carritoServicio.pedido[0].precio =  this.producto.precio_unitario;
+      this.carritoServicio.pedido[0].total = cantidad * this.presentacion[2];
+       this.carritoServicio.pedido[0].precio =  this.presentacion[2];
       this.carritoServicio.pedido[0].monto =  this.carritoServicio.monto;
       this.carritoServicio.pedido[0].fecha = this.carritoServicio.hoyFecha();
       this.carritoServicio.pedido[0].cantidad = cantidad;
@@ -96,7 +145,7 @@ export class FormProductoComponent implements OnInit {
       this.carritoServicio.pedido.push({
         id: this.pedido.id,
         nombre: this.pedido.nombre,
-        precio: this.producto.precio_unitario,
+        precio: this.presentacion[1],
         monto:  this.carritoServicio.monto,
         fecha: this.pedido.fecha,
         cantidad: this.pedido.cantidad

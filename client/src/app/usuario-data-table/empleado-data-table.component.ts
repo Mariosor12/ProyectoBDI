@@ -25,7 +25,7 @@ export class EmpleadoDataTableComponent implements OnInit {
     id: 0,
     nombre: '',
     contrasena: '', 
-    rol: ''
+    cliente: 0
   }];
 
   edit: boolean;

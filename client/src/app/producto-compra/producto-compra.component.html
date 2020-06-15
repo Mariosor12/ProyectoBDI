@@ -14,9 +14,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let producto of producto">
-        <td>{{ producto.id }}</td>
-        <td>{{ producto.nombre }}</td>       
+      <tr *ngFor="let ingredientes of ingredientes">
+        <td>{{ ingredientes.id }}</td>
+        <td>{{ ingredientes.nombre }}</td>       
         <td>
           <input #canti class="form-control form-control-md" type="text" placeholder="Cantidad">
             <button (click)="agregarProducto(producto, canti.value); canti.value=''" class="links"><i class="fas fa-plus-circle px-1"></i>Agregar

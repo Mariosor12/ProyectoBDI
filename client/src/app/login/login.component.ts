@@ -2,7 +2,6 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import { IngresoService } from '../services/ingreso.service';
-import { PrivilegioService } from '../services/privilegio.service';
 import {CommonService} from '../services/common.service';
 import { Usuario } from '../models/usuario';
 
@@ -25,20 +24,18 @@ export class LoginComponent implements OnInit {
   usuario: Usuario = {
     id: 0,
     nombre: '',
-    contrasena: '',
-    rol: 0
+    contrasena: ''
   };
 
   respuesta: any = [{
     nombre: '',
-    contrasena: '',
-    rol: 0
+    contrasena: ''
   }];
 
   error:boolean = false;
 
 
-  constructor(private usuarioService: IngresoService, private router: Router, private activatedRoute: ActivatedRoute, private privilegios: PrivilegioService, private common: CommonService) { }
+  constructor(private usuarioService: IngresoService, private router: Router, private activatedRoute: ActivatedRoute, private common: CommonService) { }
 
   ngOnInit(): void {
   }
@@ -49,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.usuarioService.getoneUsuario(this.usuario.nombre, this.usuario.contrasena).subscribe(
       res => {
         this.respuesta = res;
-        console.log(this.respuesta[0].rol)
+        console.log(this.respuesta)
         if (this.respuesta.nombre  == 'Usuario y/o contraseña incorrecto'){
           this.error = true;
           this.loading = false;       
@@ -60,8 +57,6 @@ export class LoginComponent implements OnInit {
         else {
           this.loading = false;          
           this.common.loggedIn = true;
-          this.privilegios.evaluar(this.respuesta[0].rol);
-          this.privilegios.idRolActual = this.respuesta[0].rol;
           console.log(res);
           this.router.navigate(['/']);
         }

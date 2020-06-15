@@ -21,9 +21,6 @@ import { ProductoComponent } from './producto/producto.component';
 import { FormProductoComponent } from './form-producto/form-producto.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { PagoComponent } from './pago/pago.component';
-import { RolComponent } from './rol/rol.component';
-import { RolDataTableComponent } from './rol-data-table/rol-data-table.component';
-import { PrivilegioDataTableComponent } from './privilegio-data-table/privilegio-data-table.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmpleadoComponent } from './empleado/empleado.component';
 import { EmpleadoDataTableComponent } from './usuario-data-table/empleado-data-table.component';
@@ -38,6 +35,8 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { CrudComponent } from './crud/crud.component';
 import { ClienteDataTableComponent } from './cliente-data-table/cliente-data-table.component';
 import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.component';
+import { ContratoComponent } from './contrato/contrato.component';
+import { FormContratoComponent } from './form-contrato/form-contrato.component';
 
 
 @NgModule({
@@ -54,9 +53,6 @@ import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.co
     FormProductoComponent,
     CarritoComponent,
     PagoComponent,
-    RolComponent,
-    RolDataTableComponent,
-    PrivilegioDataTableComponent,
     EmpleadoComponent,
     EmpleadoDataTableComponent,
     FacturasComponent,
@@ -69,6 +65,8 @@ import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.co
     CrudComponent,
     ClienteDataTableComponent,
     ClienteRegistroComponent,
+    ContratoComponent,
+    FormContratoComponent,
   ],
   imports: [
     BrowserModule,

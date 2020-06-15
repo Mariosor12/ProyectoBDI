@@ -10,22 +10,29 @@
                         <input type="text" name = "nombre" [(ngModel)] = "producto.nombre" placeholder="Nombre" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "lugar" [(ngModel)] = "producto.descripcion" placeholder="Descripcion" class="form-control" autofocus>
+                        <input type="text" name = "descripcion" [(ngModel)] = "producto.descripcion" placeholder="Descripcion" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "entradas_disponibles" [(ngModel)] = "producto.precio_unitario" placeholder="Precio Unitario" class="form-control" autofocus>
+                        <input type="text" name = "genero" [(ngModel)] = "producto.genero" placeholder="Descripcion" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "entradas_vendidas" [(ngModel)] = "producto.fk_ale" placeholder="Tipo Productos" class="form-control" autofocus>
+                        <input type="text" name = "nombref" [(ngModel)] = "producto.nombref" placeholder="Descripcion" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "fecha_inicio" [(ngModel)] = "producto.fk_lager" placeholder="Tipo Productos" class="form-control" autofocus>
+                        <input type="text" name = "nombretp" [(ngModel)] = "producto.nombretp" placeholder="Descripcion" class="form-control" autofocus>
                     </div>
-                    <button (click)= "edit ? updatedProducto() : SaveNuevoProducto()" class="btn btn-success btn-block">
-                        SAVE
-                    </button>
+                    <div class="form-group">
+                        <input type="text" name = "nombrepe" [(ngModel)] = "producto.nombrepe" placeholder="Descripcion" class="form-control" autofocus>
+                    </div>
+                    <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
+              <option>Seleccionar opción</option>
+              <option *ngFor="let presentacion of presentaciones">
+                  {{presentacion.cantidad}} ml {{presentacion.costo}} $
+              </option>                            
+          </select>  
+          <hr>
                     <input #canti class="form-control form-control-md" type="text" placeholder="Cantidad" style="margin-bottom: 5px">                   
-                    <button routerLink = "/carrito" class="btn btn-block btn-primary" (click)="addCart(canti.value, pedido, producto); canti.value = ''" data-dismiss="modal">Agregar al carrito</button> 
+                    <button routerLink = "/carrito" class="btn btn-block btn-primary" (click)="addCart(canti.value, pedido, producto, valor.value, presentacion); canti.value = ''" data-dismiss="modal">Agregar al carrito</button> 
                 </form>
             </div>
         </div>
@@ -37,9 +44,7 @@
     <div class="card card-body text-center">
         <h5>{{producto.id}}. {{producto.nombre}}</h5>
         <p>{{producto.descripcion}}</p>
-         <p>  {{producto.precio_unitario}} </p> 
-         <p>  {{producto.fk_ale}} </p> 
-          <p> {{producto.fk_lager}} </p>
+
     </div>
 </div>
 

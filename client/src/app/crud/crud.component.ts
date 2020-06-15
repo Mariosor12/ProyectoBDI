@@ -4,7 +4,6 @@ import { CommonService } from './../services/common.service'
 
 import { Router } from '@angular/router';
 
-import { PrivilegioService } from './../services/privilegio.service';
 
 @Component({
   selector: 'app-crud',
@@ -15,7 +14,7 @@ export class CrudComponent implements OnInit {
 
   vista:string = '';
 
-  constructor(private common:CommonService, private router:Router, private privilegios:PrivilegioService) { }
+  constructor(private common:CommonService, private router:Router) { }
 
   ngOnInit(): void {
     this.vista = this.common.crudVista;    
@@ -41,10 +40,6 @@ export class CrudComponent implements OnInit {
   }
 
   gotoAgrega(){
-    if(this.privilegios.insertar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else{
       this.common.vista = '';
       if (this.common.crudVista === "Productos"){
         this.router.navigate(['/producto/add']);
@@ -58,17 +53,11 @@ export class CrudComponent implements OnInit {
       else if(this.common.crudVista === "Roles"){
         this.router.navigate(['/rol/add']);
       }
-    }
   }  
 
   gotoVender(){
-    if(this.privilegios.vender == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else{
       this.common.vista = "Venta";
       this.router.navigate(['/clientes/list']);
-    }
   }
 
   gotoComprar(){
@@ -77,12 +66,7 @@ export class CrudComponent implements OnInit {
 
 
   gotoFactP(){
-    if(this.privilegios.consultar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else{
       this.router.navigate(['/facturas/pendiente']);
-    }
   }
 
   cambiaVista(){

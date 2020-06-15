@@ -2,7 +2,7 @@ const ocCtrl = {};
 const pool = require('../database/database');
 
 ocCtrl.getOrdenesVenta = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta")
+    await pool.query("SELECT clave, fecha, fk_cliente AS proveedor, total FROM venta")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ ocCtrl.getOrdenesVenta = async (req, res) => {
 
 ocCtrl.getOrdenVenta = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE clave = "+id)
+    await pool.query("SELECT clave, fecha, fk_cliente AS proveedor, total FROM venta WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ ocCtrl.getOrdenVenta = async (req, res) => {
 
 ocCtrl.getOrdenesVentaAliado = async (req, res) => {
     const id = req.params.id;
-    await pool.query("sELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_proveedor = "+id)
+    await pool.query("sELECT clave, fecha, fk_proveedor AS proveedor FROM venta WHERE fk_proveedor = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -47,7 +47,7 @@ ocCtrl.getOrdenesVentaAliado = async (req, res) => {
 
 ocCtrl.createOrdenVenta = async (req, res) => {
     const oc = req.body;
-    await pool.query("INSERT INTO status_venta (fecha,fk_proveedor) VALUES ('"+oc.fecha+"',"+oc.proveedor+") RETURNING clave AS id")
+    await pool.query("INSERT INTO venta (fecha,fk_cliente, total) VALUES ('"+oc.fecha+"',"+oc.cliente+", "+oc.total+") RETURNING clave AS id")
         .then(response => {
             res.json(response.rows);
         })

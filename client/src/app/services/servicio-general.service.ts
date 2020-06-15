@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Empleado } from './../models/empleado';
+import { Usuario } from './../models/usuario';
+import { PerPre } from './../models/PerPre';
 
 import { Observable } from 'rxjs';
 
@@ -64,16 +66,72 @@ export class ServicioGeneralService {
     return this.http.post(this.API_URL+'/pago', pago);
   }
 
-  getAliados(){
+  getAliadosPro(){
     return this.http.get(this.API_URL+'/aliado');
   }
-  getAliProductos(aliado:number){
-    return this.http.get(this.API_URL+'/alipro/'+aliado);
+
+  deleteEvento(id: string){
+    return this.http.delete(this.API_URL+'/aliado/'+id);
   }
 
+  getAliadosProv(){
+    return this.http.get(this.API_URL+'/aliado');
+  }
+  getAliProveedores(){
+    return this.http.get(this.API_URL+'/alipro');
+  }
+
+  getAliProductos(aliado){
+    return this.http.get(this.API_URL+'/alipro');
+  }
+
+  getPresentaciones(){
+    return this.http.get(this.API_URL+'/presentacion/');    
+  }
+
+  getIngredientes(){
+    return this.http.get(this.API_URL+'/alipro/');    
+  }
+
+  getIngre(id: number){
+    return this.http.get(this.API_URL+'/alipro/aliado/' +id);    
+  }
+
+  getPerfumes(id: number){
+    return this.http.get(this.API_URL+'/alipro/producto/' +id);    
+  }
+
+  getProductos(){
+    return this.http.get(this.API_URL+'/producto');
+  }
+
+  getProducto(id: string | number){
+    return this.http.get(this.API_URL+'/producto/'+id);
+  }
+
+  getMinPresentaciones(){
+    return this.http.get(this.API_URL+'/perpre/');    
+  }
+
+  getMinPrese(){
+    return this.http.get(this.API_URL+'/perpre/');    
+  }
+
+  getMinPre(id:number){
+    return this.http.get(this.API_URL+'/perfume/'+id);    
+  }
+
+  getPresentacionesById(id:number){
+    return this.http.get(this.API_URL+'/perpre/perfume/'+id);    
+  }
+
+  saveMinPre(minPre: PerPre){
+    return this.http.post(this.API_URL+'/minpre', minPre);
+  }
   getEmpleados(){
     return this.http.get(this.API_URL+'/empleado');
   }
+
 
   getClientes(){
     return this.http.get(this.API_URL+'/cliente');
@@ -113,6 +171,30 @@ export class ServicioGeneralService {
 
   updateCliente(cliente: any){
     return this.http.put(this.API_URL+'/cliente/'+cliente.id, cliente);
+  }
+
+  checkMinPre(minPre: PerPre){    
+    return this.http.post(this.API_URL+'/minpre/mp', minPre);
+  }
+
+  login(usuarioLogin: Usuario){
+    return this.http.post(this.API_URL+'/usuario/ingreso', usuarioLogin);
+  }
+
+  getContratos(){
+    return this.http.get(this.API_URL+'/contrato/');
+  }
+
+  getContrato(id: number){
+    return this.http.get(this.API_URL+'/contrato/'+id);
+  }
+
+  saveContrato(contrato: any){
+    return this.http.post(this.API_URL+'/contrato/', contrato);
+  }
+
+  updateContrato(contrato: any){
+    return this.http.put(this.API_URL+'/contrato/'+contrato.id, contrato);
   }
 
 }

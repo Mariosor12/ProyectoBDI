@@ -21,14 +21,12 @@ export class ClienteRegistroComponent implements OnInit {
 
   cliente:any = [{
     id: 0,
-    lugar: '',
-    ci: '',
     nombre: '',
     apellido: '',
-    telefono: 0,
-    genero: ''
-  }];
-
+    telefono: '',
+    lugar: 0,
+    fk_proveedor: 0
+  }]
   estados:any = [{
     clave: 0,
     nombre: '',
@@ -72,13 +70,23 @@ export class ClienteRegistroComponent implements OnInit {
     fk_direccion: ''
   }];
 
+  aliados: any =[{
+      id: 0,
+      razon: '',
+      pagina: '',
+      tel: '',
+      activo: '',
+      membresia: '',
+      lugar: ''
+  }];
+
   separacion: any;
+  proveedor: any;
   constructor(private activatedRouter:ActivatedRoute, private router:Router, private sg:ServicioGeneralService, private common:CommonService) {
     this.common.title = "Agregar Cliente";
    }
 
    ngOnInit() {
-
     const params = this.activatedRouter.snapshot.params;
     if(params.id){
       this.caso = 'Modificar';
@@ -94,15 +102,16 @@ export class ClienteRegistroComponent implements OnInit {
             this.buscarMunicipios();
             this.municipio[0].nombre = res[0].m_clave+"-"+res[0].municipio;
             this.buscarParroquias();            
-            this.parroquia[0].nombre = res[0].p_clave+"-"+res[0].parroquia;                        
+            this.parroquia[0].nombre = res[0].p_clave+"-"+res[0].parroquia;  
+
           })
         },
         err => console.log(err)
       )
     }
-
+    
     this.getEstados();
-
+    this.getAliados1();
   }
 
   agregarEmpleado(){
@@ -116,6 +125,15 @@ export class ClienteRegistroComponent implements OnInit {
       err => console.error(err)
     );          
     
+  }
+
+  getAliados1(){
+    this.sg.getAliProveedores().subscribe(
+      res => {
+        this.aliados = res;
+      },
+      err => console.log(err)
+    )
   }
 
   getEstados(){
@@ -165,15 +183,15 @@ export class ClienteRegistroComponent implements OnInit {
   }
 
   agregarCliente(){
-    this.separacion = this.parroquia[0].nombre.split('-');    
+    this.separacion = this.parroquia[0].nombre.split('-');  
+    this.proveedor  = this.aliados[0].razon.split('-');
     this.sg.saveCliente({
       id: 0,
       lugar: this.separacion[0],
-      ci: this.cliente[0].ci,
+      fk_proveedor: this.proveedor[0],
       nombre: this.cliente[0].nombre,
       apellido: this.cliente[0].apellido,
-      telefono: this.cliente[0].telefono,
-      genero: this.cliente[0].genero
+      telefono: this.cliente[0].telefono
     }).subscribe(
       res => {
         this.router.navigate(['/clientes/list']);
@@ -188,11 +206,10 @@ export class ClienteRegistroComponent implements OnInit {
     this.sg.updateCliente({
       id: params.id,
       lugar: this.separacion[0],
-      ci: this.cliente[0].ci,
+      fk_proveedor: this.proveedor[0],
       nombre: this.cliente[0].nombre,
       apellido: this.cliente[0].apellido,
-      telefono: this.cliente[0].telefono,
-      genero: this.cliente[0].genero
+      telefono: this.cliente[0].telefono
     }).subscribe(
       res => {
         this.router.navigate(['/clientes/list']);

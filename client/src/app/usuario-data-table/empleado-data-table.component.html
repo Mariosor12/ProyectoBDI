@@ -15,16 +15,14 @@
       <tr>        
         <th>Usuario</th>
         <th>Nombre</th>
-        <th>Rol</th>
         <th>Edit / Delete</th>
       </tr>
     </thead>
     <tbody>
         <tr *ngFor="let usuario of usuarios">
           <td>{{usuario.id}}</td>
-          <td>{{usuario.nombre}}</td>
-          <td>{{usuario.rol}}</td>                  
-          <td><a [routerLink]="['/usuarios/edit', usuario.id, usuario.nombre, usuario.rol]" ><i class="fas fa-edit"></i></a>  /  <button (click)="eliminarUsuario(usuario)" class="links"><i class="far fa-trash-alt"></i></button></td>
+          <td>{{usuario.nombre}}</td>               
+          <td><a [routerLink]="['/usuarios/edit', usuario.id, usuario.nombre]" ><i class="fas fa-edit"></i></a>  /  <button (click)="eliminarUsuario(usuario)" class="links"><i class="far fa-trash-alt"></i></button></td>
         </tr>               
       </tbody>    
   </table>  

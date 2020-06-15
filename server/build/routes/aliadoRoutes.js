@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const aliCtrl = require('../controllers/aliadoController');
 
-router.get('/', aliCtrl.getAliados);
-router.get('/:id', aliCtrl.getAliado);
-router.post('/', aliCtrl.createAliado);
-router.put('/:id', aliCtrl.editAliado);
-router.delete('/:id', aliCtrl.deleteAliado);
+router.get('/', aliCtrl.getAliadosPro);
+router.get('/:id', aliCtrl.getAliadoPro);
+router.post('/', aliCtrl.createAliadoPro);
+router.put('/:id', aliCtrl.editAliadoPro);
+router.delete('/:id', aliCtrl.deleteAliadoPro);
 
 module.exports = router;

@@ -1,8 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { PrivilegioService } from '../services/privilegio.service';
 
-import { EventoService } from '../services/evento.service';
+import { ServicioGeneralService } from '../services/servicio-general.service';
 import { Evento } from '../models/evento';
 
 @Component({
@@ -15,47 +14,82 @@ export class EventoComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
-  eventos: any = [];
+  aliados: any = {
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    activo: '',
+    membresia: '',
+    lugar: ''
+  };
 
-  constructor(private eventoService: EventoService, private router: Router, private privilegios: PrivilegioService ) { }
+  aliadosp: any = {
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    activo: '',
+    membresia: '',
+    lugar: ''
+  };
+
+  ingredientes: any = {
+    id:0,
+    nombre:'',
+    costo:0,
+    proveedor:0
+  }
+
+  constructor(private sg: ServicioGeneralService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getEventos();
-    this.privilegios.evaluar(this.privilegios.idRolActual);
+    this.getProductor();
+    this.getProveedor();
+    this.getIngredientes();
   }
 
-editEvento(evento: Evento){
-  if(this.privilegios.modificar == false){
-    alert("Error. No tiene permisos para acceder a este modulo");
-  }
-  else {
-  console.log(evento);
-  this.router.navigate(['/evento/edit', evento.id, evento.fecha_inicio, evento.fecha_fin, evento.nombre, evento.entradas_disponibles, evento.entradas_vendidas, evento.lugar])
-  }
+editEvento(aliados: any){
+  console.log(aliados);
+  this.router.navigate(['/evento/edit', aliados.id, aliados.razon, aliados.pagina, aliados.tel, aliados.activo, aliados.membresia, aliados.lugar])
 }
 
-getEventos(){
-  this.eventoService.getEventos().subscribe(
+getProductor(){
+  this.sg.getAliadosPro().subscribe(
     res => {
-      this.eventos = res;
+      this.aliadosp = res;
+    },
+    err => console.log(err)
+  )
+}
+
+getProveedor(){
+  this.sg.getAliProveedores().subscribe(
+    res => {
+      this.aliados = res;
+    },
+    err => console.log(err)
+  )
+}
+
+getIngredientes(){
+  this.sg.getIngredientes().subscribe(
+    res => {
+      this.ingredientes = res;
     },
     err => console.log(err)
   )
 }
 
   DeleteEvento(id: string){
-    if(this.privilegios.eliminar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else{
-    this.eventoService.deleteEvento(id).subscribe(
+    this.sg.deleteEvento(id).subscribe(
       res => {
       console.log(res);
-      this.getEventos();
+      this.getProductor();
+      this.getProveedor();
       },
       err => console.log(err)
     )
-    }
   }
 
 }

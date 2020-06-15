@@ -6,7 +6,7 @@
 
   <hr><br>
 
-  <p>A continuación se muestra una tabla con todos los aliados que tiene MinerUCAB registrados en su Base de Datos. Por favor, seleccione el Aliado al que desea efectuarle una compra.</p>
+  <p>A continuación se muestra una tabla con todos los aliados que tiene nuestra tienda registrados en su Base de Datos. Por favor, seleccione el Aliado al que desea efectuarle una compra.</p>
 
 </div>
 
@@ -29,7 +29,28 @@
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
       <thead>
         <tr>        
-          <th>Nombre</th>
+          <th>Nombre Productor</th>
+          <!----<th>Estado donde se ubica</th> -->
+          <th *ngIf="vista == ''">Edit / Delete</th>
+          <th *ngIf="vista == 'Compra'">Select</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aliado of aliadosp">
+          <td>{{aliado.razon}}</td>
+          <!----<td>{{aliado.lugar}}</td>      -->
+          <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+          <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+          <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+          <td *ngIf="vista == 'Compra'"><button class="links" (click)="gotoMinerales(aliado)"><i class="fas fa-plus-circle"></i></button></td>
+        </tr>               
+      </tbody>    
+    </table>
+<hr>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>        
+          <th>Nombre Proveedor</th>
           <!----<th>Estado donde se ubica</th> -->
           <th *ngIf="vista == ''">Edit / Delete</th>
           <th *ngIf="vista == 'Compra'">Select</th>          
@@ -37,7 +58,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let aliado of aliados">
-          <td>{{aliado.comercial}}</td>
+          <td>{{aliado.razon}}</td>
           <!----<td>{{aliado.lugar}}</td>      -->
           <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
           <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>

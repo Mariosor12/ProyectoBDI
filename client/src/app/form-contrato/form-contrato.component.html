@@ -1,0 +1,39 @@
+
+<div class="row">
+    <h3>Agregar/Editar Contrato</h3>
+    <hr>
+    <div class="col-md-4 offset-md-2">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name = "fechai" [(ngModel)] = "contratos.fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "fechaf" [(ngModel)] = "contratos.fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "descripcion" [(ngModel)] = "contratos.descripcion" placeholder="Descripcion" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "exclusividad" [(ngModel)] = "contratos.exclusividad" placeholder="Exclusividad" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "proveedor" [(ngModel)] = "contratos.proveedor" placeholder="Proveedor" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "productor" [(ngModel)] = "contratos.productor" placeholder="Productor" class="form-control" autofocus>
+                    </div>
+                    
+          <hr>               
+                    <button (click)= "SaveNuevoProducto()" class="btn btn-success btn-block">
+                        SAVE
+                    </button>  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

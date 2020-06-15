@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventoService} from '../services/evento.service';
-import { Evento } from '../models/evento';
+import { ServicioGeneralService} from '../services/servicio-general.service';
 import { ProductoService} from '../services/producto.service';
 import { Producto } from '../models/producto';
 import {ActivatedRoute, Router} from '@angular/router';
-import { PrivilegioService } from '../services/privilegio.service';
 import { CarritoService} from '../services/carrito.service';
 
 @Component({
@@ -15,80 +13,105 @@ import { CarritoService} from '../services/carrito.service';
 export class InicioComponent implements OnInit {
 
   hoy:Date;
-  eventos: any = [];
   productos: any = [];
 
-  constructor(private eventoService: EventoService, private productoService: ProductoService, private router: Router, private privilegios: PrivilegioService, private carrito: CarritoService) {
+  vista:string = '';
+  cantidad:number = 0;
+  index:any = '';
+  loading:boolean = true;
+  respuesta:any;
+  mineralId1:number = 0;
+  mineralNombre1:string = '';
+  mineralId2:number = 0;
+  mineralNombre2:string = '';
+  aComponer:boolean = false;
+  created = false;
+
+  aliados:any = [{
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    activo: '',
+    membresia: '',
+    lugar: ''
+  }];
+
+  aliadosp:any = [{
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    activo: '',
+    membresia: '',
+    lugar: ''
+  }];
+
+  presentacion:any = [{
+    id: 0,
+    cantidad: 0
+  }];
+
+  presentaciones:any = [{
+    id: 0,
+    cantidad: 0
+  }];
+
+  perpre:any = [{
+    perfume: 0,
+    presentacion: 0,
+    costo: 0 
+  }];
+
+  constructor(private sg: ServicioGeneralService, private productoService: ProductoService, private router: Router, private carrito: CarritoService) {
     this.hoy = new Date();
    }
 
   
   ngOnInit(): void {
-    this.getEventos();
+    this.getAliados();
+    this.getAliados1();
     this.getProductos();
     this.carrito.resetAll();
-    this.privilegios.evaluar(this.privilegios.idRolActual);
   }
 
-editEvento(evento: Evento){
-  if(this.privilegios.modificar == false){
-    alert("Error. No tiene permisos para acceder a este modulo");
-  }
-  else{
-  console.log(evento);
-  this.router.navigate(['/evento/edit', evento.id, evento.fecha_inicio, evento.fecha_fin, evento.nombre, evento.entradas_disponibles, evento.entradas_vendidas, evento.lugar])
-  }
-}
 
-getEventos(){
-  this.eventoService.getEventos().subscribe(
+getAliados(){
+  this.sg.getAliadosPro().subscribe(
     res => {
-      this.eventos = res;
+      this.aliadosp = res;
+    },
+    err => console.log(err)
+  )
+  
+}
+getAliados1(){
+  this.sg.getAliProveedores().subscribe(
+    res => {
+      this.aliados = res;
     },
     err => console.log(err)
   )
   
 }
 
-  DeleteEvento(id: string){
-    if(this.privilegios.eliminar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else {
-    this.eventoService.deleteEvento(id).subscribe(
-      res => {
-      console.log(res);
-      this.getEventos();
-      },
-      err => console.log(err)
-    )
-    }
-  }
 
   editProducto(producto: Producto){
-    if(this.privilegios.modificar == false){
-      alert("Error. No tiene permisos para acceder a este modulo");
-    }
-    else {
     console.log(producto);
-    this.router.navigate(['/producto/edit', producto.id, producto.nombre, producto.descripcion, producto.precio_unitario, producto.fk_ale, producto.fk_lager])
-    }
+    this.router.navigate(['/producto/edit', producto.id, producto.nombre, producto.descripcion, producto.fecha_nacimiento, producto.genero, producto.fk_fijador, producto.fk_tipo_perfume, producto.fk_perfumista])
   }
   
   getProductos(){
     this.productoService.getProductos().subscribe(
       res => {
         this.productos = res;
+        console.log(this.productos.id)
       },
       err => console.log(err)
     )
   }
   
     DeleteProducto(id: string){
-      if(this.privilegios.eliminar == false){
-        alert("Error. No tiene permisos para acceder a este modulo");
-      }
-      else {
       this.productoService.deleteProducto(id).subscribe(
         res => {
         console.log
@@ -97,6 +120,5 @@ getEventos(){
         },
         err => console.log(err)
       )
-    }
   }
 }

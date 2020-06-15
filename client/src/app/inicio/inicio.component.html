@@ -56,27 +56,50 @@
 
     <!--Title-->
     <div class = "text-center">
-    <h3>Eventos</h3>
+    <h3>Proveedores</h3>
     </div>
     <hr>
 
     <!-- Page Features -->
     <div class="row text-center">
 
-      <div class="col-lg-3 col-md-6 mb-4" *ngFor = "let evento of eventos">
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor = "let aliado of aliados">
         <div class="card h-100">
           <img class="card-img-top" src="http://placehold.it/500x325" alt="">
           <div class="card-body">
-            <p>{{evento.id}}.{{evento.nombre}}</p>
-            <p>{{evento.lugar}}</p>
-            <p>{{evento.fecha_inicio}}--{{evento.fecha_fin}}</p>
+            <p>{{aliado.id}}.{{aliado.razon}}</p>
+            <p>{{aliado.membresia}}</p>
+            <p>{{aliado.lugar}}</p>
           </div>
-          <div class="card-footer">
-            <a (click) = "editEvento(evento)" class="btn btn-primary">Editar</a>
-          </div>
+          <a [routerLink] = "['/evento/edit', aliado.id, aliado.razon, aliado.pagina, aliado.tel, aliado.activo, aliado.membresia, aliado.lugar]" class="btn btn-info btn-block">
+            VER FICHA ALIADOS
+           </a>
         </div>
       </div>
     </div>
+<hr>
+    <div class = "text-center">
+      <h3>Productores</h3>
+      </div>
+      <hr>
+  
+      <!-- Page Features -->
+      <div class="row text-center">
+  
+        <div class="col-lg-3 col-md-6 mb-4" *ngFor = "let aliado of aliadosp">
+          <div class="card h-100">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <p>{{aliado.id}}.{{aliado.razon}}</p>
+              <p>{{aliado.membresia}}</p>
+              <p>{{aliado.lugar}}</p>
+            </div>
+            <a [routerLink] = "['/evento/edit', aliado.id, aliado.razon, aliado.pagina, aliado.tel, aliado.activo, aliado.membresia, aliado.lugar]" class="btn btn-info btn-block">
+                VER FICHA ALIADOS
+               </a>
+          </div>
+        </div>
+      </div>
     <!-- /.row -->
     <hr>
     <div class = "text-center">
@@ -89,13 +112,16 @@
           <img class="card-img-top" src="http://placehold.it/500x325" alt="">
           <div class="card-body">
             <p>{{producto.id}}.{{producto.nombre}}</p>
-            <p>{{producto.precio_unitario}}</p>
+            <p>{{producto.nombretp}}</p>
+            <p>{{producto.nombref}}</p>
+            <p>{{producto.descripcion}}</p>
+            <p>{{producto.fecha}}</p>
+            <p>{{producto.genero}}</p>
+            <p>{{producto.nombrepe}}({{producto.nombred}})</p>
           </div>
-          <div class="card-footer">
-            <a [routerLink] = "['/producto/edit', producto.id, producto.nombre, producto.descripcion, producto.precio_unitario, producto.fk_ale, producto.fk_lager]" class="btn btn-primary">
-                Editar 
-               </a>
-          </div>
+          <a [routerLink] = "['/producto/edit',producto.id, producto.nombre, producto.descripcion, producto.fecha, producto.genero, producto.nombref, producto.nombretp, producto.nombrepe]" class="btn btn-info btn-block">
+            VER FICHA PERFUME
+           </a>
         </div>
       </div>
     </div>

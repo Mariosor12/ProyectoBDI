@@ -5,8 +5,8 @@ const pool  = require('../database/database');
     const id = req.params.id;
     const nombre = req.params.nombre;
     const contrasena = req.params.contrasena;
-    const rol = req.params.rol;
-    await pool.query("select id, nombre, contrasena, fk_rol AS rol from usuario where nombre = '"+nombre+"' and contrasena = '"+contrasena+"';")
+    const cliente = req.params.cliente;
+    await pool.query("select clave as id, nombre, contrasena from usuario where nombre = '"+nombre+"' and contrasena = '"+contrasena+"';")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);                

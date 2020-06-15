@@ -6,29 +6,43 @@
 <div class="col-md-5" *ngFor = "let producto of productos">
     <div class="card text-center">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            {{producto.nombre}}
+            {{producto.nombrep}}
             <button class = "btn btn-danger" (click) = "DeleteProducto(producto.id)">
                 <i class="far fa-trash-alt"></i>
             </button>
         </div>
         <div class="card-body">
+            <h5>Tipo_Perfume</h5>
+            <br>
+            <h4>{{producto.nombretp}}</h4>
+        <hr>
             <h5>Descripcion</h5>
             <br>
-            <h4>{{producto.descripcion}}</h4>
+            <h4>{{producto.descripcion}}</h4>  
         <hr>
-            <h5>Precio Unitario</h5>
-            <br>
-            <h4>{{producto.precio_unitario}}</h4>  
-        <hr>
-             <h5>Tipo Producto</h5>
+             <h5>Fecha Creacion</h5>
              <br>
-             <h4>{{producto.fk_ale}}</h4> 
+             <h4>{{producto.fecha}}</h4> 
         <hr>
-             <h5>Tipo Producto</h5>
+             <h5>Genero</h5>
              <br>
-             <h4>{{producto.fk_lager}}</h4> 
+             <h4>{{producto.genero}}</h4> 
         <hr>
-               <a [routerLink] = "['/producto/edit', producto.id, producto.nombre, producto.descripcion, producto.precio_unitario, producto.fk_ale, producto.fk_lager]" class="btn btn-info btn-block">
+             <h5>Nombre Perfumista</h5>
+             <br>
+             <h4>{{producto.nombrepe}}</h4> 
+        <hr>
+             <h5>Nacionalidad Perfumista</h5>
+             <br>
+             <h4>{{producto.nombred}}</h4> 
+        <hr>
+        <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
+            <option>Seleccionar opción</option>
+            <option *ngFor="let presentacion of presentaciones">
+                {{presentacion.id}}-{{presentacion.cantidad}} ml
+            </option>                            
+        </select>    
+               <a [routerLink] = "['/producto/edit',producto.id, producto.nombre, producto.descripcion, producto.fecha, producto.genero, producto.nombref, producto.nombretp, producto.nombrepe]" class="btn btn-info btn-block">
                 EDITAR PRODUCTO
                </a>
         </div>

@@ -7,5 +7,6 @@ router.get('/:id', clCtrl.getoneProducto);
 router.post('/', clCtrl.createProducto);
 router.put('/:id', clCtrl.editProducto);
 router.delete('/:id', clCtrl.deleteProducto);
+router.get('/producto/:id', clCtrl.getPerfume);
 
 module.exports = router;

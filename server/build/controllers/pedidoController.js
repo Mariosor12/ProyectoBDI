@@ -2,7 +2,7 @@ const pedidoCtrl = {};
 const pool = require('../database/database');
 
 pedidoCtrl.getPedidos = async (req, res) => {
-    await pool.query("select c.nro_factura as id, ca.nombre as nombre, c.fecha_compra as fecha, dc.cantidad as cantidad, dc.precio_unitario as precio, sum(dc.cantidad*dc.precio_unitario) as total from compra c, detalle_compra dc, cerveza_artesanal ca WHERE c.nro_factura = dc.fk_compra and ca.clave = dc.fk_cerveza group by c.nro_factura, ca.nombre, c.fecha_compra, dc.cantidad, dc.precio_unitario")
+    await pool.query("select p.clave as id, c.fecha as fecha, p.cantidad as cantidad, p.total as total, p.fk_compra as compra, p.fk_venta as venta, p.fk_envio as envio, p.fk_proveedor as proveedor from pedido p, compra c where p.fk_compra = c.clave union select p.clave as id, v.fecha as fecha, p.cantidad as cantidad, p.total as total, p.fk_compra as compra, p.fk_venta as venta, p.fk_envio as envio, p.fk_proveedor as proveedor from pedido p, venta v where p.fk_venta = v.clave ")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -16,8 +16,8 @@ pedidoCtrl.getPedidos = async (req, res) => {
 };
 
 pedidoCtrl.getPedido = async (req, res) => {
-    const nro_factura = req.params.id;
-    await pool.query("select c.nro_factura as id, ca.nombre as nombre, c.fecha_compra as fecha, dc.cantidad as cantidad, dc.precio_unitario as precio, sum(dc.cantidad*dc.precio_unitario) as total from compra c, detalle_compra dc, cerveza_artesanal ca WHERE c.nro_factura = dc.fk_compra and ca.clave = dc.fk_cerveza and c.nro_factura = "+nro_factura+" group by c.nro_factura, ca.nombre, c.fecha_compra, dc.cantidad, dc.precio_unitario")
+    const id = req.params.id;
+    await pool.query("select p.clave as id, c.fecha as fecha, p.cantidad as cantidad, p.total as total, p.fk_compra as compra, p.fk_venta as venta, p.fk_envio as envio, p.fk_proveedor as proveedor from pedido p, compra c where p.fk_compra = c.clave and p.clave = "+id+" union select p.clave as id, v.fecha as fecha, p.cantidad as cantidad, p.total as total, p.fk_compra as compra, p.fk_venta as venta, p.fk_envio as envio, p.fk_proveedor as proveedor from pedido p, venta v where p.fk_venta = v.clave and p.clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -47,7 +47,7 @@ pedidoCtrl.getPedidosOC = async (req, res) => {
 
 pedidoCtrl.createPedido = async (req, res) => {
     const pedido = req.body;
-    await pool.query("INSERT INTO compra (total,fecha_compra,fk_tienda_fisica, fk_tienda_virtual, fk_cliente) VALUES ("+pedido.total+","+pedido.fecha_compra+","+pedido.fk_tienda_fisica+", "+pedido.fk_tienda_virtual+", "+pedido.fk_cliente+") RETURNING nro_factura")
+    await pool.query("INSERT INTO pedido (cantidad,total,fk_compra, fk_venta, fk_envio, fk_proveedor) VALUES ("+pedido.cantidad+","+pedido.total+","+pedido.compras+", "+pedido.venta+", "+pedido.envio+", "+pedido.proveedor+") RETURNING clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

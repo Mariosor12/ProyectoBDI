@@ -1,0 +1,77 @@
+<br>
+
+
+  <h1> Contratos</h1>
+
+  <hr><br>
+
+  <p>A continuación se muestra una tabla con todos los contratos que tiene nuestra tienda registrados en su Base de Datos. Por favor, seleccione el Aliado al que desea efectuarle una compra.</p>
+
+
+
+<div class="container">
+    <div *ngIf="loading == true" class="div">
+      <h3>Cargando Información</h3>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>   
+    </div>
+  </div>
+
+<div class="container">
+  
+  <div *ngIf="vista != ''" class="div">
+    <br>
+    <label><b>Seleccionar Contrato</b></label>    
+  </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>        
+            <th>Id</th>
+            <th>Nombre Proveedor</th>
+            <th>Nombre Productor</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Descripcion</th>
+            <th>Exclusividad</th>
+            <br>
+          <!----<th>Estado donde se ubica</th> -->
+          <th *ngIf="vista == ''">Edit / Delete</th>
+          <th *ngIf="vista == 'Compra'">Select</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contrato of contrato">
+            <td>{{contrato.id}}</td>
+            <td>{{contrato.nombrep}}</td>
+            <td>{{contrato.nombrepr}}</td>
+            <td>{{contrato.fechai}}</td>
+            <td>{{contrato.fechaf}}</td>
+            <td>{{contrato.descripcion}}</td>
+            <td>{{contrato.exclusividad}}</td>
+          <!----<td>{{aliado.lugar}}</td>      -->
+          <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+          <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+          <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+          <td *ngIf="vista == ''"><button class="links" (click)="gotoMinerales(contrato)"><i class="fas fa-plus-circle"></i></button></td>
+        </tr>               
+      </tbody>    
+    </table>
+  
+  <br>
+
+  
+    <button *ngIf="vista == ''" class="links" (click)="gotoContrato()">
+      <p><i class="fas fa-plus-circle px-1" style="font-size: 30px"></i> Agregar Nuevo Contrato</p>        
+    </button>
+
+    <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
+      Volver a Inicio
+    </button>
+    
+
+</div>
+
+
+<br>

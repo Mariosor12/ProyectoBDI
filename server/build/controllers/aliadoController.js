@@ -1,8 +1,8 @@
 const aliCtrl = {};
 const pool = require('../database/database');
 
-aliCtrl.getAliados = async (req, res) => {
-    await pool.query("SELECT rif as id, razon_social as razon, denominacion_comercial as comercial, pagina_web as pagina, fecha_afiliacion as fecha, fk_direccion as lugar FROM proveedor")
+aliCtrl.getAliadosPro = async (req, res) => {
+    await pool.query("SELECT p.clave as id, p.nombre as razon, p.pag_web as pagina, p.telefono as tel, p.activo, p.membresia, d.nombre as lugar FROM productor p, direccion d where p.fk_direccion = d.clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -15,9 +15,9 @@ aliCtrl.getAliados = async (req, res) => {
         })
 };
 
-aliCtrl.getAliado = async (req, res) => {
+aliCtrl.getAliadoPro = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT rif as id, razon_social as razon, denominacion_comercial as comercial, pagina_web as pagina, fecha_afiliacion as fecha, fk_direccion as lugar FROM proveedor WHERE rif ="+id)
+    await pool.query("SELECT clave as id, nombre as razon, pag_web as pagina, telefono as tel, activo, membresia, fk_direccion as lugar FROM productor WHERE clave ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -30,9 +30,9 @@ aliCtrl.getAliado = async (req, res) => {
         })
 };
 
-aliCtrl.createAliado = async (req, res) => {
+aliCtrl.createAliadoPro = async (req, res) => {
     const ali = req.body;
-    await pool.query("INSERT INTO Aliado (razon_social, denominacion_comercial, pagina_web, fecha_afiliacion, fk_lugar) VALUES ('"+ali.razon+"','"+ali.comercial+"','"+ali.pagina+"','"+ali.fecha+"', "+ali.lugar+")")
+    await pool.query("INSERT INTO Productor (nombre, pag_web, telefono, activo, membresia, fk_direccion) VALUES ('"+ali.razon+"','"+ali.pagina+"','"+ali.tel+"','"+ali.activo+"', '"+ali.membresia+"', "+ali.lugar+")")
         .then(response => {
             res.json('Insertado');
         })
@@ -42,10 +42,10 @@ aliCtrl.createAliado = async (req, res) => {
         })
 };
 
-aliCtrl.editAliado = async (req, res) => {
+aliCtrl.editAliadoPro = async (req, res) => {
     const id = req.params.id;
     const ali = req.body;
-    await pool.query("UPDATE proveedor SET razon_social = '"+ali.razon+"', denominacion_comercial = '"+ali.comercial+"', pagina_web = '"+ali.pagina+"', fecha_afiliacion = "+ali.fecha+", fk_lugar = "+ali.lugar+" WHERE rif = "+id)
+    await pool.query("UPDATE productor SET nombre = '"+ali.razon+"', pag_web = '"+ali.pagina+"', telefono = '"+ali.tel+"', activo = '"+ali.activo+"', membresia = '"+ali.membresia+"',fk_direccion = "+ali.lugar+" WHERE clave = "+id)
         .then(response => {
             res.json('Actualizado');
         })
@@ -55,9 +55,9 @@ aliCtrl.editAliado = async (req, res) => {
         })
 };
 
-aliCtrl.deleteAliado = async (req, res) => {
+aliCtrl.deleteAliadoPro = async (req, res) => {
     const id = req.params.id;
-    await pool.query("DELETE FROM proveedeor WHERE rif = "+id)
+    await pool.query("DELETE FROM productor WHERE clave = "+id)
         .then(response => {
             res.json('Aliado Eliminado');
         })
