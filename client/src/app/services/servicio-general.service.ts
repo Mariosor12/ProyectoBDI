@@ -14,6 +14,13 @@ export class ServicioGeneralService {
   API_URL = 'http://localhost:3000/api';
   constructor(private http: HttpClient) { }
 
+  catalogo: any = [{
+    id: 0,
+    nombre: '',
+    cantidad: 0,
+    exclusividad: ''
+  }];
+
   getOrdenComprasPendientes(){
     return this.http.get(this.API_URL+'/ordencompra/revision');
   }
@@ -202,5 +209,14 @@ export class ServicioGeneralService {
   updateContrato(contrato: any){
     return this.http.put(this.API_URL+'/contrato/'+contrato.id, contrato);
   }
+
+  getCatalogos(){
+    return this.http.get(this.API_URL+'/catalogo/');
+  }
+
+  getCatalogo(contrato:any){
+    return this.http.get(this.API_URL+'/catalogo/'+contrato.proveedor+'/'+contrato.productor+ '/' +contrato.id);
+  }
+
 
 }

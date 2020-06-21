@@ -19,6 +19,7 @@ const routesPerPre = require('./routes/perpre');
 const routesCliente = require('./routes/clienteRoutes');
 const routesLugar = require('./routes/lugarRoutes');
 const routesContrato = require('./routes/contratoRoutes');
+const routesCatalogo = require('./routes/catalogoRoutes');
 
 
 const cors = require('cors');
@@ -55,6 +56,7 @@ app.use('/api/cliente', routesCliente);
 //app.use('/api/reporte',routesReport);
 app.use('/api/lugar', routesLugar);
 app.use('/api/contrato', routesContrato);
+app.use('/api/catalogo', routesCatalogo);
 
 //----------------starting the server----------------------
 app.listen(app.get('port'), () => {

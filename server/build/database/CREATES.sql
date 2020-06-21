@@ -177,6 +177,7 @@ CREATE TABLE Formula(
     escala VARCHAR NOT NULL,
     peso NUMERIC not NULL,
     rango varchar NOT NULL,
+    tipo varchar NOT NULL CHECK (tipo = 'anual' OR tipo = 'inicial'),
     fk_proveedor INTEGER NOT NULL,
     fk_productor INTEGER NOT NULL,
     CONSTRAINT PK_Formula PRIMARY KEY (clave),

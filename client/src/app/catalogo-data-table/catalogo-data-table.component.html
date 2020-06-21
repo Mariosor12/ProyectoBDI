@@ -1,0 +1,66 @@
+<br>
+
+
+  <h1> Catalogos</h1>
+
+  <hr><br>
+
+  <p>A continuación se muestra una tabla con todos los catalogos que tiene nuestra tienda registrados en su Base de Datos.</p>
+
+
+
+<div class="container">
+    <div *ngIf="loading == true" class="div">
+      <h3>Cargando Información</h3>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>   
+    </div>
+  </div>
+
+<div class="container">
+  
+  <div *ngIf="vista != ''" class="div">
+    <br>
+    <label><b>Seleccionar Catalogo</b></label>    
+  </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>        
+            <th>Id</th>
+            <th>Nombre Perfume</th>
+            <th>Cantidad</th>
+            <th>Eclusividad</th>
+            <br>
+          <!----<th>Estado donde se ubica</th> -->          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let catalogo of catalogo">
+            <td>{{catalogo.id}}</td>
+            <td>{{catalogo.nombre}}</td>
+            <td>{{catalogo.cantidad}}</td>
+            <td>{{catalogo.exclusividad}}</td>
+          <!-- <a [routerLink] = "['/contrato/edit', contrato.id, contrato.fechai, contrato.descripcion, contrato.proveedor, contrato.productor]" class="btn btn-info btn-block"> EDITAR
+          </a> -->
+        </tr>               
+      </tbody>    
+    </table>
+  
+  <br>
+
+  
+    <!-- <button *ngIf="vista == ''" class="links" (click)="gotoCatalogo()">
+      <p><i class="fas fa-plus-circle px-1" style="font-size: 30px"></i> Agregar Nuevo Catalogo</p>        
+    </button>
+
+    <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
+      Volver a Inicio
+    </button> -->
+    
+
+</div>
+
+
+<br>

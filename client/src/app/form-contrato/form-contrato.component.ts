@@ -84,7 +84,7 @@ export class FormContratoComponent implements OnInit {
     this.sg.saveContrato(this.contrato).subscribe(
         res => {
           console.log(res);
-          this.router.navigate(['/contratos']);
+          this.router.navigate(['/catalogo/add']);
           // this.contratos = res; // Esto esta mal.
 
         },

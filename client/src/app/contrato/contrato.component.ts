@@ -6,7 +6,6 @@ import { ServicioGeneralService } from './../services/servicio-general.service';
 import { CarritoService } from './../services/carrito.service';
 import { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
-import { CarritoComponent } from '../carrito/carrito.component';
 
 @Component({
   selector: 'app-contrato',
@@ -65,6 +64,16 @@ export class ContratoComponent implements OnInit {
     lugar: ''
   }];
  
+  catalogo: any = [{
+    id: 0,
+    nombre: '',
+    cantidad: 0,
+    exclusividad: '',
+    proveedor: 0,
+    productor: 0
+
+  }];
+
   dtTrigger:Subject<any> = new Subject();
 
 
@@ -78,6 +87,7 @@ export class ContratoComponent implements OnInit {
   }
   this.getContratos();
   this.getContrato();
+  this.getCatalogo();
 }
 
 ngOnDestroy(): void {    
@@ -97,6 +107,7 @@ getContratos(){
   this.sg.getContratos().subscribe(
     res => {
       this.contrato = res;
+      console.log(this.contrato);
       this.dtTrigger.next();
       this.loading = false;
     },
@@ -108,8 +119,31 @@ getContrato(){
   this.sg.getContratoc().subscribe(
     res => {
       this.contratos = res;
+      console.log(this.contratos);
       this.dtTrigger.next();
       this.loading = false;
+    },
+    err => console.log(err)
+  )
+}
+
+getCatalogo(){
+  this.sg.getCatalogos().subscribe(
+    res => {
+      this.catalogo = res;
+      console.log(this.catalogo);
+      this.dtTrigger.next();
+      this.loading = false;
+    },
+    err => console.log(err)
+  )
+}
+
+getCatalogos(contrato: any){
+  this.sg.getCatalogo(contrato).subscribe(
+    res => {
+      this.catalogo = res;
+      console.log(this.catalogo);
     },
     err => console.log(err)
   )

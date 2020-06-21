@@ -1,0 +1,55 @@
+<br>
+
+
+  <h1> Catalogo</h1>
+
+  <hr><br>
+
+  <p>A continuación se muestra una tabla con todos los productos que tienen los contratos en nuestra tienda registrados en su Base de Datos. Por favor, seleccione el Aliado al que desea efectuarle una compra.</p>
+
+
+
+<div class="container">
+    <div *ngIf="loading == true" class="div">
+      <h3>Cargando Información</h3>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>   
+    </div>
+  </div>
+
+<div class="container">
+
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>        
+            <th>Id</th>
+            <th>Nombre Perfume</th>
+            <th>Cantidad</th>
+            <th>Exclusividad</th>
+            <br>
+          <!----<th>Estado donde se ubica</th> -->          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let catalogo of catalogo">
+            <td>{{catalogo.id}}</td>
+            <td>{{catalogo.nombre}}</td>
+            <td>{{catalogo.cantidad}}</td>
+            <td>{{catalogo.exclusividad}}</td>
+          <hr>
+        </tr>               
+      </tbody>    
+    </table>
+  
+  <br>
+    <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
+      Volver a Inicio
+    </button>
+    
+
+</div>
+
+
+<br>

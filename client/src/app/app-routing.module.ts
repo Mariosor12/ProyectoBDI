@@ -23,6 +23,10 @@ import { ClienteDataTableComponent} from './cliente-data-table/cliente-data-tabl
 import { ClienteRegistroComponent } from './cliente-registro/cliente-registro.component';
 import { ContratoComponent} from './contrato/contrato.component';
 import { FormContratoComponent} from './form-contrato/form-contrato.component';
+import { CatalogoComponent} from './catalogo/catalogo.component';
+import { CatalogoDataTableComponent} from './catalogo-data-table/catalogo-data-table.component';
+import { CatalogoAddComponent } from './catalogo-add/catalogo-add.component';
+
 
 
 const routes: Routes = [
@@ -142,6 +146,18 @@ component: ReportesComponent
 {
   path: 'contrato/edit/:id/:fechai/:descripcion/:proveedor/:productor',
   component: FormContratoComponent
+},
+{
+  path: 'catalogo/:proveedor/:productor/:id',
+  component: CatalogoComponent
+},
+{
+  path: 'catalogo/list',
+  component: CatalogoDataTableComponent
+},
+{
+  path: 'catalogo/add',
+  component: CatalogoAddComponent
 }
 
 ];
