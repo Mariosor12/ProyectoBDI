@@ -21,6 +21,11 @@ export class ServicioGeneralService {
     exclusividad: ''
   }];
 
+  perfume: any = [{
+    id: 0,
+    nombre: ''
+  }];
+
   getOrdenComprasPendientes(){
     return this.http.get(this.API_URL+'/ordencompra/revision');
   }
@@ -216,6 +221,14 @@ export class ServicioGeneralService {
 
   getCatalogo(contrato:any){
     return this.http.get(this.API_URL+'/catalogo/'+contrato.proveedor+'/'+contrato.productor+ '/' +contrato.id);
+  }
+
+  getPerfumeP(contrato: any){
+    return this.http.get(this.API_URL+'/catalogo/'+contrato.productor);
+  }
+
+  saveCatalogo(perfume: any){
+    return this.http.post(this.API_URL+'/catalogo/', perfume);
   }
 
 

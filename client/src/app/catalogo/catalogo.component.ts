@@ -73,6 +73,16 @@ export class CatalogoComponent implements OnInit {
     exclusividad: ''
   }];
 
+  perfume: any = [{
+    id: 0,
+    nombre: '',
+    cantidad: 0,
+    exclusividad: '',
+    contrato: 0,
+    recomendador: 0,
+    productor: 0
+  }];
+
   dtTrigger:Subject<any> = new Subject();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { }
@@ -93,6 +103,12 @@ export class CatalogoComponent implements OnInit {
             proveedor: params.proveedor,
             productor: params.productor
            };
+           this.perfume ={
+            id: params.id,
+            contrato: params.id,
+            proveedor: params.proveedor,
+            productor: params.productor
+           };
            this.edit = true;      
     }
     this.getCatalogos(this.contrato);
@@ -103,7 +119,9 @@ export class CatalogoComponent implements OnInit {
     this.sg.getCatalogo(contrato).subscribe(
       res => {
         this.catalogo = res;
+        this.perfume = res;
         console.log(this.catalogo);
+        console.log(this.perfume);
       },
       err => console.log(err)
     )

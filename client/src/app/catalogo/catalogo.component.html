@@ -42,13 +42,15 @@
         </tr>               
       </tbody>    
     </table>
-  
+
+    <button *ngIf="vista == ''" class="links" [routerLink] = "['/catalogo/add', contrato.proveedor, contrato.productor, contrato.id]">
+      <p><i class="fas fa-plus-circle px-1" style="font-size: 30px"></i> Agregar Nuevo Producto</p>        
+    </button>
   <br>
     <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
       Volver a Inicio
     </button>
-    
-
+  
 </div>
 
 

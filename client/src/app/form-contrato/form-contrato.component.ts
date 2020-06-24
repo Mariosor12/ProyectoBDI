@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CarritoService } from '../services/carrito.service';
 import {ServicioGeneralService} from '../services/servicio-general.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
+import {CatalogoAddComponent}  from '../catalogo-add/catalogo-add.component';
 
 
 @Component({
@@ -56,7 +57,13 @@ export class FormContratoComponent implements OnInit {
     lugar: ''
   }];
 
+  perfume: any = [{
+    id: 0,
+    nombre: ''
+  }];
+
   edit: boolean = false;
+  vista: string;
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
@@ -69,11 +76,16 @@ export class FormContratoComponent implements OnInit {
             proveedor: params.proveedor,
             productor: params.productor
            };
+           this.perfume ={
+            id: params.id,
+            nombre: params.nombre
+           };
            this.edit = true;      
     }
     this.getAliados();
     this.getAliados1();
   }
+
 
   SaveNuevoProducto() {
     delete this.contrato.id;
@@ -84,7 +96,7 @@ export class FormContratoComponent implements OnInit {
     this.sg.saveContrato(this.contrato).subscribe(
         res => {
           console.log(res);
-          this.router.navigate(['/catalogo/add']);
+          // this.router.navigate(['/catalogo/add']);
           // this.contratos = res; // Esto esta mal.
 
         },
@@ -124,5 +136,16 @@ export class FormContratoComponent implements OnInit {
       err => console.log(err)
     )
   }
+  
+  getPerfumeP(contrato: any){
+    this.sg.getPerfumeP(contrato).subscribe(
+      res => {
+        this.perfume = res;
+        console.log(this.perfume);
+      },
+      err => console.log(err)
+    )
+  }
 
 }
+

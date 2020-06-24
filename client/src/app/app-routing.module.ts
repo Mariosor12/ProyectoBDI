@@ -156,7 +156,7 @@ component: ReportesComponent
   component: CatalogoDataTableComponent
 },
 {
-  path: 'catalogo/add',
+  path: 'catalogo/add/:proveedor/:productor/:id',
   component: CatalogoAddComponent
 }
 

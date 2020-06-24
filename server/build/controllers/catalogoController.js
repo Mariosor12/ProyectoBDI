@@ -32,8 +32,39 @@ catCtrl.getCatalogo = async (req, res) => {
         })
 };
 
+catCtrl.getPerfumeP = async (req, res) => {
+    const productor = req.params.productor;
+    const id = req.params.id;
+    await pool.query("select clave as id, nombre, fk_productor as productor from perfume where fk_productor = "+productor+";")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+// catCtrl.getRecomendador = async (req, res) => {
+//     await pool.query("select c.clave as id, p.nombre as nombre, c.cantidad as cantidad, c.exclusividad as exclusividad from catalogo c, contrato co, perfume p where c.fk_contrato = co.clave and c.fk_perfume = p.clave;")
+//         .then(response => {
+//             if(response.rowCount)
+//                 res.json(response.rows);
+//             else
+//                 res.json('Sin resultados');
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.json('Ha ocurrido un error');
+//         })
+// };
+
 catCtrl.createCatalogo = async (req, res) => {
     const event = req.body;
+    console.log(event);
     await pool.query("INSERT INTO catalogo (cantidad, exclusividad, fk_contrato, fk_perfume, fk_recomendador_perfume) VALUES ("+event.cantidad+", '"+event.exclusividad+"', "+event.contrato+", "+event.perfume+", "+event.recomendador+");")
         .then(response => {
             res.json('Insertado');

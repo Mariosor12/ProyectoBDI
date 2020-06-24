@@ -71,7 +71,16 @@ export class ContratoComponent implements OnInit {
     exclusividad: '',
     proveedor: 0,
     productor: 0
+  }];
 
+  perfume: any = [{
+    id: 0,
+    perfume: '',
+    cantidad: 0,
+    exclusividad: '',
+    contrato: 0,
+    recomendador: 0,
+    productor: 0
   }];
 
   dtTrigger:Subject<any> = new Subject();
@@ -88,6 +97,7 @@ export class ContratoComponent implements OnInit {
   this.getContratos();
   this.getContrato();
   this.getCatalogo();
+  
 }
 
 ngOnDestroy(): void {    
