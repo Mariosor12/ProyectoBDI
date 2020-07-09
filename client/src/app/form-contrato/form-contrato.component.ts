@@ -6,6 +6,7 @@ import { CarritoService } from '../services/carrito.service';
 import {ServicioGeneralService} from '../services/servicio-general.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import {CatalogoAddComponent}  from '../catalogo-add/catalogo-add.component';
+import { EvaluacionFormComponent} from '../evaluacion-form/evaluacion-form.component';
 
 
 @Component({
@@ -15,47 +16,63 @@ import {CatalogoAddComponent}  from '../catalogo-add/catalogo-add.component';
 })
 export class FormContratoComponent implements OnInit {
 
-  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { }
+  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { 
+  }
+
+  
+  evaluacion:any = [{
+    fechai: '',
+    fechaf: '',
+    peso: 0,
+    tipo: '',
+    criterio: 0,
+    productor: 0
+  }];
+
+  evaluaciones:any = [{
+    id: 0,
+    nombre: ''
+  }];
 
   contratos: any = [{
     id: 0,
     fechai: '',
     fechaf: '',
     descripcion: '',
+    motivo: '',
+    exclusivo: '',
     proveedor: 0,
     productor: 0
   }];
 
-  contrato:any = {
+  contrato:any = [{
     id: 0,
     nombrep: '',
     nombrepr: '',
     fechai: '',
     fechaf: '',
     descripcion: '',
+    motivo: '',
+    exclusivo: '',
     proveedor: 0,
     productor: 0
+  }];
+
+  aliados: any = {
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    region: ''
   };
 
-  aliados:any = [{
+  aliadosp: any = {
     id: 0,
-    razon: '',
+    nombre: '',
     pagina: '',
     tel: '',
-    activo: '',
-    membresia: '',
-    lugar: ''
-  }];
-
-  aliadosp:any = [{
-    id: 0,
-    razon: '',
-    pagina: '',
-    tel: '',
-    activo: '',
-    membresia: '',
-    lugar: ''
-  }];
+    region: ''
+  };
 
   perfume: any = [{
     id: 0,
@@ -80,20 +97,29 @@ export class FormContratoComponent implements OnInit {
             id: params.id,
             nombre: params.nombre
            };
+           this.evaluacion ={
+            id: params.id,
+            profuctor: params.productor
+           };
+           this.evaluaciones ={
+            id: params.id,
+            productor: params.productor
+           };
            this.edit = true;      
     }
     this.getAliados();
-    this.getAliados1();
+  
+    
   }
 
 
   SaveNuevoProducto() {
-    delete this.contrato.id;
-    delete this.contrato.nombrep;
-    delete this.contrato.nombrepr;
-    console.log(this.contrato)
+    delete this.contrato[0].id;
+    delete this.contrato[0].nombrep;
+    delete this.contrato[0].nombrepr;
+    console.log(this.contrato[0])
     //this.sg.saveContrato(this.contratos);
-    this.sg.saveContrato(this.contrato).subscribe(
+    this.sg.saveContrato(this.contrato[0]).subscribe(
         res => {
           console.log(res);
           // this.router.navigate(['/catalogo/add']);
@@ -128,10 +154,12 @@ export class FormContratoComponent implements OnInit {
       err => console.log(err)
     )
   }
-  getAliados1(){
-    this.sg.getAliProveedores().subscribe(
+
+  Aliados1(evaluaciones){
+    this.sg.getProveedorFiltro(evaluaciones[0]).subscribe(
       res => {
-        this.aliados = res;
+        this.evaluaciones = res;
+        console.log(this.evaluaciones);
       },
       err => console.log(err)
     )
@@ -141,7 +169,7 @@ export class FormContratoComponent implements OnInit {
     this.sg.getPerfumeP(contrato).subscribe(
       res => {
         this.perfume = res;
-        console.log(this.perfume);
+        // console.log(this.perfume);
       },
       err => console.log(err)
     )

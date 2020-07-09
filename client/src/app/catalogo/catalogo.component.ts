@@ -69,7 +69,8 @@ export class CatalogoComponent implements OnInit {
   catalogo: any = [{
     id: 0,
     nombre: '',
-    cantidad: 0,
+    inombre: '',
+    ingnombre: '',
     exclusividad: ''
   }];
 

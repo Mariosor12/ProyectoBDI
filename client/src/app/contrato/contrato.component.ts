@@ -31,6 +31,8 @@ export class ContratoComponent implements OnInit {
     fechai: '',
     fechaf: '',
     descripcion: '',
+    motivo: '',
+    exclusivo: '',
     proveedor: 0,
     productor: 0
   }];
@@ -40,6 +42,8 @@ export class ContratoComponent implements OnInit {
     fechai: '',
     fechaf: '',
     descripcion: '',
+    motivo: '',
+    exclusivo: '',
     proveedor: 0,
     productor: 0
   }];

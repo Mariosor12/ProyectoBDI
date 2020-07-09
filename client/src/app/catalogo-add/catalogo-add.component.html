@@ -18,21 +18,14 @@
                       <input type="text" name = "nombre" [(ngModel)] = "perfume[0].perfume" placeholder="Numero Perfume" class="form-control" autofocus>
                   </div>
                   <div class="form-group">
-                      <input type="text" name = "cantidad" [(ngModel)] = "perfume[0].cantidad" placeholder="cantidad" class="form-control" autofocus>
+                      <input type="text" name = "ingrediente" [(ngModel)] = "perfume[0].ingrediente" placeholder="Ingrediente" class="form-control" autofocus>
                   </div>
                   <div class="form-group">
-                      <input type="text" name = "exclusividad" [(ngModel)] = "perfume[0].exclusividad" placeholder="Exclusividad" class="form-control" autofocus>
-                  </div>
-                  
-                  <div class="form-group">
-                      <input type="text" name = "productor" [(ngModel)] = "perfume[0].productor" placeholder="Productor" class="form-control" autofocus>
-                  </div>
+                    <input type="text" name = "materia" [(ngModel)] = "perfume[0].materia" placeholder="Materia" class="form-control" autofocus>
+                </div>
                   <div class="form-group">
                     <input type="text" name = "contrato" [(ngModel)] = "perfume[0].contrato" placeholder="Contrato" class="form-control" autofocus>
                 </div>
-                <div class="form-group">
-                  <input type="text" name = "recomendador" [(ngModel)] = "perfume[0].recomendador" placeholder="Recomendador" class="form-control" autofocus>
-              </div>
                   
         <hr>               
                   <button (click)= "SaveNuevoProducto()" class="btn btn-success btn-block">

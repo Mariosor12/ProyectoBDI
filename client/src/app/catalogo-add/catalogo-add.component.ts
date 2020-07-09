@@ -68,17 +68,16 @@ export class CatalogoAddComponent implements OnInit {
   catalogo: any = [{
     id: 0,
     nombre: '',
-    cantidad: 0,
+    inombre: '',
+    ingnombre: '',
     exclusividad: ''
   }];
 
   perfume: any = [{
     perfume: 0,
-    cantidad: 0,
-    exclusividad: '',
-    contrato: 0,
-    recomendador: 0,
-    productor: 0
+    ingrediente: '',
+    materia: '',
+    contrato: 0
   }];
 
   perfumes: any = [{
@@ -107,7 +106,6 @@ export class CatalogoAddComponent implements OnInit {
     }
    console.log(this.perfume);
   this.perfume[0].contrato = this.contrato.id;
-  this.perfume[0].productor = this.contrato.productor;
 
    this.getPerfumeP(this.contrato);
   }
@@ -116,7 +114,7 @@ export class CatalogoAddComponent implements OnInit {
     // this.contrato.id = this.perfume.productor;
     delete this.perfume.id;
     // this.perfume[0].contrato = this.contrato.id;
-    // this.perfume[0].productor = this.contrato.productor;
+    this.perfume[0].productor = this.contrato.productor;
     // delete this.contrato.nombrepr;
     console.log(this.perfume[0])
     //this.sg.saveContrato(this.contratos);

@@ -28,9 +28,7 @@ export class FormEventoComponent implements OnInit {
     razon: '',
     pagina: '',
     tel: '',
-    activo: '',
-    membresia: '',
-    lugar: ''
+    region: ''
   };
 
   producto:any = {
@@ -63,9 +61,7 @@ export class FormEventoComponent implements OnInit {
              razon: params.razon,
              pagina: params.pagina,
              tel: params.tel,
-             activo: params.activo,
-             membresia: params.membresia,
-             lugar: params.lugar
+             region: params.region
            };
            this.ingredientes={
             id: params.id,

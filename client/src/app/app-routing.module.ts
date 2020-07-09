@@ -26,6 +26,9 @@ import { FormContratoComponent} from './form-contrato/form-contrato.component';
 import { CatalogoComponent} from './catalogo/catalogo.component';
 import { CatalogoDataTableComponent} from './catalogo-data-table/catalogo-data-table.component';
 import { CatalogoAddComponent } from './catalogo-add/catalogo-add.component';
+import { EvaluacionesComponent} from './evaluaciones/evaluaciones.component';
+import { EvaluacionDataTableComponent} from './evaluacion-data-table/evaluacion-data-table.component';
+import { EvaluacionFormComponent } from './evaluacion-form/evaluacion-form.component';
 
 
 
@@ -48,7 +51,7 @@ const routes: Routes = [
   component: FormEventoComponent
 },
 {
-  path: 'evento/edit/:id/:razon/:pagina/:tel/:activo/:membresia/:lugar',
+  path: 'evento/edit/:id/:razon/:pagina/:tel',
   component: FormEventoComponent
 },
 {
@@ -144,7 +147,11 @@ component: ReportesComponent
   component: FormContratoComponent
 },
 {
-  path: 'contrato/edit/:id/:fechai/:descripcion/:proveedor/:productor',
+  path: 'contrato/add/:productor',
+  component: FormContratoComponent
+},
+{
+  path: 'contrato/edit/:id/:fechai/:descripcion/:motivo/:exclusivo/:proveedor/:productor',
   component: FormContratoComponent
 },
 {
@@ -158,7 +165,20 @@ component: ReportesComponent
 {
   path: 'catalogo/add/:proveedor/:productor/:id',
   component: CatalogoAddComponent
+},
+{
+  path: 'evaluaciones',
+  component: EvaluacionesComponent
+},
+{
+  path: 'evaluacion',
+  component: EvaluacionDataTableComponent
+},
+{
+  path:'evaluacion/add',
+  component: EvaluacionFormComponent
 }
+
 
 ];
 

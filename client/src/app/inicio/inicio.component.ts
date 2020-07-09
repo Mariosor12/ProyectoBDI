@@ -27,24 +27,13 @@ export class InicioComponent implements OnInit {
   aComponer:boolean = false;
   created = false;
 
-  aliados:any = [{
-    id: 0,
-    razon: '',
-    pagina: '',
-    tel: '',
-    activo: '',
-    membresia: '',
-    lugar: ''
-  }];
 
   aliadosp:any = [{
     id: 0,
     razon: '',
     pagina: '',
     tel: '',
-    activo: '',
-    membresia: '',
-    lugar: ''
+    region: ''
   }];
 
   presentacion:any = [{
@@ -70,8 +59,6 @@ export class InicioComponent implements OnInit {
   
   ngOnInit(): void {
     this.getAliados();
-    this.getAliados1();
-    this.getProductos();
     this.carrito.resetAll();
   }
 
@@ -85,21 +72,8 @@ getAliados(){
   )
   
 }
-getAliados1(){
-  this.sg.getAliProveedores().subscribe(
-    res => {
-      this.aliados = res;
-    },
-    err => console.log(err)
-  )
-  
-}
 
 
-  editProducto(producto: Producto){
-    console.log(producto);
-    this.router.navigate(['/producto/edit', producto.id, producto.nombre, producto.descripcion, producto.fecha_nacimiento, producto.genero, producto.fk_fijador, producto.fk_tipo_perfume, producto.fk_perfumista])
-  }
   
   getProductos(){
     this.productoService.getProductos().subscribe(

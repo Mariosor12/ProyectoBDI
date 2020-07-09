@@ -40,8 +40,9 @@ aliproCtrl.deleteAliPro = async (req, res) => {
         })
 };
 
+
 aliproCtrl.getAliadosProv = async (req, res) => {
-    await pool.query("SELECT p.clave as id, p.nombre as razon, p.pag_web as pagina, p.telefono as tel, p.activo, p.membresia, d.nombre as lugar FROM proveedor p, direccion d where p.fk_direccion = d.clave")
+    await pool.query("SELECT p.clave as id, p.nombre as razon, p.pag_web as pagina, p.telefono as tel, d.nombre as lugar, a.region as region from  direccion d, proveedor p left join asociacion_nacional a on p.fk_asociacion_nacional = a.clave where p.fk_direccion = d.clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

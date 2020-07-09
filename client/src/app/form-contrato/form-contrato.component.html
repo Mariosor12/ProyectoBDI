@@ -8,34 +8,41 @@
             <div class="card-body">
                 <form>
                     <div class="form-group">
-                        <input type="text" name = "fechai" [(ngModel)] = "contrato.fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
+                        <input type="text" name = "fechai" [(ngModel)] = "contrato[0].fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "fechaf" [(ngModel)] = "contrato.fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
+                        <input type="text" name = "fechaf" [(ngModel)] = "contrato[0].fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "descripcion" [(ngModel)] = "contrato.descripcion" placeholder="Descripcion" class="form-control" autofocus>
+                        <input type="text" name = "descripcion" [(ngModel)] = "contrato[0].descripcion" placeholder="Descripcion" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "motivo" [(ngModel)] = "contrato[0].motivo" placeholder="motivo" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "exclusivo" [(ngModel)] = "contrato[0].exclusivo" placeholder="exclusivo" class="form-control" autofocus>
                     </div>
                     <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
                         <option>Ver Proveedores a elegir en la casilla de abajo</option>
-                        <option *ngFor="let aliados of aliados">
-                            {{aliados.id}}-{{aliados.razon}} 
+                        <option *ngFor="let evaluaciones of evaluaciones">
+                            {{evaluaciones.id}}-{{evaluaciones.nombre}} 
                         </option>                            
                     </select>  
                     <div class="form-group">
-                        <input type="text" name = "proveedor" [(ngModel)] = "contrato.proveedor" placeholder="Proveedor" class="form-control" autofocus>
+                        <input type="text" name = "proveedor" [(ngModel)] = "contrato[0].proveedor" placeholder="Proveedor" class="form-control" autofocus>
                     </div>
-                    <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
-                        <option>Ver Productores a elegir en la casilla de abajo</option>
-                        <option *ngFor="let aliados of aliadosp">
-                            {{aliados.id}}-{{aliados.razon}} 
-                        </option>                            
-                    </select>  
                     <div class="form-group">
-                        <input type="text" name = "productor" [(ngModel)] = "contrato.productor" placeholder="Productor" class="form-control" autofocus>
+                        <input type="text" name = "productor" [(ngModel)] = "contrato[0].productor" placeholder="Productor" class="form-control" autofocus>
                     </div>
                     
-          <hr>               
+          <hr>        
+          <div class="form-group">
+            <input type="text" name = "productor" [(ngModel)] = "evaluacion[0].productor" placeholder="Productor" class="form-control" autofocus>
+        </div>
+        <button (click) = "Aliados1(evaluacion)"  class="btn btn-success btn-block">
+            Productor
+        </button>  
+               
                     <button (click)= "edit ? updatedContrato() : SaveNuevoProducto()" (click) = "getPerfumeP(contrato)" [routerLink] = "['/catalogo/add', contrato.productor, contrato.id]" class="btn btn-success btn-block">
                         SAVE
                     </button>  

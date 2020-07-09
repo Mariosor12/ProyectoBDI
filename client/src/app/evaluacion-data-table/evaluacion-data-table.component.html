@@ -1,0 +1,82 @@
+<br>
+
+<div *ngIf="vista == 'Compra'" class="container">
+
+  <h1>Aliados</h1>
+
+  <hr><br>
+
+  <p>A continuación se muestra una tabla con todos las evaluaciones que tiene nuestra tienda registrados en su Base de Datos.</p>
+
+</div>
+
+<div class="container">
+    <div *ngIf="loading == true" class="div">
+      <h3>Cargando Información</h3>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>   
+    </div>
+  </div>
+
+<div class="container">
+  
+  <div *ngIf="vista != ''" class="div">
+    <br>
+    <label><b>Seleccionar Evaluacion</b></label>    
+  </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>        
+          <th>Fecha Inicial</th>
+          <th>Fecha Fin</th>
+          <th>Nombre Proveedor</th>
+          <th>Nombre Productor</th>
+          <th>Tipo Evaluacion</th>
+          <th>Rango Inicial Aceptacion</th>
+          <th>Rango Fin Aceptacion</th>
+          <th>Nombre Criterio Etiqueta</th>
+          <th>Peso Criterio</th>
+          <th>Resultado Final</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evaluacion of evaluacion">
+          <td>{{evaluacion.fechai}}</td>
+          <td>{{evaluacion.fechaf}}</td>
+          <td>{{evaluacion.nombrep}}</td>
+          <td>{{evaluacion.nombrepr}}</td>
+          <td>{{evaluacion.tipo}}</td>
+          <td>{{evaluacion.rangoi}}</td>
+          <td>{{evaluacion.rangof}}</td>
+          <td>{{evaluacion.etiqueta}}</td>
+          <td>{{evaluacion.peso}}</td>
+          <td>{{evaluacion.resultado}}</td>
+          <!----<td>{{aliado.lugar}}</td>      -->
+          <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+          <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+          <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+          <!-- <td *ngIf="vista == 'Compra'"><button class="links" (click)="gotoMinerales(aliado)"><i class="fas fa-plus-circle"></i></button></td> -->
+        </tr>               
+      </tbody>    
+    </table>
+<hr>
+  
+  <br>
+
+  
+    <!-- <button *ngIf="vista == ''" class="links" (click)="gotoAgregarAliado()">
+      <p><i class="fas fa-plus-circle px-1" style="font-size: 30px"></i> Agregar Nuevo Aliado</p>        
+    </button> -->
+
+    <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
+      Volver a Inicio
+    </button>
+    
+
+</div>
+
+
+<br>

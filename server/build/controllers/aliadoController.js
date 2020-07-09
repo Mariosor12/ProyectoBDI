@@ -2,7 +2,7 @@ const aliCtrl = {};
 const pool = require('../database/database');
 
 aliCtrl.getAliadosPro = async (req, res) => {
-    await pool.query("SELECT p.clave as id, p.nombre as razon, p.pag_web as pagina, p.telefono as tel, p.activo, p.membresia, d.nombre as lugar FROM productor p, direccion d where p.fk_direccion = d.clave")
+    await pool.query("SELECT p.clave as id, p.nombre as razon, p.pag_web as pagina, p.telefono as tel, a.region as region from productor p left join asociacion_nacional a on p.fk_asociacion_nacional = a.clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ aliCtrl.getAliadosPro = async (req, res) => {
 
 aliCtrl.getAliadoPro = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT clave as id, nombre as razon, pag_web as pagina, telefono as tel, activo, membresia, fk_direccion as lugar FROM productor WHERE clave ="+id)
+    await pool.query("SELECT p.clave as id, p.nombre as razon, p.pag_web as pagina, p.telefono as tel, a.region as region from productor p left join asociacion_nacional a on p.fk_asociacion_nacional = a.clave where p.clave ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ aliCtrl.getAliadoPro = async (req, res) => {
 
 aliCtrl.createAliadoPro = async (req, res) => {
     const ali = req.body;
-    await pool.query("INSERT INTO Productor (nombre, pag_web, telefono, activo, membresia, fk_direccion) VALUES ('"+ali.razon+"','"+ali.pagina+"','"+ali.tel+"','"+ali.activo+"', '"+ali.membresia+"', "+ali.lugar+")")
+    await pool.query("INSERT INTO Productor (nombre, pag_web, telefono, fk_asociacion_nacional) VALUES ('"+ali.razon+"','"+ali.pagina+"','"+ali.tel+"', "+ali.region+")")
         .then(response => {
             res.json('Insertado');
         })
@@ -45,7 +45,7 @@ aliCtrl.createAliadoPro = async (req, res) => {
 aliCtrl.editAliadoPro = async (req, res) => {
     const id = req.params.id;
     const ali = req.body;
-    await pool.query("UPDATE productor SET nombre = '"+ali.razon+"', pag_web = '"+ali.pagina+"', telefono = '"+ali.tel+"', activo = '"+ali.activo+"', membresia = '"+ali.membresia+"',fk_direccion = "+ali.lugar+" WHERE clave = "+id)
+    await pool.query("UPDATE productor SET nombre = '"+ali.razon+"', pag_web = '"+ali.pagina+"', telefono = '"+ali.tel+"', fk_asociacion_nacional = "+ali.region+" WHERE clave = "+id)
         .then(response => {
             res.json('Actualizado');
         })

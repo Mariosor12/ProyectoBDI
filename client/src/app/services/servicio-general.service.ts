@@ -231,5 +231,18 @@ export class ServicioGeneralService {
     return this.http.post(this.API_URL+'/catalogo/', perfume);
   }
 
+  getEvaluacion(){
+    return this.http.get(this.API_URL+'/evaluacion/'); 
+  }
+
+  saveCriEval(evaluacion: any){
+    return this.http.post(this.API_URL+'/evaluacion/', evaluacion);
+  }
+
+  getProveedorFiltro(evaluacion: any){
+    return this.http.get(this.API_URL+'/evaluacion/'+evaluacion.productor); 
+    
+  }
+
 
 }

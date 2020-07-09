@@ -40,6 +40,9 @@ import { FormContratoComponent } from './form-contrato/form-contrato.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CatalogoDataTableComponent } from './catalogo-data-table/catalogo-data-table.component';
 import { CatalogoAddComponent } from './catalogo-add/catalogo-add.component';
+import { EvaluacionesComponent } from './evaluaciones/evaluaciones.component';
+import { EvaluacionDataTableComponent } from './evaluacion-data-table/evaluacion-data-table.component';
+import { EvaluacionFormComponent } from './evaluacion-form/evaluacion-form.component';
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { CatalogoAddComponent } from './catalogo-add/catalogo-add.component';
     CatalogoComponent,
     CatalogoDataTableComponent,
     CatalogoAddComponent,
+    EvaluacionesComponent,
+    EvaluacionDataTableComponent,
+    EvaluacionFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +90,8 @@ import { CatalogoAddComponent } from './catalogo-add/catalogo-add.component';
   ],
   providers: [
     EventoService,
-    CommonService
+    CommonService,
+    EvaluacionFormComponent
   ],
   bootstrap: [AppComponent]
 })

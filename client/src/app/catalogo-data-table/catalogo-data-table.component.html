@@ -30,7 +30,8 @@
         <tr>        
             <th>Id</th>
             <th>Nombre Perfume</th>
-            <th>Cantidad</th>
+            <th>Nombre Ingrediente</th>
+            <th>Nombre Materia-Esencia</th>
             <th>Eclusividad</th>
             <br>
           <!----<th>Estado donde se ubica</th> -->          
@@ -40,7 +41,8 @@
         <tr *ngFor="let catalogo of catalogo">
             <td>{{catalogo.id}}</td>
             <td>{{catalogo.nombre}}</td>
-            <td>{{catalogo.cantidad}}</td>
+            <td>{{catalogo.inombre}}</td>
+            <td>{{catalogo.ingnombre}}</td>
             <td>{{catalogo.exclusividad}}</td>
           <!-- <a [routerLink] = "['/contrato/edit', contrato.id, contrato.fechai, contrato.descripcion, contrato.proveedor, contrato.productor]" class="btn btn-info btn-block"> EDITAR
           </a> -->

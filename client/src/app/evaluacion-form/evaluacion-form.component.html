@@ -1,0 +1,45 @@
+
+<div class="row">
+    <h3>Agregar/Editar Evaluacion</h3>
+    <hr>
+    <div class="col-md-4 offset-md-2">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name = "fechai" [(ngModel)] = "evaluacion[0].fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "fechaf" [(ngModel)] = "evaluacion[0].fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "peso" [(ngModel)] = "evaluacion[0].peso" placeholder="Peso" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleSelect1">Seleccione Tipo</label>
+                        <select class="form-control" id="exampleSelect1" name="tipo" [(ngModel)]="evaluacion[0].tipo">
+                            <option>Seleccione Opción</option>
+                            <option>Inicial</option>
+                            <option>Final</option>      
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "criterio" [(ngModel)] = "evaluacion[0].criterio" placeholder="Criterio" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "productor" [(ngModel)] = "evaluacion[0].productor" placeholder="Productor" class="form-control" autofocus>
+                    </div>
+          <hr>               
+                    <button (click)= "Aliados1(evaluacion)" [routerLink] = "['/contrato/add', evaluacion[0].productor]"  class="btn btn-success btn-block">
+                        SAVE
+                    </button> 
+                    <hr> 
+                    <button (click)= "SaveNuevoProducto()" class="btn btn-success btn-block">
+                        AGREGAR MAS CRITERIO
+                    </button> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
