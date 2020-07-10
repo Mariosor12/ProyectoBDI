@@ -22,7 +22,7 @@ gotoEvaluacion(){
 }
 
 gotoEvaluaciones(){
-  this.router.navigate(['/evaluacion/add']);
+  this.router.navigate(['/evaluacionproveedor']);
 }
 
 gotoRenovacion(){

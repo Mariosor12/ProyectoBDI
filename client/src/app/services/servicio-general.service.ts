@@ -26,6 +26,36 @@ export class ServicioGeneralService {
     nombre: ''
   }];
 
+  condicion: any = {
+    id: 0,
+    nombre: '',
+    nombred: '',
+    transporte: '',
+    costo: 0,
+    recargo: 0,
+    total:0
+  };
+
+  aliados: any = {
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    region: '',
+    proveedor: 0
+  };
+
+  contrato:any = [{
+    id: 0,
+    nombrep: '',
+    nombrepr: '',
+    fechai: '',
+    fechaf: '',
+    descripcion: '',
+    proveedor: 0,
+    productor: 0
+  }];
+
   getOrdenComprasPendientes(){
     return this.http.get(this.API_URL+'/ordencompra/revision');
   }
@@ -244,5 +274,24 @@ export class ServicioGeneralService {
     
   }
 
+  getProveedorFiltro1(){
+    return this.http.get(this.API_URL+'/evaluacion/f'); 
+    
+  }
 
+  saveTipoPago(tipopago: any){
+    return this.http.post(this.API_URL+'/tipopago/', tipopago);
+  }
+
+  saveEnvio(envio: any){
+    return this.http.post(this.API_URL+'/envio/', envio);
+  }
+
+  getCondProv(condicion: any){
+    return this.http.get(this.API_URL+'/envio/cond/'+condicion.proveedor);
+  }
+
+  getPagoProv(condicion: any){
+    return this.http.get(this.API_URL+'/evaluacion/condipago/'+condicion.proveedor);
+  }
 }

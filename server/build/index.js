@@ -21,6 +21,7 @@ const routesLugar = require('./routes/lugarRoutes');
 const routesContrato = require('./routes/contratoRoutes');
 const routesCatalogo = require('./routes/catalogoRoutes');
 const routesEvaluacion = require('./routes/evalRoutes');
+const routesEnvio = require('./routes/envioRoutes');
 
 
 const cors = require('cors');
@@ -59,6 +60,7 @@ app.use('/api/lugar', routesLugar);
 app.use('/api/contrato', routesContrato);
 app.use('/api/catalogo', routesCatalogo);
 app.use('/api/evaluacion', routesEvaluacion);
+app.use('/api/envio', routesEnvio);
 
 
 //----------------starting the server----------------------

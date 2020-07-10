@@ -30,11 +30,26 @@ evalCtrl.getoneEvaluacion = async (req, res) => {
         })
 };
 
+evalCtrl.getPagoProv = async (req, res) => {
+    const proveedor = req.params.proveedor;
+    await pool.query("select cp.numero as id, cp.tipo as tipo, cp.cuota as cuota, cp.porccuotas as porcuotas, cp.meses as mes from cond_c cc, contrato c, condicion_pago cp where cc.fk_contrato = c.clave and cc.fk_condicion_pago = cp.numero and c.fk_proveedor = "+proveedor)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 evalCtrl.getProveedorFiltro = async (req, res) => {
     const id = req.params.id;
     const productor = req.params.productor;
     console.log(productor);
-    await pool.query("select p.clave as id, p.nombre as nombre from resultado_final r, escala e, productor pr, proveedor p where r.fecha = e.fechai and r.tipoeval = 'Inicial' and r.fk_productor = pr.clave and r.fk_proveedor = p.clave and (r.resultado between e.rangoi and e.rangof) and r.fk_productor = "+productor)
+    await pool.query("select distinct p.clave as id, p.nombre as razon from contrato c, proveedor p, miembro_ifra m where c.fk_proveedor = p.clave and m.fk_proveedor = p.clave and m.fechaf is null and c.fecha_cancela is null")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

@@ -2,7 +2,7 @@ const tipoPagoCtrl = {};
 const pool  = require('../database/database');
 
 tipoPagoCtrl.getTipoPagos = async (req, res) => {
-    await pool.query("SELECT * FROM tipo_pago")
+    await pool.query("SELECT * FROM condicion_pago")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -16,7 +16,7 @@ tipoPagoCtrl.getTipoPagos = async (req, res) => {
 };
 
 tipoPagoCtrl.getTransferencias = async (req, res) => {
-    await pool.query("SELECT numero AS id, banco AS Banco, fecha AS Fecha FROM tipo_pago WHERE tipo = 'Transferencia'")
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Transferencia'")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -31,7 +31,7 @@ tipoPagoCtrl.getTransferencias = async (req, res) => {
 
 tipoPagoCtrl.getTransferencia = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT numero AS id, banco AS Banco, fecha AS Fecha FROM tipo_pago WHERE tipo = 'Transferencia' AND numero ="+id)
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Transferencia' AND numero ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -45,7 +45,7 @@ tipoPagoCtrl.getTransferencia = async (req, res) => {
 };
 
 tipoPagoCtrl.getTarsCredito = async (req, res) => {
-    await pool.query("SELECT numero AS id, banco AS Banco, tipo_tar_cre AS Tipo, fecha_vencimiento AS Vencimiento FROM tipo_pago WHERE tipo = 'Tar_credito'")
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Tar_credito'")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -60,7 +60,7 @@ tipoPagoCtrl.getTarsCredito = async (req, res) => {
 
 tipoPagoCtrl.getTarCredito = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT numero AS id, banco AS Banco, tipo_tar_cre AS Tipo, fecha_vencimiento AS Vencimiento FROM tipo_pago WHERE tipo = 'Tar_credito' AND numero ="+id)
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Tar_credito' AND numero ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -74,7 +74,7 @@ tipoPagoCtrl.getTarCredito = async (req, res) => {
 };
 
 tipoPagoCtrl.getCheques = async (req, res) => {
-    await pool.query("SELECT numero AS id, banco AS Banco, numero_cuenta AS \"Nro. Cuenta\" FROM tipo_pago WHERE tipo = 'Cheque'")
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Cheque'")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -89,7 +89,7 @@ tipoPagoCtrl.getCheques = async (req, res) => {
 
 tipoPagoCtrl.getCheque = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT numero AS id, banco AS Banco, numero_cuenta AS \"Nro. Cuenta\" FROM tipo_pago WHERE tipo = 'Cheque' AND numero ="+id)
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Cheque' AND numero ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -103,7 +103,7 @@ tipoPagoCtrl.getCheque = async (req, res) => {
 };
 
 tipoPagoCtrl.getTarsDebito = async (req, res) => {
-    await pool.query("SELECT numero AS id, banco AS Banco, tipo_tar_deb AS Tipo FROM tipo_pago WHERE tipo = 'Tar_debito'")
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Tar_debito'")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -118,7 +118,7 @@ tipoPagoCtrl.getTarsDebito = async (req, res) => {
 
 tipoPagoCtrl.getTarDebito = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT numero AS id, banco AS Banco, tipo_tar_deb AS Tipo FROM tipo_pago WHERE tipo = 'Tar_debito' AND numero ="+id)
+    await pool.query("SELECT numero AS id, cuota AS cuota, porccuotas AS porcuotas, meses AS mes FROM condicion_pago WHERE tipo = 'Tar_debito' AND numero ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -131,9 +131,22 @@ tipoPagoCtrl.getTarDebito = async (req, res) => {
         })
 };
 
+tipoPagoCtrl.createTipoPago = async (req,res) => {
+    const tp = req.body;
+    console.log(tp);
+    await pool.query("INSERT INTO condicion_pago (tipo, cuota, porccuotas, meses) VALUES ('"+tp.tipo+"',"+tp.cuotas+","+tp.porcuotas+", "+tp.mes+") RETURNING numero AS id")
+        .then(response => {
+            res.json(response.rows);
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 tipoPagoCtrl.createTransferencia = async (req,res) => {
     const tp = req.body;
-    await pool.query("INSERT INTO tipo_pago (tipo,banco,fecha) VALUES ('Transferencia','"+tp.banco+"','"+tp.fecha+"') RETURNING numero AS id")
+    await pool.query("INSERT INTO condicion_pago (tipo, cuota, porccuotas, meses) VALUES ('Transferencia',"+tp.cuota+","+tp.porcuotas+", "+tp.mes+") RETURNING numero AS id")
         .then(response => {
             res.json(response.rows);
         })
@@ -145,7 +158,7 @@ tipoPagoCtrl.createTransferencia = async (req,res) => {
 
 tipoPagoCtrl.createTarCredito = async (req,res) => {
     const tp = req.body;
-    await pool.query("INSERT INTO tipo_pago (tipo,banco,tipo_tar_cre,fecha_vencimiento) VALUES ('Tar_credito','"+tp.banco+"','"+tp.tipo+"','"+tp.vencimiento+"') RETURNING numero AS id")
+    await pool.query("INSERT INTO condicion_pago (tipo, cuota, porccuotas, meses) VALUES ('Tar_credito',"+tp.cuota+","+tp.porcuotas+", "+tp.mes+") RETURNING numero AS id")
         .then(response => {
             res.json(response.rows);
         })
@@ -157,7 +170,7 @@ tipoPagoCtrl.createTarCredito = async (req,res) => {
 
 tipoPagoCtrl.createCheque = async (req,res) => {
     const tp = req.body;
-    await pool.query("INSERT INTO tipo_pago (tipo,banco,numero_cuenta) VALUES ('Cheque','"+tp.banco+"','"+tp.nrocuenta+"') RETURNING numero AS id")
+    await pool.query("INSERT INTO condicion_pago (tipo, cuota, porccuotas, meses) VALUES ('Cheque',"+tp.cuota+","+tp.porcuotas+", "+tp.mes+") RETURNING numero AS id")
         .then(response => {
             res.json(response.rows);
         })
@@ -181,7 +194,7 @@ tipoPagoCtrl.createCheque = async (req,res) => {
 
 tipoPagoCtrl.createTarDebito = async (req,res) => {
     const tp = req.body;
-    await pool.query("INSERT INTO tipo_pago (tipo,banco,tipo_tar_deb) VALUES ('Tar_debito','"+tp.banco+"','"+tp.tipo+"') RETURNING numero AS id")
+    await pool.query("INSERT INTO condicion_pago (tipo, cuota, porccuotas, meses) VALUES ('Tar_debito',"+tp.cuota+","+tp.porcuotas+", "+tp.mes+") RETURNING numero AS id")
         .then(response => {
             res.json(response.rows);
         })

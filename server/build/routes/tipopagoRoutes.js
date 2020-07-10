@@ -11,6 +11,7 @@ router.get('/cheque', tipoPagoCtrl.getCheques);
 router.get('/cheque/:id', tipoPagoCtrl.getCheque);
 router.get('/tardeb', tipoPagoCtrl.getTarsDebito);
 router.get('/tardeb/:id', tipoPagoCtrl.getTarDebito);
+router.post('/', tipoPagoCtrl.createTipoPago);
 router.post('/transferencia', tipoPagoCtrl.createTransferencia);
 router.post('/tarcre', tipoPagoCtrl.createTarCredito);
 router.post('/cheque', tipoPagoCtrl.createCheque);

@@ -106,7 +106,7 @@ export class CatalogoAddComponent implements OnInit {
     }
    console.log(this.perfume);
   this.perfume[0].contrato = this.contrato.id;
-
+console.log(this.aliados);
    this.getPerfumeP(this.contrato);
   }
 
