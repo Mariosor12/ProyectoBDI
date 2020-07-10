@@ -3,7 +3,8 @@ const express = require('express');
 const router = express.Router();
 const reportCtrl = require('../controllers/reporteController');
 
-router.get('/1', reportCtrl.getReporte1);
+router.get('/1/:nombre', reportCtrl.getReporte1);
+router.get('/1/:nombre', reportCtrl.getReporte1_1);
 router.get('/2/:fecha', reportCtrl.getReporte2);
 // router.get('/3/:mes', reportCtrl.getReporte3);
 // router.get('/4', reportCtrl.getReporte4);

@@ -23,9 +23,34 @@ function redata (rep, tem, res){
 }
 
 reportCtrl.getReporte1 = async (req, res) => {
-    await pool.query("select nro_factura AS factura, fecha_compra AS fecha,natural_nombre AS nombre, juridico_denominacion_comercial AS comercio, cantidad, precio_unitario AS precio, SUM(cantidad * precio_unitario) AS total from detalle_compra, compra, cliente where fk_compra = nro_factura and fk_cliente = rif group by (nro_factura, fecha_compra, cantidad, precio_unitario, natural_nombre, juridico_denominacion_comercial) order by cantidad desc limit 10 offset 0;")
+    const razon = req.params.nombre;
+    console.log(razon);
+    await pool.query("((select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, ing.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ing_materia_esencial ing, proveedor pr, direccion d where p.fk_ing_materia_esencial = ing.ipc and ing.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = 'NEA') union (select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, i.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ingrediente_otro i, proveedor pr, direccion d where p.fk_ing_materia_esencial = i.ipc and i.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = 'NEA' order by i.nombre, p.precio_unitario asc))")
         .then(response => {
             console.log('Generando Reporte 1');
+            redata(response.rows,'H1xNbKX9FL',res);
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+        // await pool.query("select pr.clave as id, pr.nombre as nombre, pr.pag_web as paginaweb, pr.telefono as telefonos, d.nombre as nombredi, i.nombre as nombreing, p.volml as volu, p.precio_unitario as preciou from presing p, ingrediente_otro i, proveedor pr, direccion d where p.fk_ing_materia_esencial = i.ipc and i.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"'  order by i.nombre, p.precio_unitario asc")
+        // .then(response => {
+        //     console.log('Generando Reporte 1');
+        //     redata(response.row,'H1xNbKX9FL',res);
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        //     res.json('Ha ocurrido un error');
+        // })
+};
+
+reportCtrl.getReporte1_1 = async (req, res) => {
+    const razon = req.params.nombre;
+    console.log(razon);
+    await pool.query("select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, i.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ingrediente_otro i, proveedor pr, direccion d where p.fk_ing_materia_esencial = i.ipc and i.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"'  order by i.nombre, p.precio_unitario asc")
+        .then(response => {
+            console.log('Generando Reporte 1.1');
             redata(response.rows,'H1xNbKX9FL',res);
         })
         .catch(err => {

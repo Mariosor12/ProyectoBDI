@@ -25,6 +25,7 @@ export class ReportesComponent implements OnInit {
   diaf:string = '';
   mesf:string = '';
   yearf:string = '';
+  nombre:string = '';
 
   inicio:string = '';  //fecha de Inicio
   fin:string = '';    //fecha fin
@@ -39,6 +40,27 @@ export class ReportesComponent implements OnInit {
     genero: '',
     lugar:''
   }];
+
+  aliados: any = {
+    id: 0,
+    razon: '',
+    pagina: '',
+    tel: '',
+    region: '',
+    proveedor: 0
+  };
+
+  aliadosp: any = {
+    id: 0,
+    nombre: '',
+    paginaweb: '',
+    telefonos: '',
+    nombredi: '',
+    nombreing: '',
+    volu: 0,
+    preciou: 0,
+    proveedor: 0
+  };
 
   dtTrigger:Subject<any> = new Subject();
 
@@ -69,7 +91,10 @@ export class ReportesComponent implements OnInit {
 
   gotoReporte(reporte:string){
     switch(reporte){
-      case '1':         
+      case '1': 
+      this.getAliados();
+      // this.getAliados1()
+      this.vista = '1';        
         break;
       case '2': 
         this.vista = '2';        
@@ -103,6 +128,24 @@ export class ReportesComponent implements OnInit {
     }
   }
 
+  getAliados(){
+    this.sg.getAliProveedores().subscribe(
+      res => {
+        this.aliados = res;
+      },
+      err => console.log(err)
+    )
+  }
+
+  // getAliados1(){
+  //   this.sg.getAliProveedoresing().subscribe(
+  //     res => {
+  //       this.aliadosp = res;
+  //     },
+  //     err => console.log(err)
+  //   )
+  // }
+
   getEmpleados(){
     this.sg.getEmpleados().subscribe(
       res => {
@@ -111,6 +154,14 @@ export class ReportesComponent implements OnInit {
       },
       err => console.log("hola")
     )
+  }
+
+  reporte1(aliados: any){
+    document.getElementById('r1').setAttribute('href', "http://localhost:3000/api/reporte/1/"+aliados.nombre);  
+  }
+
+  reporte1_1(aliados: any){
+    document.getElementById('r1_1').setAttribute('href', "http://localhost:3000/api/reporte/1/"+aliados.nombre);  
   }
 
   reporte2(){

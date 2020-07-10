@@ -123,6 +123,10 @@ export class ServicioGeneralService {
     return this.http.get(this.API_URL+'/alipro');
   }
 
+  getAliProveedoresing(){
+    return this.http.get(this.API_URL+'/alipro');
+  }
+
   getAliProductos(aliado){
     return this.http.get(this.API_URL+'/alipro');
   }

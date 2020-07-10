@@ -28,53 +28,55 @@ incoming API request.
                     </td>
                 </tr>
             </table>
-            <h1 aling="center">Top 10 ventas</h1>
+            
+            <h1 aling="center">Ficha Proveedor</h1>
+            
             <table>
                 <tr class="heading">
                     <td aling="center">
-                        Numero factura
+                        Nombre Proveedor
                     </td>
                     <td aling="center">
-                        Fecha Compra
+                        Pagina Web
                     </td>
                     <td aling="center">
-                        Nombre Cliente
+                        Telefono
                     </td>
                     <td aling="center">
-                        Nombre Comercio
+                        Pais Proveedor
                     </td>
                     <td aling="center">
-                        Cantidad
+                        Nombre Ingredientes
+                    </td>
+                    <td aling="center">
+                        Volumen (en ml) del producto
                     </td>
                      <td aling="center">
                         Precio
-                    </td>
-                    <td aling="center">
-                        Total
                     </td>
                 </tr>
                 {{#each rep}}
                 <tr>
                     <td>
-                        {{factura}}
+                        {{razon}}
                     </td>
                     <td>
-                        {{fecha}}
+                        {{pagina}}
                     </td>
                     <td>
-                        {{nombre}}
+                        {{telefono}}
                     </td>
                     <td>
-                        {{comercio}}
+                        {{nombred}}
                     </td>
                     <td>
-                        {{cantidad}}
+                        {{nombrei}}
+                    </td>
+                    <td>
+                        {{vol}}
                     </td>
                     <td>
                         {{precio}}
-                    </td>
-                    <td>
-                        {{total}}
                     </td>
                 </tr>
                 {{/each}}

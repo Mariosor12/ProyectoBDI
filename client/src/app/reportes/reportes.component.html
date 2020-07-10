@@ -11,10 +11,10 @@
   <div *ngIf="vista == 'Reportes'">
     <div class="row">
       <div class="col-md-6" style="margin-bottom: 5px">
-        <!----<button class="links" (click)="gotoReporte('1')"><i class="fas fa-check-circle">
-          1) Empresa aliada a la que se le realizaron más compras.
-        </i></button>-->
-        <i class="fas fa-check-circle"></i><a class="links" href="http://localhost:3000/api/reporte/1" target="blank">1) Reporte prueba 1</a>
+        <button class="links" (click)="gotoReporte('1')"><i class="fas fa-check-circle">
+          1) Ficha Proveedor Por Nombre
+        </i></button>
+        <!-- <i class="fas fa-check-circle"></i><a class="links" href="http://localhost:3000/api/reporte/1" target="blank">1) Reporte prueba 1</a> -->
       </div>
 
       <div class="col-md-6" style="margin-bottom: 5px">
@@ -92,6 +92,34 @@
       </a>
     </div>
   </div>-->
+
+  <div *ngIf="vista == '1'">
+
+    <h3>Nombre Proveedor</h3>
+    <br>
+
+    <div class="row">
+  
+      <select #valor class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "aliados.nombre" style="margin-bottom: 5px">
+        <option>Ver Proveedores a elegir en la casilla de abajo</option>
+        <option *ngFor="let aliados of aliados">
+            {{aliados.razon}} 
+        </option>                            
+    </select>  
+    <!-- <div class="form-group">
+      <input type="text" name = "proveedor" [(ngModel)] = "aliados.nombre" placeholder="Nombre Proveedor" class="form-control" autofocus>
+  </div> -->
+  
+      </div>
+
+      <button class="btn btn-primary" (click)="reporte1(aliados)" (click)="reporte1_1(aliados)">Generar Reporte</button>
+      <br>
+      
+      <button class="btn btn-primary" style="margin-top: 10px">
+        <a id="r1" href="#" target="blank">Ver Reporte.</a>
+      </button>      
+
+  </div>
 
   <div *ngIf="vista == '2'">
 
