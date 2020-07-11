@@ -45,20 +45,6 @@ reportCtrl.getReporte1 = async (req, res) => {
         // })
 };
 
-reportCtrl.getReporte1_1 = async (req, res) => {
-    const razon = req.params.nombre;
-    console.log(razon);
-    await pool.query("select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, i.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ingrediente_otro i, proveedor pr, direccion d where p.fk_ing_materia_esencial = i.ipc and i.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"'  order by i.nombre, p.precio_unitario asc")
-        .then(response => {
-            console.log('Generando Reporte 1.1');
-            redata(response.rows,'H1xNbKX9FL',res);
-        })
-        .catch(err => {
-            console.log(err);
-            res.json('Ha ocurrido un error');
-        })
-};
-
 reportCtrl.getReporte2 = async (req, res) => { //por agregar periodo de tiempo
     const rep = req.params.fecha;
     const fecha = rep.split('+');
