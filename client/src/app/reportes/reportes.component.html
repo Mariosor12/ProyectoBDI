@@ -101,7 +101,7 @@
     <div class="row">
   
       <select #valor class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "aliados.nombre" style="margin-bottom: 5px">
-        <option>Ver Proveedores a elegir en la casilla de abajo</option>
+        <option>Ver Proveedores a elegir para reporte</option>
         <option *ngFor="let aliados of aliados">
             {{aliados.razon}} 
         </option>                            
@@ -112,7 +112,7 @@
   
       </div>
 
-      <button class="btn btn-primary" (click)="reporte1(aliados)" (click)="reporte1_1(aliados)">Generar Reporte</button>
+      <button class="btn btn-primary" (click)="reporte1(aliados)" >Generar Reporte</button>
       <br>
       
       <button class="btn btn-primary" style="margin-top: 10px">
