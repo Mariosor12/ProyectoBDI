@@ -1,0 +1,43 @@
+
+<div class="row">
+    <h3>Renovar Contrato</h3>
+    <hr>
+    <div class="col-md-4 offset-md-2">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name = "fechai" [(ngModel)] = "renovacion[0].fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "fechaf" [(ngModel)] = "renovacion[0].fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "descripcion" [(ngModel)] = "renovacion[0].descripcion" placeholder="Descripcion" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "motivo" [(ngModel)] = "renovacion[0].motivo" placeholder="motivo" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "exclusivo" [(ngModel)] = "renovacion[0].exclusivo" placeholder="exclusivo" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "proveedor" [(ngModel)] = "renovacion[0].proveedor" placeholder="Proveedor" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "productor" [(ngModel)] = "renovacion[0].productor" placeholder="Productor" class="form-control" autofocus>
+                    </div>
+                    
+          <hr>         
+               
+                    <button (click)= "SaveNuevoProducto()" (click)= "deleteRenovacion(renovacion)" [routerLink] = "['/renovacion']" class="btn btn-success btn-block">
+                        SAVE
+                    </button>  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

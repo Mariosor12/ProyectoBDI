@@ -25,7 +25,7 @@
                     <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
                         <option>Ver Proveedores a elegir en la casilla de abajo</option>
                         <option *ngFor="let evaluaciones of evaluaciones">
-                            {{evaluaciones.id}}-{{evaluaciones.nombre}} 
+                            {{evaluaciones.id}}-{{evaluaciones.razon}} 
                         </option>                            
                     </select>  
                     <div class="form-group">
@@ -36,10 +36,8 @@
                     </div>
                     
           <hr>        
-          <div class="form-group">
-            <input type="text" name = "productor" [(ngModel)] = "evaluacion[0].productor" placeholder="Productor" class="form-control" autofocus>
-        </div>
-        <button (click) = "Aliados1(evaluacion)"  class="btn btn-success btn-block">
+ 
+        <button (click) = "Aliados1()"  class="btn btn-success btn-block">
             Productor
         </button>  
                

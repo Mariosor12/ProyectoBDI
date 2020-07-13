@@ -26,7 +26,7 @@ gotoEvaluaciones(){
 }
 
 gotoRenovacion(){
-
+  this.router.navigate(['/renovacion']);
 }
 
 }

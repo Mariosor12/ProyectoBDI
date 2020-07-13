@@ -17,17 +17,30 @@
                   <div class="form-group">
                       <input type="text" name = "nombre" [(ngModel)] = "perfume[0].perfume" placeholder="Numero Perfume" class="form-control" autofocus>
                   </div>
+                  <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
+                    <option>Ver Ingredientes Otros a elegir en la casilla de abajo</option>
+                    <option *ngFor="let ingredienteo of ingredienteo">
+                        {{ingredienteo.id}}-{{ingredienteo.nombre}} 
+                    </option>                            
+                </select>  
                   <div class="form-group">
                       <input type="text" name = "ingrediente" [(ngModel)] = "perfume[0].ingrediente" placeholder="Ingrediente" class="form-control" autofocus>
                   </div>
+                  <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
+                    <option>Ver Ingredientes Esencia a elegir en la casilla de abajo</option>
+                    <option *ngFor="let ingmateria of ingmateria">
+                        {{ingmateria.id}}-{{ingmateria.nombre}} 
+                    </option>                            
+                </select>  
                   <div class="form-group">
                     <input type="text" name = "materia" [(ngModel)] = "perfume[0].materia" placeholder="Materia" class="form-control" autofocus>
                 </div>
                   <div class="form-group">
                     <input type="text" name = "contrato" [(ngModel)] = "perfume[0].contrato" placeholder="Contrato" class="form-control" autofocus>
                 </div>
-                  
-        <hr>               
+                   
+        <hr>
+        <hr>  
                   <button (click)= "SaveNuevoProducto()" class="btn btn-success btn-block">
                       SAVE
                   </button>  

@@ -1,0 +1,109 @@
+
+
+<div class="row">
+    <h3>Ver/Elegir Condiciones de Contrato</h3>
+    <hr>
+    <div class="col-md-8 offset-md-2">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                <br>
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                    <thead>
+                      <tr>        
+                          <th>Id</th>
+                        <th>Tipo Pago</th>
+                        <th>Cuotas</th>
+                        <th>% de cuotas</th>
+                        <th>Meses</th>
+        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let tipopago of tipopago">
+                          <td>{{tipopago.id}}</td>
+                        <td>{{tipopago.tipo}}</td>
+                        <td>{{tipopago.cuota}}</td>
+                        <td>{{tipopago.porcuotas}} % </td>
+                        <td>{{tipopago.mes}}</td>
+         
+            <hr>
+            <hr>
+                        <!----<td>{{aliado.lugar}}</td>      -->
+                        <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+                        <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+                        <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+                        <!-- <td *ngIf="vista == 'Compra'"><button class="links" (click)="gotoMinerales(aliado)"><i class="fas fa-plus-circle"></i></button></td> -->
+                      </tr>               
+                    </tbody>    
+                  </table>
+                  <hr>
+                    <div class="form-group">
+                        <input type="text" name = "tipo pago" [(ngModel)] = "perfume[0].ingrediente" placeholder="Tipo Pago" class="form-control" autofocus>
+                    </div>
+                    <hr>
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                        <thead>
+                          <tr>     
+                            <th>id</th>
+                            <th>Nombre Proveedor</th>
+                            <th>Nombre Direccion</th>
+                            <th>Tipo Transporte</th>
+                            <th>Costo</th>
+                            <th>Recargo</th>
+                            <th>Total</th>
+                  
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let condicion of condicion">
+                            <td>{{condicion.id}}</td>
+                            <td>{{condicion.nombre}}</td>
+                            <td>{{condicion.nombred}}</td>
+                            <td>{{condicion.transporte}}</td>
+                            <td>{{condicion.costo}}</td>
+                            <td>{{condicion.recargo}} %</td>
+                            <td>{{condicion.total}}</td>
+                <hr>
+                
+                <hr>
+                            <!----<td>{{aliado.lugar}}</td>      -->
+                            <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+                            <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+                            <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+                            <!-- <td *ngIf="vista == 'Compra'"><button class="links" (click)="gotoMinerales(aliado)"><i class="fas fa-plus-circle"></i></button></td> -->
+                          </tr>               
+                        </tbody>    
+                      </table> 
+                      <hr>
+                    <div class="form-group">
+                      <input type="text" name = "Envio" [(ngModel)] = "perfume[0].materia" placeholder="Envio" class="form-control" autofocus>
+                  </div>
+                  <hr>
+                    <div class="form-group">
+                      <input type="text" name = "contrato" [(ngModel)] = "contrato.id" placeholder="Contrato" class="form-control" autofocus>
+                  </div>
+                     
+          <hr>
+          <div class="form-group">
+            <input type="text" name = "productor" [(ngModel)] = "contrato.proveedor" placeholder="Proveedor" class="form-control" autofocus>
+        </div>
+        <hr>
+        <button (click)= "getPerfumeP1(contrato)" (click)= "getPerfumeP2(contrato)"  class="btn btn-success btn-block">
+            VER PROVEEDOR
+        </button>  
+          <hr>  
+                    <button (click)= "SaveNuevoProducto()"  class="btn btn-success btn-block">
+                        SAVE
+                    </button>  
+                    <hr>
+                    <button (click)= "gotoContrato()"  class="btn btn-success btn-block">
+                        IR A CONTRATOS
+                    </button>  
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  

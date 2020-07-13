@@ -58,6 +58,19 @@ contratoCtrl.createContrato = async (req, res) => {
         })
 };
 
+contratoCtrl.createContratoCondicion = async (req, res) => {
+    const event = req.body;
+    console.log(event);
+    await pool.query("INSERT INTO cond_c (fk_envio, fk_condicion_pago, fk_contrato) VALUES ("+event.materia+", "+event.ingrediente+", "+event.contrato+");")
+        .then(response => {
+            res.json('Insertado');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 contratoCtrl.editContrato = async (req, res) => {
     const id = req.params.id;
     const event = req.body;

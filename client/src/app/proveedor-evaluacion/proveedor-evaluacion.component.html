@@ -87,7 +87,7 @@
 
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
         <thead>
-          <tr>        
+          <tr>     
             <th>Nombre Proveedor</th>
             <th>Nombre Direccion</th>
             <th>Tipo Transporte</th>
@@ -106,6 +106,7 @@
             <td>{{condicion.recargo}} %</td>
             <td>{{condicion.total}}</td>
 <hr>
+
 <hr>
             <!----<td>{{aliado.lugar}}</td>      -->
             <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
@@ -128,7 +129,7 @@
 </div>
 <hr>
 <hr>
-<button  class="btn btn-primary">Siguiente</button>
+<button (click) = 'getAliados()' [routerLink] = "['/evaluacion/add', aliadosp.productor]" class="btn btn-primary">Siguiente</button>
 </div>
 
   

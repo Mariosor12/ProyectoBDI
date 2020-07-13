@@ -31,7 +31,9 @@ import { EvaluacionDataTableComponent} from './evaluacion-data-table/evaluacion-
 import { EvaluacionFormComponent } from './evaluacion-form/evaluacion-form.component';
 import { CondicionpagoComponent} from './condicionpago/condicionpago.component';
 import { ProveedorEvaluacionComponent} from './proveedor-evaluacion/proveedor-evaluacion.component';
-
+import { CondicionContratoComponent} from './condicion-contrato/condicion-contrato.component';
+import { RenovacionComponent} from './renovacion/renovacion.component';
+import { RenovacionFormComponent} from './renovacion-form/renovacion-form.component';
 
 const routes: Routes = [
 {
@@ -176,7 +178,7 @@ component: ReportesComponent
   component: EvaluacionDataTableComponent
 },
 {
-  path:'evaluacion/add',
+  path:'evaluacion/add/:productor',
   component: EvaluacionFormComponent
 },
 {
@@ -190,6 +192,18 @@ component: CondicionpagoComponent
 {
   path: 'evaluacionproveedor',
   component: ProveedorEvaluacionComponent
+},
+{
+  path:'condicioncontrato/:id/:proveedor',
+  component: CondicionContratoComponent
+},
+{
+  path: 'renovacion',
+  component: RenovacionComponent
+},
+{
+  path: 'renovacion/form/:id/:clave/:clavep/:clavepr/:exclusivo',
+  component: RenovacionFormComponent
 }
 
 

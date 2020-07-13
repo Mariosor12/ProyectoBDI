@@ -84,7 +84,7 @@ export class ProveedorEvaluacionComponent implements OnInit {
     nombre: '',
     pagina: '',
     tel: '',
-    region: ''
+    region: '',
   };
 
   perfume: any = [{
@@ -150,6 +150,7 @@ export class ProveedorEvaluacionComponent implements OnInit {
            this.edit = true;      
     }
     this.getAliados();
+  
     this.Aliados1();
 
 
@@ -205,7 +206,8 @@ export class ProveedorEvaluacionComponent implements OnInit {
     this.sg.getAliadosPro().subscribe(
       res => {
         this.aliadosp = res;
-        
+        this.evaluacion = res;
+        console.log(this.evaluacion)
       },
       err => console.log(err)
     )

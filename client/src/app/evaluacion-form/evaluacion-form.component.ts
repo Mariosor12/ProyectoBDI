@@ -26,6 +26,29 @@ export class EvaluacionFormComponent implements OnInit {
     productor: 0
   }];
 
+  aliadosp: any = {
+    id: 0,
+    nombre: '',
+    pagina: '',
+    tel: '',
+    region: '',
+    productor:0
+  };
+
+  contrato:any = {
+    id: 0,
+    nombrep: '',
+    nombrepr: '',
+    fechai: '',
+    fechaf: '',
+    descripcion: '',
+    motivo: '',
+    exclusivo: '',
+    proveedor: 0,
+    productor: 0
+  };
+
+
   evaluaciones:any = [{
     id: 0,
     nombre: ''
@@ -36,25 +59,23 @@ export class EvaluacionFormComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
-    if (params.id){
-           this.evaluacion ={
-            fechai: params.fechai,
-            fechaf: params.fechaf,
-            peso: params.peso,
-            tipo: params.tipo,
-            criterio: params.criterio,
-            productor: params.productor
+    if (params){
+           this.aliadosp[0] ={
+             productor: params.productor
            };
-           this.evaluaciones ={
-             nombre: params.nombre,
-            id: params.id
-           }
+           this.evaluacion[0] ={
+            productor: params.productor
+          };
+
            this.edit = true;      
     }
+    this.aliadosp[0].productor = this.evaluacion[0].productor
   }
 
   SaveNuevoProducto() {
-    console.log(this.evaluacion[0])
+    console.log(this.aliadosp[0].productor)
+    this.aliadosp[0].productor = this.evaluacion[0].productor;
+    console.log(this.evaluacion[0].productor)
     //this.sg.saveContrato(this.contratos);
     this.sg.saveCriEval(this.evaluacion[0]).subscribe(
         res => {
@@ -72,6 +93,17 @@ export class EvaluacionFormComponent implements OnInit {
       res => {
         this.evaluaciones = res;
         console.log(this.evaluaciones);
+      },
+      err => console.log(err)
+    )
+  }
+  getAliados(){
+    this.sg.getAliadosPro().subscribe(
+      res => {
+        this.contrato = res;
+        this.evaluacion = res;
+        console.log(this.evaluacion)
+        console.log(this.contrato.productor)
       },
       err => console.log(err)
     )

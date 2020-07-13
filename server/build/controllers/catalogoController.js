@@ -48,6 +48,36 @@ catCtrl.getPerfumeP = async (req, res) => {
         })
 };
 
+catCtrl.getIngreP = async (req, res) => {
+    const proveedor = req.params.proveedor;
+    await pool.query("select i.clave as id, i.nombre as nombre from ingrediente_otro i, proveedor p where i.fk_proveedor = p.clave and p.clave = "+proveedor)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+catCtrl.getIngMateriaP = async (req, res) => {
+    const proveedor = req.params.proveedor;
+    await pool.query("select i.ipc as id, i.nombre as nombre from ing_materia_esencial i, proveedor p where i.fk_proveedor = p.clave and p.clave = "+proveedor)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 // catCtrl.getRecomendador = async (req, res) => {
 //     await pool.query("select c.clave as id, p.nombre as nombre, c.cantidad as cantidad, c.exclusividad as exclusividad from catalogo c, contrato co, perfume p where c.fk_contrato = co.clave and c.fk_perfume = p.clave;")
 //         .then(response => {

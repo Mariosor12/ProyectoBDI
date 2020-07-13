@@ -273,8 +273,8 @@ export class ServicioGeneralService {
     return this.http.post(this.API_URL+'/evaluacion/', evaluacion);
   }
 
-  getProveedorFiltro(evaluacion: any){
-    return this.http.get(this.API_URL+'/evaluacion/'+evaluacion.productor); 
+  getProveedorFiltro(contrato: any){
+    return this.http.get(this.API_URL+'/evaluacion/'+contrato.productor); 
     
   }
 
@@ -297,5 +297,33 @@ export class ServicioGeneralService {
 
   getPagoProv(condicion: any){
     return this.http.get(this.API_URL+'/evaluacion/condipago/'+condicion.proveedor);
+  }
+
+  getIngreP(contrato: any){
+    return this.http.get(this.API_URL+'/catalogo/ingre/'+contrato.proveedor);
+  }
+
+  getIngMateriaP(contrato: any){
+    return this.http.get(this.API_URL+'/catalogo/ingremat/'+contrato.proveedor);
+  }
+
+  saveContratoCondicion(perfume: any){
+    return this.http.post(this.API_URL+'/contrato/condicion/', perfume);
+  }
+
+  getRenovacion(){
+    return this.http.get(this.API_URL+'/renovacion/');
+  }
+
+  getoneRenovacion(renovacion: any){
+    return this.http.get(this.API_URL+'/renovacion/'+renovacion.clave);
+  }
+
+  deleteRenovacion(id:number) {
+    return this.http.delete(this.API_URL+'/renovacion/'+id);
+  }
+
+  saveRenovacion(renovacion: any){
+    return this.http.post(this.API_URL+'/renovacion/', renovacion);
   }
 }

@@ -1,0 +1,77 @@
+<br>
+
+<div *ngIf="vista == 'Compra'" class="container">
+
+  <h1>Contratos con posibilidad a renovar</h1>
+
+  <hr><br>
+
+  <p>A continuación se muestra una tabla con todos los contratos posibles para renovar que tiene nuestra tienda registrados en su Base de Datos.</p>
+
+</div>
+
+<div class="container">
+    <div *ngIf="loading == true" class="div">
+      <h3>Cargando Información</h3>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>   
+    </div>
+  </div>
+
+<div class="container">
+  
+  <div *ngIf="vista != ''" class="div">
+    <br>
+    <label><b>Seleccionar Contrato A Renovar</b></label>    
+  </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>        
+          <th>Fecha Renovacion</th> |
+          <br>
+          <th>Fecha Inicio Del Contrato</th>
+          |
+          <br>
+          <th>Nombre Proveedor</th>
+          |
+          <br>
+          <th>Nombre Productor</th>
+          |
+          <br>
+          <th *ngIf="vista == ''">Edit / Delete</th>
+          <th *ngIf="vista == 'Compra'">Select</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let renovacion of renovacion">
+          <td>{{renovacion.fecha}}</td>
+          |
+          <br>
+          <td>{{renovacion.fechai}}</td>
+          |
+          <br>
+          <td>{{renovacion.nombrep}}</td>
+          |
+          <br>
+          <td>{{renovacion.nombrepr}}</td> |
+          <br>
+          <td><button><i [routerLink] = "['/renovacion/form', renovacion.id, renovacion.clave, renovacion.clavep, renovacion.clavepr, renovacion.exclusivo]" class="fas fa-edit"></i></button>  /  <button class="links" (click) = 'deleteRenovacion(renovacion)'><i class="far fa-trash-alt"></i></button></td>
+        
+        </tr>               
+      </tbody>    
+    </table>
+<hr>
+  
+  <br>
+
+    <button class="btn btn-primary" (click)="gotoInicio()">
+      Volver a Inicio
+    </button>
+    
+
+</div>
+
+
+<br>

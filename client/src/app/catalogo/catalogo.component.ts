@@ -84,6 +84,41 @@ export class CatalogoComponent implements OnInit {
     productor: 0
   }];
 
+  condicioncon: any = {
+    id: 0,
+    envio: 0,
+    pago: 0,
+    contrato: 0
+  };
+
+  tipopago:any = [{
+    id:0,
+    cuota: 0,
+    porcuotas: 0,
+    mes: 0
+  }];
+
+  condicion: any = {
+    id: 0,
+    nombre: '',
+    nombred: '',
+    transporte: '',
+    costo: 0,
+    recargo: 0,
+    total:0,
+  };
+
+
+  envio:any = [{
+    id:0,
+    costo: 0,
+    recargo: 0,
+    transporte: '',
+    direccion: 0,
+    proveedor: 0
+  }];
+
+
   dtTrigger:Subject<any> = new Subject();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { }
@@ -128,6 +163,29 @@ export class CatalogoComponent implements OnInit {
     )
   }
   
+  getPerfumeP2(contrato: any){
+    this.sg.getCondProv(contrato).subscribe(
+      res => {
+        this.condicion = res;
+        this.dtTrigger.next();
+        console.log(this.condicion)
+        // console.log(this.perfume);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getPerfumeP1(condicion: any){
+    this.sg.getPagoProv(condicion).subscribe(
+      res => {
+        this.tipopago = res;
+        this.dtTrigger.next();
+        console.log(this.tipopago)
+        // console.log(this.perfume);
+      },
+      err => console.log(err)
+    )
+  }
 
   gotoInicio(){
     this.router.navigate(['/inicio']);

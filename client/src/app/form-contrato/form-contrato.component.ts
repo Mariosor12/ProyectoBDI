@@ -5,8 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CarritoService } from '../services/carrito.service';
 import {ServicioGeneralService} from '../services/servicio-general.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
-import {CatalogoAddComponent}  from '../catalogo-add/catalogo-add.component';
-import { EvaluacionFormComponent} from '../evaluacion-form/evaluacion-form.component';
+
+
 
 
 @Component({
@@ -84,8 +84,8 @@ export class FormContratoComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
-    if (params.id){
-           this.contrato ={
+    if (params){
+           this.contrato[0] ={
             id: params.id,
             fechai: params.fechai,
             fechaf: params.fechaf,
@@ -93,22 +93,17 @@ export class FormContratoComponent implements OnInit {
             proveedor: params.proveedor,
             productor: params.productor
            };
-           this.perfume ={
-            id: params.id,
-            nombre: params.nombre
-           };
-           this.evaluacion ={
-            id: params.id,
-            profuctor: params.productor
-           };
-           this.evaluaciones ={
-            id: params.id,
+           this.aliadosp[0] ={
             productor: params.productor
+          };
+           this.evaluacion[0] ={
+            profuctor: params.productor
            };
            this.edit = true;      
     }
-    this.getAliados();
-  
+    // this.getAliados();
+    
+    console.log(this.contrato[0].productor)
     
   }
 
@@ -155,8 +150,8 @@ export class FormContratoComponent implements OnInit {
     )
   }
 
-  Aliados1(evaluaciones){
-    this.sg.getProveedorFiltro(evaluaciones[0]).subscribe(
+  Aliados1(){
+    this.sg.getProveedorFiltro1().subscribe(
       res => {
         this.evaluaciones = res;
         console.log(this.evaluaciones);

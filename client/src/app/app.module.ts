@@ -45,6 +45,9 @@ import { EvaluacionDataTableComponent } from './evaluacion-data-table/evaluacion
 import { EvaluacionFormComponent } from './evaluacion-form/evaluacion-form.component';
 import { CondicionpagoComponent } from './condicionpago/condicionpago.component';
 import { ProveedorEvaluacionComponent } from './proveedor-evaluacion/proveedor-evaluacion.component';
+import { CondicionContratoComponent } from './condicion-contrato/condicion-contrato.component';
+import { RenovacionComponent } from './renovacion/renovacion.component';
+import { RenovacionFormComponent } from './renovacion-form/renovacion-form.component';
 
 
 @NgModule({
@@ -83,6 +86,9 @@ import { ProveedorEvaluacionComponent } from './proveedor-evaluacion/proveedor-e
     EvaluacionFormComponent,
     CondicionpagoComponent,
     ProveedorEvaluacionComponent,
+    CondicionContratoComponent,
+    RenovacionComponent,
+    RenovacionFormComponent,
   ],
   imports: [
     BrowserModule,

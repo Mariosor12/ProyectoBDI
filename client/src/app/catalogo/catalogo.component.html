@@ -29,7 +29,7 @@
             <th>Nombre Ingrediente/Nombre Materia-Esencia</th>
             <th>Exclusividad</th>
             <br>
-          <!----<th>Estado donde se ubica</th> -->          
+      
         </tr>
       </thead>
       <tbody>
@@ -46,6 +46,12 @@
     <button *ngIf="vista == ''" class="links" [routerLink] = "['/catalogo/add', contrato.proveedor, contrato.productor, contrato.id]">
       <p><i class="fas fa-plus-circle px-1" style="font-size: 30px"></i> Agregar Nuevo Producto</p>        
     </button>
+    <br>
+    <div class="row">
+      <div class="col-lg-9">
+          <button [routerLink] = "['/condicioncontrato', contrato.id, contrato.proveedor]" class="btn btn-success float-right">Ir a Condiciones de contrato</button>
+      </div>
+  </div>
   <br>
     <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
       Volver a Inicio
