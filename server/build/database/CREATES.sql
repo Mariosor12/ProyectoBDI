@@ -13,14 +13,6 @@ CREATE TABLE Esencia_Perfume(
     CONSTRAINT PK_Esencia_Perfume PRIMARY KEY (tsca_cas)
 );
 
-CREATE TABLE Intensidad(
-	clave		SERIAL,
-	tipo	VARCHAR NOT NULL CHECK (tipo = 'Perfume' OR tipo = 'Eau de Perfume' OR tipo = 'Eau de Toilette' OR tipo = 'Eau de Cologne' OR tipo = 'Splash perfumes'),
-    concentracion NUMERIC not null,
-    descripcion varchar,
-    CONSTRAINT PK_Intensidad PRIMARY KEY (clave)
-);
-
 CREATE TABLE Familia_Olfativa(
 	clave		SERIAL,
 	nombre	VARCHAR NOT NULL,
@@ -92,6 +84,17 @@ CREATE TABLE Perfume(
 	CONSTRAINT PK_Perfume PRIMARY KEY (clave),
 	CONSTRAINT FK_fk_productor FOREIGN KEY (fk_productor)
 	REFERENCES Productor (clave) ON DELETE CASCADE
+);
+
+CREATE TABLE Intensidad(
+	clave		SERIAL,
+	tipo	VARCHAR NOT NULL CHECK (tipo = 'Perfume' OR tipo = 'Eau de Perfume' OR tipo = 'Eau de Toilette' OR tipo = 'Eau de Cologne' OR tipo = 'Splash perfumes'),
+    concentracion NUMERIC not null,
+    descripcion varchar,
+    fk_perfume INTEGER not null,
+    CONSTRAINT PK_Intensidad PRIMARY KEY (clave),
+    CONSTRAINT FK_fk_perfume FOREIGN KEY (fk_perfume)
+	REFERENCES Perfume (clave) ON DELETE CASCADE
 );
 
 

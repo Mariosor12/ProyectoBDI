@@ -34,6 +34,7 @@ import { ProveedorEvaluacionComponent} from './proveedor-evaluacion/proveedor-ev
 import { CondicionContratoComponent} from './condicion-contrato/condicion-contrato.component';
 import { RenovacionComponent} from './renovacion/renovacion.component';
 import { RenovacionFormComponent} from './renovacion-form/renovacion-form.component';
+import { RecomendadorComponent} from './recomendador/recomendador.component';
 
 const routes: Routes = [
 {
@@ -204,6 +205,10 @@ component: CondicionpagoComponent
 {
   path: 'renovacion/form/:id/:clave/:clavep/:clavepr/:exclusivo',
   component: RenovacionFormComponent
+},
+{
+  path: 'recomendador',
+  component: RecomendadorComponent
 }
 
 

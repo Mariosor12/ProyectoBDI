@@ -1,0 +1,78 @@
+<br>
+
+
+  <h1> Buscador De Perfume</h1>
+
+  <hr><br>
+
+  <p>A continuación coloque el nombre de la palabra clave a buscar.</p>
+
+
+
+<div class="container">
+    <div *ngIf="loading == true" class="div">
+      <h3>Cargando Información</h3>
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>   
+    </div>
+  </div>
+
+<div class="container">
+
+
+    <select #valor class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "recomendador.palabra" style="margin-bottom: 5px">
+        <option>Ver palabras claves a elegir</option>
+        <option *ngFor="let recomendadores of recomendadores">
+            {{recomendadores.palabra}} 
+        </option>                            
+    </select> 
+    <hr>
+
+    <br>
+    <div class="row">
+      <div class="col-lg-9">
+          <button (click)="getoneRecomendador(recomendador)" class="btn btn-success float-right">Ver</button>
+      </div>
+  </div>
+  <br>
+    <hr>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+          <tr>        
+            <th>Nombre Perfume</th>
+            <th>Genero Del Perfume</th>
+            <th>Nombre Familia Olfativa</th>
+            <th>Descripcion Familia Olfativa</th>
+            <th>Tipo Perfume</th>
+            <th>Concentracion Tipo Perfume</th>
+            <th>Descripcion Tipo Perfume</th>
+       
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let recomendador of recomendador">
+            <td>{{recomendador.nombrep}}</td>
+            <td>{{recomendador.genero}}</td>
+            <td>{{recomendador.nombref}}</td>
+            <td>{{recomendador.descripcionf}}</td>
+            <td>{{recomendador.tipo}}</td>
+            <td>{{recomendador.concentracion}}%</td>
+            <td>{{recomendador.descripcion}}</td>
+            <!----<td>{{aliado.lugar}}</td>      -->
+            <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+            <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+            <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+        
+          </tr>               
+        </tbody>    
+      </table>
+    
+    <button *ngIf="vista != ''" class="btn btn-primary" (click)="gotoInicio()">
+      Volver a Inicio
+    </button>
+  
+</div>
+
+
+<br>

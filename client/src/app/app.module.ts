@@ -48,6 +48,7 @@ import { ProveedorEvaluacionComponent } from './proveedor-evaluacion/proveedor-e
 import { CondicionContratoComponent } from './condicion-contrato/condicion-contrato.component';
 import { RenovacionComponent } from './renovacion/renovacion.component';
 import { RenovacionFormComponent } from './renovacion-form/renovacion-form.component';
+import { RecomendadorComponent } from './recomendador/recomendador.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { RenovacionFormComponent } from './renovacion-form/renovacion-form.compo
     CondicionContratoComponent,
     RenovacionComponent,
     RenovacionFormComponent,
+    RecomendadorComponent,
   ],
   imports: [
     BrowserModule,

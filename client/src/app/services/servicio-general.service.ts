@@ -326,4 +326,12 @@ export class ServicioGeneralService {
   saveRenovacion(renovacion: any){
     return this.http.post(this.API_URL+'/renovacion/', renovacion);
   }
+
+  getRecomendador(){
+    return this.http.get(this.API_URL+'/recomendador/');
+  }
+
+  getoneRecomendador(recomendador: any){
+    return this.http.get(this.API_URL+'/recomendador/'+recomendador.palabra);
+  }
 }

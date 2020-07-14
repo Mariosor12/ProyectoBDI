@@ -30,13 +30,6 @@ INSERT INTO Esencia_Perfume(tsca_cas, nombre, codint, tipo_extraccion, descripci
 (9688, 'hierba', 10, 'Maceracion', ' son generados por la planta en células secretoras aisladas, en pelos secretores o en bolsas o canales secretores. Las células secretoras están diseminadas en los parénquimas (tejido fundamental) de todos los órganos o en la epidermis (tejido de protección) de los tallos, de las hojas, de las flores o de los frutos. '),
 (3900, 'pachuli', null, 'Maceracion', 'La esencia de pachulí es fuerte e intensa. Se la ha usado durante cientos de años en perfumes, y crece en el oeste y este de la India.');
 
-INSERT INTO Intensidad(tipo, concentracion, descripcion)VALUES
-('Perfume', 30, 'la forma más concentrada'),
-('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas'),
-('Eau de Toilette', 10, ' Las fragancias siguen siendo frescas pero aumenta la fijación, llegando a durar el aroma hasta tres horas.'),
-('Eau de Cologne', 5, 'Con una concentración de fragancia mucho más baja (aproximadamente del 2% al 4%) y un alto contenido de alcohol, la colonia es considerablemente más barata que las anteriores. Generalmente dura hasta dos horas.'),
-('Splash perfumes', 1, 'Esta última fragancia es bastante similar a la anterior, ya que el aroma durará hasta dos horas. Sin embargo, tiene una concentración de fragancia aún más baja de solo 1% a 3%.');
-
 INSERT INTO Familia_Olfativa(nombre, descripcion)VALUES
 ('Verde', 'Es la única familia de perfumes que se asocia a un color. Cuando se huele un perfume verde, casi se puede ver la hierba recién cortada, los tallos de las plantas cubiertas de rocío, las hojas crujientes, las agujas de los pinos en el aire del bosque.'),
 ('Citrico', 'Los perfumes cítricos suelen ser adecuados como fragancias unisex; tan adecuados para hombre como para mujer. Se complementan con notas aromáticas y amaderadas. Evocan frescura y simplicidad.'),
@@ -168,6 +161,20 @@ INSERT INTO perfume(nombre, fecha_nacimiento, genero, fk_productor)VALUES
 ('Precious-RCW ', '24-08-2008', 'Femenino', 4),
 ('David Yurman-Summer Essence', '15-04-2012', 'Masculino', 1),
 ('Encounter-Calvin Klein ', '19-09-2012', 'Masculino', 3);
+
+INSERT INTO Intensidad(tipo, concentracion, descripcion, fk_perfume)VALUES
+('Perfume', 30, 'la forma más concentrada', 1),
+('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas', 2),
+('Eau de Toilette', 10, ' Las fragancias siguen siendo frescas pero aumenta la fijación, llegando a durar el aroma hasta tres horas.', 3),
+('Eau de Cologne', 5, 'Con una concentración de fragancia mucho más baja (aproximadamente del 2% al 4%) y un alto contenido de alcohol, la colonia es considerablemente más barata que las anteriores. Generalmente dura hasta dos horas.', 4),
+('Splash perfumes', 1, 'Esta última fragancia es bastante similar a la anterior, ya que el aroma durará hasta dos horas. Sin embargo, tiene una concentración de fragancia aún más baja de solo 1% a 3%.', 5),
+('Perfume', 30, 'la forma más concentrada', 6),
+('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas', 7),
+('Eau de Toilette', 10, ' Las fragancias siguen siendo frescas pero aumenta la fijación, llegando a durar el aroma hasta tres horas.', 8),
+('Eau de Cologne', 5, 'Con una concentración de fragancia mucho más baja (aproximadamente del 2% al 4%) y un alto contenido de alcohol, la colonia es considerablemente más barata que las anteriores. Generalmente dura hasta dos horas.', 9),
+('Splash perfumes', 1, 'Esta última fragancia es bastante similar a la anterior, ya que el aroma durará hasta dos horas. Sin embargo, tiene una concentración de fragancia aún más baja de solo 1% a 3%.', 10),
+('Perfume', 30, 'la forma más concentrada', 11),
+('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas', 12);
 
 INSERT INTO F_E(fk_esencia_perfume, fk_familia_olfativa)VALUES
 (1234, 5),
