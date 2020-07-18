@@ -1794,3 +1794,47 @@ SyntaxError: Unexpected token '}'
 2020-07-18T02:23:14.580Z - info: Rendering request 22 finished in 2636 ms
 2020-07-18T02:23:35.349Z - debug: OData query on templates
 2020-07-18T02:23:35.391Z - debug: OData query on settings
+2020-07-18T18:21:04.477Z - debug: OData query on templates
+2020-07-18T18:21:04.492Z - debug: OData query on folders
+2020-07-18T18:21:04.504Z - debug: OData query on tags
+2020-07-18T18:21:04.505Z - debug: OData query on data
+2020-07-18T18:21:04.507Z - debug: OData query on assets
+2020-07-18T18:21:04.509Z - debug: OData query on scripts
+2020-07-18T18:21:04.515Z - debug: OData query on xlsxTemplates
+2020-07-18T18:21:04.523Z - debug: OData query on schedules
+2020-07-18T18:21:04.568Z - debug: OData query on settings
+2020-07-18T18:21:04.786Z - debug: OData query on templates
+2020-07-18T18:21:04.808Z - debug: OData query on settings
+2020-07-18T18:21:10.716Z - debug: OData query on data
+2020-07-18T18:21:12.761Z - debug: OData query on scripts
+2020-07-18T18:25:26.392Z - debug: OData update on scripts
+2020-07-18T18:25:26.461Z - debug: OData query on scripts
+2020-07-18T18:25:28.628Z - debug: OData query on templates
+2020-07-18T18:25:30.802Z - info: Starting rendering request 23 (user: null)
+2020-07-18T18:25:30.821Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-18T18:25:30.823Z - debug: Inline data specified.
+2020-07-18T18:25:30.823Z - debug: Resources not defined for this template.
+2020-07-18T18:25:30.841Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-18T18:25:31.238Z - warn: Rendering request 23 finished with error in 439 ms
+2020-07-18T18:25:31.241Z - warn: Error when processing render request 23 Error while executing user script. require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }. 
+
+> 1 | const axios = require('axios')
+    |               ^
+  2 | async function beforeRender(req, res) {
+  3 |     const r = await axios.get('http://localhost:3000/api/alipro/NEA')    
+  4 |     req.data = { ...req.data, ...r.data}
+
+ Error: require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }
+    at _require (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:75:19)
+    at Object.base.apply (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-user-script.js:1:15
+    at Script.runInContext (vm.js:131:20)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:219:62)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+2020-07-18T18:25:31.243Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-18T18:26:18.374Z - debug: OData update on scripts
+2020-07-18T18:26:18.399Z - debug: OData query on scripts

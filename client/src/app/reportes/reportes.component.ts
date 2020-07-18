@@ -160,10 +160,6 @@ export class ReportesComponent implements OnInit {
     document.getElementById('r1').setAttribute('href', "http://localhost:3000/api/reporte/1/"+aliados.nombre);  
   }
 
-  reporte1_1(aliados: any){
-    document.getElementById('r1_1').setAttribute('href', "http://localhost:3000/api/reporte/1/"+aliados.nombre);  
-  }
-
   reporte2(){
     this.inicio = this.year+'-'+this.mes.split("-")[0]+'-'+this.dia;
     this.fin = this.yearf+'-'+this.mesf.split("-")[0]+'-'+this.diaf;
