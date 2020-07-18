@@ -35,6 +35,10 @@ import { CondicionContratoComponent} from './condicion-contrato/condicion-contra
 import { RenovacionComponent} from './renovacion/renovacion.component';
 import { RenovacionFormComponent} from './renovacion-form/renovacion-form.component';
 import { RecomendadorComponent} from './recomendador/recomendador.component';
+import { PedidoComponent} from './pedido/pedido.component';
+import { PedidoOpcionesComponent} from './pedido-opciones/pedido-opciones.component';
+import { PedidosPendientesComponent} from './pedidos-pendientes/pedidos-pendientes.component';
+import { PedidosAceptadosComponent} from './pedidos-aceptados/pedidos-aceptados.component';
 
 const routes: Routes = [
 {
@@ -83,7 +87,7 @@ const routes: Routes = [
   component: CarritoComponent
 },
 {
-  path: 'pago',
+  path: 'pago/:clave',
   component: PagoComponent
 },
 {
@@ -195,7 +199,7 @@ component: CondicionpagoComponent
   component: ProveedorEvaluacionComponent
 },
 {
-  path:'condicioncontrato/:id/:proveedor',
+  path:'condicioncontrato/:id/:proveedor/:productor',
   component: CondicionContratoComponent
 },
 {
@@ -209,8 +213,23 @@ component: CondicionpagoComponent
 {
   path: 'recomendador',
   component: RecomendadorComponent
+},
+{
+  path: 'pedido/:proveedor/:productor/:id/:pago/:ingrediente/:materia',
+  component: PedidoComponent
+},
+{
+  path: 'pedidosopciones/:productor',
+  component: PedidoOpcionesComponent
+},
+{
+  path: 'pedidosaceptados/:productor',
+  component: PedidosAceptadosComponent
+},
+{
+  path: 'pedidospendiente/:productor',
+  component: PedidosPendientesComponent
 }
-
 
 ];
 

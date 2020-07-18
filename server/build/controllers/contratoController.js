@@ -45,6 +45,23 @@ contratoCtrl.getoneContrato = async (req, res) => {
         })
 };
 
+contratoCtrl.getoneContratoCond = async (req, res) => {
+    const envio = req.params.envio;
+    const pago = req.params.pago;
+    const contrato = req.params.contrato;
+    await pool.query("select DISTINCT clave as id from cond_c where fk_envio = "+envio+" and fk_condicion_pago = "+pago+" and fk_contrato = "+contrato+"")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 contratoCtrl.createContrato = async (req, res) => {
     const event = req.body;
     console.log(event);

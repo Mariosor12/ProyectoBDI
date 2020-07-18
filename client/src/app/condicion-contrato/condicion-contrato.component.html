@@ -40,7 +40,7 @@
                   </table>
                   <hr>
                     <div class="form-group">
-                        <input type="text" name = "tipo pago" [(ngModel)] = "perfume[0].ingrediente" placeholder="Tipo Pago" class="form-control" autofocus>
+                        <input type="text" name = "tipo pago" [(ngModel)] = "perfume[0].ingrediente"  placeholder="Tipo Pago" class="form-control" autofocus>
                     </div>
                     <hr>
                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -94,7 +94,7 @@
             VER PROVEEDOR
         </button>  
           <hr>  
-                    <button (click)= "SaveNuevoProducto()"  class="btn btn-success btn-block">
+                    <button  [routerLink] = "['/pedido', contrato.proveedor, contrato.productor, contrato.id, perfume[0].id, perfume[0].ingrediente, perfume[0].materia]" class="btn btn-success btn-block">
                         SAVE
                     </button>  
                     <hr>

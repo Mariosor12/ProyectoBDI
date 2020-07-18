@@ -49,6 +49,10 @@ import { CondicionContratoComponent } from './condicion-contrato/condicion-contr
 import { RenovacionComponent } from './renovacion/renovacion.component';
 import { RenovacionFormComponent } from './renovacion-form/renovacion-form.component';
 import { RecomendadorComponent } from './recomendador/recomendador.component';
+import { PedidoComponent } from './pedido/pedido.component';
+import { PedidoOpcionesComponent } from './pedido-opciones/pedido-opciones.component';
+import { PedidosPendientesComponent } from './pedidos-pendientes/pedidos-pendientes.component';
+import { PedidosAceptadosComponent } from './pedidos-aceptados/pedidos-aceptados.component';
 
 
 @NgModule({
@@ -91,6 +95,10 @@ import { RecomendadorComponent } from './recomendador/recomendador.component';
     RenovacionComponent,
     RenovacionFormComponent,
     RecomendadorComponent,
+    PedidoComponent,
+    PedidoOpcionesComponent,
+    PedidosPendientesComponent,
+    PedidosAceptadosComponent,
   ],
   imports: [
     BrowserModule,

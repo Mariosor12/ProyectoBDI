@@ -1,0 +1,53 @@
+
+<div class="row">
+    <h3>Agregar Pedido</h3>
+    <hr>
+    <div class="col-md-4 offset-md-2">
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name = "fechai" [(ngModel)] = "pedido[0].fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "fechaf" [(ngModel)] = "pedido[0].fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "motivo" [(ngModel)] = "pedido[0].estatus" placeholder="estatus" class="form-control" autofocus>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" name = "motivo" [(ngModel)] = "pedido[0].factura" placeholder="factura" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "motivo" [(ngModel)] = "pedido[0].total" placeholder="total" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "condc" [(ngModel)] = "clave[0].id" placeholder="condc" class="form-control" autofocus>
+                    </div> 
+                    <div class="form-group">
+                        <input type="text" name = "proveedor" [(ngModel)] = "perfume[0].contrato" placeholder="Proveedor" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name = "id" [(ngModel)] = "perfume[0].ingrediente"  placeholder="Contrato" class="form-control" autofocus>
+                    </div>
+                    
+          <hr>        
+
+               
+                    <button (click)= "SaveNuevoProducto()" [routerLink] = "['/pedidosopciones', contrato[0].productor]" class="btn btn-success btn-block">
+                        SAVE
+                    </button>  
+
+                    <button (click)= "getAliados()"  class="btn btn-success btn-block">
+                        CONSEGUIR CONDICIONES CLAVE
+                    </button>  
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

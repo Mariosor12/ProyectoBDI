@@ -6,20 +6,17 @@ import { CarritoService } from '../services/carrito.service';
 import {ServicioGeneralService} from '../services/servicio-general.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 
-
-
-
 @Component({
-  selector: 'app-form-contrato',
-  templateUrl: './form-contrato.component.html',
-  styleUrls: ['./form-contrato.component.css']
+  selector: 'app-pedido',
+  templateUrl: './pedido.component.html',
+  styleUrls: ['./pedido.component.css']
 })
-export class FormContratoComponent implements OnInit {
+export class PedidoComponent implements OnInit {
 
-  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { 
-  }
+  constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) {
+    this.est = 'Pendiente';
+   }
 
-  
   evaluacion:any = [{
     fechai: '',
     fechaf: '',
@@ -27,6 +24,18 @@ export class FormContratoComponent implements OnInit {
     tipo: '',
     criterio: 0,
     productor: 0
+  }];
+
+  pedido:any = [{
+    fechai: '',
+    fechaf: '',
+    factura: 0,
+    estatus: '',
+    total: 0,
+    cond: 0,
+    pago: 0,
+    proveedor: 0,
+    cantidad: 0
   }];
 
   evaluaciones:any = [{
@@ -74,13 +83,20 @@ export class FormContratoComponent implements OnInit {
     region: ''
   };
 
+  clave: any = {
+    id:0
+  };
+
   perfume: any = [{
     id: 0,
-    nombre: ''
+    ingrediente: 0,
+    materia: 0,
+    contrato: 0
   }];
 
   edit: boolean = false;
   vista: string;
+  est: string = 'Pendiente';
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
@@ -94,31 +110,49 @@ export class FormContratoComponent implements OnInit {
             proveedor: params.proveedor,
             productor: params.productor
            };
-           this.aliadosp[0] ={
-            productor: params.productor
-          };
-           this.evaluacion[0] ={
-            profuctor: params.productor
+           this.perfume[0] ={
+            ingrediente: params.ingrediente,
+            materia: params.materia,
+            contrato: params.id,
+            estatus: params.est
            };
            this.edit = true;      
     }
     // this.getAliados();
     
-    console.log(this.contrato[0].productor)
-    
+    console.log(this.contrato[0])
+    console.log(this.perfume[0])
+    this.pedido[0].fechai = this.hoyFecha();
   }
 
 
   SaveNuevoProducto() {
     this.edit = false
-    delete this.contrato[0].id;
-    delete this.contrato[0].nombrep;
-    delete this.contrato[0].nombrepr;
-    console.log(this.contrato[0])
+    this.pedido[0].cond = this.clave[0].id;
+    this.pedido[0].pago = this.perfume[0].ingrediente;
+    this.pedido[0].proveedor = this.contrato[0].proveedor;
+    console.log(this.pedido[0])
     //this.sg.saveContrato(this.contratos);
-    this.sg.saveContrato(this.contrato[0]).subscribe(
+    this.sg.savePedido(this.pedido[0]).subscribe(
         res => {
           console.log(res);
+          console.log('Insertado')
+          // this.router.navigate(['/catalogo/add']);
+          // this.contratos = res; // Esto esta mal.
+
+        },
+        err => console.error(err)
+      )
+  }
+
+  SaveNuevoProductoCant() {
+    this.edit = false
+    console.log(this.pedido[0])
+    //this.sg.saveContrato(this.contratos);
+    this.sg.savePedidoCant(this.pedido[0]).subscribe(
+        res => {
+          console.log(res);
+          // console.log('Insertado')
           // this.router.navigate(['/catalogo/add']);
           // this.contratos = res; // Esto esta mal.
 
@@ -143,34 +177,33 @@ export class FormContratoComponent implements OnInit {
   }
 
   getAliados(){
-    this.sg.getAliadosPro().subscribe(
+    this.sg.getoneCondicionCond(this.perfume[0]).subscribe(
       res => {
-        this.aliadosp = res;
+        this.clave = res;
+        console.log(this.clave);
         
       },
       err => console.log(err)
     )
   }
 
-  Aliados1(){
-    this.sg.getProveedorFiltro1().subscribe(
-      res => {
-        this.evaluaciones = res;
-        console.log(this.evaluaciones);
-      },
-      err => console.log(err)
-    )
-  }
-  
-  getPerfumeP(contrato: any){
-    this.sg.getPerfumeP(contrato).subscribe(
-      res => {
-        this.perfume = res;
-        // console.log(this.perfume);
-      },
-      err => console.log(err)
-    )
-  }
+  addZero(i) {
+    if (i < 10) {
+        i = '0' + i;
+    }
+    return i;
+}
+hoyFecha(){
+  var hoy = new Date();
+      var dd = hoy.getDate();
+      var mm = hoy.getMonth()+1;
+      var yyyy = hoy.getFullYear();
+      
+      dd = this.addZero(dd);
+      mm = this.addZero(mm);
 
+
+      return dd+'/'+mm+'/'+yyyy;
 }
 
+}

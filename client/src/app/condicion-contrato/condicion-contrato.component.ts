@@ -33,7 +33,9 @@ export class CondicionContratoComponent implements OnInit {
     fechaf: '',
     descripcion: '',
     proveedor: 0,
-    productor: 0
+    productor: 0,
+    ingrediente: 0,
+    hola: 0
   }];
 
   contratos: any = [{
@@ -75,7 +77,7 @@ export class CondicionContratoComponent implements OnInit {
 
   perfume: any = [{
     perfume: 0,
-    ingrediente: '',
+    ingrediente: 0,
     materia: '',
     contrato: 0
   }];
@@ -144,7 +146,7 @@ export class CondicionContratoComponent implements OnInit {
            };
            this.perfume[0] ={
             contrato: params.contrato,
-            productor: params.productor
+            ingrediente: params.ingrediente
            };
            this.edit = true;      
     }
@@ -152,6 +154,7 @@ export class CondicionContratoComponent implements OnInit {
     // this.perfume[0].contrato = this.contrato.id;
     // console.log(this.aliados);
     // this.getPerfumeP(this.contrato);
+    console.log(this.contrato);
 
   }
 
@@ -162,7 +165,6 @@ export class CondicionContratoComponent implements OnInit {
   SaveNuevoProducto() {
     delete this.perfume[0].productor;
     this.perfume[0].contrato = this.contrato.id;
-    
     console.log(this.perfume[0])
     this.sg.saveContratoCondicion(this.perfume[0]).subscribe(
         res => {

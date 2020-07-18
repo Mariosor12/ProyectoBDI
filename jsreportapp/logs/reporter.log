@@ -1295,3 +1295,502 @@ Expecting 'EOF', got 'OPEN_ENDBLOCK'
 2020-07-11T02:29:19.724Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
 2020-07-11T02:29:20.281Z - debug: Skipping storing report.
 2020-07-11T02:29:20.282Z - info: Rendering request 52 finished in 1871 ms
+2020-07-14T18:02:01.069Z - info: Initializing jsreport@2.7.2 in development mode using configuration file: jsreport.config.json
+2020-07-14T18:02:01.072Z - info: Searching for available extensions in C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\
+2020-07-14T18:02:01.144Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\
+2020-07-14T18:02:01.193Z - info: Found 35 extensions
+2020-07-14T18:02:01.853Z - debug: Writing extension locations cache to C:\Users\pancho\AppData\Local\Temp\jsreport\core\locations.json
+2020-07-14T18:02:01.858Z - debug: Discovered 35 extensions
+2020-07-14T18:02:02.110Z - info: Setting dedicated-process (process based) strategy for rendering. Please visit http://jsreport.net/learn/configuration for information how to get more performance.
+2020-07-14T18:02:02.129Z - debug: Extension authentication@2.4.2 is disabled, skipping
+2020-07-14T18:02:02.132Z - info: Using extension cli@2.2.2
+2020-07-14T18:02:02.147Z - info: Using extension debug@2.1.3
+2020-07-14T18:02:02.153Z - info: Using extension express@2.6.0
+2020-07-14T18:02:02.747Z - info: Using extension freeze@2.0.0
+2020-07-14T18:02:02.750Z - info: Using extension handlebars@2.1.0
+2020-07-14T18:02:02.756Z - info: Using extension import-export@1.5.1
+2020-07-14T18:02:02.904Z - info: Using extension jsrender@2.1.1
+2020-07-14T18:02:02.906Z - info: Using extension tags@2.3.0
+2020-07-14T18:02:02.910Z - info: Using extension templates@2.3.2
+2020-07-14T18:02:02.914Z - info: Using extension authorization@2.2.6
+2020-07-14T18:02:02.930Z - debug: Extension authorization@2.2.6 was disabled
+2020-07-14T18:02:02.930Z - info: Using extension base@2.0.2
+2020-07-14T18:02:02.934Z - info: Using extension browser-client@2.2.2
+2020-07-14T18:02:02.946Z - info: Using extension child-templates@1.3.1
+2020-07-14T18:02:02.976Z - info: Using extension chrome-pdf@1.7.1
+2020-07-14T18:02:03.234Z - debug: Chrome strategy is dedicated-process
+2020-07-14T18:02:03.235Z - info: Using extension data@2.2.0
+2020-07-14T18:02:03.237Z - info: Using extension docx@2.5.0
+2020-07-14T18:02:03.248Z - info: Using extension fs-store@2.7.2
+2020-07-14T18:02:03.635Z - info: Using extension licensing@2.2.1
+2020-07-14T18:02:03.652Z - info: Using extension pdf-utils@1.6.1
+2020-07-14T18:02:04.059Z - info: Using extension pptx@0.5.0
+2020-07-14T18:02:04.074Z - info: Using extension reports@2.2.1
+2020-07-14T18:02:04.087Z - info: Using extension static-pdf@0.3.1
+2020-07-14T18:02:04.098Z - info: Using extension studio@2.7.0
+2020-07-14T18:02:04.293Z - debug: studio request logs are enabled (flush interval: 2000)
+2020-07-14T18:02:04.311Z - info: Using extension text@2.0.0
+2020-07-14T18:02:04.317Z - info: Using extension version-control@1.3.2
+2020-07-14T18:02:04.574Z - info: Using extension assets@1.5.2
+2020-07-14T18:02:04.632Z - info: Using extension html-to-xlsx@2.6.0
+2020-07-14T18:02:05.550Z - info: html-to-xlsx detected chrome as available html engine
+2020-07-14T18:02:05.552Z - info: Using extension scheduling@2.2.0
+2020-07-14T18:02:05.632Z - info: Using extension scripts@2.3.0
+2020-07-14T18:02:05.676Z - info: Using extension studio-theme-dark@0.3.0
+2020-07-14T18:02:05.680Z - info: Using extension xlsx@2.3.0
+2020-07-14T18:02:06.086Z - info: Using extension public-templates@2.1.0
+2020-07-14T18:02:06.088Z - debug: Extension public-templates@2.1.0 was disabled
+2020-07-14T18:02:06.089Z - info: Using extension resources@2.0.3
+2020-07-14T18:02:06.092Z - info: Using extension sample-template@2.5.1
+2020-07-14T18:02:06.123Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2020-07-14T18:02:06.129Z - info: Using fs provider for template store.
+2020-07-14T18:02:06.143Z - info: fs store is persisting using fs
+2020-07-14T18:02:06.148Z - info: fs store sync is disabled
+2020-07-14T18:02:06.151Z - info: fs store underlying changes synchronization with studio is disabled
+2020-07-14T18:02:06.208Z - info: fs store is loading data
+2020-07-14T18:02:06.343Z - info: fs store is initialized successfully
+2020-07-14T18:02:06.405Z - debug: studio default theme is: light
+2020-07-14T18:02:06.428Z - info: Creating default express app.
+2020-07-14T18:02:06.507Z - info: jsreport server successfully started on http port: 5488
+2020-07-14T18:02:06.512Z - info: Verifying license key free
+2020-07-14T18:02:06.527Z - info: Using free license
+2020-07-14T18:02:06.552Z - info: reporter initialized
+2020-07-14T18:03:59.187Z - info: Starting rendering request 1 (user: null)
+2020-07-14T18:03:59.191Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-14T18:03:59.204Z - debug: Inline data specified.
+2020-07-14T18:03:59.206Z - debug: Resources not defined for this template.
+2020-07-14T18:03:59.209Z - debug: Base url not specified, skipping its injection.
+2020-07-14T18:03:59.262Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-14T18:03:59.267Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-14T18:03:59.884Z - debug: Compiled template not found in the cache, compiling
+2020-07-14T18:03:59.888Z - debug: Executing recipe chrome-pdf
+2020-07-14T18:04:01.980Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-14T18:04:02.383Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-14T18:04:03.726Z - debug: Skipping storing report.
+2020-07-14T18:04:03.728Z - info: Rendering request 1 finished in 4552 ms
+2020-07-17T17:01:16.622Z - debug: OData query on templates
+2020-07-17T17:01:16.629Z - debug: OData query on folders
+2020-07-17T17:01:16.638Z - debug: OData query on tags
+2020-07-17T17:01:16.640Z - debug: OData query on data
+2020-07-17T17:01:16.642Z - debug: OData query on assets
+2020-07-17T17:01:16.643Z - debug: OData query on scripts
+2020-07-17T17:01:16.648Z - debug: OData query on xlsxTemplates
+2020-07-17T17:01:16.652Z - debug: OData query on schedules
+2020-07-17T17:01:16.665Z - debug: OData query on settings
+2020-07-17T17:01:16.830Z - debug: OData query on templates
+2020-07-17T17:01:16.854Z - debug: OData query on settings
+2020-07-17T17:01:22.825Z - debug: OData query on templates
+2020-07-17T17:01:25.542Z - info: Starting rendering request 2 (user: null)
+2020-07-17T17:01:25.543Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:01:25.545Z - debug: Data item not defined for this template.
+2020-07-17T17:01:25.545Z - debug: Resources not defined for this template.
+2020-07-17T17:01:25.547Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:01:25.551Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:01:25.551Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:01:25.961Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:01:25.962Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:01:26.656Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:01:27.119Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:01:27.426Z - debug: Skipping storing report.
+2020-07-17T17:01:27.427Z - info: Rendering request 2 finished in 1895 ms
+2020-07-17T17:03:40.133Z - debug: Version control commit: local changes
+2020-07-17T17:03:40.148Z - debug: Version control diff for local changes
+2020-07-17T17:04:01.334Z - info: Starting rendering request 3 (user: null)
+2020-07-17T17:04:01.337Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:04:01.340Z - debug: Data item not defined for this template.
+2020-07-17T17:04:01.342Z - debug: Resources not defined for this template.
+2020-07-17T17:04:01.345Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:04:01.350Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:04:01.352Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:04:01.711Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:04:01.712Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:04:02.210Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:04:02.704Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:04:03.048Z - debug: Skipping storing report.
+2020-07-17T17:04:03.049Z - info: Rendering request 3 finished in 1722 ms
+2020-07-17T17:04:17.924Z - info: Starting rendering request 4 (user: null)
+2020-07-17T17:04:17.925Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:04:17.927Z - debug: Data item not defined for this template.
+2020-07-17T17:04:17.927Z - debug: Resources not defined for this template.
+2020-07-17T17:04:17.928Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:04:17.929Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:04:17.930Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:04:18.116Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:04:18.117Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:04:18.242Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:04:18.388Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:04:18.716Z - debug: Skipping storing report.
+2020-07-17T17:04:18.717Z - info: Rendering request 4 finished in 793 ms
+2020-07-17T17:05:07.648Z - debug: OData query on reports
+2020-07-17T17:13:43.823Z - debug: OData insert into scripts
+2020-07-17T17:16:36.160Z - debug: OData update on scripts
+2020-07-17T17:16:36.193Z - debug: OData query on scripts
+2020-07-17T17:16:51.332Z - info: Starting rendering request 5 (user: null)
+2020-07-17T17:16:51.333Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:16:51.334Z - debug: Data item not defined for this template.
+2020-07-17T17:16:51.335Z - debug: Resources not defined for this template.
+2020-07-17T17:16:51.337Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:16:51.548Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:16:51.550Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:16:51.551Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:16:51.771Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:16:51.772Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:16:52.424Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:16:52.987Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:16:53.320Z - debug: Skipping storing report.
+2020-07-17T17:16:53.321Z - info: Rendering request 5 finished in 1990 ms
+2020-07-17T17:16:56.007Z - debug: OData update on templates
+2020-07-17T17:16:56.034Z - debug: OData query on templates
+2020-07-17T17:16:57.906Z - info: Starting rendering request 6 (user: null)
+2020-07-17T17:16:57.907Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:16:57.909Z - debug: Data item not defined for this template.
+2020-07-17T17:16:57.910Z - debug: Resources not defined for this template.
+2020-07-17T17:16:57.910Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:16:58.072Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:16:58.073Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:16:58.074Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:16:58.354Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:16:58.355Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:16:58.606Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:16:59.194Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:16:59.525Z - debug: Skipping storing report.
+2020-07-17T17:16:59.526Z - info: Rendering request 6 finished in 1620 ms
+2020-07-17T17:18:02.323Z - debug: OData query on scripts
+2020-07-17T17:18:10.154Z - debug: OData update on scripts
+2020-07-17T17:18:10.178Z - debug: OData query on scripts
+2020-07-17T17:25:23.111Z - debug: Version control commit: local changes
+2020-07-17T17:25:23.127Z - debug: Version control diff for local changes
+2020-07-17T17:26:14.433Z - debug: OData insert into data
+2020-07-17T17:29:05.926Z - debug: OData query on data
+2020-07-17T17:29:22.250Z - debug: OData query on data
+2020-07-17T17:31:35.777Z - debug: OData update on data
+2020-07-17T17:31:35.813Z - debug: OData query on data
+2020-07-17T17:31:37.634Z - info: Starting rendering request 7 (user: null)
+2020-07-17T17:31:37.635Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:31:37.640Z - debug: Inline data specified.
+2020-07-17T17:31:37.641Z - debug: Resources not defined for this template.
+2020-07-17T17:31:37.642Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:31:37.823Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:31:37.825Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:31:37.826Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:31:38.059Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:31:38.060Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:31:38.844Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:31:39.438Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:31:39.778Z - debug: Skipping storing report.
+2020-07-17T17:31:39.779Z - info: Rendering request 7 finished in 2145 ms
+2020-07-17T17:32:00.346Z - debug: OData update on templates
+2020-07-17T17:32:00.369Z - debug: OData query on templates
+2020-07-17T17:32:01.601Z - info: Starting rendering request 8 (user: null)
+2020-07-17T17:32:01.602Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:32:01.603Z - debug: Inline data specified.
+2020-07-17T17:32:01.604Z - debug: Resources not defined for this template.
+2020-07-17T17:32:01.604Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:32:01.606Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:32:01.607Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:32:01.889Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:32:01.890Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:32:02.420Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:32:02.650Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:32:02.919Z - debug: Skipping storing report.
+2020-07-17T17:32:02.920Z - info: Rendering request 8 finished in 1320 ms
+2020-07-17T17:32:07.236Z - debug: OData update on templates
+2020-07-17T17:32:07.262Z - debug: OData query on templates
+2020-07-17T17:32:09.371Z - info: Starting rendering request 9 (user: null)
+2020-07-17T17:32:09.373Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:32:09.375Z - debug: Inline data specified.
+2020-07-17T17:32:09.377Z - debug: Resources not defined for this template.
+2020-07-17T17:32:09.378Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:32:09.382Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:32:09.383Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:32:09.653Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:32:09.654Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:32:09.913Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:32:10.428Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:32:10.753Z - debug: Skipping storing report.
+2020-07-17T17:32:10.754Z - info: Rendering request 9 finished in 1386 ms
+2020-07-17T17:35:25.786Z - debug: OData update on data
+2020-07-17T17:35:25.826Z - debug: OData query on data
+2020-07-17T17:35:29.287Z - info: Starting rendering request 10 (user: null)
+2020-07-17T17:35:29.291Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:35:29.294Z - debug: Inline data specified.
+2020-07-17T17:35:29.295Z - debug: Resources not defined for this template.
+2020-07-17T17:35:29.296Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:35:29.306Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:35:29.307Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:35:29.618Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:35:29.619Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:35:31.300Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:35:31.613Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:35:31.890Z - debug: Skipping storing report.
+2020-07-17T17:35:31.891Z - info: Rendering request 10 finished in 2605 ms
+2020-07-17T17:35:57.245Z - debug: OData update on data
+2020-07-17T17:35:57.272Z - debug: OData query on data
+2020-07-17T17:35:59.185Z - info: Starting rendering request 11 (user: null)
+2020-07-17T17:35:59.187Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:35:59.188Z - debug: Inline data specified.
+2020-07-17T17:35:59.188Z - debug: Resources not defined for this template.
+2020-07-17T17:35:59.189Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:35:59.191Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:35:59.192Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:35:59.443Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:35:59.444Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:36:00.165Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:36:00.321Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:36:00.583Z - debug: Skipping storing report.
+2020-07-17T17:36:00.584Z - info: Rendering request 11 finished in 1401 ms
+2020-07-17T17:39:07.814Z - debug: OData update on data
+2020-07-17T17:39:07.841Z - debug: OData query on data
+2020-07-17T17:39:11.033Z - info: Starting rendering request 12 (user: null)
+2020-07-17T17:39:11.034Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:39:11.035Z - debug: Inline data specified.
+2020-07-17T17:39:11.036Z - debug: Resources not defined for this template.
+2020-07-17T17:39:11.037Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:39:11.040Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:39:11.041Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:39:11.347Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:39:11.347Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:39:12.429Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:39:13.084Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:39:13.396Z - debug: Skipping storing report.
+2020-07-17T17:39:13.397Z - info: Rendering request 12 finished in 2364 ms
+2020-07-17T17:39:23.881Z - debug: OData update on data
+2020-07-17T17:39:23.908Z - debug: OData query on data
+2020-07-17T17:39:25.530Z - info: Starting rendering request 13 (user: null)
+2020-07-17T17:39:25.531Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:39:25.531Z - debug: Inline data specified.
+2020-07-17T17:39:25.532Z - debug: Resources not defined for this template.
+2020-07-17T17:39:25.533Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:39:25.534Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:39:25.535Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:39:25.793Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:39:25.794Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:39:26.056Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:39:26.340Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:39:26.621Z - debug: Skipping storing report.
+2020-07-17T17:39:26.621Z - info: Rendering request 13 finished in 1092 ms
+2020-07-17T17:41:01.109Z - debug: OData query on scripts
+2020-07-17T17:41:27.031Z - debug: OData update on templates
+2020-07-17T17:41:27.075Z - debug: OData query on templates
+2020-07-17T17:41:28.527Z - info: Starting rendering request 14 (user: null)
+2020-07-17T17:41:28.528Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:41:28.529Z - debug: Inline data specified.
+2020-07-17T17:41:28.529Z - debug: Resources not defined for this template.
+2020-07-17T17:41:28.530Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:41:28.697Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:41:28.702Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:41:28.702Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:41:28.925Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:41:28.926Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:41:29.065Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:41:29.338Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:41:29.676Z - debug: Skipping storing report.
+2020-07-17T17:41:29.677Z - info: Rendering request 14 finished in 1150 ms
+2020-07-17T17:48:29.255Z - debug: OData update on scripts
+2020-07-17T17:48:29.282Z - debug: OData query on scripts
+2020-07-17T17:48:31.020Z - info: Starting rendering request 15 (user: null)
+2020-07-17T17:48:31.021Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:48:31.021Z - debug: Inline data specified.
+2020-07-17T17:48:31.022Z - debug: Resources not defined for this template.
+2020-07-17T17:48:31.022Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:48:31.149Z - debug: Base url not specified, skipping its injection.
+2020-07-17T17:48:31.151Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-17T17:48:31.152Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-17T17:48:31.325Z - debug: Compiled template not found in the cache, compiling
+2020-07-17T17:48:31.326Z - debug: Executing recipe chrome-pdf
+2020-07-17T17:48:31.566Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-17T17:48:31.728Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-17T17:48:32.087Z - debug: Skipping storing report.
+2020-07-17T17:48:32.088Z - info: Rendering request 15 finished in 1068 ms
+2020-07-17T17:48:36.660Z - debug: OData update on scripts
+2020-07-17T17:48:36.686Z - debug: OData query on scripts
+2020-07-17T17:49:08.359Z - debug: OData update on scripts
+2020-07-17T17:49:08.384Z - debug: OData query on scripts
+2020-07-17T17:49:11.732Z - info: Starting rendering request 16 (user: null)
+2020-07-17T17:49:11.734Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:49:11.735Z - debug: Inline data specified.
+2020-07-17T17:49:11.736Z - debug: Resources not defined for this template.
+2020-07-17T17:49:11.737Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:49:11.882Z - warn: Rendering request 16 finished with error in 150 ms
+2020-07-17T17:49:11.884Z - warn: Error when processing render request 16 Error while executing user script. Unexpected token '}' evaluate-user-script.js:17
+    const smtpTransport = nodemailer.createTransport({...})
+                                                         ^
+
+SyntaxError: Unexpected token '}'
+    at new Script (vm.js:88:7)
+    at VMScript.compile (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:162:26)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:216:10)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+    at processTicksAndRejections (internal/process/task_queues.js:85:21)
+2020-07-17T17:49:11.885Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-17T17:49:30.054Z - debug: OData update on scripts
+2020-07-17T17:49:30.075Z - debug: OData query on scripts
+2020-07-17T17:49:31.422Z - info: Starting rendering request 17 (user: null)
+2020-07-17T17:49:31.423Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:49:31.424Z - debug: Inline data specified.
+2020-07-17T17:49:31.424Z - debug: Resources not defined for this template.
+2020-07-17T17:49:31.425Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:49:31.628Z - warn: Rendering request 17 finished with error in 207 ms
+2020-07-17T17:49:31.629Z - warn: Error when processing render request 17 Error while executing user script. require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }. 
+
+   6 | }
+   7 | 
+>  8 | const axios = require('axios')
+     |               ^
+   9 | async function beforeRender(req, res) {
+  10 |     const r = await axios.get('http://localhost:5488/odata/templates')    
+  11 |     req.data = { ...req.data, ...r.data}
+
+ Error: require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }
+    at _require (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:75:19)
+    at Object.base.apply (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-user-script.js:8:15
+    at Script.runInContext (vm.js:131:20)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:219:62)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+2020-07-17T17:49:31.629Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-17T17:53:52.555Z - debug: OData update on scripts
+2020-07-17T17:53:52.579Z - debug: OData query on scripts
+2020-07-17T17:53:53.954Z - info: Starting rendering request 18 (user: null)
+2020-07-17T17:53:53.955Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:53:53.956Z - debug: Inline data specified.
+2020-07-17T17:53:53.957Z - debug: Resources not defined for this template.
+2020-07-17T17:53:53.958Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:53:54.094Z - warn: Rendering request 18 finished with error in 141 ms
+2020-07-17T17:53:54.095Z - warn: Error when processing render request 18 Error while executing user script. require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }. 
+
+> 1 | const axios = require('axios')
+    |               ^
+  2 | async function beforeRender(req, res) {
+  3 |     const r = await axios.get('http://localhost:5488/odata/templates')    
+  4 |     req.data = { ...req.data, ...r.data}
+
+ Error: require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }
+    at _require (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:75:19)
+    at Object.base.apply (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-user-script.js:1:15
+    at Script.runInContext (vm.js:131:20)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:219:62)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+2020-07-17T17:53:54.096Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-17T17:59:17.619Z - info: Starting rendering request 19 (user: null)
+2020-07-17T17:59:17.621Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T17:59:17.622Z - debug: Inline data specified.
+2020-07-17T17:59:17.624Z - debug: Resources not defined for this template.
+2020-07-17T17:59:17.626Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T17:59:17.879Z - warn: Rendering request 19 finished with error in 262 ms
+2020-07-17T17:59:17.881Z - warn: Error when processing render request 19 Error while executing user script. require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }. 
+
+> 1 | const axios = require('axios')
+    |               ^
+  2 | async function beforeRender(req, res) {
+  3 |     const r = await axios.get('http://localhost:5488/odata/templates')    
+  4 |     req.data = { ...req.data, ...r.data}
+
+ Error: require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }
+    at _require (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:75:19)
+    at Object.base.apply (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-user-script.js:1:15
+    at Script.runInContext (vm.js:131:20)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:219:62)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+2020-07-17T17:59:17.882Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-17T18:01:20.957Z - info: Starting rendering request 20 (user: null)
+2020-07-17T18:01:20.960Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T18:01:20.961Z - debug: Inline data specified.
+2020-07-17T18:01:20.962Z - debug: Resources not defined for this template.
+2020-07-17T18:01:20.963Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T18:01:21.114Z - warn: Rendering request 20 finished with error in 161 ms
+2020-07-17T18:01:21.115Z - warn: Error when processing render request 20 Error while executing user script. require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }. 
+
+> 1 | const axios = require('axios')
+    |               ^
+  2 | async function beforeRender(req, res) {
+  3 |     const r = await axios.get('http://localhost:5488/odata/templates')    
+  4 |     req.data = { ...req.data, ...r.data}
+
+ Error: require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }
+    at _require (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:75:19)
+    at Object.base.apply (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-user-script.js:1:15
+    at Script.runInContext (vm.js:131:20)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:219:62)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+2020-07-17T18:01:21.116Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-17T18:03:57.287Z - info: Starting rendering request 21 (user: null)
+2020-07-17T18:03:57.289Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-17T18:03:57.289Z - debug: Inline data specified.
+2020-07-17T18:03:57.290Z - debug: Resources not defined for this template.
+2020-07-17T18:03:57.293Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-17T18:03:57.452Z - warn: Rendering request 21 finished with error in 164 ms
+2020-07-17T18:03:57.453Z - warn: Error when processing render request 21 Error while executing user script. require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }. 
+
+> 1 | const axios = require('axios')
+    |               ^
+  2 | async function beforeRender(req, res) {
+  3 |     const r = await axios.get('http://localhost:5488/odata/templates')    
+  4 |     req.data = { ...req.data, ...r.data}
+
+ Error: require of "axios" module has been blocked. To be able to require custom modules you need to add to configuration { "allowLocalFilesAccess": true } or enable just specific module using { "extensions": { "scripts": { "allowedModules": ["axios"] } }
+    at _require (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:75:19)
+    at Object.base.apply (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-user-script.js:1:15
+    at Script.runInContext (vm.js:131:20)
+    at VM.run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\vm2\lib\main.js:219:62)
+    at run (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-core\lib\render\safeSandbox.js:171:19)
+    at module.exports (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\jsreport-scripts\lib\scriptEvalChild.js:182:5)
+    at process.<anonymous> (C:\Users\pancho\Desktop\ProyectoBDI\jsreportapp\node_modules\script-manager\lib\worker-processes.js:66:36)
+    at process.emit (events.js:310:20)
+    at emit (internal/child_process.js:876:12)
+2020-07-17T18:03:57.454Z - warn: Error during processing request at http://localhost:5488/api/report/content.handlebars
+2020-07-18T02:22:56.812Z - debug: OData query on templates
+2020-07-18T02:22:56.825Z - debug: OData query on folders
+2020-07-18T02:22:56.835Z - debug: OData query on tags
+2020-07-18T02:22:56.838Z - debug: OData query on data
+2020-07-18T02:22:56.841Z - debug: OData query on assets
+2020-07-18T02:22:56.843Z - debug: OData query on scripts
+2020-07-18T02:22:56.848Z - debug: OData query on xlsxTemplates
+2020-07-18T02:22:56.862Z - debug: OData query on schedules
+2020-07-18T02:22:56.876Z - debug: OData query on settings
+2020-07-18T02:22:57.059Z - debug: OData query on templates
+2020-07-18T02:22:57.086Z - debug: OData query on settings
+2020-07-18T02:23:03.636Z - debug: OData query on scripts
+2020-07-18T02:23:07.556Z - debug: OData update on scripts
+2020-07-18T02:23:07.585Z - debug: OData query on scripts
+2020-07-18T02:23:10.902Z - debug: OData query on templates
+2020-07-18T02:23:11.945Z - info: Starting rendering request 22 (user: null)
+2020-07-18T02:23:11.946Z - info: Rendering template { name: content.handlebars, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-18T02:23:11.951Z - debug: Adding sample data SkgEVkvJlv
+2020-07-18T02:23:11.951Z - debug: Resources not defined for this template.
+2020-07-18T02:23:11.954Z - debug: Executing script proveedores-script using dedicated-process strategy
+2020-07-18T02:23:12.216Z - debug: Base url not specified, skipping its injection.
+2020-07-18T02:23:12.221Z - debug: Replaced assets ["invoice-styles.css"]
+2020-07-18T02:23:12.222Z - debug: Rendering engine handlebars using dedicated-process strategy
+2020-07-18T02:23:12.464Z - debug: Compiled template not found in the cache, compiling
+2020-07-18T02:23:12.465Z - debug: Executing recipe chrome-pdf
+2020-07-18T02:23:13.501Z - debug: Converting with chrome HeadlessChrome/79.0.3945.0 using dedicated-process strategy
+2020-07-18T02:23:14.201Z - debug: Running chrome with params {"printBackground":true,"margin":{}}
+2020-07-18T02:23:14.579Z - debug: Skipping storing report.
+2020-07-18T02:23:14.580Z - info: Rendering request 22 finished in 2636 ms
+2020-07-18T02:23:35.349Z - debug: OData query on templates
+2020-07-18T02:23:35.391Z - debug: OData query on settings

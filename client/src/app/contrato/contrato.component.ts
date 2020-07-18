@@ -87,6 +87,11 @@ export class ContratoComponent implements OnInit {
     productor: 0
   }];
 
+  condi: any = [{
+    id: 0,
+    pago: ''
+  }];
+
   dtTrigger:Subject<any> = new Subject();
 
 
@@ -163,12 +168,24 @@ getCatalogos(contrato: any){
   )
 }
 
+
+
 gotoInicio(){
   this.router.navigate(['/inicio']);
 }
 
 gotoContrato(){
   this.router.navigate(['/contrato/add']);
+}
+
+deleteContrato(contrato:any){
+  this.sg.deleteContrato(contrato.id).subscribe(
+    res => {
+      console.log("Borrado exitoso");
+      this.router.navigate(['/contratos']);
+    },
+    err => console.log("Error al tratar de eliminar al cliente")
+  )
 }
 
 gotoMinerales(contrato:any){

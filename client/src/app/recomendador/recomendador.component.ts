@@ -30,6 +30,36 @@ export class RecomendadorComponent implements OnInit {
     palabra: ''
   }];
 
+  recomendadore:any = [{
+    id:0,
+    palabra: ''
+  }];
+
+  recomendadoresInt:any = [{
+    id:0,
+    palabra: ''
+  }];
+
+  recomendadoresCar:any = [{
+    id:0,
+    palabra: ''
+  }];
+
+  recomendadoresFam:any = [{
+    id:0,
+    palabra: ''
+  }];
+
+  recomendadoresOca:any = [{
+    id:0,
+    palabra: ''
+  }];
+
+  recomendadoresPer:any = [{
+    id:0,
+    palabra: ''
+  }];
+
   recomendador:any = [{
     id:0,
     nombrep: '',
@@ -39,7 +69,13 @@ export class RecomendadorComponent implements OnInit {
     tipo: '',
     concentracion: 0,
     descripcion: '',
-    palabra: ''
+    palabra: '',
+    palabra2: '',
+    palabra3: '',
+    palabra4: '',
+    palabra5: '',
+    palabra6: '',
+    palabra7: ''
   }];
 
  
@@ -54,6 +90,12 @@ export class RecomendadorComponent implements OnInit {
            this.edit = true;      
     }
     this.getRecomendador();
+    this.getRecomendadorPer();
+    this.getRecomendadorPerInt();
+    this.getRecomendadorPerCar();
+    this.getRecomendadorPerFam();
+    this.getRecomendadorPerOca();
+    this.getRecomendadorPerPer();
   
   }
 
@@ -62,6 +104,66 @@ export class RecomendadorComponent implements OnInit {
       res => {
         this.recomendadores = res;
         console.log(this.recomendadores);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getRecomendadorPerInt(){
+    this.sg.getRecomendadorPerInt().subscribe(
+      res => {
+        this.recomendadoresInt = res;
+        console.log(this.recomendadoresInt);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getRecomendadorPerCar(){
+    this.sg.getRecomendadorPerCar().subscribe(
+      res => {
+        this.recomendadoresCar = res;
+        console.log(this.recomendadoresCar);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getRecomendadorPerFam(){
+    this.sg.getRecomendadorPerFam().subscribe(
+      res => {
+        this.recomendadoresFam = res;
+        console.log(this.recomendadoresFam);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getRecomendadorPerOca(){
+    this.sg.getRecomendadorPerOca().subscribe(
+      res => {
+        this.recomendadoresOca = res;
+        console.log(this.recomendadoresOca);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getRecomendadorPerPer(){
+    this.sg.getRecomendadorPerPer().subscribe(
+      res => {
+        this.recomendadoresPer = res;
+        console.log(this.recomendadoresPer);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getRecomendadorPer(){
+    this.sg.getRecomendadorPer().subscribe(
+      res => {
+        this.recomendadore = res;
+        console.log(this.recomendadore);
       },
       err => console.log(err)
     )

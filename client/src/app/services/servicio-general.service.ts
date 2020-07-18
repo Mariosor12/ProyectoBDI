@@ -331,7 +331,59 @@ export class ServicioGeneralService {
     return this.http.get(this.API_URL+'/recomendador/');
   }
 
+  getRecomendadorPer(){
+    return this.http.get(this.API_URL+'/recomendador/pergen/');
+  }
+
+  getRecomendadorPerInt(){
+    return this.http.get(this.API_URL+'/recomendador/perint/');
+  }
+
+  getRecomendadorPerCar(){
+    return this.http.get(this.API_URL+'/recomendador/percar/');
+  }
+
+  getRecomendadorPerFam(){
+    return this.http.get(this.API_URL+'/recomendador/perfam/');
+  }
+
+  getRecomendadorPerOca(){
+    return this.http.get(this.API_URL+'/recomendador/peroca/');
+  }
+
+  getRecomendadorPerPer(){
+    return this.http.get(this.API_URL+'/recomendador/perper/');
+  }
+
   getoneRecomendador(recomendador: any){
     return this.http.get(this.API_URL+'/recomendador/'+recomendador.palabra);
+  }
+
+  deleteContrato(id:number) {
+    return this.http.delete(this.API_URL+'/contrato/'+id);
+  }
+
+  getoneCondicionCond(perfume: any){
+    return this.http.get(this.API_URL+'/contrato/cond/'+perfume.ingrediente+ '/'+perfume.materia+ '/' +perfume.contrato);
+    
+  }
+
+  savePedido(pedido: any){
+    return this.http.post(this.API_URL+'/carrito/', pedido);
+  }
+
+  savePedidoCant(pedido: any){
+    console.log(pedido)
+    return this.http.post(this.API_URL+'/carrito/cant/', pedido);
+  }
+
+  getonePedido(contrato: any){
+    console.log(contrato);
+    return this.http.get(this.API_URL+'/carrito/'+contrato);
+  }
+
+  getonePedidoAceptado(contrato: any){
+    console.log(contrato);
+    return this.http.get(this.API_URL+'/carrito/aceptado/'+contrato);
   }
 }

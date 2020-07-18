@@ -41,9 +41,12 @@
             Productor
         </button>  
                
-                    <button (click)= "edit ? updatedContrato() : SaveNuevoProducto()" (click) = "getPerfumeP(contrato)" [routerLink] = "['/catalogo/add', contrato.productor, contrato.id]" class="btn btn-success btn-block">
+                    <button (click)= "SaveNuevoProducto()" (click) = "getPerfumeP(contrato)" [routerLink] = "['/catalogo/add', contrato.productor, contrato.id]" class="btn btn-success btn-block">
                         SAVE
                     </button>  
+                    <button (click)= "updatedContrato()" (click) = "getPerfumeP(contrato)" [routerLink] = "['/catalogo/add', contrato.productor, contrato.id]" class="btn btn-success btn-block">
+                        EDITAR
+                    </button> 
                 </form>
             </div>
         </div>

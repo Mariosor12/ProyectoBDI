@@ -49,7 +49,7 @@ evalCtrl.getProveedorFiltro = async (req, res) => {
     const id = req.params.id;
     const productor = req.params.productor;
     console.log(productor);
-    await pool.query("select distinct p.clave as id, p.nombre as razon from contrato c, proveedor p, miembro_ifra m where c.fk_proveedor = p.clave and m.fk_proveedor = p.clave and m.fechaf is null and c.fecha_cancela is null")
+    await pool.query("select distinct p.clave as id, p.nombre as razon from contrato c, proveedor p, miembro_ifra m, envio e, direccion d, productor_pais pp where c.fk_proveedor = p.clave and m.fk_proveedor = p.clave and e.fk_proveedor = p.clave and e.fk_direccion = d.clave and pp.fk_productor = p.clave and pp.fk_direccion = d.clave and m.fechaf is null and c.fecha_cancela is null")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

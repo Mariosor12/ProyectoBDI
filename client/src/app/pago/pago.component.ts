@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ActivatedRoute, Router} from '@angular/router';
 import { CarritoService } from './../services/carrito.service';
 import { CommonService } from './../services/common.service';
 import { ServicioGeneralService } from './../services/servicio-general.service';
@@ -12,7 +12,23 @@ import { CarritoComponent} from '../carrito/carrito.component';
 })
 export class PagoComponent implements OnInit {
 
-  pedidos:any = [{}];
+  // pedidos:any = [{}];
+
+  pedidos: any = [{
+    clave: 0,
+    fecha: '',
+    fechaf: '',
+    estatus: '',
+    factura: 0,
+    total: 0,
+    nombre: '',
+    tipo: '',
+    transporte: '',
+    costo: 0,
+    recargo: 0,
+    totalm: 0,
+    cantidad: 0
+  }];
 
 number: number = 1;
   pago: boolean = true;
@@ -41,7 +57,7 @@ number: number = 1;
   indiceProducto:number = 0;
   cantidad:number = 0;
 
-  constructor(private cart:CarritoService, private common:CommonService, private sg:ServicioGeneralService) {
+  constructor(private cart:CarritoService, private activatedRoute: ActivatedRoute, private common:CommonService, private sg:ServicioGeneralService) {
     this.common.vista = 'Pagos';
     this.monto = this.cart.monto;
     this.montoPagar = this.cart.monto;
@@ -49,6 +65,19 @@ number: number = 1;
    }
 
   ngOnInit(): void {
+    const params = this.activatedRoute.snapshot.params;
+    if (params){
+           this.pedidos[0] ={
+            id: params.clave,
+            fechai: params.fechai,
+            fechaf: params.fechaf,
+            exclusivo: params.exclusivo,
+            descripcion: params.descripcion,
+            proveedor: params.proveedor,
+            productor: params.productor
+           };
+    }
+    console.log(this.pedidos[0]);
   }
 
   evento(opcion:string){

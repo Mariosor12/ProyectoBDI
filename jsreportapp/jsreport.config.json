@@ -1,6 +1,6 @@
 {
   "httpPort": 5488,
-  "allowLocalFilesAccess": false,
+  "allowLocalFilesAccess": true,
   "store": {
     "provider": "fs"
   },
@@ -9,6 +9,10 @@
   },
   "reportTimeout": 60000,
   "extensions": {
+    "scripts": {
+      "allowedModules": 
+      ["axios"]
+    },
     "authentication": {
       "admin": {
         "username": "admin",
