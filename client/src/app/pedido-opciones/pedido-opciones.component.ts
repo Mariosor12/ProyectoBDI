@@ -121,11 +121,6 @@ export class PedidoOpcionesComponent implements OnInit {
     console.log(this.contrato[0].pago);
   }
 
-
-gotoPedidos(){
-  this.router.navigate(['/pedidos']);
-}
-
 gotoPedidosPendiente(){
   this.router.navigate(['/pedidospendiente', this.contrato[0].productor, this.contrato[0].proveedor, this.contrato[0].cond, this.contrato[0].pago]);
 }
