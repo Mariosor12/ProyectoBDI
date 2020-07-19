@@ -60,7 +60,7 @@
         <td>{{pedidos.costo}} $</td>
         <td>{{pedidos.recargo}} %</td>
         <td>{{pedidos.totalm}} $</td>
-        <td><button><i [routerLink] = "['/pago', pedidos.clave]" class="fas fa-edit"></i></button></td>
+        <td><button><i (click) = "updatedPedido()" [routerLink] = "['/pago', pedidos.clave, pedidos.cantidad, pedidos.total, pedidos.costo, pedidos.recargo, pedidos.totalm, pedidos.cuota, pedidos.meses, contrato[0].productor, contrato[0].cond, contrato[0].pago, contrato[0].proveedor]" class="fas fa-edit"></i></button></td>
         <!----<td>{{aliado.lugar}}</td>      -->
         <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
         <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>

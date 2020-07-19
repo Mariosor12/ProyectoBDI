@@ -34,7 +34,7 @@ pagoCtrl.getIdOrdenVenta = async (req,res) => {
 pagoCtrl.createPago = async (req,res) => {
     const pago = req.body;
     console.log("llego aqui");
-    await client.query("INSERT INTO pago (monto, fecha, fk_pedido, fk_tipo_pago) VALUES ("+pago.monto+",'"+pago.fecha+"',"+pago.pedido+","+pago.tipo+")")
+    await client.query("INSERT INTO pago (monto, fecha, fk_pedido) VALUES ("+pago.totalm+",'"+pago.fecha+"',"+pago.id+")")
         .then(response => {
             console.log("Paso el query");
             if(response.rowCount)

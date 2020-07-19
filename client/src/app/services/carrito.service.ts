@@ -9,7 +9,10 @@ import { Pedido } from '../models/pedido';
 export class CarritoService {
 
   monto:number = 0;  // Monto del carrito
-
+  costoe:number = 0;  // Costo del envio
+  recargo:number = 0;  // Recargo del envio
+  total:number = 0;  // Total del Pedido
+  cubierto:number = 0;  // Total del Pedido
   //------------------------------- PARA LA COMPRA -----------------------------------------------------------
    aliadoActual:string = '';
    idAliadoActual:number = 0;

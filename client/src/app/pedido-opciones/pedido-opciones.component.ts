@@ -101,7 +101,9 @@ export class PedidoOpcionesComponent implements OnInit {
             exclusivo: params.exclusivo,
             descripcion: params.descripcion,
             proveedor: params.proveedor,
-            productor: params.productor
+            productor: params.productor,
+            cond: params.cond,
+            pago: params.pago
            };
            this.perfume[0] ={
             ingrediente: params.ingrediente,
@@ -109,8 +111,14 @@ export class PedidoOpcionesComponent implements OnInit {
             contrato: params.id,
             estatus: params.est
            };     
+           this.clave[0] ={
+            id: params.id
+           };
     }
     console.log(this.contrato[0].productor);
+    console.log(this.contrato[0].proveedor);
+    console.log(this.contrato[0].cond);
+    console.log(this.contrato[0].pago);
   }
 
 
@@ -119,10 +127,10 @@ gotoPedidos(){
 }
 
 gotoPedidosPendiente(){
-  this.router.navigate(['/pedidospendiente', this.contrato[0].productor]);
+  this.router.navigate(['/pedidospendiente', this.contrato[0].productor, this.contrato[0].proveedor, this.contrato[0].cond, this.contrato[0].pago]);
 }
 
 gotoPedidosAceptados(){
-  this.router.navigate(['/pedidosaceptados', this.contrato[0].productor]);
+  this.router.navigate(['/pedidosaceptados', this.contrato[0].productor, this.contrato[0].proveedor, this.contrato[0].cond, this.contrato[0].pago]);
 }
 }

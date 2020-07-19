@@ -76,7 +76,12 @@ export class PedidosPendientesComponent implements OnInit {
     costo: 0,
     recargo: 0,
     totalm: 0,
-    cantidad: 0
+    cantidad: 0,
+    cuota: 0,
+    meses: 0,
+    proveedor: 0,
+    cond: 0,
+    pago: 0
   }];
 
   contrato:any = [{
@@ -119,6 +124,7 @@ export class PedidosPendientesComponent implements OnInit {
     contrato: 0
   }];
 
+
   edit: boolean = false;
   
  
@@ -136,13 +142,18 @@ export class PedidosPendientesComponent implements OnInit {
             exclusivo: params.exclusivo,
             descripcion: params.descripcion,
             proveedor: params.proveedor,
-            productor: params.productor
+            productor: params.productor,
+            cond: params.cond,
+            pago: params.pago
            };
            this.perfume[0] ={
             ingrediente: params.ingrediente,
             materia: params.materia,
             contrato: params.id,
             estatus: params.est
+           };
+           this.clave[0] ={
+            id: params.id
            };
            this.edit = true;      
     }
@@ -153,8 +164,7 @@ export class PedidosPendientesComponent implements OnInit {
     };
 
     this.getAliados();
-    // console.log(this.contrato[0].productor);
-
+    console.log(this.contrato[0]);
   }
 
   ngOnDestroy(): void {    
@@ -180,6 +190,19 @@ export class PedidosPendientesComponent implements OnInit {
         this.loading = false;
       },
       err => console.log(err)
+    )
+  }
+
+  updatedPedido(){
+    console.log(this.pedidos[0])
+    this.sg.updatePedido(this.pedidos[0]).subscribe(
+      res => {
+        console.log(res);
+        console.log(this.pedidos[0])
+        // this.contratos = res; // Esto esta mal.
+
+      },
+      err => console.error(err)
     )
   }
 

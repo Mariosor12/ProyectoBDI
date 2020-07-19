@@ -39,6 +39,7 @@ import { PedidoComponent} from './pedido/pedido.component';
 import { PedidoOpcionesComponent} from './pedido-opciones/pedido-opciones.component';
 import { PedidosPendientesComponent} from './pedidos-pendientes/pedidos-pendientes.component';
 import { PedidosAceptadosComponent} from './pedidos-aceptados/pedidos-aceptados.component';
+import { PedidoCantidadComponent} from './pedido-cantidad/pedido-cantidad.component';
 
 const routes: Routes = [
 {
@@ -87,7 +88,7 @@ const routes: Routes = [
   component: CarritoComponent
 },
 {
-  path: 'pago/:clave',
+  path: 'pago/:clave/:cantidad/:total/:costo/:recargo/:totalm/:cuotas/:mes/:productor/:cond/:pago/:proveedor',
   component: PagoComponent
 },
 {
@@ -219,16 +220,20 @@ component: CondicionpagoComponent
   component: PedidoComponent
 },
 {
-  path: 'pedidosopciones/:productor',
+  path: 'pedidosopciones/:productor/:cond/:pago/:proveedor',
   component: PedidoOpcionesComponent
 },
 {
-  path: 'pedidosaceptados/:productor',
+  path: 'pedidosaceptados/:productor/:cond/:pago/:proveedor',
   component: PedidosAceptadosComponent
 },
 {
-  path: 'pedidospendiente/:productor',
+  path: 'pedidospendiente/:productor/:cond/:pago/:proveedor',
   component: PedidosPendientesComponent
+},
+{
+  path: 'pedidoscantidad/:id/:ingrediente/:proveedor/:productor',
+  component: PedidoCantidadComponent
 }
 
 ];

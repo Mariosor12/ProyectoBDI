@@ -15,12 +15,19 @@ export class CarritoComponent implements OnInit {
 
   pedidos:any = [{}];  
   monto:number = 0;
+  costoe:number = 0;
+  recargo:number = 0;
+  total:number = 0;
+  cubierto:number = 0;
   
   constructor(private router:Router, private carritoService: CarritoService) { 
 
   
     this.monto = this.carritoService.monto;
-
+    this.costoe = this.carritoService.costoe;
+    this.recargo = this.carritoService.recargo;
+    this.total = this.carritoService.total;
+    this.cubierto = this.carritoService.cubierto;
   }
 
   ngOnInit() {

@@ -104,10 +104,6 @@ export class ServicioGeneralService {
     return this.http.post(this.API_URL+'/tipopago/cheque', cheque);
   }
 
-  savePago(pago:any){
-    return this.http.post(this.API_URL+'/pago', pago);
-  }
-
   getAliadosPro(){
     return this.http.get(this.API_URL+'/aliado');
   }
@@ -385,5 +381,26 @@ export class ServicioGeneralService {
   getonePedidoAceptado(contrato: any){
     console.log(contrato);
     return this.http.get(this.API_URL+'/carrito/aceptado/'+contrato);
+  }
+
+  savePago(pedido: any){
+    console.log(pedido)
+    return this.http.post(this.API_URL+'/pago/', pedido);
+  }
+
+  updatePedido(pedido: any){
+    console.log(pedido)
+    return this.http.put(this.API_URL+'/carrito/'+pedido.clave, pedido);
+  }
+
+  getonePedidoCantidad(pedidos: any){
+    console.log(pedidos)
+    return this.http.get(this.API_URL+'/carrito/'+pedidos.cond+ '/'+pedidos.pago+ '/' +pedidos.proveedor);
+    
+  }
+
+  saveCantidadPedido(cantidad: any){
+    console.log(cantidad)
+    return this.http.post(this.API_URL+'/carrito/def/', cantidad);
   }
 }

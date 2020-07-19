@@ -18,7 +18,24 @@ pedidoCtrl.getPedidos = async (req, res) => {
 pedidoCtrl.getPedido = async (req, res) => {
     const contrato = req.params.contrato;
     console.log(contrato);
-    await pool.query("select p.clave, p.fecha as fecha, p.fecha_cont as fechaf, p.estatus as estatus, p.nro_factura as factura, dp.cantidad as cantidad, p.total as total, pr.nombre, cp.tipo as tipo, e.tipo_transporte as transporte, e.costo as costo, e.recargo as recargo, (total + (costo * (recargo + 100)/100)) as totalm from pedido p, cond_c c, condicion_pago cp, proveedor pr, envio e, contrato co, def_ped dp where p.fk_cond_c = c.clave and p.fk_condicion_pago = cp.numero and p.fk_proveedor = pr.clave and c.fk_envio = e.clave and c.fk_contrato = co.clave and dp.fk_pedido = p.clave and p.estatus = 'Pendiente' and co.fk_productor = "+contrato)
+    await pool.query("select p.clave, p.fecha as fecha, p.fecha_cont as fechaf, p.estatus as estatus, p.nro_factura as factura, dp.cantidad as cantidad, p.total as total, pr.nombre, cp.tipo as tipo, e.tipo_transporte as transporte, e.costo as costo, e.recargo as recargo, cp.porccuotas as cuota, cp.meses as meses, (total + (costo * (recargo + 100)/100)) as totalm from pedido p, cond_c c, condicion_pago cp, proveedor pr, envio e, contrato co, def_ped dp where p.fk_cond_c = c.clave and p.fk_condicion_pago = cp.numero and p.fk_proveedor = pr.clave and c.fk_envio = e.clave and c.fk_contrato = co.clave and dp.fk_pedido = p.clave and p.estatus = 'Pendiente' and co.fk_productor = "+contrato)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+pedidoCtrl.getPedidoCantidad = async (req, res) => {
+    const cond = req.params.cond;
+    const pago = req.params.pago;
+    const proveedor = req.params.proveedor;
+    await pool.query("select clave as id from pedido where fk_cond_c = "+cond+" and fk_condicion_pago = "+pago+" and fk_proveedor = "+proveedor+"")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -70,6 +87,34 @@ pedidoCtrl.createPedido = async (req, res) => {
                 res.json(response.rows);
             else
                 res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+pedidoCtrl.createPedidoDef = async (req, res) => {
+    const pedido = req.body;
+    await pool.query("INSERT INTO def_ped (cantidad, fk_pedido) VALUES ("+pedido.cantidad+","+pedido.id+") RETURNING clave")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+pedidoCtrl.editPedido = async (req, res) => {
+    const event = req.body;
+    console.log(event)
+    await pool.query("UPDATE pedido SET  estatus = 'Aceptado' WHERE clave = "+event.clave+";")
+        .then(response => {
+            res.json('Actualizado');
         })
         .catch(err => {
             console.log(err);

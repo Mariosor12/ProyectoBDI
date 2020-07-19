@@ -7,11 +7,11 @@ import {ServicioGeneralService} from '../services/servicio-general.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
-  selector: 'app-pedido',
-  templateUrl: './pedido.component.html',
-  styleUrls: ['./pedido.component.css']
+  selector: 'app-pedido-cantidad',
+  templateUrl: './pedido-cantidad.component.html',
+  styleUrls: ['./pedido-cantidad.component.css']
 })
-export class PedidoComponent implements OnInit {
+export class PedidoCantidadComponent implements OnInit {
 
   constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) {
     this.est = 'Pendiente';
@@ -96,6 +96,11 @@ export class PedidoComponent implements OnInit {
     contrato: 0
   }];
 
+  cantidad: any = {
+    id:0,
+    cantidad: 0
+  };
+
   edit: boolean = false;
   vista: string;
   est: string = 'Pendiente';
@@ -120,43 +125,28 @@ export class PedidoComponent implements OnInit {
             contrato: params.id,
             estatus: params.est
            };
+           this.clave[0] ={
+             id: params.id
+           }
            this.edit = true;      
     }
     // this.getAliados();
     
     console.log(this.contrato[0])
-    console.log(this.perfume[0])
+    console.log(this.clave[0])
     this.pedido[0].fechai = this.hoyFecha();
   }
 
 
   SaveNuevoProducto() {
     this.edit = false
-    this.pedido[0].cond = this.clave[0].id;
-    this.pedido[0].pago = this.perfume[0].ingrediente;
-    this.pedido[0].proveedor = this.contrato[0].proveedor;
-    console.log(this.pedido[0])
+
+    console.log(this.cantidad[0])
     //this.sg.saveContrato(this.contratos);
-    this.sg.savePedido(this.pedido[0]).subscribe(
+    this.sg.saveCantidadPedido(this.cantidad[0]).subscribe(
         res => {
           console.log(res);
           console.log('Insertado')
-          // this.router.navigate(['/catalogo/add']);
-          // this.contratos = res; // Esto esta mal.
-
-        },
-        err => console.error(err)
-      )
-  }
-
-  SaveNuevoProductoCant() {
-    this.edit = false
-    console.log(this.pedido[0])
-    //this.sg.saveContrato(this.contratos);
-    this.sg.savePedidoCant(this.pedido[0]).subscribe(
-        res => {
-          console.log(res);
-          // console.log('Insertado')
           // this.router.navigate(['/catalogo/add']);
           // this.contratos = res; // Esto esta mal.
 
@@ -181,10 +171,13 @@ export class PedidoComponent implements OnInit {
   }
 
   getAliados(){
-    this.sg.getoneCondicionCond(this.perfume[0]).subscribe(
+    this.pedido[0].cond = this.clave[0].id ;
+    this.pedido[0].pago = this.perfume[0].ingrediente ;
+    this.pedido[0].proveedor = this.contrato[0].proveedor ;
+    this.sg.getonePedidoCantidad(this.pedido[0]).subscribe(
       res => {
-        this.clave = res;
-        console.log(this.clave);
+        this.cantidad = res;
+        console.log(this.cantidad);
         
       },
       err => console.log(err)
