@@ -9,6 +9,8 @@
     "entryPoint": "server.js"
   },
   "dependencies": {
-    "jsreport": "2.7.2"
+    "jsreport": "2.7.2",
+    "pg": "^8.3.0",
+    "window": "^4.2.7"
   }
 }

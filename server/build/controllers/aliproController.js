@@ -6,7 +6,8 @@ aliproCtrl.getAliProductos = async (req, res) => {
     await pool.query("select p.clave as id, p.nombre as nombre, pr.clave as productor from perfume p, productor pr where p.fk_productor = pr.clave AND p.fk_productor = "+id)
         .then(response => {
             if(response.rowCount)
-                res.json(response.rows);
+                res.json(response.rows),
+                console.log(response.rows);
             else
                 res.json('Sin resultados');
         })

@@ -5,8 +5,9 @@
         "$$date": 1595006023831
     },
     "modificationDate": {
-        "$$date": 1595096778375
+        "$$date": 1595199526029
     },
     "_id": "WgCq8oMQIXlsu3yO",
-    "$entitySet": "scripts"
+    "$entitySet": "scripts",
+    "isGlobal": false
 }

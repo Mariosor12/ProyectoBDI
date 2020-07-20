@@ -11,7 +11,8 @@
   "extensions": {
     "scripts": {
       "allowedModules": 
-      ["axios"]
+      ["axios",
+      "express", "pg", "window", "request"]
     },
     "authentication": {
       "admin": {
