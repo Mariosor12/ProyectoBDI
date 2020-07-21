@@ -8,7 +8,7 @@
             <div class="card-body">
                 <form>
             
-                    <select #valor class="form-control" id="exampleFormControlSelect1" style="margin-bottom: 5px">
+                    <select #valor class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "aliados[0].id" style="margin-bottom: 5px">
                         <option>Ver Proveedores a elegir en la casilla de abajo</option>
                         <option *ngFor="let aliados of aliados">
                             {{aliados.id}}-{{aliados.razon}} 
@@ -29,14 +29,84 @@
                     
           <hr>        
                
-                    <button (click) = "getPerfumeP(aliados)" (click) = "getPerfumeP1(aliados)" class="btn btn-success btn-block">
+                    <button (click) = "getPerfumeP(aliados)" (click) = "getPerfumeP1(aliados)" (click) = "getPerfumeP3(aliados)" (click) = "getPerfumeP4(aliados)" class="btn btn-success btn-block">
                         SAVE
                     </button>  
+                    <!-- <button   class="btn btn-success btn-block">
+                      VER
+                  </button>  -->
                 </form>
             </div>
         </div>
     </div>
+<br>
+<div class="container">
+  <h1>Nombre Ingrediente Esencial</h1>
+  <hr>
 
+  <div>
+    <div class="row">
+
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+              <tr>        
+                <th>Nombre</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let productoing of productoing">
+                <td>{{productoing.nombre}}</td>
+ 
+    <hr>
+    <hr>
+                <!----<td>{{aliado.lugar}}</td>      -->
+                <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+                <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+                <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+                <!-- <td *ngIf="vista == 'Compra'"><button class="links" (click)="gotoMinerales(aliado)"><i class="fas fa-plus-circle"></i></button></td> -->
+              </tr>               
+            </tbody>    
+          </table>
+        </div>
+  </div>
+
+    <!----<button (click)="evento()" class="btn btn-primary">Siguiente</button>-->
+  </div>
+  <br>
+<div class="container">
+  <h1>Nombre Ingrediente Otro</h1>
+  <hr>
+
+  <div>
+    <div class="row">
+
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+              <tr>        
+                <th>Nombre</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of producto">
+                <td>{{producto.nombre}}</td>
+ 
+    <hr>
+    <hr>
+                <!----<td>{{aliado.lugar}}</td>      -->
+                <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
+                <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>
+                <td *ngIf="vista == 'AsociarYM'"><button class="links" (click)="asociar(mineral.id, 0)"><i class="fas fa-plus-circle"></i></button></td>-->
+                <!-- <td *ngIf="vista == 'Compra'"><button class="links" (click)="gotoMinerales(aliado)"><i class="fas fa-plus-circle"></i></button></td> -->
+              </tr>               
+            </tbody>    
+          </table>
+        </div>
+  </div>
+
+    <!----<button (click)="evento()" class="btn btn-primary">Siguiente</button>-->
+  </div>
     <br>
 
 <div class="container">

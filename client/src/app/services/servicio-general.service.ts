@@ -403,4 +403,15 @@ export class ServicioGeneralService {
     console.log(cantidad)
     return this.http.post(this.API_URL+'/carrito/def/', cantidad);
   }
+
+  getAliadoProv(condicion: any){
+    console.log(condicion)
+    return this.http.get(this.API_URL+'/alipro/nombre/'+condicion.proveedor);
+  }
+
+  getAliadoProIng(condicion: any){
+    console.log(condicion)
+    return this.http.get(this.API_URL+'/alipro/nombreing/'+condicion.proveedor);
+    
+  }
 }

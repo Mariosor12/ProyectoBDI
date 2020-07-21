@@ -7,6 +7,8 @@ router.post('/', aliproCtrl.createAliProducto);
 router.delete('/:id', aliproCtrl.deleteAliPro);
 router.get('/', aliproCtrl.getAliadosProv);
 router.get('/:id', aliproCtrl.getAliadoProv);
+router.get('/nombre/:proveedor', aliproCtrl.getAliadoPro);
+router.get('/nombreing/:proveedor', aliproCtrl.getAliadoProIng);
 router.post('/', aliproCtrl.createAliadoProv);
 router.put('/:id', aliproCtrl.editAliadoProv);
 router.delete('/:id', aliproCtrl.deleteAliadoProv);

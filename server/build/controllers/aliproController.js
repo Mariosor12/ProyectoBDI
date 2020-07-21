@@ -71,6 +71,36 @@ aliproCtrl.getAliadoProv = async (req, res) => {
         })
 };
 
+aliproCtrl.getAliadoPro = async (req, res) => {
+    const proveedor = req.params.proveedor;
+    await pool.query("select i.nombre from IMA_proveedor p, IMA_ingrediente_otro i where i.fk_proveedor = p.clave and p.clave = "+proveedor)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+aliproCtrl.getAliadoProIng = async (req, res) => {
+    const proveedor = req.params.proveedor;
+    await pool.query("select i.nombre from IMA_proveedor p, IMA_ing_materia_esencial i where i.fk_proveedor = p.clave and p.clave = "+proveedor)
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 aliproCtrl.createAliadoProv = async (req, res) => {
     const ali = req.body;
     await pool.query("INSERT INTO IMA_Proveedor (nombre, pag_web, telefono, activo, membresia, fk_direccion) VALUES ('"+ali.razon+"','"+ali.pagina+"','"+ali.tel+"','"+ali.activo+"', '"+ali.membresia+"', "+ali.lugar+")")

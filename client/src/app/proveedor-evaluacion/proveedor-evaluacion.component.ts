@@ -108,6 +108,16 @@ export class ProveedorEvaluacionComponent implements OnInit {
     proveedor: 0
   }];
 
+  producto:any = [{
+    id:0,
+    nombre: ''
+  }];
+
+  productoing:any = [{
+    id:0,
+    nombre: ''
+  }];
+
 
   edit: boolean = false;
   vista: string;
@@ -236,11 +246,36 @@ export class ProveedorEvaluacionComponent implements OnInit {
   }
 
   getPerfumeP1(condicion: any){
+    console.log(this.aliados)
     this.sg.getPagoProv(condicion).subscribe(
       res => {
         this.tipopago = res;
         this.dtTrigger.next();
         console.log(this.tipopago)
+        // console.log(this.perfume);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getPerfumeP4(condicion: any){
+    this.sg.getAliadoProv(condicion).subscribe(
+      res => {
+        this.producto = res;
+        this.dtTrigger.next();
+        console.log(this.producto)
+        // console.log(this.perfume);
+      },
+      err => console.log(err)
+    )
+  }
+
+  getPerfumeP3(condicion: any){
+    this.sg.getAliadoProIng(condicion).subscribe(
+      res => {
+        this.productoing = res;
+        this.dtTrigger.next();
+        console.log(this.productoing)
         // console.log(this.perfume);
       },
       err => console.log(err)
