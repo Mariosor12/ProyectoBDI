@@ -2,7 +2,7 @@ const clCtrl = {};
 const pool = require('../database/database');
 
 clCtrl.getClientes = async (req,res) => {
-    await pool.query("select c.clave as id, c.nombre as nombre, c.apellido as apellido, c.telefono as telefono, d.nombre as nombred, p.nombre as nombrep from cliente c , direccion d, proveedor p where c.fk_direccion = d.clave and c.fk_proveedor = p.clave")
+    await pool.query("select c.clave as id, c.nombre as nombre, c.apellido as apellido, c.telefono as telefono, d.nombre as nombred, p.nombre as nombrep from IMA_cliente c , IMA_direccion d, IMA_proveedor p where c.fk_direccion = d.clave and c.fk_proveedor = p.clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ clCtrl.getClientes = async (req,res) => {
 
 clCtrl.getCliente = async (req,res) => {
     const id = req.params.id;
-    await pool.query("select c.clave as id, c.nombre as nombre, c.apellido as apellido, c.telefono as telefono, d.nombre as nombred, p.nombre as nombrep from cliente c , direccion d, proveedor p where c.fk_direccion = d.clave and c.fk_proveedor = p.clave and clave = "+id)
+    await pool.query("select c.clave as id, c.nombre as nombre, c.apellido as apellido, c.telefono as telefono, d.nombre as nombred, p.nombre as nombrep from IMA_cliente c , IMA_direccion d, IMA_proveedor p where c.fk_direccion = d.clave and c.fk_proveedor = p.clave and clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ clCtrl.getCliente = async (req,res) => {
 
 clCtrl.createCliente = async (req,res) => {
     const cli = req.body;
-    await pool.query("INSERT INTO cliente (nombre, apellido, telefono, fk_direccion, fk_proveedor) VALUES ("+cli.nombre+",'"+cli.apellido+"','"+cli.telefono+"', '"+cli.lugar+"', "+cli.fk_proveedor+")")
+    await pool.query("INSERT INTO IMA_cliente (nombre, apellido, telefono, fk_direccion, fk_proveedor) VALUES ("+cli.nombre+",'"+cli.apellido+"','"+cli.telefono+"', '"+cli.lugar+"', "+cli.fk_proveedor+")")
         .then(response => {
             res.json('Insertado');
         })
@@ -45,7 +45,7 @@ clCtrl.createCliente = async (req,res) => {
 clCtrl.editCliente = async (req,res) => {
     const id = req.params.id;
     const cli = req.body;
-    await pool.query("UPDATE cliente SET nombre = "+cli.nombre+", apellido = '"+cli.apellido+"', telefono = '"+cli.telefono+"', fk_direccion = '"+cli.lugar+"', fk_proveedor = "+cli.fk_proveedor+" WHERE clave ="+id)
+    await pool.query("UPDATE IMA_cliente SET nombre = "+cli.nombre+", apellido = '"+cli.apellido+"', telefono = '"+cli.telefono+"', fk_direccion = '"+cli.lugar+"', fk_proveedor = "+cli.fk_proveedor+" WHERE clave ="+id)
         .then(response => {
             res.json('Actualizado');
         })
@@ -57,7 +57,7 @@ clCtrl.editCliente = async (req,res) => {
 
 clCtrl.deleteCliente = async (req,res) => {
     const id = req.params.id;
-    await pool.query("DELETE FROM cliente WHERE clave = "+id)
+    await pool.query("DELETE FROM IMA_cliente WHERE clave = "+id)
         .then(response => {
             res.json('Cliente eliminado');
         })

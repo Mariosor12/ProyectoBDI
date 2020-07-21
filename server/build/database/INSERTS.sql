@@ -1,4 +1,4 @@
-INSERT INTO Direccion(nombre)VALUES
+INSERT INTO IMA_Direccion(nombre)VALUES
     ('Venezuela'),
 	('Japon'),
     ('Francia'),
@@ -10,7 +10,7 @@ INSERT INTO Direccion(nombre)VALUES
     ('Dinamarca');
 
 
-INSERT INTO Esencia_Perfume(tsca_cas, nombre, codint, tipo_extraccion, descripcion)VALUES
+INSERT INTO IMA_Esencia_Perfume(tsca_cas, nombre, codint, tipo_extraccion, descripcion)VALUES
 (1234, 'etanol', 1, 'Maceracion', 'El vegetal se sumerge en aceite o grasa a temperatura de 60 ó 70 grados. El calor rompe las células vegetales y los aceites esenciales son absorbidos por la grasa. '),
 (5678, 'limon', null, 'Expresion', 'Es un método de obtener aceites esenciales de plantas o partes de plantas aplicando presión. Los antiguos egipcios guardaban flores en bolsas de tela y las estrujaban hasta que salía el aceite. Este método fue ampliamente utilizado hasta el descubrimiento de la destilación.'),
 (9001, 'lavanda', 2, 'Destilacion', 'Arrastre por corriente de vapor de agua. De esta forma se obtienen las esencias o aceites esenciales. '),
@@ -30,7 +30,7 @@ INSERT INTO Esencia_Perfume(tsca_cas, nombre, codint, tipo_extraccion, descripci
 (9688, 'hierba', 10, 'Maceracion', ' son generados por la planta en células secretoras aisladas, en pelos secretores o en bolsas o canales secretores. Las células secretoras están diseminadas en los parénquimas (tejido fundamental) de todos los órganos o en la epidermis (tejido de protección) de los tallos, de las hojas, de las flores o de los frutos. '),
 (3900, 'pachuli', null, 'Maceracion', 'La esencia de pachulí es fuerte e intensa. Se la ha usado durante cientos de años en perfumes, y crece en el oeste y este de la India.');
 
-INSERT INTO Familia_Olfativa(nombre, descripcion)VALUES
+INSERT INTO IMA_Familia_Olfativa(nombre, descripcion)VALUES
 ('Verde', 'Es la única familia de perfumes que se asocia a un color. Cuando se huele un perfume verde, casi se puede ver la hierba recién cortada, los tallos de las plantas cubiertas de rocío, las hojas crujientes, las agujas de los pinos en el aire del bosque.'),
 ('Citrico', 'Los perfumes cítricos suelen ser adecuados como fragancias unisex; tan adecuados para hombre como para mujer. Se complementan con notas aromáticas y amaderadas. Evocan frescura y simplicidad.'),
 ('Flores', 'La mayoría de las fragancias femeninas contienen notas florales, y muchas fragancias masculinas tienen un toque floral menos intenso. Son las más fáciles de reconocer.'),
@@ -42,7 +42,7 @@ INSERT INTO Familia_Olfativa(nombre, descripcion)VALUES
 ('Orientales', 'La familia oriental incluye fragancias masculinas y femeninas. Son perfumes cálidos, sensuales, dulces y especiados.'),
 ('Otros', 'Aromas combinados con alguna otra familia');
 
-INSERT INTO Presentacion(volml)VALUES
+INSERT INTO IMA_Presentacion(volml)VALUES
 (30),
 (50),
 (75),
@@ -53,7 +53,7 @@ INSERT INTO Presentacion(volml)VALUES
 (200),
 (350);
 
-INSERT INTO Palabra_Clave(palabra)VALUES
+INSERT INTO IMA_Palabra_Clave(palabra)VALUES
 ('naranja'),
 ('jazmin'),
 ('manzana'),
@@ -129,7 +129,7 @@ INSERT INTO Palabra_Clave(palabra)VALUES
 ('diversion');
 
 
-INSERT INTO P_F(fk_palabra_clave, fk_familia_olfativa)VALUES
+INSERT INTO IMA_P_F(fk_palabra_clave, fk_familia_olfativa)VALUES
 (1, 2),
 (1, 4),
 (2, 3),
@@ -360,7 +360,7 @@ INSERT INTO P_F(fk_palabra_clave, fk_familia_olfativa)VALUES
 (67, 10),
 (65, 10);
 
-INSERT INTO perfumista(nombre, apellido, genero, fk_direccion)VALUES
+INSERT INTO IMA_perfumista(nombre, apellido, genero, fk_direccion)VALUES
 ('Pierre', 'Armigeant', 'Masculino', 3),
 ('Frantz', 'Heinrich Müller', 'Masculino', 9),
 ('Jerome', 'Di Marino', 'Masculino', 3),
@@ -374,19 +374,19 @@ INSERT INTO perfumista(nombre, apellido, genero, fk_direccion)VALUES
 ('Rozita', 'Che Wan', 'Femenino', 5),
 ('Honorine', 'Blanc', 'Femenino', 3);
 
-INSERT INTO Asociacion_Nacional(nombre, region)VALUES
+INSERT INTO IMA_Asociacion_Nacional(nombre, region)VALUES
 ('Prodarom', 'Europa'),
 ('AEFAA', 'Europa'),
 ('JFFMA', 'AsiaPacífico'),
 ('KFFA', 'AsiaPacífico');
 
-INSERT INTO productor(nombre, pag_web, telefono, fk_asociacion_nacional)VALUES
+INSERT INTO IMA_productor(nombre, pag_web, telefono, fk_asociacion_nacional)VALUES
 ('Takasago', 'https://www.takasago.com/en/index.html', '968889920', null),
 ('Vioryl', 'http://www.vioryl.gr/', '302295045100', null),
 ('Prodarom', 'https://www.prodarom.com/', '3222142060', 1),
 ('AEFAA', 'http://www.aefaa.com/web/aefaa.nsf/index.xsp', '34915938490', 2);
 
-INSERT INTO perfume(nombre, fecha_nacimiento, genero, fk_productor)VALUES
+INSERT INTO IMA_perfume(nombre, fecha_nacimiento, genero, fk_productor)VALUES
 ('Azure', '18-03-1907', 'Femenino', 1),
 ('Royal Copehagen-Monarch', '23-07-2017', 'Masculino', 2),
 ('Carven', '15-05-2018', 'Femenino', 3),
@@ -401,7 +401,7 @@ INSERT INTO perfume(nombre, fecha_nacimiento, genero, fk_productor)VALUES
 ('Encounter-Calvin Klein ', '19-09-2012', 'Masculino', 3);
 
 
-INSERT INTO Intensidad(tipo, concentracion, descripcion, fk_perfume)VALUES
+INSERT INTO IMA_Intensidad(tipo, concentracion, descripcion, fk_perfume)VALUES
 ('Perfume', 30, 'la forma más concentrada', 1),
 ('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas', 2),
 ('Eau de Toilette', 10, ' Las fragancias siguen siendo frescas pero aumenta la fijación, llegando a durar el aroma hasta tres horas.', 3),
@@ -415,7 +415,7 @@ INSERT INTO Intensidad(tipo, concentracion, descripcion, fk_perfume)VALUES
 ('Perfume', 30, 'la forma más concentrada', 11),
 ('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas', 12);
 
-INSERT INTO F_E(fk_esencia_perfume, fk_familia_olfativa)VALUES
+INSERT INTO IMA_F_E(fk_esencia_perfume, fk_familia_olfativa)VALUES
 (1234, 5),
 (1234, 6),
 (5678, 4),
@@ -458,7 +458,7 @@ INSERT INTO F_E(fk_esencia_perfume, fk_familia_olfativa)VALUES
 (3900, 8),
 (3900, 3);
 
-INSERT INTO Monolitico(fk_perfume, fk_esencia_perfume)VALUES
+INSERT INTO IMA_Monolitico(fk_perfume, fk_esencia_perfume)VALUES
 (1, 2345),
 (1, 4532),
 (2, 9001),
@@ -500,7 +500,7 @@ INSERT INTO Monolitico(fk_perfume, fk_esencia_perfume)VALUES
 (12, 6310),
 (12, 3900);
 
-INSERT INTO proveedor(nombre, pag_web, telefono, fk_asociacion_nacional, fk_direccion)VALUES
+INSERT INTO IMA_proveedor(nombre, pag_web, telefono, fk_asociacion_nacional, fk_direccion)VALUES
 ('ETERNIS Dime Chemicals', 'http://www.eternis.com/', '912266513400', null, 5),
 ('Robertet', 'https://www.robertet.com', '33144950280', null, 3),
 ('JFFMA', 'https://www.jffma-jp.org/english/', '81335161600', 3, 2),
@@ -508,7 +508,7 @@ INSERT INTO proveedor(nombre, pag_web, telefono, fk_asociacion_nacional, fk_dire
 ('NEA', 'https://www.nea-nederland.nl/','31616915330', null, 7);
 
 
-INSERT INTO Ing_Materia_Esencial(tsca_cas, nombre, descripcion, solubilidad, proceso, descripproceso, vigencia, fk_proveedor) VALUES
+INSERT INTO IMA_Ing_Materia_Esencial(tsca_cas, nombre, descripcion, solubilidad, proceso, descripproceso, vigencia, fk_proveedor) VALUES
 (102761, '(tri-)Acetin', 'se emplea como disolvente para la extracción de aromas.', '6.1 g/100 mL en agua', 'Destilación al vacío', 'la triacetina es un líquido oleoso incoloro e inodoro que es miscible con etanol, éter etílico, cloroformo y benceno, y ligeramente soluble en agua y disulfuro de carbono. Se utiliza como aglutinante de filtro para cigarrillos y como agente fijador, solvente y endurecedor de perfume. Y se puede aplicar a cosméticos, fundición, medicina, tintes y otras industrias.', '', 1),
 (111875, '1-Octanol', 'El 1-octanol se consume principalmente como precursor de los perfumes. Se ha examinado para controlar el temblor esencial y otros tipos de temblores neurológicos involuntarios.', '0,3 g/L (20 °C) en agua', 'Destilacion', '1-Octanol está fabricado para la síntesis de ésteres para su uso en perfumes y aromas . Tiene un olor acre.', '', 2),
 (504632, '1,3-Propanediol', 'El 1,3-propanodiol se usa tanto para aromatizar como para perfumar para diluir materiales. Incoloro e inodoro. Soluble en agua y alcohol.', '9,5 g/L en agua', 'Destilacion', 'se lo utiliza en combinación con el alcohol para dar mayor estabilidad a los aceites esenciales que conforman el perfume y funciona como un retardador de evaporación, lo que lo convierte en un agente fijador.', '', 3),
@@ -520,7 +520,7 @@ INSERT INTO Ing_Materia_Esencial(tsca_cas, nombre, descripcion, solubilidad, pro
 (802889, 'Caramel color', 'Una nota lactónica cremosa, sensual, rica y cremosa que enriquece los perfumes gourmand y agrega dulzura a las composiciones florales.', 'Soluble en agua', 'Destilacion', 'Los perfumes acaramelados son aquellos que se elaboran con base de vainilla y luego se combina con alguno otro aroma particular.', '', 4),
 (802391, 'Galbanum oil', 'El aceite de gálbano se destila al vapor para producir un líquido móvil transparente, amarillo pálido o verde oliva. Resinifica fácilmente con la exposición al aire. Su perfil de fragancia es intensamente verde, potente, potente, cortante, hierba cortada, hoja de perejil, té de perejil, hojas verdes silvestres en invierno en el Wadi, tierra, balsámico, fresco.', 'alcohol, water, 0.8331 mg/L 25 °C', 'Destilacion', 'Galbanum tiene una intensa fragancia verde con elementos amaderados y balsámicos. A menudo descrito como terroso o similar a un bosque, este compuesto de fragancia se valora por su capacidad para impartir un aroma verde rico y picante .', '', 5);
 
-INSERT INTO per_fas(tipo_nota, fk_perfume, fk_esencia_perfume)VALUES
+INSERT INTO IMA_per_fas(tipo_nota, fk_perfume, fk_esencia_perfume)VALUES
 ('notas de fondo', 1, 2345),
 ('notas de fondo', 1, 4532),
 
@@ -591,7 +591,7 @@ INSERT INTO per_fas(tipo_nota, fk_perfume, fk_esencia_perfume)VALUES
 ('notas de salida', 12, 6781);
 
 
-INSERT INTO Ingrediente_Otro(nombre, ipc, tsca_cas, fk_proveedor)VALUES
+INSERT INTO IMA_Ingrediente_Otro(nombre, ipc, tsca_cas, fk_proveedor)VALUES
 ('HELYCHRISUM BALKANS OIL', 1, 1234, 2),
 ('EUCALYPTUS CITRIODORA OIL ', 2, 5676, 2),
 ('CALAMUS OIL', null, 8000, 2),
@@ -608,7 +608,7 @@ INSERT INTO Ingrediente_Otro(nombre, ipc, tsca_cas, fk_proveedor)VALUES
 ('JUNIPER CORSICAN ORGANIC OIL', 10, 8232, 5),
 ('MINT PIPERITA USA OIL', null, 4454, 5);
 
-INSERT INTO otro(fk_perfume, fk_ingrediente_otro)VALUES
+INSERT INTO IMA_otro(fk_perfume, fk_ingrediente_otro)VALUES
 (1, 2),
 (1, 1),
 (1, 13),
@@ -669,7 +669,7 @@ INSERT INTO otro(fk_perfume, fk_ingrediente_otro)VALUES
 (12, 5),
 (12, 9);
 
-INSERT INTO F_Ima(fk_ing_materia_esencial, fk_familia_olfativa)VALUES
+INSERT INTO IMA_F_Ima(fk_ing_materia_esencial, fk_familia_olfativa)VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -691,7 +691,7 @@ INSERT INTO F_Ima(fk_ing_materia_esencial, fk_familia_olfativa)VALUES
 (9, 4),
 (10, 5);
 
-INSERT INTO contrato(fecha_inicio, fecha_cancela, descripcion, motivo_cancela, exclusividad, fk_proveedor, fk_productor)VALUES
+INSERT INTO IMA_contrato(fecha_inicio, fecha_cancela, descripcion, motivo_cancela, exclusividad, fk_proveedor, fk_productor)VALUES
 ('12-06-2020', null,'', '', 'true', 1, 1),
 ('14-04-2019','13-04-2020','', 'Falta de entrega de orden completa', 'true', 2, 2),
 ('07-02-2019',null,'', '', 'true', 3, 3),
@@ -703,13 +703,13 @@ INSERT INTO contrato(fecha_inicio, fecha_cancela, descripcion, motivo_cancela, e
 ('11-03-2018','12-08-2018', '', 'No entregó los productos a tiempo','false',1,1);
 
 
-INSERT INTO Productor_Pais(fk_direccion, fk_productor)VALUES
+INSERT INTO IMA_Productor_Pais(fk_direccion, fk_productor)VALUES
 (2, 1),
 (4, 2),
 (3, 3),
 (8, 4);
 
-INSERT INTO Principal(fk_perfume, fk_familia_olfativa)VALUES
+INSERT INTO IMA_Principal(fk_perfume, fk_familia_olfativa)VALUES
 (1,3),
 (1, 10),
 
@@ -760,7 +760,7 @@ INSERT INTO Principal(fk_perfume, fk_familia_olfativa)VALUES
 (12,9),
 (12, 10);
 
-INSERT INTO Otro_Comp(fk_ingrediente_otro, fk_ing_materia_esencial)VALUES
+INSERT INTO IMA_Otro_Comp(fk_ingrediente_otro, fk_ing_materia_esencial)VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -782,7 +782,7 @@ INSERT INTO Otro_Comp(fk_ingrediente_otro, fk_ing_materia_esencial)VALUES
 (9, 4),
 (10, 4);
 
-INSERT INTO catalogo(fk_contrato, fk_perfume, fk_ingrediente_otro, fk_ing_materia_esencial)VALUES
+INSERT INTO IMA_catalogo(fk_contrato, fk_perfume, fk_ingrediente_otro, fk_ing_materia_esencial)VALUES
 (1, 1, 1, null),
 (1, 1, 2, null),
 (1, 2, 11, null),
@@ -890,7 +890,7 @@ INSERT INTO catalogo(fk_contrato, fk_perfume, fk_ingrediente_otro, fk_ing_materi
 (9, 5, 11, null),
 (9, 5, 1, null);
 
-INSERT INTO Origen(fk_direccion, fk_ing_materia_esencial)VALUES
+INSERT INTO IMA_Origen(fk_direccion, fk_ing_materia_esencial)VALUES
 (1, 1),
 (2, 3),
 (3, 5),
@@ -910,7 +910,7 @@ INSERT INTO Origen(fk_direccion, fk_ing_materia_esencial)VALUES
 (8, 8),
 (9, 9);
 
-INSERT INTO envio(costo, recargo, tipo_transporte, fk_direccion, fk_proveedor)VALUES
+INSERT INTO IMA_envio(costo, recargo, tipo_transporte, fk_direccion, fk_proveedor)VALUES
 (34, 15, 'vehiculo', 1, 1),
 (40, 20, 'barco', 2, 2),
 (56, 10, 'avion', 3, 3),
@@ -922,7 +922,7 @@ INSERT INTO envio(costo, recargo, tipo_transporte, fk_direccion, fk_proveedor)VA
 (20, 16, 'vehiculo', 9, 2),
 (27, 23, 'barco', 1, 1);
 
-INSERT INTO Condicion_Pago (tipo, cuota, porccuotas, meses) VALUES
+INSERT INTO IMA_Condicion_Pago (tipo, cuota, porccuotas, meses) VALUES
 	('Transferencia', 300, 15, 4),
 	('Cheque', 150, 20, 2),
 	('Tar_credito', 200, 10, 3),
@@ -936,14 +936,14 @@ INSERT INTO Condicion_Pago (tipo, cuota, porccuotas, meses) VALUES
 	('Tar_credito', 110, 10, 2),
 	('Tar_debito', 135, 15, 1);
 
-INSERT INTO Renueva(fecha, fk_contrato)VALUES
+INSERT INTO IMA_Renueva(fecha, fk_contrato)VALUES
 ('12-05-2021', 1),
 ('07-01-2020', 3),
 ('23-08-2021', 4),
 ('18-06-2021', 7),
 ('06-10-2020', 8);
 
-INSERT INTO Cond_c(fk_envio, fk_condicion_pago, fk_contrato)VALUES
+INSERT INTO IMA_Cond_c(fk_envio, fk_condicion_pago, fk_contrato)VALUES
 (1, 1, 1),
 (2, 2, 2),
 (3, 3, 3),
@@ -958,7 +958,7 @@ INSERT INTO Cond_c(fk_envio, fk_condicion_pago, fk_contrato)VALUES
 (6, 12, 8),
 (9, 4, 9);
 
-INSERT INTO Pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, fk_condicion_pago, fk_proveedor) VALUES
+INSERT INTO IMA_Pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, fk_condicion_pago, fk_proveedor) VALUES
 	('12-08-2018', '22-08-2018', 'Aceptado', 1234, 100, 1, 1, 1),
 	('05-06-2019', null, 'Pendiente', 4354, 150, 2, 2, 2),
 	('23-01-2019', '28-01-2019', 'Aceptado', 1221, 56, 3, 3, 3),
@@ -972,7 +972,7 @@ INSERT INTO Pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, f
 	('27-07-2018', '30-07-2018','Aceptado', 2999, 99, 11, 11, 1),
 	('30-10-2019', null, 'Pendiente', 3001, 111, 12, 12, 2);
 
-	INSERT INTO pago (monto, fecha, fk_pedido) VALUES
+	INSERT INTO IMA_pago (monto, fecha, fk_pedido) VALUES
 	(100, '23-08-2018', 1),
 	(150, '10-06-2019', 2),
 	(56, '29-01-2019', 3),
@@ -986,7 +986,7 @@ INSERT INTO Pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, f
 	(99, '01-08-2019', 11),
 	(111, '03-11-2019', 12);
 
-INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia_esencial) VALUES
+INSERT INTO IMA_Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia_esencial) VALUES
 	(35, 15, 1, null),
 	(50, 25, 1, null),
 	(35, 10, 2, null),
@@ -1039,7 +1039,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
 	(50, 25, null, 10);
 
 
-    INSERT INTO Def_Ped (cantidad, fk_pedido) VALUES
+    INSERT INTO IMA_Def_Ped (cantidad, fk_pedido) VALUES
     (15, 1),
     (10, 2),
     (12, 3),
@@ -1053,7 +1053,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
     (25, 11),
     (25, 12);
 
-     INSERT INTO Miembro_Ifra(fechai, fechaf, tipo, fk_proveedor, fk_productor) VALUES
+     INSERT INTO IMA_Miembro_Ifra(fechai, fechaf, tipo, fk_proveedor, fk_productor) VALUES
      ('04-04-2010', null, 'Principal', null, 1),
 	 ('12-05-2009', null, 'Principal', 2, null),
 	 ('10-06-2012', null, 'Secundario', 1, null),
@@ -1064,7 +1064,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
 	 ('09-12-2006', null, 'Asociacion Nacional', null, 3),
 	 ('03-02-2003', null, 'Asociacion Nacional', null, 4);
 
-     INSERT INTO Prohibida (nombre, fk_miembro_ifra, fk_ingrediente_otro) VALUES
+     INSERT INTO IMA_Prohibida (nombre, fk_miembro_ifra, fk_ingrediente_otro) VALUES
      ('eugenol', 1, 1),
 	 ('eugenol', 2, 5),
      ('isoeugenol', 3, 2),
@@ -1084,7 +1084,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
      ('helional', 8, 11),
      ('aldehído amílico cinámico', 9, 12);
 
-	 INSERT INTO Resultado_Final (fecha, resultado, tipoEval, fk_proveedor, fk_productor) VALUES
+	 INSERT INTO IMA_Resultado_Final (fecha, resultado, tipoEval, fk_proveedor, fk_productor) VALUES
      ('13-05-2018', 40, 'Inicial', 1, 1),
 	 ('12-05-2018', 65, 'Inicial', 1, 1),
 	 ('25-06-2019', 70, 'Inicial', 2, 2),
@@ -1097,7 +1097,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
 	 ('15-09-2018', 30, 'Renovacion', 4, 4),
      ('28-12-2019', 75, 'Renovacion', 5, 1);
 
-	 INSERT INTO Escala (fechai, fechaf, rangoi, rangof, fk_productor) VALUES
+	 INSERT INTO IMA_Escala (fechai, fechaf, rangoi, rangof, fk_productor) VALUES
      ('12-05-2018', '13-05-2019', 50, 100, 1),
 	 ('25-06-2019', null, 45, 100, 2),
 	 ('07-08-2019', null, 40, 100, 3),
@@ -1108,7 +1108,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
 	 ('15-09-2018', '14-09-2019', 55, 100, 4),
 	 ('28-12-2019', null, 70, 100, 1);
 
-	 INSERT INTO Criterio (nombreEtiq, descripcion) VALUES
+	 INSERT INTO IMA_Criterio (nombreEtiq, descripcion) VALUES
      ('C1', 'El proveedor se encuentra en ese pais'),
 	 ('C2', 'El proveedor posee vehículo y/o avión y/o barco'),
 	 ('C3', 'El proveedor tiene un costo de envío mas un recargo'),
@@ -1116,7 +1116,7 @@ INSERT INTO Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_materia
 	 ('C5', 'El proveedor ha salido con éxito la evaluación de renovación'),
 	 ('C6', 'El proveedor cumplió con los objetivos para la relación inicial');
 
-	INSERT INTO Cri_Eval (fechai, fechaf, peso, tipoform, fk_productor, fk_criterio) VALUES
+	INSERT INTO IMA_Cri_Eval (fechai, fechaf, peso, tipoform, fk_productor, fk_criterio) VALUES
      ('12-05-2018', '01-10-2019', 20, 'Inicial', 1, 1),
 	 ('25-06-2019', '04-08-2019', 40, 'Inicial', 2, 2),
 	 ('07-08-2019', null, 20, 'Inicial', 3, 3),

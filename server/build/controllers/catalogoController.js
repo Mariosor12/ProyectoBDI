@@ -2,7 +2,7 @@ const catCtrl = {};
 const pool  = require('../database/database');
 
 catCtrl.getCatalogos = async (req, res) => {
-    await pool.query("select c.clave as id, p.nombre as nombre, i.nombre as inombre, co.exclusividad as exclusividad from catalogo c, contrato co, perfume p, ingrediente_otro i where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ingrediente_otro = i.clave union select c.clave as id, p.nombre as nombre, ing.nombre as ingnombre, co.exclusividad as exclusividad from catalogo c, contrato co, perfume p, ing_materia_esencial ing where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = ing.ipc;")
+    await pool.query("select c.clave as id, p.nombre as nombre, i.nombre as inombre, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ingrediente_otro i where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ingrediente_otro = i.clave union select c.clave as id, p.nombre as nombre, ing.nombre as ingnombre, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ing_materia_esencial ing where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = ing.ipc;")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -19,7 +19,7 @@ catCtrl.getCatalogo = async (req, res) => {
     const proveedor = req.params.proveedor;
     const productor = req.params.productor;
     const id = req.params.id;
-    await pool.query("select c.clave as id, p.nombre as nombre, i.nombre as inombre, co.exclusividad as exclusividad from catalogo c, contrato co, perfume p, ingrediente_otro i where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ingrediente_otro = i.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+" union select c.clave as id, p.nombre as nombre, ing.nombre as ingnombre, co.exclusividad as exclusividad from catalogo c, contrato co, perfume p, ing_materia_esencial ing where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = ing.ipc and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+";")
+    await pool.query("select c.clave as id, p.nombre as nombre, i.nombre as inombre, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ingrediente_otro i where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ingrediente_otro = i.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+" union select c.clave as id, p.nombre as nombre, ing.nombre as ingnombre, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ing_materia_esencial ing where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = ing.ipc and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+";")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -35,7 +35,7 @@ catCtrl.getCatalogo = async (req, res) => {
 catCtrl.getPerfumeP = async (req, res) => {
     const productor = req.params.productor;
     const id = req.params.id;
-    await pool.query("select clave as id, nombre, fk_productor as productor from perfume where fk_productor = "+productor+";")
+    await pool.query("select clave as id, nombre, fk_productor as productor from IMA_perfume where fk_productor = "+productor+";")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -50,7 +50,7 @@ catCtrl.getPerfumeP = async (req, res) => {
 
 catCtrl.getIngreP = async (req, res) => {
     const proveedor = req.params.proveedor;
-    await pool.query("select i.clave as id, i.nombre as nombre from ingrediente_otro i, proveedor p where i.fk_proveedor = p.clave and p.clave = "+proveedor)
+    await pool.query("select i.clave as id, i.nombre as nombre from IMA_ingrediente_otro i, IMA_proveedor p where i.fk_proveedor = p.clave and p.clave = "+proveedor)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -65,7 +65,7 @@ catCtrl.getIngreP = async (req, res) => {
 
 catCtrl.getIngMateriaP = async (req, res) => {
     const proveedor = req.params.proveedor;
-    await pool.query("select i.ipc as id, i.nombre as nombre from ing_materia_esencial i, proveedor p where i.fk_proveedor = p.clave and p.clave = "+proveedor)
+    await pool.query("select i.ipc as id, i.nombre as nombre from IMA_ing_materia_esencial i, IMA_proveedor p where i.fk_proveedor = p.clave and p.clave = "+proveedor)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -95,7 +95,7 @@ catCtrl.getIngMateriaP = async (req, res) => {
 catCtrl.createCatalogo = async (req, res) => {
     const event = req.body;
     console.log(event);
-    await pool.query("INSERT INTO catalogo (fk_ing_materia_esencial, fk_ingrediente_otro, fk_contrato, fk_perfume) VALUES ("+event.ingrediente+", "+event.materia+", "+event.contrato+", "+event.perfume+");")
+    await pool.query("INSERT INTO IMA_catalogo (fk_ing_materia_esencial, fk_ingrediente_otro, fk_contrato, fk_perfume) VALUES ("+event.ingrediente+", "+event.materia+", "+event.contrato+", "+event.perfume+");")
         .then(response => {
             res.json('Insertado');
         })

@@ -2,7 +2,7 @@ const priCtrl = {};
 const pool = require('../database/database');
 
 priCtrl.getPrivilegios = async (req,res) => {
-    await pool.query("SELECT clave, tipo FROM Privilegio")
+    await pool.query("SELECT clave, tipo FROM IMA_Privilegio")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ priCtrl.getPrivilegios = async (req,res) => {
 
 priCtrl.getPrivilegio = async (req,res) => {
     const id = req.params.id;
-    await pool.query("SELECT tipo FROM Privilegio WHERE clave = "+id)
+    await pool.query("SELECT tipo FROM IMA_Privilegio WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ priCtrl.getPrivilegio = async (req,res) => {
 
 priCtrl.getrolPri = async (req,res) => {
     const id = req.params.id;
-    await pool.query("SELECT p.clave as clave, p.tipo as tipo FROM Privilegio p, Rol_Privilegio rp WHERE rp.fk_rol = "+id+" AND p.clave = fk_privilegio")
+    await pool.query("SELECT p.clave as clave, p.tipo as tipo FROM IMA_Privilegio p, IMA_Rol_Privilegio rp WHERE rp.fk_rol = "+id+" AND p.clave = fk_privilegio")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -47,7 +47,7 @@ priCtrl.getrolPri = async (req,res) => {
 
 priCtrl.getrolPriNo = async (req,res) => {
     const id = req.params.id;
-    await pool.query("SELECT p.clave AS clave, p.tipo AS tipo FROM Privilegio p WHERE p.clave NOT IN ( SELECT fk_privilegio  FROM Rol_Privilegio WHERE fk_rol = "+id+")")
+    await pool.query("SELECT p.clave AS clave, p.tipo AS tipo FROM IMA_Privilegio p WHERE p.clave NOT IN ( SELECT fk_privilegio  FROM Rol_Privilegio WHERE fk_rol = "+id+")")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

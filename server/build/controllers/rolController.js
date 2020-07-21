@@ -2,7 +2,7 @@ const rolCtrl = {};
 const pool = require('../database/database');
 
 rolCtrl.getRoles = async (req,res) => {
-    await pool.query("SELECT clave, nombre FROM rol")
+    await pool.query("SELECT clave, nombre FROM IMA_rol")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ rolCtrl.getRoles = async (req,res) => {
 
 rolCtrl.getRol = async (req,res) => {
     const id = req.params.id;
-    await pool.query("SELECT clave, nombre FROM Rol WHERE clave = "+id)
+    await pool.query("SELECT clave, nombre FROM IMA_Rol WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ rolCtrl.getRol = async (req,res) => {
 
 rolCtrl.createRol = async (req,res) => {
     const rol = req.body;
-    await pool.query("INSERT INTO rol (nombre) VALUES ('"+rol.nombre+"')")
+    await pool.query("INSERT INTO IMA_rol (nombre) VALUES ('"+rol.nombre+"')")
         .then(response => {
             if(response.rowCount)
                 res.json('Rol Insertado');
@@ -48,7 +48,7 @@ rolCtrl.createRol = async (req,res) => {
 rolCtrl.editRol = async (req,res) => {
     const id = req.params.id;
     const rol = req.body;
-    await pool.query("UPDATE rol SET nombre = '"+rol.nombre+"' WHERE clave = "+id)
+    await pool.query("UPDATE IMA_rol SET nombre = '"+rol.nombre+"' WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json('Rol Actualizado');
@@ -63,7 +63,7 @@ rolCtrl.editRol = async (req,res) => {
 
 rolCtrl.deleteRol = async (req,res) => {
     const id = req.params.id;
-    await pool.query("DELETE FROM rol WHERE clave ="+id)
+    await pool.query("DELETE FROM IMA_rol WHERE clave ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json('Rol Eliminado');

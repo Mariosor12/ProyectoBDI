@@ -2,7 +2,7 @@ const preCtrl = {};
 const client = require('../database/database');
 
 preCtrl.getPresentaciones = async (req, res) => {
-    await client.query("SELECT clave AS id, numero AS cantidad FROM Presentacion")
+    await client.query("SELECT clave AS id, numero AS cantidad FROM IMA_Presentacion")
     .then(response => {
         if(response.rowCount)
             res.json(response.rows);
@@ -17,7 +17,7 @@ preCtrl.getPresentaciones = async (req, res) => {
 
 preCtrl.getPresentacion = async (req, res) => {
     const id = req.params.id;
-    await client.query("SELECT clave AS id, numero AS cantidad FROM Presentacion WHERE clave = "+id)
+    await client.query("SELECT clave AS id, numero AS cantidad FROM IMA_Presentacion WHERE clave = "+id)
     .then(response => {
         if(response.rowCount)
             res.json(response.rows);

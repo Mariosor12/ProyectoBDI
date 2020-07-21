@@ -25,7 +25,7 @@ function redata (rep, tem, res){
 reportCtrl.getReporte1 = async (req, res) => {
     const razon = req.params.nombre;
     console.log(razon);
-    await pool.query("((select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, ing.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ing_materia_esencial ing, proveedor pr, direccion d where p.fk_ing_materia_esencial = ing.ipc and ing.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"') union (select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, i.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ingrediente_otro i, proveedor pr, direccion d where p.fk_ing_materia_esencial = i.ipc and i.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"' order by i.nombre, p.precio_unitario asc))")
+    await pool.query("((select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, ing.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from IMA_presing p, IMA_ing_materia_esencial ing, IMA_proveedor pr, IMA_direccion d where p.fk_ing_materia_esencial = ing.ipc and ing.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"') union (select pr.clave as id, pr.nombre as razon, pr.pag_web as pagina, pr.telefono as telefono, d.nombre as nombred, i.nombre as nombrei, p.volml as vol, p.precio_unitario as precio from presing p, ingrediente_otro i, proveedor pr, direccion d where p.fk_ing_materia_esencial = i.ipc and i.fk_proveedor = pr.clave and pr.fk_direccion = d.clave and pr.nombre = '"+razon+"' order by i.nombre, p.precio_unitario asc))")
         .then(response => {
             console.log('Generando Reporte 1');
             redata(response.rows,'H1xNbKX9FL',res);
@@ -50,7 +50,7 @@ reportCtrl.getReporte2 = async (req, res) => { //por agregar periodo de tiempo
     const fecha = rep.split('+');
     const inicio = fecha[0];
     const fin = fecha[1];
-    await pool.query("select c.nro_factura AS factura, c.fecha_compra AS compra,ca.nombre AS nombre, sum(dc.cantidad) AS vendida from compra c, cerveza_artesanal ca, detalle_compra dc where dc.fk_compra = c.nro_factura and dc.fk_cerveza = ca.clave  and ( fecha_compra BETWEEN '"+inicio+"' AND '"+fin+"')  group by (c.nro_factura, c.fecha_compra, ca.nombre, dc.cantidad) order by dc.cantidad desc limit 10 offset 0;")
+    await pool.query("select c.nro_factura AS factura, c.fecha_compra AS compra,ca.nombre AS nombre, sum(dc.cantidad) AS vendida from IMA_compra c, IMA_cerveza_artesanal ca, IMA_detalle_compra dc where dc.fk_compra = c.nro_factura and dc.fk_cerveza = ca.clave  and ( fecha_compra BETWEEN '"+inicio+"' AND '"+fin+"')  group by (c.nro_factura, c.fecha_compra, ca.nombre, dc.cantidad) order by dc.cantidad desc limit 10 offset 0;")
         .then(response => {
             console.log('Generando Reporte 2');
             redata(response.rows,'ryxhv6V5KI',res);

@@ -3,7 +3,7 @@ const pool  = require('../database/database');
 const { response } = require('express');
 
 contratoCtrl.getContrato = async (req, res) => {
-    await pool.query("select c.clave as id, p.nombre as nombrep, pr.nombre as nombrepr, c.fecha_inicio as fechai, c.fecha_cancela as fechaf, c.descripcion as descripcion, c.motivo_cancela as motivo, c.exclusividad as exclusivo, c.fk_proveedor as proveedor, c.fk_productor as productor from contrato c,  proveedor p, productor pr where c.fk_proveedor = p.clave and c.fk_productor = pr.clave;")
+    await pool.query("select c.clave as id, p.nombre as nombrep, pr.nombre as nombrepr, c.fecha_inicio as fechai, c.fecha_cancela as fechaf, c.descripcion as descripcion, c.motivo_cancela as motivo, c.exclusividad as exclusivo, c.fk_proveedor as proveedor, c.fk_productor as productor from IMA_contrato c,  IMA_proveedor p, IMA_productor pr where c.fk_proveedor = p.clave and c.fk_productor = pr.clave;")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ contratoCtrl.getContrato = async (req, res) => {
 };
 
 contratoCtrl.getContratoc = async (req, res) => {
-    await pool.query("select c.clave as id, c.fecha_inicio as fechai, c.fecha_cancela as fechaf, c.descripcion as descripcion, c.motivo_cancela as motivo, c.exclusividad as exclusivo, c.fk_proveedor as proveedor, c.fk_productor as productor from contrato c,  proveedor p, productor pr where c.fk_proveedor = p.clave and c.fk_productor = pr.clave;")
+    await pool.query("select c.clave as id, c.fecha_inicio as fechai, c.fecha_cancela as fechaf, c.descripcion as descripcion, c.motivo_cancela as motivo, c.exclusividad as exclusivo, c.fk_proveedor as proveedor, c.fk_productor as productor from IMA_contrato c,  IMA_proveedor p, IMA_productor pr where c.fk_proveedor = p.clave and c.fk_productor = pr.clave;")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ contratoCtrl.getContratoc = async (req, res) => {
 
 contratoCtrl.getoneContrato = async (req, res) => {
     const id = req.params.id;
-    await pool.query("select c.clave as id, c.fecha_inicio as fechai, c.fecha_cancela as fechaf, c.descripcion as descripcion, c.motivo_cancela as motivo, c.exclusividad as exclusivo, c.fk_proveedor as proveedor, c.fk_productor as productor from contrato c,  proveedor p, productor pr where c.fk_proveedor = p.clave and c.fk_productor = pr.clave and c.clave = "+id+";")
+    await pool.query("select c.clave as id, c.fecha_inicio as fechai, c.fecha_cancela as fechaf, c.descripcion as descripcion, c.motivo_cancela as motivo, c.exclusividad as exclusivo, c.fk_proveedor as proveedor, c.fk_productor as productor from IMA_contrato c,  IMA_proveedor p, IMA_productor pr where c.fk_proveedor = p.clave and c.fk_productor = pr.clave and c.clave = "+id+";")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -49,7 +49,7 @@ contratoCtrl.getoneContratoCond = async (req, res) => {
     const envio = req.params.envio;
     const pago = req.params.pago;
     const contrato = req.params.contrato;
-    await pool.query("select DISTINCT clave as id from cond_c where fk_envio = "+envio+" and fk_condicion_pago = "+pago+" and fk_contrato = "+contrato+"")
+    await pool.query("select DISTINCT clave as id from IMA_cond_c where fk_envio = "+envio+" and fk_condicion_pago = "+pago+" and fk_contrato = "+contrato+"")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -65,7 +65,7 @@ contratoCtrl.getoneContratoCond = async (req, res) => {
 contratoCtrl.createContrato = async (req, res) => {
     const event = req.body;
     console.log(event);
-    await pool.query("INSERT INTO contrato (fecha_inicio, fecha_cancela, descripcion, motivo_cancela, exclusividad, fk_proveedor, fk_productor ) VALUES ('"+event.fechai+"', '"+event.fechaf+"', '"+event.descripcion+"', '"+event.motivo+"', '"+event.exclusivo+"', "+event.proveedor+","+event.productor+");")
+    await pool.query("INSERT INTO IMA_contrato (fecha_inicio, fecha_cancela, descripcion, motivo_cancela, exclusividad, fk_proveedor, fk_productor ) VALUES ('"+event.fechai+"', '"+event.fechaf+"', '"+event.descripcion+"', '"+event.motivo+"', '"+event.exclusivo+"', "+event.proveedor+","+event.productor+");")
         .then(response => {
             res.json('Insertado');
         })
@@ -78,7 +78,7 @@ contratoCtrl.createContrato = async (req, res) => {
 contratoCtrl.createContratoCondicion = async (req, res) => {
     const event = req.body;
     console.log(event);
-    await pool.query("INSERT INTO cond_c (fk_envio, fk_condicion_pago, fk_contrato) VALUES ("+event.materia+", "+event.ingrediente+", "+event.contrato+");")
+    await pool.query("INSERT INTO IMA_cond_c (fk_envio, fk_condicion_pago, fk_contrato) VALUES ("+event.materia+", "+event.ingrediente+", "+event.contrato+");")
         .then(response => {
             res.json('Insertado');
         })
@@ -91,7 +91,7 @@ contratoCtrl.createContratoCondicion = async (req, res) => {
 contratoCtrl.editContrato = async (req, res) => {
     const id = req.params.id;
     const event = req.body;
-    await pool.query("UPDATE contrato SET fecha_inicio = '"+event.fechai+"',  fecha_cancela = '"+event.fechaf+"', descripcion = '"+event.descripcion+"', motivo_cancela = '"+event.motivo+"', exclusividad = '"+event.exclusivo+"', fk_proveedor ="+event.proveedor+", fk_productor = "+event.productor+" WHERE clave = "+id+";")
+    await pool.query("UPDATE IMA_contrato SET fecha_inicio = '"+event.fechai+"',  fecha_cancela = '"+event.fechaf+"', descripcion = '"+event.descripcion+"', motivo_cancela = '"+event.motivo+"', exclusividad = '"+event.exclusivo+"', fk_proveedor ="+event.proveedor+", fk_productor = "+event.productor+" WHERE clave = "+id+";")
         .then(response => {
             res.json('Actualizado');
         })
@@ -103,7 +103,7 @@ contratoCtrl.editContrato = async (req, res) => {
 
 contratoCtrl.deleteContrato = async (req, res) => {
     const id = req.params.id;
-    await pool.query("DELETE FROM contrato WHERE clave = "+id+";")
+    await pool.query("DELETE FROM IMA_contrato WHERE clave = "+id+";")
         .then(response => {
             res.json('Evento eliminado');
         })

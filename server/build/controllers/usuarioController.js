@@ -2,7 +2,7 @@ const usuarioCtrl = {};
 const pool  = require('../database/database');
 
 usuarioCtrl.getUsuarios = async (req, res) => {
-    await pool.query("SELECT clave as id, nombre, contrasena FROM usuario;")
+    await pool.query("SELECT clave as id, nombre, contrasena FROM IMA_usuario;")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ usuarioCtrl.getUsuarios = async (req, res) => {
 
 usuarioCtrl.getoneUsuario = async (req, res) => {
     const id = req.params.id;
-    await pool.query("select clave as id, nombre, contraseña as contrasena from usuario where clave = "+id+";")
+    await pool.query("select clave as id, nombre, contraseña as contrasena from IMA_usuario where clave = "+id+";")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ usuarioCtrl.getoneUsuario = async (req, res) => {
 
 usuarioCtrl.createUsuario = async (req, res) => {
     const usuario = req.body;
-    await pool.query("INSERT INTO usuario (nombre, contrasena) VALUES ('"+usuario.nombre+"', '"+usuario.contrasena+"');")
+    await pool.query("INSERT INTO IMA_usuario (nombre, contrasena) VALUES ('"+usuario.nombre+"', '"+usuario.contrasena+"');")
         .then(response => {
             res.json('Insertado');
         })
@@ -45,7 +45,7 @@ usuarioCtrl.createUsuario = async (req, res) => {
 usuarioCtrl.editUsuario = async (req, res) => {
     const id = req.params.id;
     const usuario = req.body;
-    await pool.query("UPDATE Usuario SET nombre = '"+usuario.nombre+"',  contrasena = '"+usuario.contrasena+"' WHERE clave = "+id+";")
+    await pool.query("UPDATE IMA_Usuario SET nombre = '"+usuario.nombre+"',  contrasena = '"+usuario.contrasena+"' WHERE clave = "+id+";")
         .then(response => {
             res.json('Actualizado');
         })
@@ -57,7 +57,7 @@ usuarioCtrl.editUsuario = async (req, res) => {
 
 usuarioCtrl.deleteUsuario = async (req, res) => {
     const id = req.params.id;
-    await pool.query("DELETE FROM Usuario WHERE clave = "+id+";")
+    await pool.query("DELETE FROM IMA_Usuario WHERE clave = "+id+";")
         .then(response => {
             res.json('Evento eliminado');
         })

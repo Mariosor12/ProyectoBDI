@@ -2,7 +2,7 @@ const ovCtrl = {};
 const pool = require('../database/database');
 
 ovCtrl.getOrdenesCompra = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra")
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ ovCtrl.getOrdenesCompra = async (req, res) => {
 
 ovCtrl.getOrdenCompra = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE clave = "+id)
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ ovCtrl.getOrdenCompra = async (req, res) => {
 
 ovCtrl.getOrdenesCompraAliado = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE fk_cliente = "+id)
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_cliente = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -47,7 +47,7 @@ ovCtrl.getOrdenesCompraAliado = async (req, res) => {
 
 ovCtrl.createOrdenCompra = async (req, res) => {
     const ov = req.body;
-    await pool.query("INSERT INTO status_compra (fecha_cambio,total,fk_cliente) VALUES ('"+ov.fecha_cambio+"',"+ov.total+",'"+ov.cliente+"')")
+    await pool.query("INSERT INTO IMA_status_compra (fecha_cambio,total,fk_cliente) VALUES ('"+ov.fecha_cambio+"',"+ov.total+",'"+ov.cliente+"')")
         .then(response => {
             res.json(response.rows);
         })
@@ -58,7 +58,7 @@ ovCtrl.createOrdenCompra = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraReservada = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE fk_status = 1")
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_status = 1")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -72,7 +72,7 @@ ovCtrl.getOrdenCompraReservada = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraOrdenada = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE fk_status = 2")
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_status = 2")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -86,7 +86,7 @@ ovCtrl.getOrdenCompraOrdenada = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraCancelado = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE fk_status = 3")
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_status = 3")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -100,7 +100,7 @@ ovCtrl.getOrdenCompraCancelado = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraPagado = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE fk_status = 4")
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_status = 4")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -114,7 +114,7 @@ ovCtrl.getOrdenCompraPagado = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraEspAprobacion = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM status_compra WHERE fk_status = 5")
+    await pool.query("SELECT clave, fecha_cambio, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_status = 5")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -128,7 +128,7 @@ ovCtrl.getOrdenCompraEspAprobacion = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraRevision = async (req, res) => {
-    await pool.query("SELECT clave, fecha_cambio as fecha, total, fk_cliente AS cliente FROM status_compra WHERE fk_status = 6")
+    await pool.query("SELECT clave, fecha_cambio as fecha, total, fk_cliente AS cliente FROM IMA_status_compra WHERE fk_status = 6")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -142,7 +142,7 @@ ovCtrl.getOrdenCompraRevision = async (req, res) => {
 };
 
 ovCtrl.getOrdenCompraEntregado = async (req, res) => {
-    await pool.query("SELECT c.nro_factura as clave, sc.fecha_cambio as fecha, sc.total as total, sc.fk_cliente AS cliente FROM status_compra sc, compra c WHERE fk_status = 7 and c.fk_cliente = sc.fk_cliente")
+    await pool.query("SELECT c.nro_factura as clave, sc.fecha_cambio as fecha, sc.total as total, sc.fk_cliente AS cliente FROM IMA_status_compra sc, IMA_compra c WHERE fk_status = 7 and c.fk_cliente = sc.fk_cliente")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -157,7 +157,7 @@ ovCtrl.getOrdenCompraEntregado = async (req, res) => {
 
 ovCtrl.recibirCompra = async (req, res) => {
     const id = req.params.id;
-    await pool.query("UPDATE status_compra SET fk_status = 7 WHERE clave = "+id+" AND fk_status <> 7")
+    await pool.query("UPDATE IMA_status_compra SET fk_status = 7 WHERE clave = "+id+" AND fk_status <> 7")
         .then(response => {
             if(response.rowCount)
                 res.json('Recibida');

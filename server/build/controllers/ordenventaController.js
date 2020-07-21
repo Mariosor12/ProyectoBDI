@@ -2,7 +2,7 @@ const ocCtrl = {};
 const pool = require('../database/database');
 
 ocCtrl.getOrdenesVenta = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_cliente AS proveedor, total FROM venta")
+    await pool.query("SELECT clave, fecha, fk_cliente AS proveedor, total FROM IMA_venta")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ ocCtrl.getOrdenesVenta = async (req, res) => {
 
 ocCtrl.getOrdenVenta = async (req, res) => {
     const id = req.params.id;
-    await pool.query("SELECT clave, fecha, fk_cliente AS proveedor, total FROM venta WHERE clave = "+id)
+    await pool.query("SELECT clave, fecha, fk_cliente AS proveedor, total FROM IMA_venta WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ ocCtrl.getOrdenVenta = async (req, res) => {
 
 ocCtrl.getOrdenesVentaAliado = async (req, res) => {
     const id = req.params.id;
-    await pool.query("sELECT clave, fecha, fk_proveedor AS proveedor FROM venta WHERE fk_proveedor = "+id)
+    await pool.query("sELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_venta WHERE fk_proveedor = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -47,7 +47,7 @@ ocCtrl.getOrdenesVentaAliado = async (req, res) => {
 
 ocCtrl.createOrdenVenta = async (req, res) => {
     const oc = req.body;
-    await pool.query("INSERT INTO venta (fecha,fk_cliente, total) VALUES ('"+oc.fecha+"',"+oc.cliente+", "+oc.total+") RETURNING clave AS id")
+    await pool.query("INSERT INTO IMA_venta (fecha,fk_cliente, total) VALUES ('"+oc.fecha+"',"+oc.cliente+", "+oc.total+") RETURNING clave AS id")
         .then(response => {
             res.json(response.rows);
         })
@@ -58,7 +58,7 @@ ocCtrl.createOrdenVenta = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaReservada = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 1")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 1")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -72,7 +72,7 @@ ocCtrl.getOrdenVentaReservada = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaOrdenada = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 2")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 2")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -86,7 +86,7 @@ ocCtrl.getOrdenVentaOrdenada = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaCancelado = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 3")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 3")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -100,7 +100,7 @@ ocCtrl.getOrdenVentaCancelado = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaPagado = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 4")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 4")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -114,7 +114,7 @@ ocCtrl.getOrdenVentaPagado = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaEspAprobacion = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 5")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 5")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -128,7 +128,7 @@ ocCtrl.getOrdenVentaEspAprobacion = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaRevision = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 6")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 6")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -142,7 +142,7 @@ ocCtrl.getOrdenVentaRevision = async (req, res) => {
 };
 
 ocCtrl.getOrdenVentaEntregado = async (req, res) => {
-    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM status_venta WHERE fk_status = 7")
+    await pool.query("SELECT clave, fecha, fk_proveedor AS proveedor FROM IMA_status_venta WHERE fk_status = 7")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -157,7 +157,7 @@ ocCtrl.getOrdenVentaEntregado = async (req, res) => {
 
 ocCtrl.recibirVenta = async (req, res) => {
     const id = req.params.id;
-    await pool.query("UPDATE status_venta SET fk_status = 7 WHERE clave = "+id+" AND fk_status <> 7")
+    await pool.query("UPDATE IMA_status_venta SET fk_status = 7 WHERE clave = "+id+" AND fk_status <> 7")
         .then(response => {
             if(response.rowCount)
                 res.json('Recibida');

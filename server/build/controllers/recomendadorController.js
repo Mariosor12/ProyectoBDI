@@ -2,7 +2,7 @@ const recoCtrl = {};
 const pool = require('../database/database');
 
 recoCtrl.getRecomendador = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -16,7 +16,7 @@ recoCtrl.getRecomendador = async (req,res) => {
 };
 
 recoCtrl.getRecomendadorPerGen = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 42 and 44")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 42 and 44")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -29,7 +29,7 @@ recoCtrl.getRecomendadorPerGen = async (req,res) => {
         })
 };
 recoCtrl.getRecomendadorPerInt = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 45 and 47")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 45 and 47")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -42,7 +42,7 @@ recoCtrl.getRecomendadorPerInt = async (req,res) => {
         })
 };
 recoCtrl.getRecomendadorPerCar = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 48 and 52")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 48 and 52")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -55,7 +55,7 @@ recoCtrl.getRecomendadorPerCar = async (req,res) => {
         })
 };
 recoCtrl.getRecomendadorPerFam = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 53 and 60")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 53 and 60")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -68,7 +68,7 @@ recoCtrl.getRecomendadorPerFam = async (req,res) => {
         })
 };
 recoCtrl.getRecomendadorPerOca = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 61 and 63")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 61 and 63")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -82,7 +82,7 @@ recoCtrl.getRecomendadorPerOca = async (req,res) => {
 };
 
 recoCtrl.getRecomendadorPerPer = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 64 and 67")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 64 and 67")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -110,7 +110,7 @@ recoCtrl.getOneRecomendador = async (req,res) => {
     // console.log(palabra5);
     // console.log(palabra6);
     // console.log(palabra7);
-    await pool.query("select distinct p.clave as id, p.nombre as nombrep, p.genero as genero, f.nombre as nombref, f.descripcion as descripcionf, i.tipo as tipo, i.concentracion as concentracion, i.descripcion as descripcion, pc.palabra as palabra from perfume p, principal pr, familia_olfativa f, intensidad i, p_f pf, palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.palabra = '"+palabra+"'")
+    await pool.query("select distinct p.clave as id, p.nombre as nombrep, p.genero as genero, f.nombre as nombref, f.descripcion as descripcionf, i.tipo as tipo, i.concentracion as concentracion, i.descripcion as descripcion, pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.palabra = '"+palabra+"'")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -125,7 +125,7 @@ recoCtrl.getOneRecomendador = async (req,res) => {
 
 recoCtrl.createRecomendador = async (req,res) => {
     const reco = req.body;
-    await pool.query("INSERT INTO palabra_clave (palabra) VALUES ('"+reco.nombre+"')")
+    await pool.query("INSERT INTO IMA_palabra_clave (palabra) VALUES ('"+reco.nombre+"')")
         .then(response => {
             if(response.rowCount)
                 res.json('Rol Insertado');
@@ -141,7 +141,7 @@ recoCtrl.createRecomendador = async (req,res) => {
 recoCtrl.editRecomendador = async (req,res) => {
     const id = req.params.id;
     const reco = req.body;
-    await pool.query("UPDATE palabra_clave SET palabra = '"+reco.nombre+"' WHERE clave = "+id)
+    await pool.query("UPDATE IMA_palabra_clave SET palabra = '"+reco.nombre+"' WHERE clave = "+id)
         .then(response => {
             if(response.rowCount)
                 res.json('Rol Actualizado');
@@ -156,7 +156,7 @@ recoCtrl.editRecomendador = async (req,res) => {
 
 recoCtrl.deleteRecomendador = async (req,res) => {
     const id = req.params.id;
-    await pool.query("DELETE FROM palabra_clave WHERE clave ="+id)
+    await pool.query("DELETE FROM IMA_palabra_clave WHERE clave ="+id)
         .then(response => {
             if(response.rowCount)
                 res.json('Rol Eliminado');

@@ -2,7 +2,7 @@ const rolpriCtrl = {};
 const pool = require('../database/database');
 
 rolpriCtrl.getRolesPri = async (req,res) => {
-    await pool.query("select clave, fk_rol as Rol , fk_privilegio as Privilegio from rol_privilegio")
+    await pool.query("select clave, fk_rol as Rol , fk_privilegio as Privilegio from IMA_rol_privilegio")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -17,7 +17,7 @@ rolpriCtrl.getRolesPri = async (req,res) => {
 
 rolpriCtrl.getRolPri = async (req,res) => {
     const id = req.params.id;
-    await pool.query("select clave as id, fk_rol as Rol, fk_privilegio as Privilegio from rol_privilegio where clave = "+id)
+    await pool.query("select clave as id, fk_rol as Rol, fk_privilegio as Privilegio from IMA_rol_privilegio where clave = "+id)
         .then(response=>{
             if(response.rowCount)
                 res.json(response.rows);
@@ -32,7 +32,7 @@ rolpriCtrl.getRolPri = async (req,res) => {
 
 rolpriCtrl.getRolPriR = async (req,res) => {
     const id = req.params.id;
-    await pool.query("select clave, fk_rol as Rol , fk_privilegio as Privilegio from rol_privilegio where fk_rol = "+id)
+    await pool.query("select clave, fk_rol as Rol , fk_privilegio as Privilegio from IMA_rol_privilegio where fk_rol = "+id)
         .then(response=>{
             if(response.rowCount)
                 res.json(response.rows);
@@ -47,7 +47,7 @@ rolpriCtrl.getRolPriR = async (req,res) => {
 
 rolpriCtrl.getRolPriP = async (req,res) => {
     const id = req.params.id;
-    await pool.query("select clave, fk_rol as Rol , fk_privilegio as Privilegio from rol_privilegio where fk_privilegio = "+id)
+    await pool.query("select clave, fk_rol as Rol , fk_privilegio as Privilegio from IMA_rol_privilegio where fk_privilegio = "+id)
         .then(response=>{
             if(response.rowCount)
                 res.json(response.rows);
@@ -62,7 +62,7 @@ rolpriCtrl.getRolPriP = async (req,res) => {
 
 rolpriCtrl.createRolPri = async (req, res) => {
     const rolpri = req.body;
-    await pool.query("Insert into rol_privilegio (fk_rol, fk_privilegio) Values ("+rolpri.rol+","+rolpri.privilegio+")")
+    await pool.query("Insert into IMA_rol_privilegio (fk_rol, fk_privilegio) Values ("+rolpri.rol+","+rolpri.privilegio+")")
         .then(response => {
             res.json('Insertado');
         })
@@ -75,7 +75,7 @@ rolpriCtrl.createRolPri = async (req, res) => {
 rolpriCtrl.deleteRolPri = async (req, res) => {
     const id = req.params.id;
     const id2 = req.params.id2;
-    await pool.query("DELETE FROM rol_privilegio WHERE fk_rol = "+id2+" and fk_privilegio = "+id)
+    await pool.query("DELETE FROM IMA_rol_privilegio WHERE fk_rol = "+id2+" and fk_privilegio = "+id)
         .then(response =>{
             if(response.rowCount)
                 res.json('Eliminado');
