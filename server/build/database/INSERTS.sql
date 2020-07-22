@@ -696,18 +696,19 @@ INSERT INTO IMA_contrato(fecha_inicio, fecha_cancela, descripcion, motivo_cancel
 ('14-04-2019','13-04-2020','', 'Falta de entrega de orden completa', 'true', 2, 2),
 ('07-02-2019',null,'', '', 'true', 3, 3),
 ('23-09-2020',null,'', '', 'true', 4, 4),
-('12-01-2018','23-06-2018', '', 'No cumplió las exigencias de contrato','false', 5, 2),
-('17-05-2017','16-05-2018','', 'Incumplimiento de contrato', 'true', 1, 1),
-('19-07-2020',null,'', '', 'false',3, 4),
-('07-11-2019',null,'', '', 'false',2,3),
-('11-03-2018','12-08-2018', '', 'No entregó los productos a tiempo','false',1,1);
+('12-01-2018','23-06-2018', '', 'No cumplió las exigencias de contrato','false', 5, 2);
 
 
 INSERT INTO IMA_Productor_Pais(fk_direccion, fk_productor)VALUES
 (2, 1),
 (4, 2),
 (3, 3),
-(8, 4);
+(8, 4),
+(1, 2),
+(5, 4),
+(6, 3),
+(7, 1),
+(3, 1);
 
 INSERT INTO IMA_Principal(fk_perfume, fk_familia_olfativa)VALUES
 (1,3),
@@ -840,55 +841,7 @@ INSERT INTO IMA_catalogo(fk_contrato, fk_perfume, fk_ingrediente_otro, fk_ing_ma
 (5, 6, null, 5),
 (5, 6, null, 6),
 (5, 6, null, 7),
-(5, 6, null, 8),
-(6, 1, null, 9),
-(6, 1, null, 10),
-(6, 1, null, 1),
-(6, 1, 1, null),
-(6, 2, 12, null),
-(6, 2, 14, null),
-(6, 2, 11, null),
-(6, 2, 7, null),
-(6, 3, 12, null),
-(6, 3, 4, null),
-(6, 3, null, 9),
-(6, 3, null, 10),
-(7, 10, null, 1),
-(7, 10, null, 2),
-(7, 10, null, 3),
-(7, 10, 14, null),
-(7, 11, 3, null),
-(7, 11, 14, null),
-(7, 11, 13, null),
-(7, 11, 4, null),
-(7, 12, null, 9),
-(7, 12, null, 10),
-(7, 12, null, 1),
-(7, 12, null, 2),
-(8, 7, null, 3),
-(8, 7, null, 4),
-(8, 7, null, 5),
-(8, 7, null, 6),
-(8, 8, 5, null),
-(8, 8, 14, null),
-(8, 8, 1, null),
-(8, 8, 15, null),
-(8, 9, 11, null),
-(8, 9, 8, null),
-(8, 9, 12, null),
-(8, 9, 2, null),
-(9, 3, null, 5),
-(9, 3, null, 6),
-(9, 3, null, 7),
-(9, 3, null, 8),
-(9, 10, 10, null),
-(9, 10, 7, null),
-(9, 10, 12, null),
-(9, 10, 14, null),
-(9, 5, null, 3),
-(9, 5, null, 4),
-(9, 5, 11, null),
-(9, 5, 1, null);
+(5, 6, null, 8);
 
 INSERT INTO IMA_Origen(fk_direccion, fk_ing_materia_esencial)VALUES
 (1, 1),
@@ -919,8 +872,9 @@ INSERT INTO IMA_envio(costo, recargo, tipo_transporte, fk_direccion, fk_proveedo
 (25, 25, 'barco', 6, 2),
 (15, 20, 'avion', 7, 3),
 (67, 10, 'avion', 8, 4),
-(20, 16, 'vehiculo', 9, 2),
-(27, 23, 'barco', 1, 1);
+(20, 16, 'vehiculo', 9, 5),
+(27, 23, 'barco', 1, 5),
+(27, 23, 'avion', 3, 5);
 
 INSERT INTO IMA_Condicion_Pago (tipo, cuota, porccuotas, meses) VALUES
 	('Transferencia', 300, 15, 4),
@@ -940,8 +894,8 @@ INSERT INTO IMA_Renueva(fecha, fk_contrato)VALUES
 ('12-05-2021', 1),
 ('07-01-2020', 3),
 ('23-08-2021', 4),
-('18-06-2021', 7),
-('06-10-2020', 8);
+('18-06-2021', 2),
+('06-10-2020', 5);
 
 INSERT INTO IMA_Cond_c(fk_envio, fk_condicion_pago, fk_contrato)VALUES
 (1, 1, 1),
@@ -949,14 +903,14 @@ INSERT INTO IMA_Cond_c(fk_envio, fk_condicion_pago, fk_contrato)VALUES
 (3, 3, 3),
 (4, 4, 4),
 (5, 5, 5),
-(6, 6, 6),
-(7, 7, 7),
-(8, 8, 8),
-(9, 9, 9),
-(10, 10, 1),
-(3, 11, 4),
-(6, 12, 8),
-(9, 4, 9);
+(6, 6, 1),
+(7, 7, 2),
+(8, 8, 3),
+(9, 9, 4),
+(10, 10, 5),
+(3, 11, 3),
+(6, 12, 1),
+(9, 4, 2);
 
 INSERT INTO IMA_Pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, fk_condicion_pago, fk_proveedor) VALUES
 	('12-08-2018', '22-08-2018', 'Aceptado', 1234, 100, 1, 1, 1),
@@ -1091,6 +1045,7 @@ INSERT INTO IMA_Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_mat
      ('08-08-2019', 30, 'Inicial', 3, 3),
 	 ('07-08-2019', 700, 'Inicial', 3, 3),
 	 ('20-10-2019', 80, 'Inicial', 4, 4),
+	 ('20-10-2020', 60, 'Inicial', 5, 4),
 	 ('18-03-2019', 70, 'Renovacion', 1, 1),
      ('01-01-2020', 80, 'Renovacion', 2, 2),
      ('09-07-2019', 40, 'Renovacion', 3, 3),
