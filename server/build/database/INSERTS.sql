@@ -96,7 +96,7 @@ INSERT INTO IMA_Palabra_Clave(palabra)VALUES
 ('madera quemada'),
 ('cuero'),
 
-('hombre'),
+('Masculino'),
 ('mujer'),
 ('unisex'),
 
@@ -706,60 +706,53 @@ INSERT INTO IMA_Productor_Pais(fk_direccion, fk_productor)VALUES
 (8, 4),
 (1, 2),
 (5, 4),
+(8, 4),
+(6, 4),
 (6, 3),
 (7, 1),
-(3, 1);
+(3, 1),
+(3, 2),
+(5, 2);
 
 INSERT INTO IMA_Principal(fk_perfume, fk_familia_olfativa)VALUES
 (1,3),
 (1, 10),
 
-(2,3),
-(2,5),
-(2,8),
+
 (2,2),
+
 
 (3,3),
 (3,8),
-(3,4),
 
-(4,3),
+
+
 (4,5),
 
-(5,3),
 (5,5),
-(5, 10),
 
-(6,3),
-(6,1),
-(6,8),
+(6,6),
+(6,9),
 
-(7,2),
+(7,3),
 (7,8),
 (7,3),
 
 (8,3),
 (8,8),
-(8,5),
 (8, 10),
 
 (9,5),
-(9,2),
-(9,3),
+(9,6),
+(9,4),
 
-(10,2),
-(10,4),
-(10,9),
+(10,8),
 
-(11,3),
-(11,4),
-(11,1),
-(11,6),
 
-(12,7),
-(12,8),
-(12,9),
-(12, 10);
+(11, 2),
+
+
+(12, 2);
 
 INSERT INTO IMA_Otro_Comp(fk_ingrediente_otro, fk_ing_materia_esencial)VALUES
 (1, 1),
@@ -910,7 +903,30 @@ INSERT INTO IMA_Cond_c(fk_envio, fk_condicion_pago, fk_contrato)VALUES
 (10, 10, 5),
 (3, 11, 3),
 (6, 12, 1),
-(9, 4, 2);
+(9, 4, 2),
+(1, 6, 1),
+(1, 12, 1),
+(5, 1, 1),
+(5, 6, 1),
+(5, 12, 1),
+(2, 7, 2),
+(2, 4, 2),
+(6, 2, 2),
+(6, 7, 2),
+(6, 4, 2),
+(3, 8, 3),
+(3, 11, 3),
+(7, 3, 3),
+(7, 8, 3),
+(7, 11, 3),
+(4, 9, 4),
+(8, 4, 4),
+(8, 9, 4),
+(10, 10, 5),
+(11, 5, 5),
+(11, 10, 5),
+(9, 5, 5),
+(9, 10, 5);
 
 INSERT INTO IMA_Pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, fk_condicion_pago, fk_proveedor) VALUES
 	('12-08-2018', '22-08-2018', 'Aceptado', 1234, 100, 1, 1, 1),

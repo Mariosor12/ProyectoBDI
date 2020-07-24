@@ -2,7 +2,7 @@ const recoCtrl = {};
 const pool = require('../database/database');
 
 recoCtrl.getRecomendador = async (req,res) => {
-    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave")
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 1 and 41")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -28,6 +28,35 @@ recoCtrl.getRecomendadorPerGen = async (req,res) => {
             res.json('Ha ocurrido un error');
         })
 };
+
+recoCtrl.getRecomendadorPerGenM = async (req,res) => {
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 42 and 44")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+recoCtrl.getRecomendadorPerGenU = async (req,res) => {
+    await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 42 and 44")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 recoCtrl.getRecomendadorPerInt = async (req,res) => {
     await pool.query("select distinct pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.clave between 45 and 47")
         .then(response => {

@@ -47,9 +47,12 @@ contratoCtrl.getoneContrato = async (req, res) => {
 
 contratoCtrl.getoneContratoCond = async (req, res) => {
     const envio = req.params.envio;
-    const pago = req.params.pago;
+    const ingrediente = req.params.ingrediente;
     const contrato = req.params.contrato;
-    await pool.query("select DISTINCT clave as id from IMA_cond_c where fk_envio = "+envio+" and fk_condicion_pago = "+pago+" and fk_contrato = "+contrato+"")
+    console.log(envio)
+    console.log(ingrediente)
+    console.log(contrato)
+    await pool.query("select DISTINCT clave as id from IMA_cond_c where fk_condicion_pago = "+ingrediente+" and fk_envio = "+envio+" and fk_contrato = "+contrato+"")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -65,7 +68,7 @@ contratoCtrl.getoneContratoCond = async (req, res) => {
 contratoCtrl.createContrato = async (req, res) => {
     const event = req.body;
     console.log(event);
-    await pool.query("INSERT INTO IMA_contrato (fecha_inicio, fecha_cancela, descripcion, motivo_cancela, exclusividad, fk_proveedor, fk_productor ) VALUES ('"+event.fechai+"', '"+event.fechaf+"', '"+event.descripcion+"', '"+event.motivo+"', '"+event.exclusivo+"', "+event.proveedor+","+event.productor+");")
+    await pool.query("INSERT INTO IMA_contrato (fecha_inicio, fecha_cancela, descripcion, motivo_cancela, exclusividad, fk_proveedor, fk_productor ) VALUES ('"+event.fechai+"', "+event.fechaf+", '"+event.descripcion+"', '"+event.motivo+"', '"+event.exclusivo+"', "+event.proveedor+","+event.productor+");")
         .then(response => {
             res.json('Insertado');
         })

@@ -81,7 +81,7 @@ pedidoCtrl.getPedidosOC = async (req, res) => {
 
 pedidoCtrl.createPedido = async (req, res) => {
     const pedido = req.body;
-    await pool.query("INSERT INTO IMA_pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, fk_condicion_pago, fk_proveedor) VALUES ('"+pedido.fechai+"','"+pedido.fechaf+"','"+pedido.estatus+"', "+pedido.factura+", "+pedido.total+", "+pedido.cond+", "+pedido.pago+", "+pedido.proveedor+") RETURNING clave")
+    await pool.query("INSERT INTO IMA_pedido (fecha, fecha_cont, estatus, nro_factura, total, fk_cond_c, fk_condicion_pago, fk_proveedor) VALUES ('"+pedido.fechai+"',"+pedido.fechaf+",'"+pedido.estatus+"', "+pedido.factura+", "+pedido.total+", "+pedido.cond+", "+pedido.pago+", "+pedido.proveedor+") RETURNING clave")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

@@ -233,6 +233,7 @@ export class ProveedorEvaluacionComponent implements OnInit {
     )
   }
   
+  
   getPerfumeP(condicion: any){
     this.sg.getCondProv(condicion).subscribe(
       res => {

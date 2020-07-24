@@ -4,6 +4,8 @@ const recoCtrl = require('../controllers/recomendadorController');
 
 router.get('/', recoCtrl.getRecomendador);
 router.get('/pergen', recoCtrl.getRecomendadorPerGen);
+router.get('/pergenm', recoCtrl.getRecomendadorPerGenM);
+router.get('/pergenu', recoCtrl.getRecomendadorPerGenU);
 router.get('/perint', recoCtrl.getRecomendadorPerInt);
 router.get('/percar', recoCtrl.getRecomendadorPerCar);
 router.get('/perfam', recoCtrl.getRecomendadorPerFam);

@@ -124,7 +124,7 @@ export class PedidoComponent implements OnInit {
     }
     // this.getAliados();
     
-    console.log(this.contrato[0])
+    // console.log(this.contrato[0])
     console.log(this.perfume[0])
     this.pedido[0].fechai = this.hoyFecha();
   }

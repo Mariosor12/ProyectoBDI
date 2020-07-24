@@ -2,7 +2,7 @@ const renCtrl = {};
 const pool = require('../database/database');
 
 renCtrl.getRenovacion = async (req, res) => {
-    await pool.query("select r.clave as id, c.clave as clave, p.clave as clavep, pr.clave as clavepr, c.exclusividad as exclusivo, r.fecha as fecha, c.fecha_inicio as fechai, p.nombre as nombrep, pr.nombre as nombrepr from IMA_renueva r, IMA_contrato c, IMA_proveedor p, IMA_productor pr where r.fk_contrato = c.clave and c.fk_proveedor = p.clave and c.fk_productor = pr.clave and (current_date - c.fecha_inicio <= 1)")
+    await pool.query("select r.clave as id, c.clave as clave, p.clave as clavep, pr.clave as clavepr, c.exclusividad as exclusivo, r.fecha as fecha, c.fecha_inicio as fechai, p.nombre as nombrep, pr.nombre as nombrepr from IMA_renueva r, IMA_contrato c, IMA_proveedor p, IMA_productor pr where r.fk_contrato = c.clave and c.fk_proveedor = p.clave and c.fk_productor = pr.clave and (current_date - c.fecha_inicio <= 31)")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

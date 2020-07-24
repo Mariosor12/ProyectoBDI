@@ -62,6 +62,23 @@ evalCtrl.getProveedorFiltro = async (req, res) => {
         })
 };
 
+evalCtrl.getProveedorFiltro2 = async (req, res) => {
+    const id = req.params.id;
+    const productor = req.params.productor;
+    console.log(productor);
+    await pool.query("select pr.clave as id, pr.nombre as razon from ima_productor p, ima_direccion d, ima_productor_pais pp, ima_proveedor pr, ima_miembro_ifra m, ima_contrato c where pp.fk_productor = p.clave and pp.fk_direccion = d.clave and pr.fk_direccion = d.clave and m.fk_proveedor = pr.clave and c.fk_proveedor = pr.clave and m.fechaf is null and (c.fecha_cancela is not null or c.exclusividad = 'false') and p.clave = "+productor+"")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 // evalCtrl.createEvaluacion = async (req, res) => {
 //     const event = req.body;
 //     await pool.query("INSERT INTO evento (nombre, fk_direccion, cant_entrada_disponible,cant_entrada_vendida, fecha_inicio, fecha_fin ) VALUES ('"+event.nombre+"', "+event.lugar+", "+event.entradas_disponibles+", "+event.entradas_vendidas+", '"+event.fecha_inicio+"','"+event.fecha_fin+"');")
@@ -77,7 +94,7 @@ evalCtrl.getProveedorFiltro = async (req, res) => {
 evalCtrl.createCriterioEvaluacion = async (req, res) => {
     const event = req.body;
     console.log(event);
-    await pool.query("INSERT INTO IMA_cri_eval (fechai, fechaf, peso, tipoform, fk_productor, fk_criterio ) VALUES ('"+event.fechai+"', '"+event.fechaf+"', "+event.peso+", '"+event.tipo+"', "+event.productor+","+event.criterio+");")
+    await pool.query("INSERT INTO IMA_cri_eval (fechai, fechaf, peso, tipoform, fk_productor, fk_criterio ) VALUES ('"+event.fechai+"', "+event.fechaf+", "+event.peso+", '"+event.tipo+"', "+event.productor+","+event.criterio+");")
         .then(response => {
             res.json('Insertado');
         })

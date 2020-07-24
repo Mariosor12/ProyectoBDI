@@ -8,7 +8,7 @@
             <div class="card-body">
                 <form>
             
-                    <select #valor class="form-control" id="exampleFormControlSelect1" [(ngModel)] = "aliados[0].id" style="margin-bottom: 5px">
+                    <select #valor class="form-control" id="exampleFormControlSelect2" [(ngModel)] = "aliados[0].id" style="margin-bottom: 5px">
                         <option>Ver Proveedores a elegir en la casilla de abajo</option>
                         <option *ngFor="let aliados of aliados">
                             {{aliados.id}}-{{aliados.razon}} 
@@ -26,13 +26,14 @@
                     <div class="form-group">
                         <input type="text" name = "productor" [(ngModel)] = "aliadosp.productor" placeholder="Productor" class="form-control" autofocus>
                     </div>
+                    <hr>
                     
           <hr>        
                
                     <button (click) = "getPerfumeP(aliados)" (click) = "getPerfumeP1(aliados)" (click) = "getPerfumeP3(aliados)" (click) = "getPerfumeP4(aliados)" class="btn btn-success btn-block">
                         SAVE
                     </button>  
-                    <!-- <button   class="btn btn-success btn-block">
+                    <!-- <button (click) = "Aliados1(aliadosp)"  class="btn btn-success btn-block">
                       VER
                   </button>  -->
                 </form>
