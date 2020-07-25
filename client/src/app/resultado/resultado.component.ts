@@ -6,13 +6,14 @@ import { CarritoService } from '../services/carrito.service';
 import {ServicioGeneralService} from '../services/servicio-general.service';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import {CatalogoAddComponent}  from '../catalogo-add/catalogo-add.component';
+import { param } from 'jquery';
 
 @Component({
-  selector: 'app-evaluacion-form',
-  templateUrl: './evaluacion-form.component.html',
-  styleUrls: ['./evaluacion-form.component.css']
+  selector: 'app-resultado',
+  templateUrl: './resultado.component.html',
+  styleUrls: ['./resultado.component.css']
 })
-export class EvaluacionFormComponent implements OnInit {
+export class ResultadoComponent implements OnInit {
 
   constructor(private productoService: ProductoService, private router: Router, private activatedRoute: ActivatedRoute, private carritoServicio: CarritoService, private sg: ServicioGeneralService) { 
   }
@@ -23,6 +24,14 @@ export class EvaluacionFormComponent implements OnInit {
     peso: 0,
     tipo: '',
     criterio: 0,
+    productor: 0,
+    proveedor: 0
+  }];
+
+  resultado:any = [{
+    fecha: '',
+    resultado: 0,
+    tipo: '',
     productor: 0,
     proveedor: 0
   }];
@@ -71,15 +80,16 @@ export class EvaluacionFormComponent implements OnInit {
 
            this.edit = true;      
     }
-    this.aliadosp[0].productor = this.evaluacion[0].productor
+    // this.aliadosp[0].productor = this.evaluacion[0].productor
+    console.log(this.evaluacion[0].proveedor);
   }
 
   SaveNuevoProducto() {
-    console.log(this.aliadosp[0].productor)
-    this.aliadosp[0].productor = this.evaluacion[0].productor;
-    console.log(this.evaluacion[0].productor)
+    this.resultado[0].proveedor = this.evaluacion[0].proveedor;
+    this.resultado[0].productor = this.evaluacion[0].productor ;
+    console.log(this.resultado[0])
     //this.sg.saveContrato(this.contratos);
-    this.sg.saveCriEval(this.evaluacion[0]).subscribe(
+    this.sg.saveResultado(this.resultado[0]).subscribe(
         res => {
           console.log(res);
           // this.router.navigate(['/catalogo/add']);
@@ -112,4 +122,3 @@ export class EvaluacionFormComponent implements OnInit {
   }
 
 }
-

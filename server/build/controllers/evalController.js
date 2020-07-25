@@ -15,6 +15,20 @@ evalCtrl.getEvaluacion = async (req, res) => {
         })
 };
 
+evalCtrl.getEvaluacionFinal = async (req, res) => {
+    await pool.query("select e.fechai as fechai, c.fechaf as fechaf, p.clave as proveedor, pr.clave as productor, p.nombre as nombrep, pr.nombre as nombrepr, r.tipoeval as tipo, e.rangoi as rangoi, e.rangof as rangof, cr.nombreetiq as etiqueta, c.peso as peso, r.resultado as resultado from IMA_escala e, IMA_cri_eval c, IMA_resultado_final r, IMA_criterio cr, IMA_proveedor p, IMA_productor pr where e.fechai = c.fechai and (r.fecha = e.fechai or r.fecha = e.fechaf) and c.fk_criterio = cr.clave and r.fk_productor = pr.clave and r.fk_proveedor = p.clave and r.tipoeval = 'Inicial'")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 evalCtrl.getoneEvaluacion = async (req, res) => {
     const id = req.params.id;
     await pool.query("select e.clave AS id, e.nombre as nombre, d.nombre as lugar, e.cant_entrada_disponible as entradas_disponibles, e.cant_entrada_vendida as entradas_vendidas, e.fecha_inicio as fecha_inicio, e.fecha_fin as fecha_fin from IMA_evento e, IMA_direccion d where e.fk_direccion= d.clave and e.clave = "+id+";")
@@ -95,6 +109,19 @@ evalCtrl.createCriterioEvaluacion = async (req, res) => {
     const event = req.body;
     console.log(event);
     await pool.query("INSERT INTO IMA_cri_eval (fechai, fechaf, peso, tipoform, fk_productor, fk_criterio ) VALUES ('"+event.fechai+"', "+event.fechaf+", "+event.peso+", '"+event.tipo+"', "+event.productor+","+event.criterio+");")
+        .then(response => {
+            res.json('Insertado');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+evalCtrl.createResultado = async (req, res) => {
+    const event = req.body;
+    console.log(event);
+    await pool.query("INSERT INTO IMA_resultado_final (fecha, resultado, tipoeval, fk_proveedor, fk_productor) VALUES ('"+event.fecha+"', "+event.resultado+",'"+event.tipo+"', "+event.proveedor+","+event.productor+");")
         .then(response => {
             res.json('Insertado');
         })

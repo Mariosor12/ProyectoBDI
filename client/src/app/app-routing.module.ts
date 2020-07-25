@@ -40,6 +40,9 @@ import { PedidoOpcionesComponent} from './pedido-opciones/pedido-opciones.compon
 import { PedidosPendientesComponent} from './pedidos-pendientes/pedidos-pendientes.component';
 import { PedidosAceptadosComponent} from './pedidos-aceptados/pedidos-aceptados.component';
 import { PedidoCantidadComponent} from './pedido-cantidad/pedido-cantidad.component';
+import { ResultadoComponent} from './resultado/resultado.component';
+import { EvaluacionfinalComponent} from './evaluacionfinal/evaluacionfinal.component';
+
 
 const routes: Routes = [
 {
@@ -184,7 +187,7 @@ component: ReportesComponent
   component: EvaluacionDataTableComponent
 },
 {
-  path:'evaluacion/add/:productor',
+  path:'evaluacion/add/:productor/:proveedor',
   component: EvaluacionFormComponent
 },
 {
@@ -234,6 +237,14 @@ component: CondicionpagoComponent
 {
   path: 'pedidoscantidad/:id/:ingrediente/:proveedor/:productor',
   component: PedidoCantidadComponent
+},
+{
+  path: 'resultado/:productor/:proveedor',
+  component: ResultadoComponent
+},
+{
+  path: 'evaluacionfinal',
+  component: EvaluacionfinalComponent
 }
 
 ];

@@ -21,6 +21,10 @@ gotoEvaluacion(){
   this.router.navigate(['/evaluacion']);
 }
 
+gotoEvaluacionFinal(){
+  this.router.navigate(['/evaluacionfinal']);
+}
+
 gotoEvaluaciones(){
   this.router.navigate(['/evaluacionproveedor']);
 }

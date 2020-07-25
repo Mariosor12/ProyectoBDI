@@ -265,6 +265,10 @@ export class ServicioGeneralService {
     return this.http.get(this.API_URL+'/evaluacion/'); 
   }
 
+  getEvaluacionFinal(){
+    return this.http.get(this.API_URL+'/evaluacion/final'); 
+  }
+
   saveCriEval(evaluacion: any){
     return this.http.post(this.API_URL+'/evaluacion/', evaluacion);
   }
@@ -418,5 +422,10 @@ export class ServicioGeneralService {
     console.log(condicion)
     return this.http.get(this.API_URL+'/alipro/nombreing/'+condicion.proveedor);
     
+  }
+
+  saveResultado(resultado: any){
+    console.log(resultado)
+    return this.http.post(this.API_URL+'/evaluacion/resultado/', resultado);
   }
 }

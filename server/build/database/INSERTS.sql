@@ -1059,7 +1059,7 @@ INSERT INTO IMA_Presing (volml, precio_unitario, fk_ingrediente_otro, fk_ing_mat
 	 ('12-05-2018', 65, 'Inicial', 1, 1),
 	 ('25-06-2019', 70, 'Inicial', 2, 2),
      ('08-08-2019', 30, 'Inicial', 3, 3),
-	 ('07-08-2019', 700, 'Inicial', 3, 3),
+	 ('07-08-2019', 40, 'Inicial', 3, 3),
 	 ('20-10-2019', 80, 'Inicial', 4, 4),
 	 ('20-10-2020', 60, 'Inicial', 5, 4),
 	 ('18-03-2019', 70, 'Renovacion', 1, 1),

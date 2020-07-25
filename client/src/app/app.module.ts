@@ -54,6 +54,8 @@ import { PedidoOpcionesComponent } from './pedido-opciones/pedido-opciones.compo
 import { PedidosPendientesComponent } from './pedidos-pendientes/pedidos-pendientes.component';
 import { PedidosAceptadosComponent } from './pedidos-aceptados/pedidos-aceptados.component';
 import { PedidoCantidadComponent } from './pedido-cantidad/pedido-cantidad.component';
+import { ResultadoComponent } from './resultado/resultado.component';
+import { EvaluacionfinalComponent } from './evaluacionfinal/evaluacionfinal.component';
 
 
 @NgModule({
@@ -101,6 +103,8 @@ import { PedidoCantidadComponent } from './pedido-cantidad/pedido-cantidad.compo
     PedidosPendientesComponent,
     PedidosAceptadosComponent,
     PedidoCantidadComponent,
+    ResultadoComponent,
+    EvaluacionfinalComponent,
   ],
   imports: [
     BrowserModule,
