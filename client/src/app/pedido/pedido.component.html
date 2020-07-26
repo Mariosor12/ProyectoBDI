@@ -8,39 +8,51 @@
             <div class="card-body">
                 <form>
                     <div class="form-group">
+                        <p>Fecha Inicial</p>
                         <input type="text" name = "fechai" [(ngModel)] = "pedido[0].fechai" placeholder="Fecha Inicio" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
+                        <p>Fecha Final</p>
                         <input type="text" name = "fechaf" [(ngModel)] = "pedido[0].fechaf" placeholder="Fecha Fin" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "motivo" [(ngModel)] = "pedido[0].estatus" placeholder="estatus" class="form-control" autofocus>
+                        <p>Estatus</p>
+                        <input type="text" name = "estatus" [(ngModel)] = "pedido[0].estatus" placeholder="estatus" class="form-control" autofocus>
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="text" name = "motivo" [(ngModel)] = "pedido[0].factura" placeholder="factura" class="form-control" autofocus>
+                        <p>Factura</p>
+                        <input type="text" name = "factura" [(ngModel)] = "pedido[0].factura" placeholder="factura" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
-                        <input type="text" name = "motivo" [(ngModel)] = "pedido[0].total" placeholder="total" class="form-control" autofocus>
+                        <p>Cantidad</p>
+                        <input type="text" name = "factura" [(ngModel)] = "pedido[0].cantidad" placeholder="factura" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
+                        <p>Total</p>
+                        <input type="text" name = "total" [(ngModel)] = "pedido[0].total" placeholder="total" class="form-control" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <p>Condicion Contrato</p>
                         <input type="text" name = "condc" [(ngModel)] = "clave[0].id" placeholder="condc" class="form-control" autofocus>
                     </div> 
                     <div class="form-group">
+                        <p>Proveedor</p>
                         <input type="text" name = "proveedor" [(ngModel)] = "perfume[0].contrato" placeholder="Proveedor" class="form-control" autofocus>
                     </div>
                     <div class="form-group">
+                        <p>Contrato</p>
                         <input type="text" name = "id" [(ngModel)] = "perfume[0].ingrediente"  placeholder="Contrato" class="form-control" autofocus>
                     </div>
                     
           <hr>        
 
                
-                    <button (click)= "SaveNuevoProducto()" [routerLink] = "['/pedidoscantidad', clave[0].id, perfume[0].ingrediente, contrato[0].proveedor, contrato[0].productor]" class="btn btn-success btn-block">
+                    <button (click)= "SaveNuevoProducto()" [routerLink] = "['/pedidoscantidad', clave[0].id, perfume[0].ingrediente, contrato[0].proveedor, contrato[0].productor, pedido[0].total, pedido[0].cantidad]" class="btn btn-success btn-block">
                         SAVE
                     </button>  
 
-                    <button (click)= "getAliados()"  class="btn btn-success btn-block">
+                    <button (click)= "getAliados()" (click)= "calcularTotal()"   class="btn btn-success btn-block">
                         CONSEGUIR CONDICIONES CLAVE
                     </button>  
 

@@ -71,7 +71,8 @@ export class CatalogoComponent implements OnInit {
     nombre: '',
     inombre: '',
     ingnombre: '',
-    exclusividad: ''
+    exclusividad: '',
+    precio: 0
   }];
 
   perfume: any = [{

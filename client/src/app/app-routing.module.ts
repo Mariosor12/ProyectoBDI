@@ -203,7 +203,7 @@ component: CondicionpagoComponent
   component: ProveedorEvaluacionComponent
 },
 {
-  path:'condicioncontrato/:id/:proveedor/:productor',
+  path:'condicioncontrato/:id/:proveedor/:productor/:precio',
   component: CondicionContratoComponent
 },
 {
@@ -219,7 +219,7 @@ component: CondicionpagoComponent
   component: RecomendadorComponent
 },
 {
-  path: 'pedido/:proveedor/:productor/:id/:pago/:ingrediente/:materia',
+  path: 'pedido/:proveedor/:productor/:id/:pago/:ingrediente/:materia/:precio',
   component: PedidoComponent
 },
 {
@@ -231,11 +231,11 @@ component: CondicionpagoComponent
   component: PedidosAceptadosComponent
 },
 {
-  path: 'pedidospendiente/:productor/:cond/:pago/:proveedor',
+  path: 'pedidospendiente/:productor/:cond/:pago/:proveedor/:cantidad/:total',
   component: PedidosPendientesComponent
 },
 {
-  path: 'pedidoscantidad/:id/:ingrediente/:proveedor/:productor',
+  path: 'pedidoscantidad/:id/:ingrediente/:proveedor/:productor/:total/:cantidad',
   component: PedidoCantidadComponent
 },
 {

@@ -72,7 +72,8 @@ export class CondicionContratoComponent implements OnInit {
     nombre: '',
     inombre: '',
     ingnombre: '',
-    exclusividad: ''
+    exclusividad: '',
+    precio: 0
   }];
 
   perfume: any = [{
@@ -148,6 +149,9 @@ export class CondicionContratoComponent implements OnInit {
             contrato: params.contrato,
             ingrediente: params.ingrediente
            };
+           this.catalogo ={
+            precio: params.precio
+           };
            this.edit = true;      
     }
     // console.log(this.perfume);
@@ -155,6 +159,7 @@ export class CondicionContratoComponent implements OnInit {
     // console.log(this.aliados);
     // this.getPerfumeP(this.contrato);
     console.log(this.contrato);
+    console.log(this.catalogo);
 
   }
 

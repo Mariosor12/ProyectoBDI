@@ -27,6 +27,7 @@
             <th>Id</th>
             <th>Nombre Perfume</th>
             <th>Nombre Ingrediente/Nombre Materia-Esencia</th>
+            <th>Precio</th>
             <th>Exclusividad</th>
             <br>
             <th>Select</th>
@@ -38,9 +39,10 @@
             <td>{{catalogo.id}}</td>
             <td>{{catalogo.nombre}}</td>
             <td>{{catalogo.inombre}}</td>
+            <td>{{catalogo.precio}}</td>
             <td>{{catalogo.exclusividad}}</td>
           <hr>
-          <td><button><i [routerLink] = "['/condicioncontrato', contrato.id, contrato.proveedor, contrato.productor]" class="fas fa-edit"></i></button></td>
+          <td><button><i [routerLink] = "['/condicioncontrato', contrato.id, contrato.proveedor, contrato.productor, catalogo.precio]" class="fas fa-edit"></i></button></td>
         </tr>               
       </tbody>    
     </table>

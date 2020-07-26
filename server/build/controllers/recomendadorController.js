@@ -126,20 +126,8 @@ recoCtrl.getRecomendadorPerPer = async (req,res) => {
 
 recoCtrl.getOneRecomendador = async (req,res) => {
     const palabra = req.params.palabra;
-    // const palabra2 = req.params.palabra2;
-    // const palabra3 = req.params.palabra;
-    // const palabra4 = req.params.palabra;
-    // const palabra5 = req.params.palabra;
-    // const palabra6 = req.params.palabra;
-    // const palabra7 = req.params.palabra;
-    console.log(palabra);
-    // console.log(palabra2);
-    // console.log(palabra3);
-    // console.log(palabra4);
-    // console.log(palabra5);
-    // console.log(palabra6);
-    // console.log(palabra7);
-    await pool.query("select distinct p.clave as id, p.nombre as nombrep, p.genero as genero, f.nombre as nombref, f.descripcion as descripcionf, i.tipo as tipo, i.concentracion as concentracion, i.descripcion as descripcion, pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.palabra = '"+palabra+"'")
+
+    await pool.query("select distinct p.clave as id, p.nombre as nombrep, p.genero as genero, f.nombre as nombref, f.descripcion as descripcionf, i.tipo as tipo, i.concentracion as concentracion, i.descripcion as descripcion, pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.palabra = $1",[palabra])
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

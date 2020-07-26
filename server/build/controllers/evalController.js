@@ -46,7 +46,7 @@ evalCtrl.getoneEvaluacion = async (req, res) => {
 
 evalCtrl.getPagoProv = async (req, res) => {
     const proveedor = req.params.proveedor;
-    await pool.query("select cp.numero as id, cp.tipo as tipo, cp.cuota as cuota, cp.porccuotas as porcuotas, cp.meses as mes from IMA_cond_c cc, IMA_contrato c, IMA_condicion_pago cp where cc.fk_contrato = c.clave and cc.fk_condicion_pago = cp.numero and c.fk_proveedor = "+proveedor)
+    await pool.query("select distinct cp.numero as id, cp.tipo as tipo, cp.cuota as cuota, cp.porccuotas as porcuotas, cp.meses as mes from IMA_cond_c cc, IMA_contrato c, IMA_condicion_pago cp where cc.fk_contrato = c.clave and cc.fk_condicion_pago = cp.numero and c.fk_proveedor = "+proveedor)
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

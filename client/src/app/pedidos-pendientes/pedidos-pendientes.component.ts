@@ -44,7 +44,8 @@ export class PedidosPendientesComponent implements OnInit {
     total: 0,
     cond: 0,
     pago: 0,
-    proveedor: 0
+    proveedor: 0,
+    cantidad: 0
   }];
 
   evaluaciones:any = [{
@@ -154,6 +155,10 @@ export class PedidosPendientesComponent implements OnInit {
            };
            this.clave[0] ={
             id: params.id
+           };
+           this.pedido[0] ={
+            cantidad: params.cantidad,
+            total: params.total
            };
            this.edit = true;      
     }

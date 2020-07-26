@@ -38,6 +38,15 @@ export class PedidoCantidadComponent implements OnInit {
     cantidad: 0
   }];
 
+  catalogo: any = [{
+    id: 0,
+    nombre: '',
+    inombre: '',
+    ingnombre: '',
+    exclusividad: '',
+    precio: 0
+  }];
+
   evaluaciones:any = [{
     id: 0,
     nombre: ''
@@ -127,20 +136,25 @@ export class PedidoCantidadComponent implements OnInit {
            };
            this.clave[0] ={
              id: params.id
-           }
+           };
+           this.pedido[0] ={
+            cantidad: params.cantidad,
+            total: params.total
+          };
            this.edit = true;      
     }
     // this.getAliados();
     
     console.log(this.contrato[0])
     console.log(this.clave[0])
+    console.log(this.pedido[0])
     this.pedido[0].fechai = this.hoyFecha();
   }
 
 
   SaveNuevoProducto() {
     this.edit = false
-
+    this.cantidad[0].cantidad = this.pedido[0].cantidad;
     console.log(this.cantidad[0])
     //this.sg.saveContrato(this.contratos);
     this.sg.saveCantidadPedido(this.cantidad[0]).subscribe(

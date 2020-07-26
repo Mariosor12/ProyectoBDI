@@ -78,15 +78,18 @@
                       </table> 
                       <hr>
                     <div class="form-group">
+                      <p>Envio</p>
                       <input type="text" name = "Envio" [(ngModel)] = "perfume[0].materia" placeholder="Envio" class="form-control" autofocus>
                   </div>
                   <hr>
+                  <p>Contrato</p>
                     <div class="form-group">
                       <input type="text" name = "contrato" [(ngModel)] = "contrato.id" placeholder="Contrato" class="form-control" autofocus>
                   </div>
                      
           <hr>
           <div class="form-group">
+            <p>Proveedor</p>
             <input type="text" name = "productor" [(ngModel)] = "contrato.proveedor" placeholder="Proveedor" class="form-control" autofocus>
         </div>
         <hr>
@@ -94,7 +97,7 @@
             VER PROVEEDOR
         </button>  
           <hr>  
-                    <button  [routerLink] = "['/pedido', contrato.proveedor, contrato.productor, contrato.id, perfume[0].id, perfume[0].ingrediente, perfume[0].materia]" class="btn btn-success btn-block">
+                    <button  [routerLink] = "['/pedido', contrato.proveedor, contrato.productor, contrato.id, perfume[0].id, perfume[0].ingrediente, perfume[0].materia, catalogo.precio]" class="btn btn-success btn-block">
                         SAVE
                     </button>  
                     <hr>

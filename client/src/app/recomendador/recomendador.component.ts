@@ -78,6 +78,16 @@ export class RecomendadorComponent implements OnInit {
     palabra7: ''
   }];
 
+  palabras:any = [{
+    palabra: null,
+    palabra2: null,
+    palabra3: null,
+    palabra4: null,
+    palabra5: null,
+    palabra6: null,
+    palabra7: null
+  }];
+
  
 
   dtTrigger:Subject<any> = new Subject();
@@ -170,8 +180,9 @@ export class RecomendadorComponent implements OnInit {
   }
 
   getoneRecomendador(recomendador: any){
-    this.sg.getoneRecomendador(recomendador).subscribe(
+    this.sg.getoneRecomendador(this.palabras[0]).subscribe(
       res => {
+        console.log(this.palabras[0])
         this.recomendador = res;
         recomendador = res;
         console.log(recomendador);
@@ -185,5 +196,10 @@ export class RecomendadorComponent implements OnInit {
     this.router.navigate(['/inicio']);
   }
 
+  /*  getperfumes(){
+      this.sg.
+
+
+  }*/
 
 }

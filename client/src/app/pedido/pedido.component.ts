@@ -85,6 +85,15 @@ export class PedidoComponent implements OnInit {
     region: ''
   };
 
+  catalogo: any = [{
+    id: 0,
+    nombre: '',
+    inombre: '',
+    ingnombre: '',
+    exclusividad: '',
+    precio: 0
+  }];
+
   clave: any = {
     id:0
   };
@@ -99,6 +108,8 @@ export class PedidoComponent implements OnInit {
   edit: boolean = false;
   vista: string;
   est: string = 'Pendiente';
+  cantidad: number;
+  totalm: number
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
@@ -119,6 +130,9 @@ export class PedidoComponent implements OnInit {
             materia: params.materia,
             contrato: params.id,
             estatus: params.est
+           };
+           this.catalogo ={
+            precio: params.precio
            };
            this.edit = true;      
     }
@@ -185,7 +199,6 @@ export class PedidoComponent implements OnInit {
       res => {
         this.clave = res;
         console.log(this.clave);
-        
       },
       err => console.log(err)
     )
@@ -208,6 +221,10 @@ hoyFecha(){
 
 
       return dd+'/'+mm+'/'+yyyy;
+}
+
+calcularTotal(){
+  this.pedido[0].total = this.pedido[0].cantidad * this.catalogo.precio
 }
 
 }

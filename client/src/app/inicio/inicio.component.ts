@@ -95,4 +95,16 @@ getAliados(){
         err => console.log(err)
       )
   }
+  gotoEvaluacion(){
+    this.router.navigate(['/evaluaciones']);
+  }
+
+  gotoCompras(){
+    this.router.navigate(['/contratos']);
+  }
+
+  gotoRecomendador(){
+    this.router.navigate(['/recomendador']);
+  }
+
 }
