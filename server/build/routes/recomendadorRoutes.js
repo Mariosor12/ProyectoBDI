@@ -9,7 +9,7 @@ router.get('/percar', recoCtrl.getRecomendadorPerCar);
 router.get('/perfam', recoCtrl.getRecomendadorPerFam);
 router.get('/peroca', recoCtrl.getRecomendadorPerOca);
 router.get('/perper', recoCtrl.getRecomendadorPerPer);
-router.get('/per/:palabra', recoCtrl.getOneRecomendador);
+router.get('/per/:palabra/:palabra2/:palabra3/:palabra4/:palabra5/:palabra6/:palabra7', recoCtrl.getOneRecomendador);
 router.post('/', recoCtrl.createRecomendador);
 router.put('/:id', recoCtrl.editRecomendador);
 router.delete('/:id', recoCtrl.deleteRecomendador);

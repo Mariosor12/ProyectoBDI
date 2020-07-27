@@ -362,7 +362,7 @@ export class ServicioGeneralService {
 
   getoneRecomendador(recomendador: any){
     console.log(recomendador);
-    return this.http.get(this.API_URL+'/recomendador/per/'+recomendador.palabra, recomendador);
+    return this.http.get(this.API_URL+'/recomendador/per/'+recomendador.palabra+ '/'+recomendador.palabra2+'/'+recomendador.palabra3+ '/' +recomendador.palabra4+ '/' +recomendador.palabra5+ '/' +recomendador.palabra6+ '/' +recomendador.palabra7);
   }
 
   deleteContrato(id:number) {

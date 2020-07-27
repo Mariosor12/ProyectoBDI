@@ -125,9 +125,16 @@ recoCtrl.getRecomendadorPerPer = async (req,res) => {
 };
 
 recoCtrl.getOneRecomendador = async (req,res) => {
+    console.log('Enatra')
     const palabra = req.params.palabra;
-
-    await pool.query("select distinct p.clave as id, p.nombre as nombrep, p.genero as genero, f.nombre as nombref, f.descripcion as descripcionf, i.tipo as tipo, i.concentracion as concentracion, i.descripcion as descripcion, pc.palabra as palabra from IMA_perfume p, IMA_principal pr, IMA_familia_olfativa f, IMA_intensidad i, IMA_p_f pf, IMA_palabra_clave pc where pr.fk_perfume = p.clave and pr.fk_familia_olfativa = f.clave and i.fk_perfume = p.clave and pf.fk_familia_olfativa = f.clave and pf.fk_palabra_clave = pc.clave and pc.palabra = $1",[palabra])
+    const palabra2 = req.params.palabra2;
+    const palabra3 = req.params.palabra3;
+    const palabra4 = req.params.palabra4;
+    const palabra5 = req.params.palabra5;
+    const palabra6 = req.params.palabra6;
+    const palabra7 = req.params.palabra7;
+    console.log(palabra);
+    await pool.query("SELECT distinct ima_perfume.clave as id, ima_perfume.nombre as nombrep, ima_perfume.genero as genero, ima_familia_olfativa.nombre as nombref, ima_familia_olfativa.descripcion as descripcionf, ima_intensidad.tipo as tipo, ima_intensidad.concentracion as concentracion, ima_intensidad.descripcion as descripcion, ima_palabra_clave.palabra as palabra from ima_perfume join ima_principal on ima_principal.fk_perfume=ima_perfume.clave join ima_familia_olfativa on ima_familia_olfativa.clave=ima_principal.fk_familia_olfativa join ima_intensidad on ima_intensidad.fk_perfume = ima_perfume.clave join ima_p_f on ima_p_f.fk_familia_olfativa=ima_familia_olfativa.clave join ima_palabra_clave on ima_palabra_clave.clave= ima_p_f.fk_palabra_clave where ima_palabra_clave.palabra='"+palabra+"' or ima_palabra_clave.palabra='"+palabra2+"' or ima_palabra_clave.palabra='"+palabra3+"' or ima_palabra_clave.palabra='"+palabra4+"' or  ima_palabra_clave.palabra='"+palabra5+"' or ima_palabra_clave.palabra='"+palabra6+"' or ima_palabra_clave.palabra='"+palabra7+"'")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
