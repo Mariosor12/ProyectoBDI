@@ -95,7 +95,11 @@
         <hr>
         <button (click)= "getPerfumeP1(contrato)" (click)= "getPerfumeP2(contrato)"  class="btn btn-success btn-block">
             VER PROVEEDOR
-        </button>  
+        </button>
+        <hr>
+        <button (click) = "SaveNuevoProducto()" [routerLink] = "['/pedido', contrato.proveedor, contrato.productor, contrato.id, perfume[0].id, perfume[0].ingrediente, perfume[0].materia, catalogo.precio]" class="btn btn-success btn-block">
+          Guardar condiciones de envio y pago
+      </button>   
           <hr>  
                     <button  [routerLink] = "['/pedido', contrato.proveedor, contrato.productor, contrato.id, perfume[0].id, perfume[0].ingrediente, perfume[0].materia, catalogo.precio]" class="btn btn-success btn-block">
                         SAVE
