@@ -253,12 +253,20 @@ export class ServicioGeneralService {
     return this.http.get(this.API_URL+'/catalogo/'+contrato.proveedor+'/'+contrato.productor+ '/' +contrato.id);
   }
 
+  getCatalogoO(contrato:any){
+    return this.http.get(this.API_URL+'/catalogo/otro/'+contrato.proveedor+'/'+contrato.productor+ '/' +contrato.id);
+  }
+
   getPerfumeP(contrato: any){
     return this.http.get(this.API_URL+'/catalogo/'+contrato.productor);
   }
 
   saveCatalogo(perfume: any){
     return this.http.post(this.API_URL+'/catalogo/', perfume);
+  }
+
+  saveCatalogoO(perfume: any){
+    return this.http.post(this.API_URL+'/catalogo/otro', perfume);
   }
 
   getEvaluacion(){

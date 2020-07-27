@@ -69,11 +69,13 @@ export class CatalogoComponent implements OnInit {
   catalogo: any = [{
     id: 0,
     nombre: '',
-    inombre: '',
     ingnombre: '',
+    inombre: '',
     exclusividad: '',
     precio: 0
   }];
+
+  
 
   perfume: any = [{
     id: 0,
@@ -156,9 +158,7 @@ export class CatalogoComponent implements OnInit {
     this.sg.getCatalogo(contrato).subscribe(
       res => {
         this.catalogo = res;
-        this.perfume = res;
         console.log(this.catalogo);
-        console.log(this.perfume);
       },
       err => console.log(err)
     )

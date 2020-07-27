@@ -19,7 +19,24 @@ catCtrl.getCatalogo = async (req, res) => {
     const proveedor = req.params.proveedor;
     const productor = req.params.productor;
     const id = req.params.id;
-    await pool.query("select c.clave as id, p.nombre as nombre, i.nombre as inombre, ip.precio_unitario as precio, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ingrediente_otro i, ima_presing ip where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ingrediente_otro = i.clave and ip.fk_ingrediente_otro = ip.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+" union select c.clave as id, p.nombre as nombre, ing.nombre as ingnombre, ip.precio_unitario as precio, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ing_materia_esencial ing, ima_presing ip where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = ing.ipc and ip.fk_ing_materia_esencial = ip.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+";")
+    await pool.query("select c.clave as id, p.nombre as nombre, i.nombre as ingnombre, ip.precio_unitario as precio, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ing_materia_esencial i, ima_presing ip where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = i.ipc and ip.fk_ingrediente_otro = ip.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+" union select c.clave as id, p.nombre as nombre, ing.nombre as ingnombre, ip.precio_unitario as precio, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ingrediente_otro ing, ima_presing ip where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ingrediente_otro = ing.clave and ip.fk_ingrediente_otro = ip.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+";")
+        .then(response => {
+            if(response.rowCount)
+                res.json(response.rows);
+            else
+                res.json('Sin resultados');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
+catCtrl.getCatalogoO = async (req, res) => {
+    const proveedor = req.params.proveedor;
+    const productor = req.params.productor;
+    const id = req.params.id;
+    await pool.query("select c.clave as id, p.nombre as nombre, ing.nombre as inombre, ip.precio_unitario as precio, co.exclusividad as exclusividad from IMA_catalogo c, IMA_contrato co, IMA_perfume p, IMA_ing_materia_esencial ing, ima_presing ip where c.fk_contrato = co.clave and c.fk_perfume = p.clave and c.fk_ing_materia_esencial = ing.ipc and ip.fk_ing_materia_esencial = ip.clave and co.fk_proveedor = "+proveedor+" and co.fk_productor = "+productor+" and co.clave = "+id+";")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);
@@ -95,7 +112,7 @@ catCtrl.getIngMateriaP = async (req, res) => {
 catCtrl.createCatalogo = async (req, res) => {
     const event = req.body;
     console.log(event);
-    await pool.query("INSERT INTO IMA_catalogo (fk_ing_materia_esencial, fk_ingrediente_otro, fk_contrato, fk_perfume) VALUES ("+event.ingrediente+", "+event.materia+", "+event.contrato+", "+event.perfume+");")
+    await pool.query("INSERT INTO IMA_catalogo (fk_ing_materia_esencial, fk_ingrediente_otro, fk_contrato, fk_perfume) VALUES ("+event.materia+", "+event.ingrediente+", "+event.contrato+", "+event.perfume+");")
         .then(response => {
             res.json('Insertado');
         })
@@ -104,6 +121,7 @@ catCtrl.createCatalogo = async (req, res) => {
             res.json('Ha ocurrido un error');
         })
 };
+
 
 // catCtrl.editEvento = async (req, res) => {
 //     const id = req.params.id;

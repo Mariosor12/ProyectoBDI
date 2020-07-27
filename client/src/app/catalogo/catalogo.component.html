@@ -38,6 +38,7 @@
         <tr *ngFor="let catalogo of catalogo">
             <td>{{catalogo.id}}</td>
             <td>{{catalogo.nombre}}</td>
+            <td>{{catalogo.ingnombre}}</td>
             <td>{{catalogo.inombre}}</td>
             <td>{{catalogo.precio}}</td>
             <td>{{catalogo.exclusividad}}</td>
@@ -46,7 +47,7 @@
         </tr>               
       </tbody>    
     </table>
-
+    <hr>
     <button *ngIf="vista == ''" class="links" [routerLink] = "['/catalogo/add', contrato.proveedor, contrato.productor, contrato.id]">
       <p><i class="fas fa-plus-circle px-1" style="font-size: 30px"></i> Agregar Nuevo Producto</p>        
     </button>

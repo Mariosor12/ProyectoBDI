@@ -141,6 +141,25 @@ export class CatalogoAddComponent implements OnInit {
       )
   }
 
+  SaveNuevoProducto1() {
+    // this.contrato.id = this.perfume.productor;
+    delete this.perfume.id;
+    // this.perfume[0].contrato = this.contrato.id;
+    this.perfume[0].productor = this.contrato.productor;
+    // delete this.contrato.nombrepr;
+    console.log(this.perfume[0])
+    //this.sg.saveContrato(this.contratos);
+    this.sg.saveCatalogoO(this.perfume[0]).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/catalogo', this.contrato.proveedor, this.contrato.productor, this.contrato.id]);
+          // this.contratos = res; // Esto esta mal.
+
+        },
+        err => console.error(err)
+      )
+  }
+
   getPerfumeP(contrato: any){
     this.sg.getPerfumeP(contrato).subscribe(
       res => {
