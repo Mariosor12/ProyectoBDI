@@ -39,7 +39,7 @@
           <th>Nombre Criterio Etiqueta</th>
           <th>Peso Criterio</th>
           <th>Resultado Final</th>
-
+          <th *ngIf="vista == ''">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +54,7 @@
           <td>{{evaluacion.etiqueta}}</td>
           <td>{{evaluacion.peso}}</td>
           <td>{{evaluacion.resultado}}</td>
+          <td><button><i (click) = "PasarProductor()" class="fas fa-edit"></i></button></td>
           <!----<td>{{aliado.lugar}}</td>      -->
           <!----<td *ngIf="vista == ''"><a [routerLink]="['/aliados/edit', aliado.id]" ><i class="fas fa-edit"></i></a>  /  <button class="links" (click)="deleteAliado(aliado)"><i class="far fa-trash-alt"></i></button></td>-->
           <!----<td *ngIf="vista == 'AsociarMP'"><button class="links" (click)="asociar(mineral.id, mineral.costo)"><i class="fas fa-plus-circle"></i></button></td>

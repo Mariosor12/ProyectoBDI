@@ -3,11 +3,17 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CommonService } from './../services/common.service';
-import { ServicioGeneralService } from './../services/servicio-general.service';
-import { CarritoService } from './../services/carrito.service';
 import { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
 import { CarritoComponent } from '../carrito/carrito.component';
+import { Producto } from '../models/producto';
+import { ProductoService} from '../services/producto.service';
+import {ActivatedRoute} from '@angular/router';
+import { CarritoService } from '../services/carrito.service';
+import {ServicioGeneralService} from '../services/servicio-general.service';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
+import {CatalogoAddComponent}  from '../catalogo-add/catalogo-add.component';
+import { param } from 'jquery';
 
 @Component({
   selector: 'app-evaluacion-data-table',
@@ -35,8 +41,12 @@ export class EvaluacionDataTableComponent implements OnInit {
     rangof: 0,
     etiqueta:'',
     peso: 0,
-    resultado: 0
+    resultado: 0,
+    criterio: 0,
+    productor: 0,
+    proveedor: 0
   }];
+
 
   aliadosp:any = [{
     id: 0,
@@ -50,15 +60,23 @@ export class EvaluacionDataTableComponent implements OnInit {
  
   dtTrigger:Subject<any> = new Subject();
 
-  constructor(private sg:ServicioGeneralService, private common:CommonService, private router:Router, private cart:CarritoService) { }
+  constructor(private sg:ServicioGeneralService, private common:CommonService, private router:Router, private cart:CarritoService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    if (params){
+           this.evaluacion[0] ={
+            productor: params.productor,
+            proveedor: params.proveedor
+          };    
+    }
     this.loading = true;        
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10
     };
 
+    console.log(this.evaluacion[0])
     this.getEvaluacion();
 
   }
@@ -89,6 +107,10 @@ export class EvaluacionDataTableComponent implements OnInit {
 
   gotoInicio(){
     this.router.navigate(['/inicio']);
+  }
+  PasarProductor(){
+    console.log(this.evaluacion[0])
+    this.router.navigate(['/contrato/add', this.evaluacion[0].productor]);
   }
 
 }

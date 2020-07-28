@@ -2,7 +2,7 @@ const evalCtrl = {};
 const pool  = require('../database/database');
 
 evalCtrl.getEvaluacion = async (req, res) => {
-    await pool.query("select e.fechai as fechai, c.fechaf as fechaf, p.nombre as nombrep, pr.nombre as nombrepr, r.tipoeval as tipo, e.rangoi as rangoi, e.rangof as rangof, cr.nombreetiq as etiqueta, c.peso as peso, r.resultado as resultado from IMA_escala e, IMA_cri_eval c, IMA_resultado_final r, IMA_criterio cr, IMA_proveedor p, IMA_productor pr where e.fechai = c.fechai and (r.fecha = e.fechai or r.fecha = e.fechaf) and c.fk_criterio = cr.clave and r.fk_productor = pr.clave and r.fk_proveedor = p.clave ")
+    await pool.query("select e.fechai as fechai, c.fechaf as fechaf, p.clave as proveedor, pr.clave as productor, p.nombre as nombrep, pr.nombre as nombrepr, r.tipoeval as tipo, e.rangoi as rangoi, e.rangof as rangof, cr.nombreetiq as etiqueta, c.peso as peso, r.resultado as resultado from IMA_escala e, IMA_cri_eval c, IMA_resultado_final r, IMA_criterio cr, IMA_proveedor p, IMA_productor pr where e.fechai = c.fechai and (r.fecha = e.fechai or r.fecha = e.fechaf) and c.fk_criterio = cr.clave and r.fk_productor = pr.clave and r.fk_proveedor = p.clave and r.resultado between e.rangoi and e.rangof")
         .then(response => {
             if(response.rowCount)
                 res.json(response.rows);

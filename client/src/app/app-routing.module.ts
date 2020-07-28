@@ -184,7 +184,7 @@ component: ReportesComponent
   component: EvaluacionesComponent
 },
 {
-  path: 'evaluacion',
+  path: 'evaluacion/:productor/:proveedor',
   component: EvaluacionDataTableComponent
 },
 {

@@ -31,7 +31,7 @@
                         <input type="text" name = "productor" [(ngModel)] = "evaluacion[0].productor" placeholder="Productor" class="form-control" autofocus>
                     </div>
           <hr>               
-                    <button (click)= "SaveNuevoProducto()" [routerLink] = "['/contrato/add', evaluacion[0].productor]"  class="btn btn-success btn-block">
+                    <button (click)= "SaveNuevoProducto()" [routerLink] = "['/evaluacion', evaluacion[0].productor, evaluacion[0].proveedor]"  class="btn btn-success btn-block">
                         SAVE
                     </button> 
                     <hr> 
