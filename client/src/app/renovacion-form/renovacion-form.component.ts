@@ -122,7 +122,7 @@ export class RenovacionFormComponent implements OnInit {
     }
     // this.getAliados();
     this.renovacion[0].fechai = this.hoyFecha();
-    this.renovacion[0].fechaf = this.añoFecha();
+    
   
   }
 

@@ -10,6 +10,7 @@ router.get('/:id', evaCtrl.getoneEvaluacion);
 router.get('/condipago/:proveedor', evaCtrl.getPagoProv);
 // router.post('/', evaCtrl.createEvaluacion);
 router.post('/', evaCtrl.createCriterioEvaluacion);
+router.post('/escala/', evaCtrl.createCriterioEscala);
 router.post('/resultado/', evaCtrl.createResultado);
 router.put('/:id', evaCtrl.editEvaluacion);
 router.delete('/:id', evaCtrl.deleteEvaluacion);

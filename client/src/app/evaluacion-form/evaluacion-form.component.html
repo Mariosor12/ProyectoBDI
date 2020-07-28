@@ -36,7 +36,7 @@
                         <input type="text" name = "productor" [(ngModel)] = "evaluacion[0].productor" placeholder="Productor" class="form-control" autofocus>
                     </div>
           <hr>               
-                    <button (click)= "getAliados()" [routerLink] = "['/resultado', evaluacion[0].productor, evaluacion[0].proveedor]"  class="btn btn-success btn-block">
+                    <button (click)= "getAliados()" [routerLink] = "['/escala', evaluacion[0].productor, evaluacion[0].proveedor]"  class="btn btn-success btn-block">
                         SAVE
                     </button> 
                     <hr> 

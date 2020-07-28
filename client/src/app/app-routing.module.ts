@@ -42,6 +42,7 @@ import { PedidosAceptadosComponent} from './pedidos-aceptados/pedidos-aceptados.
 import { PedidoCantidadComponent} from './pedido-cantidad/pedido-cantidad.component';
 import { ResultadoComponent} from './resultado/resultado.component';
 import { EvaluacionfinalComponent} from './evaluacionfinal/evaluacionfinal.component';
+import { EscalaComponent} from './escala/escala.component';
 
 
 const routes: Routes = [
@@ -245,6 +246,10 @@ component: CondicionpagoComponent
 {
   path: 'evaluacionfinal',
   component: EvaluacionfinalComponent
+},
+{
+  path: 'escala/:productor/:proveedor',
+  component: EscalaComponent
 }
 
 ];

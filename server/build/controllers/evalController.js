@@ -118,6 +118,19 @@ evalCtrl.createCriterioEvaluacion = async (req, res) => {
         })
 };
 
+evalCtrl.createCriterioEscala = async (req, res) => {
+    const event = req.body;
+    console.log(event);
+    await pool.query("INSERT INTO IMA_escala (fechai, fechaf, rangoi, rangof, fk_productor) VALUES ('"+event.fechai+"', "+event.fechaf+", "+event.rangoi+", "+event.rangof+", "+event.productor+");")
+        .then(response => {
+            res.json('Insertado');
+        })
+        .catch(err => {
+            console.log(err);
+            res.json('Ha ocurrido un error');
+        })
+};
+
 evalCtrl.createResultado = async (req, res) => {
     const event = req.body;
     console.log(event);

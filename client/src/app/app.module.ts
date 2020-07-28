@@ -56,6 +56,7 @@ import { PedidosAceptadosComponent } from './pedidos-aceptados/pedidos-aceptados
 import { PedidoCantidadComponent } from './pedido-cantidad/pedido-cantidad.component';
 import { ResultadoComponent } from './resultado/resultado.component';
 import { EvaluacionfinalComponent } from './evaluacionfinal/evaluacionfinal.component';
+import { EscalaComponent } from './escala/escala.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { EvaluacionfinalComponent } from './evaluacionfinal/evaluacionfinal.comp
     PedidoCantidadComponent,
     ResultadoComponent,
     EvaluacionfinalComponent,
+    EscalaComponent,
   ],
   imports: [
     BrowserModule,

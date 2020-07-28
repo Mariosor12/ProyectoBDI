@@ -437,4 +437,9 @@ export class ServicioGeneralService {
     console.log(resultado)
     return this.http.post(this.API_URL+'/evaluacion/resultado/', resultado);
   }
+
+  saveEscala(escala: any){
+    console.log(escala)
+    return this.http.post(this.API_URL+'/evaluacion/escala/', escala);
+  }
 }
