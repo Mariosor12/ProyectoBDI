@@ -20,12 +20,6 @@ CREATE TABLE IMA_Familia_Olfativa(
     CONSTRAINT PK_Familia_Olfativa PRIMARY KEY (clave)
 );
 
-CREATE TABLE IMA_Presentacion(
-	clave		SERIAL,
-	volml	INTEGER	NOT NULL,
-    CONSTRAINT PK_Presentacion PRIMARY KEY (clave)
-);
-
 CREATE TABLE IMA_Palabra_Clave(
 	clave		SERIAL,
 	palabra	VARCHAR NOT NULL,
@@ -81,9 +75,12 @@ CREATE TABLE IMA_Perfume(
     fecha_nacimiento date NOT NULL,
     genero           VARCHAR(25) NOT NULL CHECK (genero = 'Masculino' OR genero = 'Femenino' OR genero = 'Unisex'),
 	fk_productor	INTEGER NOT NULL,
+    fk_perfumista	INTEGER NOT NULL,
 	CONSTRAINT PK_Perfume PRIMARY KEY (clave),
 	CONSTRAINT FK_fk_productor FOREIGN KEY (fk_productor)
-	REFERENCES IMA_Productor (clave) ON DELETE CASCADE
+	REFERENCES IMA_Productor (clave) ON DELETE CASCADE,
+    CONSTRAINT FK_fk_perfumista FOREIGN KEY (fk_perfumista)
+	REFERENCES IMA_Perfumista (clave) ON DELETE CASCADE
 );
 
 CREATE TABLE IMA_Intensidad(
@@ -97,6 +94,14 @@ CREATE TABLE IMA_Intensidad(
 	REFERENCES IMA_Perfume (clave) ON DELETE CASCADE
 );
 
+CREATE TABLE IMA_Presentacion(
+	clave		SERIAL,
+	volml	INTEGER	NOT NULL,
+    fk_intensidad INTEGER not null,
+    CONSTRAINT PK_Presentacion PRIMARY KEY (clave),
+    CONSTRAINT FK_fk_intensidad FOREIGN KEY (fk_intensidad)
+	REFERENCES IMA_Intensidad (clave) ON DELETE CASCADE
+);
 
 CREATE TABLE IMA_F_E(
 	clave		SERIAL,

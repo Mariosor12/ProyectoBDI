@@ -42,17 +42,6 @@ INSERT INTO IMA_Familia_Olfativa(nombre, descripcion)VALUES
 ('Orientales', 'La familia oriental incluye fragancias masculinas y femeninas. Son perfumes cálidos, sensuales, dulces y especiados.'),
 ('Otros', 'Aromas combinados con alguna otra familia');
 
-INSERT INTO IMA_Presentacion(volml)VALUES
-(30),
-(50),
-(75),
-(100),
-(125),
-(150),
-(175),
-(200),
-(350);
-
 INSERT INTO IMA_Palabra_Clave(palabra)VALUES
 ('naranja'),
 ('jazmin'),
@@ -386,19 +375,19 @@ INSERT INTO IMA_productor(nombre, pag_web, telefono, fk_asociacion_nacional)VALU
 ('Prodarom', 'https://www.prodarom.com/', '3222142060', 1),
 ('AEFAA', 'http://www.aefaa.com/web/aefaa.nsf/index.xsp', '34915938490', 2);
 
-INSERT INTO IMA_perfume(nombre, fecha_nacimiento, genero, fk_productor)VALUES
-('Azure', '18-03-1907', 'Femenino', 1),
-('Royal Copehagen-Monarch', '23-07-2017', 'Masculino', 2),
-('Carven', '15-05-2018', 'Femenino', 3),
-('Repelkito', '05-09-2016', 'Unisex', 4),
-('NatGuard','21-11-2018', 'Unisex', 4),
-('Mosquit', '22-05-2017', 'Unisex', 2),
-('Miss Dior-Christian Dior', '12-01-2012', 'Femenino', 1),
-('Trydom-Bruma','25-10-2017', 'Femenino', 3),
-('Jicky-Gurlain', '05-12-1882', 'Unisex', 4),
-('Precious-RCW ', '24-08-2008', 'Femenino', 4),
-('David Yurman-Summer Essence', '15-04-2012', 'Masculino', 1),
-('Encounter-Calvin Klein ', '19-09-2012', 'Masculino', 3);
+INSERT INTO IMA_perfume(nombre, fecha_nacimiento, genero, fk_productor, fk_perfumista)VALUES
+('Azure', '18-03-1907', 'Femenino', 1,1),
+('Royal Copehagen-Monarch', '23-07-2017', 'Masculino', 2, 2),
+('Carven', '15-05-2018', 'Femenino', 3, 3),
+('Repelkito', '05-09-2016', 'Unisex', 4, 4),
+('NatGuard','21-11-2018', 'Unisex', 4, 5),
+('Mosquit', '22-05-2017', 'Unisex', 2, 6),
+('Miss Dior-Christian Dior', '12-01-2012', 'Femenino', 1, 7),
+('Trydom-Bruma','25-10-2017', 'Femenino', 3, 8),
+('Jicky-Gurlain', '05-12-1882', 'Unisex', 4, 9),
+('Precious-RCW ', '24-08-2008', 'Femenino', 4, 10),
+('David Yurman-Summer Essence', '15-04-2012', 'Masculino', 1, 11),
+('Encounter-Calvin Klein ', '19-09-2012', 'Masculino', 3, 12);
 
 
 INSERT INTO IMA_Intensidad(tipo, concentracion, descripcion, fk_perfume)VALUES
@@ -414,6 +403,69 @@ INSERT INTO IMA_Intensidad(tipo, concentracion, descripcion, fk_perfume)VALUES
 ('Splash perfumes', 1, 'Esta última fragancia es bastante similar a la anterior, ya que el aroma durará hasta dos horas. Sin embargo, tiene una concentración de fragancia aún más baja de solo 1% a 3%.', 10),
 ('Perfume', 30, 'la forma más concentrada', 11),
 ('Eau de Perfume', 15, 'duración de la fragancia sobre nuestra piel puede llegar a las seis horas', 12);
+
+INSERT INTO IMA_Presentacion(volml, fk_intensidad)VALUES
+(30, 1),
+(50, 1),
+(75, 1),
+(150, 1),
+
+(75, 2),
+(100, 2),
+(125, 2),
+(200, 2),
+
+(30, 3),
+(100, 3),
+(175, 3),
+(350, 3),
+
+(50, 4),
+(125, 4),
+(150, 4),
+(175, 4),
+
+(30, 5),
+(50, 5),
+(150, 5),
+(175, 5),
+
+(100, 6),
+(150, 6),
+(200, 6),
+(350, 6),
+
+(50, 7),
+(75, 7),
+(100, 7),
+(125, 7),
+
+(30, 8),
+(150, 8),
+(175, 8),
+(200, 8),
+
+(50, 9),
+(75, 9),
+(200, 9),
+(350, 9),
+
+
+(75, 10),
+(125, 10),
+(150, 10),
+(175, 10),
+
+(30, 11),
+(50, 11),
+(150, 11),
+(350, 11),
+
+
+(100, 12),
+(125, 12),
+(150, 12),
+(200, 12);
 
 INSERT INTO IMA_F_E(fk_esencia_perfume, fk_familia_olfativa)VALUES
 (1234, 5),
@@ -461,44 +513,26 @@ INSERT INTO IMA_F_E(fk_esencia_perfume, fk_familia_olfativa)VALUES
 INSERT INTO IMA_Monolitico(fk_perfume, fk_esencia_perfume)VALUES
 (1, 2345),
 (1, 4532),
-(2, 9001),
-(2, 3457),
-(2, 6310),
-(2, 5678),
-(3, 3457),
-(3, 2345),
-(3, 9001),
-(3, 9234),
+
 (4, 1234),
 (4, 5678),
+
 (5, 1234),
 (5, 5678),
+
 (6, 4532),
 (6, 2901),
 (6, 1234),
 (6, 9234),
 (6, 6310),
 (6, 9688),
-(7, 9001),
-(7, 4532),
-(7, 6310),
-(8, 9001),
-(8, 2901),
-(8, 4532),
+
+
 (9, 5678),
 (9, 2345),
+
 (10, 9001),
-(10, 3457),
-(11, 5678),
-(11, 8760),
-(11, 9112),
-(11, 8321),
-(11, 1690),
-(11, 6310),
-(12, 3457),
-(12, 2345),
-(12, 6310),
-(12, 3900);
+(10, 3457);
 
 INSERT INTO IMA_proveedor(nombre, pag_web, telefono, fk_asociacion_nacional, fk_direccion)VALUES
 ('ETERNIS Dime Chemicals', 'http://www.eternis.com/', '912266513400', null, 5),
@@ -521,8 +555,6 @@ INSERT INTO IMA_Ing_Materia_Esencial(tsca_cas, nombre, descripcion, solubilidad,
 (802391, 'Galbanum oil', 'El aceite de gálbano se destila al vapor para producir un líquido móvil transparente, amarillo pálido o verde oliva. Resinifica fácilmente con la exposición al aire. Su perfil de fragancia es intensamente verde, potente, potente, cortante, hierba cortada, hoja de perejil, té de perejil, hojas verdes silvestres en invierno en el Wadi, tierra, balsámico, fresco.', 'alcohol, water, 0.8331 mg/L 25 °C', 'Destilacion', 'Galbanum tiene una intensa fragancia verde con elementos amaderados y balsámicos. A menudo descrito como terroso o similar a un bosque, este compuesto de fragancia se valora por su capacidad para impartir un aroma verde rico y picante .', '', 5);
 
 INSERT INTO IMA_per_fas(tipo_nota, fk_perfume, fk_esencia_perfume)VALUES
-('notas de fondo', 1, 2345),
-('notas de fondo', 1, 4532),
 
 ('notas de fondo', 2, 9234),
 ('notas de corazón', 2, 9001),
@@ -533,19 +565,6 @@ INSERT INTO IMA_per_fas(tipo_nota, fk_perfume, fk_esencia_perfume)VALUES
 ('notas de fondo', 3, 9001),
 ('notas de corazón', 3, 2345),
 ('notas de salida', 3, 9234),
-
-('notas de fondo', 4, 1234),
-('notas de salida', 4, 5678),
-
-('notas de fondo', 5, 1234),
-('notas de salida', 5, 5678),
-
-('notas de fondo', 6, 9234),
-('notas de fondo', 6, 6310),
-('notas de corazón', 6, 1690),
-('notas de corazón', 6, 2901),
-('notas de salida', 6, 9688),
-('notas de salida', 6, 1234),
 
 ('notas de fondo', 7, 6310),
 ('notas de fondo', 7, 3900),
@@ -559,22 +578,6 @@ INSERT INTO IMA_per_fas(tipo_nota, fk_perfume, fk_esencia_perfume)VALUES
 ('notas de corazón', 8, 9112),
 ('notas de salida', 8, 9001),
 ('notas de salida', 8, 2901),
-
-('notas de fondo', 9, 6310),
-('notas de fondo', 9, 9234),
-('notas de corazón', 9, 9001),
-('notas de corazón', 9, 2345),
-('notas de corazón', 9, 9688),
-('notas de salida', 9, 5678),
-('notas de salida', 9, 4532),
-('notas de salida', 9, 3457),
-
-
-('notas de fondo', 10, 6781),
-('notas de fondo', 10, 2345),
-('notas de corazón', 10, 6310),
-('notas de corazón', 10, 9112),
-('notas de salida', 10, 6781),
 
 ('notas de fondo', 11, 9234),
 ('notas de fondo', 11, 6310),
